@@ -1,0 +1,16 @@
+*.swp
+src/generated/
+*.ogun
+*.o
+*.exe
+tmp*
+*.stackdump
+translator/gb2c++
+runtime/samuraiPlay
+runtime/daemon
+runtime/players/makemake
+runtime/players/teamlist
+runtime/players/teams.cc
+runtime/players/hoge.samuraiLog
+runtime/players/fuga.samuraiLog
+script*.cc
