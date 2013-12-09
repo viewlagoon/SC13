@@ -1,0 +1,18 @@
+#$ b0=14; b1=13; b2=11; b3=7
+mmhp_map[y@{ag}Next][x@{ag}Next]=zero()
+if   hp@{ag}@{di}
+  move[@ag]=@di
+  y@{ag}Next=y@{ag}@{di}Gate
+  x@{ag}Next=x@{ag}@{di}Gate
+  mmhp_map[y@{ag}Next][x@{ag}Next]=@{b@{ag}}
+  print '  --  update map, next(',x@{ag}Next,',',y@{ag}Next,')'
+  #if moveMaxPref@{ag}_isFinalDecision
+    #map[y@ag@{di}Gate][x@ag@{di}Gate]=1
+    #ownedMapMe[y@{ag}@{di}Gate][x@{ag}@{di}Gate]=1
+    #print 'turn=',turn,' ag@{ag}(',x@{ag},',',y@{ag},') isFinalDecision @{di} (',x@{ag}Next,',',y@{ag}Next,')'
+  #endif
+else
+  move[@ag]=m1
+  y@{ag}Next=y@{ag}
+  x@{ag}Next=x@{ag}
+endif

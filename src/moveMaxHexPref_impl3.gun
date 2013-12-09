@@ -1,0 +1,7 @@
+if   hp@{ag}@{di}<hp@{ag}@{dj}
+#$ 'moveMaxHexPref_impl2.gun ag=@ag di=@dj dj=@dk'
+elif hp@{ag}@{di}<hp@{ag}@{dk} 
+#$ 'moveMaxHexPref_impl1.gun ag=@ag di=@dk'
+else
+#$ 'moveMaxHexPref_impl1.gun ag=@ag di=@di'
+endif

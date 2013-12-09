@@ -1,0 +1,100 @@
+#$ ag=0
+#$ while @ag<4
+func hexPrefDef@ag()
+if x@ag
+  hexPrefDef@{ag}5()
+  if x@{ag}Rev
+    hexPrefDef@{ag}2()
+    if   y@ag
+      hexPrefDef@{ag}0()
+      hexPrefDef@{ag}1()
+      if y@{ag}Rev
+        hexPrefDef@{ag}3()
+        hexPrefDef@{ag}4()
+      else
+        gateDef_hexPrefDownMove@ag()
+      endif
+    else
+      hexPrefDef@{ag}3()
+      hexPrefDef@{ag}4()
+      gateDef_hexPrefUpMove@ag()
+    endif
+  else
+  #x==xnM1
+    gateDef_hexPrefRightMove@ag()
+    if   y@{ag}Mod2
+      #print '@ag leftmost oddY'
+      hexPrefDef@{ag}1_zero()
+      hexPrefDef@{ag}3_zero()
+      hexPrefDef@{ag}0()
+      hexPrefDef@{ag}4()
+    elif y@{ag}
+      hexPrefDef@{ag}0()
+      hexPrefDef@{ag}1()
+      if y@{ag}Rev
+        hexPrefDef@{ag}3()
+        hexPrefDef@{ag}4()
+      else
+        hexPrefDef@{ag}4_zero()
+        hexPrefDef@{ag}3_zero()
+      endif
+    else
+      hexPrefDef@{ag}0_zero()
+      hexPrefDef@{ag}1_zero()
+      hexPrefDef@{ag}3()
+      hexPrefDef@{ag}4()
+    endif
+  endif
+else
+#x==0
+  gateDef_hexPrefLeftMove@ag()
+  hexPrefDef@{ag}2()
+  if   y@{ag}Mod2
+    hexPrefDef@{ag}0_zero()
+    hexPrefDef@{ag}4_zero()
+    hexPrefDef@{ag}1()
+    hexPrefDef@{ag}3()
+  elif y@{ag}
+    hexPrefDef@{ag}0()
+    hexPrefDef@{ag}1()
+    if y@{ag}Rev
+      hexPrefDef@{ag}3()
+      hexPrefDef@{ag}4()
+    else
+      hexPrefDef@{ag}3_zero()
+      hexPrefDef@{ag}4_zero()
+    endif
+  else
+    hexPrefDef@{ag}0_zero()
+    hexPrefDef@{ag}1_zero()
+    hexPrefDef@{ag}3()
+    hexPrefDef@{ag}4()
+  endif
+endif
+endfunc
+func hpd@{ag}_surrounded_add()
+  print '  tt  ag@{ag}_surrounded_add'
+  hpd@{ag}_surrounded_=hpd@{ag}_surrounded()+1
+endfunc
+func hpd@{ag}_surrounded()
+  return hpd@{ag}_surrounded_
+endfunc
+
+  #$ dir=0
+  #$ while @dir<6
+func hexPrefDef@{ag}@{dir}()
+  #$ 'hexPrefDef_impl2.gun ag=@ag dir=@dir'
+  print '  --  ag@{ag}(',x@{ag},',',y@{ag},') hexPrefDef@{ag}@{dir}'
+endfunc
+func hexPrefDef@{ag}@{dir}_zero()
+  hex@{ag}@{dir}=m2
+  hp@{ag}@{dir}=zero()
+  hpd@{ag}_surrounded_add()
+  print '  --  ag@{ag}(',x@{ag},',',y@{ag},') hexPrefDef@{ag}@{dir}_zero'
+endfunc
+
+    #$ dir+=1
+  #$ endwhile
+############################################################ begin remote line
+  #$ ag+=1
+#$ endwhile

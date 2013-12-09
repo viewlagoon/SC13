@@ -1,0 +1,8 @@
+# required ag dir
+#$ dirT=0
+#$ while @{dirT}<6
+  #$ if @dir!=@{dirT}
+    hp@ag@{dirT}=zero()
+  #$ endif
+  #$ dirT+=1
+#$ endwhile

@@ -1,0 +1,98 @@
+#$ ag=1
+#$ while @{ag}<=3
+func escapeMove@{ag}_entryPoint()
+  print 'turn=',turn,' ag@{ag}(',x@{ag},',',y@{ag},') escapeMove before-after'
+  output@{ag}_simple()
+  em_distT_=oppsDistance_map[y@{ag}][x@{ag}]
+  if safeField_map[y@{ag}][x@{ag}]
+    em@{ag}_inCulDeSac()
+  elif u@{ag}==uGateMin
+    em@{ag}_onGateLine0()
+  elif v@{ag}==vGateMax
+    em@{ag}_onGateLine1()
+  elif u@{ag}==uGateMax
+    em@{ag}_onGateLine2()
+  elif v@{ag}==vGateMin
+    em@{ag}_onGateLine3()
+  else
+    em@{ag}_usual()
+  endif
+  output@{ag}_simple()
+endfunc
+func em@{ag}_inCulDeSac()
+  if u@{ag}<uGateMin
+    em@{ag}_inCulDeSac0()
+  elif u@{ag}>uGateMax 
+    em@{ag}_inCulDeSac2()
+  elif v@{ag}<vGateMin 
+    em@{ag}_inCulDeSac3()
+  elif v@{ag}>vGateMax 
+    em@{ag}_inCulDeSac1()
+  else
+    print '  tt  em@{ag}_inCulDeSac->usual uv=(',u@{ag},',',v@{ag},') ui=',uGateMin,' va=',vGateMax,' ua=',uGateMax,' vi=',vGateMin
+    em@{ag}_usual()
+  endif
+endfunc
+#$ corner=0; v0=1; v1=0; v2=4; v3=3; h0=4; h1=3; h2=1; h3=0
+#$ while @{corner}<4
+func em@{ag}_onGateLine@{corner}()
+  print '  --  em@{ag}_onGateLine@{corner} uv=(',u@{ag},',',v@{ag},') ui=',uGateMin,' va=',vGateMax,' ua=',uGateMax,' vi=',vGateMin
+  if oppsDistance_map0[y@{ag}][x@{ag}]>=oppsDistance_dist4
+    if isBorderGateVertical@{corner}
+      hp@{ag}@{v@{corner}}=hp@{ag}@{v@{corner}}*20
+    else
+      hp@{ag}@{h@{corner}}=hp@{ag}@{h@{corner}}*20
+    endif
+  endif
+  em@{ag}_usual()
+endfunc
+func em@{ag}_inCulDeSac@{corner}()
+  print '  --  em@{ag}_inCulDeSac@{corner} uv=(',u@{ag},',',v@{ag},') ui=',uGateMin,' va=',vGateMax,' ua=',uGateMax,' vi=',vGateMin
+  #$ 'escapeMove_backward.gun ag=@{ag} corner=@{corner}'
+endfunc
+  #$ corner+=1
+#$ endwhile
+func em@{ag}_usual()
+  print '  --  em@{ag}_usual dist=',em_distT(),' isGateMove[',isGateMove@{ag}0(),',',isGateMove@{ag}1(),',',isGateMove@{ag}2(),',',isGateMove@{ag}3(),',',isGateMove@{ag}4(),',',isGateMove@{ag}5(),']'
+  if em_distT()
+    #$ dir=0
+    #$ while @{dir}<6
+      if isGateMove@{ag}@{dir}()
+        hp@{ag}@{dir}=hp@{ag}@{dir}*3
+      elif safeField_map[y@{ag}@{dir}][x@{ag}@{dir}]
+        hp@{ag}@{dir}=zero()
+      else
+        print '  --  @{dir} is usual'
+      endif
+      #$ dir+=1
+    #$ endwhile
+  else
+    #$ dir=0
+    #$ while @{dir}<6
+      if safeField_map[y@{ag}@{dir}][x@{ag}@{dir}]
+        if ownedMapMe[y@{ag}@{dir}][x@{ag}@{dir}]
+          hp@{ag}@{dir}=hp@{ag}@{dir}/2
+        else
+          hp@{ag}@{dir}=hp@{ag}@{dir}*5/3
+        endif
+      endif
+      #$ dir+=1
+    #$ endwhile
+  endif
+endfunc
+#################################################################
+  #$ d0=0
+  #$ while @{d0}<6
+    #$ d1=@{d0}; d1+=1; d1%=6
+    #$ d2=@{d0}; d2+=2; d2%=6
+    #$ d3=@{d0}; d3+=3; d3%=6
+    #$ d4=@{d0}; d4+=4; d4%=6
+    #$ d5=@{d0}; d5+=5; d5%=6
+    #$ d0+=1
+  #$ endwhile
+  #$ ag+=1
+#$ endwhile
+
+func em_distT()
+  return em_distT_
+endfunc

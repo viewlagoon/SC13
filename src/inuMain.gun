@@ -1,0 +1,241 @@
+#for debug
+#$ tmpAgMax=3
+######################################
+#$ mo00=0; mo01=1; mo02=0; mo03=0
+#$ mo10=1; mo11=0; mo12=0; mo13=0
+#$ mo20=1; mo21=0; mo22=0; mo23=1
+#$ mo30=1; mo31=0; mo32=1; mo33=0
+#$ tidMe=0
+#$ while @{tidMe}<4
+func inu_me@{tidMe}()
+  inus_d=999
+  inup_d=899
+  inup_i=8
+  inup_y=oy01
+  inup_x=ox01
+  #$ tidOpps=0
+  #$ while @{tidOpps}<4
+    #$ if @{mo@{tidMe}@{tidOpps}}==1
+      #$ ag=1
+      #$ while @{ag}<=@{tmpAgMax}
+        inu_calcOpps_me@{tidMe}_opps@{tidOpps}(oty@{tidOpps}@{ag},otx@{tidOpps}@{ag},@{ag})
+        inu_isPreTarget=zero()
+        if inup_tid==@{tidOpps}
+          if inup_ag==@{ag}
+            inu_isPreTarget=1
+          endif
+        endif
+        if inu_isPreTarget
+          inup_d=inuT_dMin
+          inup_i=inuT_iMin
+          inup_x=otx@{tidOpps}@{ag}
+          inup_y=oty@{tidOpps}@{ag}
+        elif inuT_dMin<inus_d
+          inus_d=inuT_dMin
+          inus_i=inuT_iMin
+          inus_x=otx@{tidOpps}@{ag}
+          inus_y=oty@{tidOpps}@{ag}
+          inus_tid=@{tidOpps}
+          inus_ag=@{ag}
+        endif
+        print '  --  tidMe=@{tidMe} tidOpps=@{tidOpps} ag@{ag}(',otx@{tidOpps}@{ag},',',oty@{tidOpps}@{ag},') dMin=',inuT_dMin,' iMin=',inuT_iMin,' inus_d=',inus_d,' (',inus_x,',',inus_y,')'
+        #$ ag+=1
+      #$ endwhile
+    #$ endif
+    #$ tidOpps+=1
+  #$ endwhile
+  if inup_d<inus_d+3
+    inus_d=inup_d
+    inus_i=inup_i
+    inus_x=inup_x
+    inus_y=inup_y
+    inus_tid=inup_tid
+    inus_ag=inup_ag
+  else
+    inup_mode=zero()
+  endif
+endfunc
+  #$ tidOpps=0
+  #$ while @{tidOpps}<4
+    #$ if @{mo@{tidMe}@{tidOpps}}==1
+func inu_calcOpps_me@{tidMe}_opps@{tidOpps}(y_,x_,ag_)
+  inud_y1=y_
+  inud_x1=x_
+  if inup_tid==@{tidOpps}
+    if inup_ag==ag_
+      return inu_calcOpps_common()
+    endif
+  endif
+  if oppsDistance_map0[inud_y1][inud_x1]>=oppsDistance_dist3
+    #$ tidThird=0
+    #$ while @{tidThird}<4
+      #$ if @{tidThird}!=@{tidOpps}
+      #$ if @{tidThird}!=@{tidMe}
+        if inu_distance2(oty@{tidThird}0,otx@{tidThird}0)<=3
+          inuT_iMin=m1
+          inuT_dMin=999
+          return 999
+        endif
+      #$ endif
+      #$ endif
+      #$ tidThird+=1
+    #$ endwhile
+  endif
+  return inu_calcOpps_common()
+endfunc
+    #$ endif
+    #$ tidOpps+=1
+  #$ endwhile
+  #$ tidMe+=1
+#$ endwhile
+func inu_calcOpps_common()
+  inuT_dMin=inu_distance2(y0,x0)
+  inuT_iMin=8
+  #$ ig=0
+  #$ while @{ig}<8
+    inuT_dGate@{ig}=inum_dGate@{ig}+inu_distanceGate@{ig}()
+    if inuT_dGate@{ig}<inuT_dMin
+      inuT_dMin=inuT_dGate@{ig}
+      inuT_iMin=@{ig}
+    endif
+    #$ ig+=1
+  #$ endwhile
+  #$ ig=0
+  #$ while @{ig}<=8
+    #print '  --  calcOpps_common ig@{ig} m(',x0,',',y0,') o(',inud_x1,',',inud_y1,') inuT_dGate@{ig}=',inuT_dGate@{ig},' inum_dGate@{ig}=',inum_dGate@{ig}
+    #$ ig+=1
+  #$ endwhile
+  return inuT_dMin
+endfunc
+func inu_calcSelf()
+  # 0 1
+  #2   6
+  #3   7
+  # 4 5  ex 4: self->0->warp->4
+  inud_y1=y0
+  inud_x1=x0
+  #$ ig=0
+  #$ while @{ig}<8
+    #$ jg=@{ig}; jg+=4; jg%=8
+    inum_dGate@{ig}=inu_distanceGate@{jg}()+1
+    #print '  --  calcSelf inum_dGate@{ig}=',inum_dGate@{ig},'  ig(',xGate@{ig},',',yGate@{ig},') jg(',xGate@{jg},',',yGate@{jg},')'
+    #$ ig+=1
+  #$ endwhile
+endfunc
+func inu_main()
+  hexPrefDef0()
+  print 'turn=',turn,' tid=',gb_team_id(),' inu_main(',x0,',',y0,')'
+  inu_calcSelf()
+  inu_load()
+  inu_dispatch_me()
+  print '  --  target decided (',inus_x,',',inus_y,') inus_d=',inus_d,' inus_i=',inus_i
+  if inus_i==8
+    inu_directAttack()
+  else
+    inu_gotoGate()
+  endif
+  if gb_agent_status(gb_team_id(),zero())
+    move[zero()]=m1
+  else
+    moveMaxPref0_isFinalDecision=1
+    moveMaxHexPref0_012345()
+  endif
+  output0_simple()
+  inu_store()
+endfunc
+func inu_dispatch_me()
+  if gb_team_id()>=2
+    if gb_team_id()>=3
+      inu_me3()
+    else
+      inu_me2()
+    endif
+  elif gb_team_id()
+    inu_me1()
+  else
+    inu_me0()
+  endif
+endfunc
+func inu_gotoGate()
+  inus_i=(inus_i+4)%8
+  inus_y=yGateArray[inus_i]
+  inus_x=xGateArray[inus_i]
+  inus_d=inu_distance(y0,x0,inus_y,inus_x)
+  inup_mode=zero()
+  if inus_d
+    inu_farMove()
+  else
+    inu_warp()
+  endif
+  print '  --  gotoGate inus_d=',inus_d,' inus_dT=',inus_dT
+endfunc
+func inu_warp()
+  if inus_i>=4
+    if inus_i>=6
+      inu_warpGate6()
+    else
+      inu_warpGate4()
+    endif
+  elif inus_i>=2
+    inu_warpGate2()
+  else
+    inu_warpGate0()
+  endif
+endfunc
+func inu_directAttack()
+  inu_prohibitBorder()
+  inus_dT=inu_distance(y0,x0,inus_y,inus_x)
+  inup_modePre=inus_mode
+  if inu_verifyMode()
+    inu_decideMode()
+  endif
+  print '  --  inus_d=',inus_d,' inus_dT=',inus_dT,' inup_modePre=',inup_modePre,' inup_mode=',inup_mode
+  inu_dispatch_nearMove()
+endfunc
+func inu_verifyMode()
+  if inup_mode>=3
+    if inup_mode>=4
+      if inud_v2>=vMed
+        if inud_vd>=zero()
+          return 1
+        endif
+      endif
+    else
+      if inud_u2<=uMed
+        if inud_ud<=zero()
+          return 1
+        endif
+      endif
+    endif
+  elif inup_mode
+    if inup_mode>=2
+      if inud_v2<=vMed
+        if inud_vd<=zero()
+          return 1
+        endif
+      endif
+    else
+      if inud_u2>=uMed
+        if inud_ud>=zero()
+          return 1
+        endif
+      endif
+    endif
+  else
+    return 1
+  endif
+endfunc
+func inu_decideMode()
+  if inus_y<ynDiv2
+    if inus_x<xnDiv2
+      inup_mode=1
+    else
+      inup_mode=2
+    endif
+  elif inus_x<xnDiv2
+    inup_mode=4
+  else
+    inup_mode=3
+  endif
+endfunc
+

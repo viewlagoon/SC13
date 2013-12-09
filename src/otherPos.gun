@@ -1,0 +1,39 @@
+#$ tMe=0
+#$ while @tMe<4
+func otherPos@tMe()
+#$   tOt=0
+#$   ix=0
+#$   while @tOt<4
+#$     if @tMe!=@tOt
+         op@ix=pAll[@tOt]
+				 otp@{tOt}=op@ix
+#$       'otherPos_impl.gun tOt=@tOt ix=@ix'
+#$       ix+=1
+#$     else
+#$       ag=0
+#$       while @ag<4
+					 otp@{tOt}=pWe
+					 otp@{tOt}@{ag}=otp@{tOt}[@{ag}]
+					 otx@{tOt}@{ag}=x@ag
+					 oty@{tOt}@{ag}=y@ag
+					 oty@{tOt}@{ag}Mod2=y@{ag}Mod2
+#$         dir=0
+#$         while @dir<6
+						 otx@{tOt}@{ag}@{dir}=x@{ag}@{dir}
+						 oty@{tOt}@{ag}@{dir}=y@{ag}@{dir}
+#$           dir+=1
+#$         endwhile
+					 otx@{tOt}@{ag}n=x@{ag}n
+					 otx@{tOt}@{ag}nM1=x@{ag}nM1
+					 otx@{tOt}@{ag}nM1Other=x@{ag}nM1Other
+					 otx@{tOt}@{ag}Rev=x@{ag}Rev
+					 oty@{tOt}@{ag}Rev=y@{ag}Rev
+#$         ag+=1
+#$       endwhile
+#$     endif
+#$     tOt+=1
+#$   endwhile
+#$   tMe+=1
+endfunc
+#$ endwhile
+

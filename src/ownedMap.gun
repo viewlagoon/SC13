@@ -1,0 +1,66 @@
+func ownedMap_entryPoint()
+	ownedMap_searchXY()
+	ownedMap_countArea()
+  ownedMapMe=ownedMap[gb_team_id()]
+endfunc
+func ownedMap_countArea()
+  ownedMap_areaMax=0
+	#$ tid=0
+	#$ while @tid<4
+		ownedMap@{tid}=ownedMap[@tid]
+		ownedMap_iy=yn
+		ownedMap@{tid}_area=0
+		while ownedMap_iy
+			ownedMap_iy=ownedMap_iy-1
+			ownedMap@{tid}_area=ownedMap@{tid}_area+$ownedMap@{tid}[ownedMap_iy]
+		endwhile
+    if ownedMap_areaMax<ownedMap@{tid}_area
+      ownedMap_areaMax=ownedMap@{tid}_area
+    endif
+    if @{tid}==gb_team_id()
+      ownedMap_areaMe=ownedMap@{tid}_area
+    endif
+		#$ tid+=1
+	#$ endwhile
+  print 'turn=',turn,' area=[',ownedMap0_area,',',ownedMap1_area,',',ownedMap2_area,',',ownedMap3_area,'] max=',ownedMap_areaMax
+endfunc
+
+func ownedMap_searchXY()
+	ownedMap_searchYRight()
+	ownedMap_ix=xnM1
+	while ownedMap_ix
+		ownedMap_ixP1=ownedMap_ix-1
+		ownedMap_ix=ownedMap_ix-2
+		#print 'ownedMap_ix=',ownedMap_ix,' P1=',ownedMap_ixP1
+		ownedMap_searchY()
+	endwhile
+endfunc
+func ownedMap_searchYRight()
+	ownedMap_iy=ynM1
+	ownedMap[gb_hexel_owner(xnM2,ownedMap_iy)][ownedMap_iy][xnM2]=1
+	#print '(',xnM2,',',ownedMap_iy,')'
+	while ownedMap_iy
+		ownedMap_iyP1=ownedMap_iy-1
+		ownedMap_iy=ownedMap_iy-2
+		ownedMap[gb_hexel_owner(xnM1,ownedMap_iyP1)][ownedMap_iyP1][xnM1]=1
+		ownedMap[gb_hexel_owner(xnM2,ownedMap_iyP1)][ownedMap_iyP1][xnM2]=1
+		ownedMap[gb_hexel_owner(xnM2,ownedMap_iy)][ownedMap_iy][xnM2]=1
+		#print '(',xnM1,',',ownedMap_iyP1,'),(',xnM2,',',ownedMap_iyP1,'),(',xnM2,',',ownedMap_iy,')'
+	endwhile
+endfunc
+func ownedMap_searchY()
+	ownedMap_iy=ynM1
+	ownedMap[gb_hexel_owner(ownedMap_ixP1,ownedMap_iy)][ownedMap_iy][ownedMap_ixP1]=1
+	ownedMap[gb_hexel_owner(ownedMap_ix,ownedMap_iy)][ownedMap_iy][ownedMap_ix]=1
+	#print '(',ownedMap_ixP1,',',ownedMap_iy,'),(',ownedMap_ix,',',ownedMap_iy,')'
+	while ownedMap_iy
+		ownedMap_iyP1=ownedMap_iy-1
+		ownedMap_iy=ownedMap_iy-2
+		ownedMap[gb_hexel_owner(ownedMap_ixP1,ownedMap_iyP1)][ownedMap_iyP1][ownedMap_ixP1]=1
+		ownedMap[gb_hexel_owner(ownedMap_ix,ownedMap_iyP1)][ownedMap_iyP1][ownedMap_ix]=1
+		ownedMap[gb_hexel_owner(ownedMap_ixP1,ownedMap_iy)][ownedMap_iy][ownedMap_ixP1]=1
+		ownedMap[gb_hexel_owner(ownedMap_ix,ownedMap_iy)][ownedMap_iy][ownedMap_ix]=1
+		#print '(',ownedMap_ixP1,',',ownedMap_iyP1,'),(',ownedMap_ix,',',ownedMap_iyP1,'),(',ownedMap_ixP1,',',ownedMap_iy,'),(',ownedMap_ix,',',ownedMap_iy,')'
+	endwhile
+endfunc
+

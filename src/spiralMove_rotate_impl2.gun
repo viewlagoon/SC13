@@ -1,0 +1,119 @@
+## next to opposite of dCenter. iDir implies turn to siege
+#$ ag=1
+#$ while @{ag}<4
+#$ c1r5=1
+#$ while @{c1r5}<6
+  #$ c5r25=@{c1r5}; c5r25*=5
+  #$ dCenter=0
+  #$ while @{dCenter}<6
+    #$ dFirst=@{dCenter}; dFirst+=@{c5r25}; dFirst%=6
+    #$ dC_=@{ag}@{dCenter}
+    #$ dCC_=@{ag}@{dCenter}@{dCenter}
+    #$ dF_=@{ag}@{dFirst}
+    #$ dFF_=@{ag}@{dFirst}@{dFirst}
+    #$ dFFF_=@{ag}@{dFirst}@{dFirst}@{dFirst}
+    #$ dFFC_=@{ag}@{dFirst}@{dFirst}@{dCenter}
+    #$ dFC_=@{ag}@{dFirst}@{dCenter}
+    #$ dFCC_=@{ag}@{dFirst}@{dCenter}@{dCenter}
+
+func spiralMove@{ag}_rotate@{c1r5}_center@{dCenter}()
+  #$ valt=spiralMove@{ag}_rotate@{c1r5}_center@{dCenter}_turnToSiege
+  #$ valsz=spiralMove@{ag}_rotate@{c1r5}_center@{dCenter}_innerSize
+  #$ valxi=spiralMove@{ag}_rotate@{c1r5}_center@{dCenter}_xInner
+  #$ valyi=spiralMove@{ag}_rotate@{c1r5}_center@{dCenter}_yInner
+  if ownedMapMe[y@{ag}@{dCenter}][x@{ag}@{dCenter}]
+    print '    --  path8'
+    return zero()
+  endif
+  oppsDist_=oppsDistance_map1[y@{ag}@{dCenter}][x@{ag}@{dCenter}]
+  if oppsDist_>=oppsDistance_dist1
+    print '    --  path9'
+    return zero()
+  endif
+  if y@{ag}@{dCenter}
+  else
+    print '    --  path10'
+    return zero()
+  endif
+  if y@{ag}@{dCenter}Rev
+  else
+    print '    --  path11'
+    return zero()
+  endif
+  if x@{ag}@{dCenter}<=1
+    print '    --  path12'
+    return zero()
+  endif
+  if x@{ag}@{dCenter}Rev<=1
+    print '    --  path13'
+    return zero()
+  endif
+  #$ yFF=y@{ag}@{dFirst}@{dFirst}
+  #$ xFF=x@{ag}@{dFirst}@{dFirst}
+  #$ yFN=y@{ag}@{dFirst}@{dCenter}
+  #$ xFN=x@{ag}@{dFirst}@{dCenter}
+  if ownedMapMe[@{yFF}][@{xFF}]
+    if ownedMapMe[@{yFN}][@{xFN}]
+    else
+      print '  -- spiralMove@{ag}_rotate_impl FF dCenter=@{dCenter} dF=@{dFirst}'
+      #$ 'spiralMove_call_searchInner.gun ag=@{ag} yi=@{yFN} xi=@{xFN} yo=y@{ag}@{dFirst} xo=x@{ag}@{dFirst}'
+      if res_searchInner_<=0
+        @{valt}=1
+        @{valsz}=spiralMove@{ag}_innerSizeT
+        @{valxi}=@{xFN}
+        @{valyi}=@{yFN}
+        spiralMove@{ag}_innerSizeT=0
+      endif
+    endif
+  endif
+  @{valt}=0
+  @{valsz}=0
+  @{valxi}=x@{ag}@{dCenter}
+  @{valyi}=y@{ag}@{dCenter}
+
+  #$ iDir=0
+  #$ while @{iDir}<5
+    #$ dOpC=@{dCenter}; dOpC+=3
+    #$ dCur=@{iDir}; dCur+=1; dCur*=@{c1r5}; dCur+=@dOpC; dCur%=6
+    #$ valy=y@{ag}@{dCenter}@{dCur}
+    #$ valx=x@{ag}@{dCenter}@{dCur}
+    if ownedMapMe[@{valy}][@{valx}]
+      #$ if @{iDir}==0
+        return zero()
+      #$ else
+        if @{valt}
+        else
+          @{valt}=@iDir
+        endif
+      #$ endif
+    elif @{valt}
+      if @{valt}==1
+        #$ dT=@{c1r5}; dT+=@{dOpC}; dT%=6
+        print '  -- dCenter=@{dCenter} iDir=@iDir dCur=@dCur y=',@{valy},' x=',@{valx},' dT=@{dT} property_candidate found'
+        #$ 'spiralMove_call_searchInner.gun ag=@{ag} yi=y@{ag}@{dCenter} xi=x@{ag}@{dCenter} yo=y@{ag}@{dCenter}@{dT} xo=x@{ag}@{dCenter}@{dT}'
+        if res_searchInner_>0
+          @{valt}=0
+        else
+          @{valsz}=spiralMove@{ag}_innerSizeT
+          @{valxi}=x@{ag}@{dCenter}
+          @{valyi}=y@{ag}@{dCenter}
+          spiralMove@{ag}_innerSizeT=0
+        endif
+      else
+        @{valt}=0
+      endif
+      return zero()
+    endif
+    #$ iDir+=1
+  #$ endwhile
+  if @{valt}
+  else
+    @{valt}=5
+  endif
+endfunc
+    #$ dCenter+=1
+  #$ endwhile
+  #$ c1r5+=4
+#$ endwhile
+#$ ag+=1
+#$ endwhile

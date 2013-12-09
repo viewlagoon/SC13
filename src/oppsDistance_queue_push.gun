@@ -1,0 +1,5 @@
+opd_queue_y[opd_queue_lst]=@{valy}
+opd_queue_x[opd_queue_lst]=@{valx}
+opd_queue_dist[opd_queue_lst]=@{valdist}
+opd_queue_dir[opd_queue_lst]=@{valdir}
+opd_queue_lst=opd_queue_lst+1

@@ -1,0 +1,22 @@
+##required ag
+if s[101@{ag}]&8
+  #$ dir=0
+  #$ while @{dir}<6
+  if preDir@{ag}==@{dir}
+   #$ dT=0
+   #$ while @{dT}<6
+   #$ if @{dir}==@{dT}
+     print 'turn=',turn,' tid=',gb_team_id(),' ag@{ag} dir@{dT} previous_move'
+     if gb_random_value(2)
+       hp@{ag}@{dT}=hp@{ag}@{dT}/400
+     endif
+   #$ else
+     hp@{ag}@{dT}=hp@{ag}@{dT}*gb_random_value(100)
+   #$ endif
+   #$ dT+=1
+   #$ endwhile
+  endif
+  #$ dir+=1
+  #$ endwhile
+endif
+

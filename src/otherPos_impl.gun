@@ -1,0 +1,122 @@
+#$ ag=0
+#$ while @{ag}<4
+     op@{ix}@{ag}=op@{ix}[@{ag}]
+     otp@{tOt}@{ag}=op@{ix}@{ag}
+     ox@{ix}@{ag}=op@{ix}@{ag}[0]
+		 otx@{tOt}@{ag}=ox@{ix}@{ag}
+     oy@{ix}@{ag}=op@{ix}@{ag}[1]
+		 oty@{tOt}@{ag}=oy@{ix}@{ag}
+     oy@{ix}@{ag}Mod2=oy@{ix}@{ag}%2
+		 oty@{tOt}@{ag}Mod2=oy@{ix}@{ag}Mod2
+     oy@{ix}@{ag}0=oy@{ix}@{ag}-1
+     oy@{ix}@{ag}1=oy@{ix}@{ag}0
+     oy@{ix}@{ag}2=oy@{ix}@{ag}
+     oy@{ix}@{ag}3=oy@{ix}@{ag}+1
+     oy@{ix}@{ag}4=oy@{ix}@{ag}3
+     oy@{ix}@{ag}5=oy@{ix}@{ag}
+     ox@{ix}@{ag}0=ox@{ix}@{ag}-oy@{ix}@{ag}Mod2
+     ox@{ix}@{ag}1=ox@{ix}@{ag}0+1
+     ox@{ix}@{ag}2=ox@{ix}@{ag}+1
+     ox@{ix}@{ag}3=ox@{ix}@{ag}1
+     ox@{ix}@{ag}4=ox@{ix}@{ag}0
+     ox@{ix}@{ag}5=ox@{ix}@{ag}-1
+     oty@{tOt}@{ag}0=oy@{ix}@{ag}0
+     oty@{tOt}@{ag}1=oy@{ix}@{ag}1
+     oty@{tOt}@{ag}2=oy@{ix}@{ag}2
+     oty@{tOt}@{ag}3=oy@{ix}@{ag}3
+     oty@{tOt}@{ag}4=oy@{ix}@{ag}4
+     oty@{tOt}@{ag}5=oy@{ix}@{ag}5
+     otx@{tOt}@{ag}0=ox@{ix}@{ag}0
+     otx@{tOt}@{ag}1=ox@{ix}@{ag}1
+     otx@{tOt}@{ag}2=ox@{ix}@{ag}2
+     otx@{tOt}@{ag}3=ox@{ix}@{ag}3
+     otx@{tOt}@{ag}4=ox@{ix}@{ag}4
+     otx@{tOt}@{ag}5=ox@{ix}@{ag}5
+
+     oty@{tOt}@{ag}00=oty@{tOt}@{ag}-2
+     otx@{tOt}@{ag}00=otx@{tOt}@{ag}5
+     oty@{tOt}@{ag}01=oty@{tOt}@{ag}00
+     otx@{tOt}@{ag}01=otx@{tOt}@{ag}
+     oty@{tOt}@{ag}11=oty@{tOt}@{ag}00
+     otx@{tOt}@{ag}11=otx@{tOt}@{ag}2
+     oty@{tOt}@{ag}12=oty@{tOt}@{ag}1
+     otx@{tOt}@{ag}12=otx@{tOt}@{ag}1+1
+     oty@{tOt}@{ag}22=oty@{tOt}@{ag} 
+     otx@{tOt}@{ag}22=otx@{tOt}@{ag}+2
+     oty@{tOt}@{ag}23=oty@{tOt}@{ag}3
+     otx@{tOt}@{ag}23=otx@{tOt}@{ag}12
+     oty@{tOt}@{ag}33=oty@{tOt}@{ag}+2
+     otx@{tOt}@{ag}33=otx@{tOt}@{ag}2
+     oty@{tOt}@{ag}34=oty@{tOt}@{ag}33
+     otx@{tOt}@{ag}34=otx@{tOt}@{ag} 
+     oty@{tOt}@{ag}44=oty@{tOt}@{ag}33
+     otx@{tOt}@{ag}44=otx@{tOt}@{ag}5
+     oty@{tOt}@{ag}45=oty@{tOt}@{ag}4
+     otx@{tOt}@{ag}45=otx@{tOt}@{ag}4-1
+     oty@{tOt}@{ag}55=oty@{tOt}@{ag}
+     otx@{tOt}@{ag}55=otx@{tOt}@{ag}-2
+     oty@{tOt}@{ag}50=oty@{tOt}@{ag}0
+     otx@{tOt}@{ag}50=otx@{tOt}@{ag}45
+		 if oy@{ix}@{ag}Mod2
+			 ox@{ix}@{ag}n=xn
+			 ox@{ix}@{ag}nM1=xnM1
+			 ox@{ix}@{ag}nM1Other=xnM2
+		 else
+			 ox@{ix}@{ag}n=xnM1
+			 ox@{ix}@{ag}nM1=xnM2
+			 ox@{ix}@{ag}nM1Other=xnM1
+		 endif
+		 ox@{ix}@{ag}Rev=ox@{ix}@{ag}nM1-ox@{ix}@{ag}
+		 oy@{ix}@{ag}Rev=ynM1-oy@{ix}@{ag}
+		 otx@{tOt}@{ag}n=ox@{ix}@{ag}n
+		 otx@{tOt}@{ag}nM1=ox@{ix}@{ag}nM1
+		 otx@{tOt}@{ag}nM1Other=ox@{ix}@{ag}nM1Other
+		 otx@{tOt}@{ag}Rev=ox@{ix}@{ag}Rev
+		 oty@{tOt}@{ag}Rev=oy@{ix}@{ag}Rev
+#$   if @{ag} == 0
+       oy@{ix}0u=oy@{ix}0-2
+       oy@{ix}0d=oy@{ix}0+2
+       ox@{ix}0l=ox@{ix}00-1
+       ox@{ix}0r=ox@{ix}01+1
+#$   endif
+#$   if @{ag} == 0
+       if gb_agent_status(@{tOt},@{ag})
+       else
+         map[oy@{ix}0u][ox@{ix}05]=map[oy@{ix}0u][ox@{ix}05]| 8
+         map[oy@{ix}0u][ox@{ix}0 ]=map[oy@{ix}0u][ox@{ix}0 ]| 8
+         map[oy@{ix}0u][ox@{ix}02]=map[oy@{ix}0u][ox@{ix}02]| 8
+         map[oy@{ix}0d][ox@{ix}05]=map[oy@{ix}0d][ox@{ix}05]| 8
+         map[oy@{ix}0d][ox@{ix}0 ]=map[oy@{ix}0d][ox@{ix}0 ]| 8
+         map[oy@{ix}0d][ox@{ix}02]=map[oy@{ix}0d][ox@{ix}02]| 8
+         map[oy@{ix}00][ox@{ix}0l]=map[oy@{ix}00][ox@{ix}0l]| 8
+         map[oy@{ix}00][ox@{ix}0r]=map[oy@{ix}00][ox@{ix}0r]| 8
+         map[oy@{ix}03][ox@{ix}0l]=map[oy@{ix}03][ox@{ix}0l]| 8
+         map[oy@{ix}03][ox@{ix}0r]=map[oy@{ix}03][ox@{ix}0r]| 8
+         map[oy@{ix}0][ox@{ix}0-2]=map[oy@{ix}0][ox@{ix}0-2]| 8
+         map[oy@{ix}0][ox@{ix}0+2]=map[oy@{ix}0][ox@{ix}0+2]| 8
+       endif
+#$     mask=6
+#$   else
+#$     mask=4
+       if gb_agent_status(@{tOt},@{ag})
+       else
+#$   endif
+       map[oy@{ix}@{ag}0][ox@{ix}@{ag}0]=map[oy@{ix}@{ag}0][ox@{ix}@{ag}0] | @mask
+       map[oy@{ix}@{ag}0][ox@{ix}@{ag}1]=map[oy@{ix}@{ag}0][ox@{ix}@{ag}1] | @mask
+       map[oy@{ix}@{ag} ][ox@{ix}@{ag}2]=map[oy@{ix}@{ag} ][ox@{ix}@{ag}2] | @mask
+       map[oy@{ix}@{ag}3][ox@{ix}@{ag}1]=map[oy@{ix}@{ag}3][ox@{ix}@{ag}1] | @mask
+       map[oy@{ix}@{ag}3][ox@{ix}@{ag}0]=map[oy@{ix}@{ag}3][ox@{ix}@{ag}0] | @mask
+       map[oy@{ix}@{ag} ][ox@{ix}@{ag}5]=map[oy@{ix}@{ag} ][ox@{ix}@{ag}5] | @mask
+#$   if @{ag}>0
+       endif
+#$   endif
+     oiZone@{ix}@{ag}=oy@{ix}@{ag}/(ynDiv3+1)
+     ojZone@{ix}@{ag}=ox@{ix}@{ag}/(xnDiv3+1)
+     #zone[oiZone@{ix}@{ag}][ojZone@{ix}@{ag}]=zone[oiZone@{ix}@{ag}][ojZone@{ix}@{ag}]+100
+     #zone[oiZone@{ix}@{ag}][ojZone@{ix}@{ag}]=zone[oiZone@{ix}@{ag}][ojZone@{ix}@{ag}]+100
+     #$ if @{ag}>0
+     zone[ojZone@{ix}@{ag}]=zone[ojZone@{ix}@{ag}]+100
+     #$ endif
+     map[oy@{ix}@{ag}][ox@{ix}@{ag}]=map[oy@{ix}@{ag}][ox@{ix}@{ag}]| 1
+#$   ag+=1
+#$ endwhile

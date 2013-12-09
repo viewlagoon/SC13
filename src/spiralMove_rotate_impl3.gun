@@ -1,0 +1,88 @@
+## next to opposite of dCenter. iDir implies turn to siege
+#$ ag=1
+#$ while @{ag}<4
+#$ c1r5=1
+#$ while @{c1r5}<6
+  #$ c5r25=@{c1r5}; c5r25*=5
+  #$ dCenter=0
+  #$ while @{dCenter}<6
+    #$ dFirst=@{dCenter}; dFirst+=@{c5r25}; dFirst%=6
+    #$ dC_=@{ag}@{dCenter}
+    #$ dCC_=@{ag}@{dCenter}@{dCenter}
+    #$ dF_=@{ag}@{dFirst}
+    #$ dFF_=@{ag}@{dFirst}@{dFirst}
+    #$ dFFF_=@{ag}@{dFirst}@{dFirst}@{dFirst}
+    #$ dFFC_=@{ag}@{dFirst}@{dFirst}@{dCenter}
+    #$ dFC_=@{ag}@{dFirst}@{dCenter}
+    #$ dFCC_=@{ag}@{dFirst}@{dCenter}@{dCenter}
+func spiralMove@{ag}_rotate@{c1r5}_move@{dFirst}()
+  print '  --  spiralMove@{ag}_rotate@{c1r5}_move@{dFirst}'
+  if spiralMove@{ag}_rotate@{c1r5}_move@{dFirst}_checkRange()
+    print '    xx  rot@{c1r5}_move@{dFirst} checkRange Failed'
+    return zero()
+  endif
+  if ownedMapMe[y@{dFC_}][x@{dFC_}]
+    print '    vv  wrong path A'
+    if ownedMapMe[y@{dC_}][x@{dC_}]
+      if ownedMapMe[y@{dFFF_}][x@{dFFF_}]
+        if ownedMapMe[y@{dFFC_}][x@{dFFC_}]
+        elif ownedMapMe[y@{dFF_}][x@{dFF_}]
+        else
+          #$ 'spiralMove_rotate_call_searchInner.gun ag=@{ag} yi=y@{dFFC_} xi=x@{dFFC_} yo1=y@{dF_} xo1=x@{dF_} yo2=y@{dFF_} xo2=x@{dFF_} turnToSiege=2 c1r5=@{c1r5} dMove=@{dFirst}'
+        endif
+      endif
+    else
+      ##    f   FC
+      ##  ME  in
+      #$ 'spiralMove_rotate_call_searchInner.gun ag=@{ag} yi=y@{dC_} xi=x@{dC_} yo1=y@{dF_} xo1=x@{dF_} yo2= xo2= turnToSiege=1 c1r5=@{c1r5} dMove=@{dFirst}'
+      if ownedMapMe[y@{dFFF_}][x@{dFFF_}]
+        if ownedMapMe[y@{dFFC_}][x@{dFFC_}]
+        else
+          #$ 'spiralMove_rotate_call_searchInner.gun ag=@{ag} yi=y@{dC_} xi=x@{dC_} yo1=y@{dF_} xo1=x@{dF_} yo2=y@{dFF_} xo2=x@{dFF_} turnToSiege=2 c1r5=@{c1r5} dMove=@{dFirst}'
+        endif
+      endif
+    endif
+  elif ownedMapMe[y@{dFF_}][x@{dFF_}]
+    print '    vv  wrong path B'
+    ##      FF
+    ##    f   i2
+    ##  ME  i1
+    if ownedMapMe[y@{dC_}][x@{dC_}]
+      if ownedMapMe[y@{dFC_}][x@{dFC_}]
+        return zero()
+      endif
+      #$ 'spiralMove_rotate_call_searchInner.gun ag=@{ag} yi=y@{dFC_} xi=x@{dFC_} yo1=y@{dF_} xo1=x@{dF_} yo2= xo2= turnToSiege=1 c1r5=@{c1r5} dMove=@{dFirst}'
+      spiralMove@{ag}_rotate@{c1r5}_move@{dFirst}@{dCenter}_centerOwned()
+    else
+      #$ 'spiralMove_rotate_call_searchInner.gun ag=@{ag} yi=y@{dC_} xi=x@{dC_} yo1=y@{dF_} xo1=x@{dF_} yo2= xo2= turnToSiege=1 c1r5=@{c1r5} dMove=@{dFirst}'
+      spiralMove@{ag}_rotate@{c1r5}_move@{dFirst}@{dCenter}_centerNotOwned()
+    endif
+  elif ownedMapMe[y@{dFFF_}][x@{dFFF_}]
+    print '    vv  wrong path C'
+    #$ 'spiralMove_rotate_call_searchInner.gun ag=@{ag} yi=y@{dFC_} xi=x@{dFC_} yo1=y@{dF_} xo1=x@{dF_} yo2=y@{dFF_} xo2=x@{dFF_} turnToSiege=2 c1r5=@{c1r5} dMove=@{dFirst}'
+    if ownedMapMe[y@{dC_}][x@{dC_}]
+      spiralMove@{ag}_rotate@{c1r5}_move@{dFirst}@{dCenter}_centerOwned()
+    else
+      spiralMove@{ag}_rotate@{c1r5}_move@{dFirst}@{dCenter}_centerNotOwned()
+    endif
+  elif ownedMapMe[y@{dFFC_}][x@{dFFC_}]
+    print '    vv  wrong path D'
+    #$ 'spiralMove_rotate_call_searchInner.gun ag=@{ag} yi=y@{dFC_} xi=x@{dFC_} yo1=y@{dF_} xo1=x@{dF_} yo2=y@{dFF_} xo2=x@{dFF_} turnToSiege=2 c1r5=@{c1r5} dMove=@{dFirst}'
+    if ownedMapMe[y@{dC_}][x@{dC_}]
+    elif ownedMapMe[y@{dCC_}][x@{dCC_}] 
+      #$ 'spiralMove_rotate_call_searchInner.gun ag=@{ag} yi=y@{dCC_} xi=x@{dCC_} yo1=y@{dF_} xo1=x@{dF_} yo2=y@{dFC_} xo2=x@{dFC_} turnToSiege=2 c1r5=@{c1r5} dMove=@{dFirst}'
+    endif
+  elif ownedMapMe[y@{dC_}][x@{dC_}]
+    print '    vv  wrong path E (',x@{dC_},',',y@{dC_},') ownedMapMe[y@{dC_}][x@{dC_}]=',ownedMapMe[y@{dC_}][x@{dC_}]
+    spiralMove@{ag}_rotate@{c1r5}_move@{dFirst}@{dCenter}_centerOwned()
+  else
+    print '    vv  correct path'
+    spiralMove@{ag}_rotate@{c1r5}_move@{dFirst}@{dCenter}_centerNotOwned()
+  endif
+endfunc
+    #$ dCenter+=1
+  #$ endwhile
+  #$ c1r5+=4
+#$ endwhile
+#$ ag+=1
+#$ endwhile

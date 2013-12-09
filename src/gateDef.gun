@@ -1,0 +1,271 @@
+#$ ixUU=901; ixUR=@ixUU; ixUR+=1; ixUD=@ixUR; ixUD+=1; ixUL=@ixUD; ixUL+=1;
+#$ ixVU=@ixUL; ixVU+=1; ixVR=@ixVU; ixVR+=1; ixVD=@ixVR; ixVD+=1; ixVL=@ixVD; ixVL+=1;
+#$ ixYU=@ixVL; ixYU+=1; ixYD=@ixYU; ixYD+=1;
+#$ ixBorder0=@ixYD;      ixBorder0+=1; ixBorder1=@ixBorder0; ixBorder1+=1;
+#$ ixBorder2=@ixBorder1; ixBorder2+=1; ixBorder3=@ixBorder2; ixBorder3+=1;
+#$ ixUMin=@ixBorder3; ixUMin+=1; ixUMax=@ixUMin; ixUMax+=1;
+#$ ixVMin=@ixUMax;    ixVMin+=1; ixVMax=@ixVMin; ixVMax+=1;
+func gateDef_initGatePosition()
+  yGate0=zero()
+  xGate0=xGateMin
+  yGate1=zero()
+  xGate1=xGateMax
+  yGate6=yGateMin
+  xGate6=yGateMin%2+xnM2
+  yGate7=yGateMax
+  xGate7=yGateMax%2+xnM2
+  yGate5=ynM1
+  xGate5=xGateMax
+  yGate4=ynM1
+  xGate4=xGateMin
+  yGate3=yGateMax
+  xGate3=zero()
+  yGate2=yGateMin
+  xGate2=zero()
+  #$ ig=0
+  #$ while @{ig}<8
+    yGateArray[@{ig}]=yGate@{ig}
+    xGateArray[@{ig}]=xGate@{ig}
+    #$ ig+=1
+  #$ endwhile
+endfunc
+func gateDef_horizontalGate()
+  yGate=gates[iGate][1]
+  s[yGate]=s[yGate]|2
+  if   yGateMin>yGate
+    yGateMin=yGate
+  elif yGateMax<yGate
+    yGateMax=yGate
+  endif
+endfunc
+func gateDef_load()
+  uGate0  =s[@ixUU]
+  uGate1  =s[@ixUR]
+  uGate2  =s[@ixUD]
+  uGate3  =s[@ixUL]
+  vGate0  =s[@ixVU]
+  vGate1  =s[@ixVR]
+  vGate2  =s[@ixVD]
+  vGate3  =s[@ixVL]
+  yGateMin=s[@ixYU]
+  yGateMax=s[@ixYD]
+  xGateMin=uGate0
+  xGateMax=vGate0
+  isBorderGateVertical0=s[@ixBorder0]
+  isBorderGateVertical1=s[@ixBorder1]
+  isBorderGateVertical2=s[@ixBorder2]
+  isBorderGateVertical3=s[@ixBorder3]
+  uGateMin=s[@ixUMin  ]
+  uGateMax=s[@ixUMax  ]
+  vGateMin=s[@ixVMin  ]
+  vGateMax=s[@ixVMax  ]
+  gateDef_initGatePosition()
+  #if turn==1
+    #print 'gateDef_load uu=',uGate0,' ur=',uGate1,' ud=',uGate2,' ul=',uGate3
+    #print 'gateDef_load vu=',vGate0,' vr=',vGate1,' vd=',vGate2,' vl=',vGate3
+    #print 'gateDef_load bgv0=',isBorderGateVertical0,' bgv1=',isBorderGateVertical1,' bgv2=',isBorderGateVertical2,' bgv3=',isBorderGateVertical3
+  #endif
+endfunc
+func gateDef_initStorage()
+  uGate0=xGateMin
+  uGate1=xnM2+((yGateMax+1)/2)
+  uGate2=xGateMax+ynDiv2
+  uGate3=yGateMin/2
+  vGate0=xGateMax
+  vGate1=xnM2-(yGateMin/2)
+  vGate2=xGateMin-ynDiv2
+  vGate3=-(yGateMax+1)/2
+  if uGate0<=uGate3
+    isBorderGateVertical0=1
+    uGateMin=uGate0
+  else
+    uGateMin=uGate3
+  endif
+  if vGate0>=vGate1
+    isBorderGateVertical1=1
+    vGateMax=vGate0
+  else
+    vGateMax=vGate1
+  endif
+  if uGate2>=uGate1
+    isBorderGateVertical2=1
+    uGateMax=uGate2
+  else
+    uGateMax=uGate1
+  endif
+  if vGate2<=vGate3
+    isBorderGateVertical3=1
+    vGateMin=vGate2
+  else
+    vGateMin=vGate3
+  endif
+  s[@ixUU]=uGate0
+  s[@ixUR]=uGate1
+  s[@ixUD]=uGate2
+  s[@ixUL]=uGate3
+  s[@ixVU]=vGate0
+  s[@ixVR]=vGate1
+  s[@ixVD]=vGate2
+  s[@ixVL]=vGate3
+  s[@ixYU]=yGateMin
+  s[@ixYD]=yGateMax
+  s[@ixBorder0]=isBorderGateVertical0
+  s[@ixBorder1]=isBorderGateVertical1
+  s[@ixBorder2]=isBorderGateVertical2
+  s[@ixBorder3]=isBorderGateVertical3
+  s[@ixUMin]=uGateMin
+  s[@ixUMax]=uGateMax
+  s[@ixVMin]=vGateMin
+  s[@ixVMax]=vGateMax
+  gateDef_initGatePosition()
+endfunc
+func gateDef_init()
+  gates=gb_gate_positions()
+  iGate=$gates
+  xGateMin=9999
+  yGateMin=9999
+  while iGate
+    iGate=iGate-1
+    xGate=gates[iGate][zero()]
+    if xGate
+      if xGate<xnM1
+        s[xGate]=s[xGate]|1
+        if   xGateMin>xGate
+          xGateMin=xGate
+        elif xGateMax<xGate
+          xGateMax=xGate
+        endif
+      else
+        gateDef_horizontalGate()
+      endif
+    else
+      gateDef_horizontalGate()
+    endif
+  endwhile
+  gateDef_initStorage()
+endfunc
+#$ ag=0
+#$ while @ag<4
+  #$ dir=0
+  #$ while @dir<6
+func gateDef_changeHexPref@ag@dir(x_,y_)
+  #$ if @ag==0
+    #$ hp0=1921; hp1=1920; hp2=1920; hp3=1920
+  #$ else
+    #$ hp0=2260; hp1=3840; hp2=6144; hp3=9999
+  #$ endif
+  x@{ag}@{dir}Gate=x_
+  y@{ag}@{dir}Gate=y_
+  hex@ag@dir=gb_hexel_owner(x_,y_)
+  # gate is always surround
+  hpd@{ag}_surrounded_add()
+  if hex@ag@dir>=zero()
+    if   hex@ag@dir==gb_team_id()
+      hp@ag@dir=@hp0
+    elif turn<30
+      hp@ag@dir=@hp3+gb_random_value(20)
+    else
+      hp@ag@dir=@hp2+gb_random_value(20)
+    endif
+  elif hex@ag@dir==m1
+      hp@ag@dir=@hp1
+  else
+    hp@ag@dir=zero()
+  endif
+  mp@ag@dir=map[y_][x_]
+  #$ if @ag==0
+  #$   maskInvalid=1
+  #$   maskEvade=2
+    if   (mp@ag & @maskInvalid)
+      hp@ag=zero()
+    elif (mp@ag & @maskEvade  ) 
+      hp@ag=hp@ag/2
+    endif
+  #$ else
+  #$   maskInvalid=3
+  #$   maskEvadeFromSamurai=4
+  #$   maskEvadeFromDog=8
+    if   (mp@ag & @maskInvalid)
+      hp@ag=zero()
+    elif (mp@ag & @maskEvadeFromSamurai  ) 
+      hp@ag=hp@ag*4/5
+    elif (mp@ag & @maskEvadeFromDog  ) 
+      hp@ag=hp@ag*2/3
+    endif
+  #$ endif
+  #$ dot=-1
+  #$ if @dir==3
+    #$ dot=4
+  #$ endif
+  #$ if @dir==4
+    #$ dot=3
+  #$ endif
+  #$ if @dir==0
+    #$ dot=1
+  #$ endif
+  #$ if @dir==1
+    #$ dot=0
+  #$ endif
+  #$ if @dot>=0
+    isGateMove@{ag}@{dot}_set()
+    hex@ag@dot=hex@ag@dir
+    hp@ag@dot=hp@ag@dir
+    mp@ag@dot=mp@ag@dir
+  #$ endif
+  isGateMove@{ag}@{dir}_set()
+endfunc
+func isGateMove@{ag}@{dir}()
+  return isGateMove@{ag}@{dir}_
+endfunc
+func isGateMove@{ag}@{dir}_set()
+  isGateMove@{ag}@{dir}_=1
+endfunc
+func isGateMove@{ag}@{dir}_reset()
+  isGateMove@{ag}@{dir}_=zero()
+endfunc
+    #$ dir+=1
+  #$ endwhile
+
+  func gateDef_hexPrefUpMove@ag()
+    if isWarped@{ag}
+      hexPrefDef@{ag}0_zero()
+      hexPrefDef@{ag}1_zero()
+    elif s[x@ag]&1
+      gateDef_changeHexPref@{ag}0(x@ag,ynM1)
+    else
+      hexPrefDef@{ag}0_zero()
+      hexPrefDef@{ag}1_zero()
+    endif
+  endfunc
+  func gateDef_hexPrefDownMove@ag()
+    if isWarped@{ag}
+      hexPrefDef@{ag}3_zero()
+      hexPrefDef@{ag}4_zero()
+    elif s[x@ag]&1
+      gateDef_changeHexPref@{ag}3(x@ag,0)
+    else
+      hexPrefDef@{ag}3_zero()
+      hexPrefDef@{ag}4_zero()
+    endif
+  endfunc
+  func gateDef_hexPrefLeftMove@ag()
+    if isWarped@{ag}
+      hexPrefDef@{ag}5_zero()
+    elif s[y@ag]&2
+      gateDef_changeHexPref@{ag}5(x@{ag}nM1,y@ag)
+    else
+      hexPrefDef@{ag}5_zero()
+    endif
+  endfunc
+  func gateDef_hexPrefRightMove@ag()
+    if isWarped@{ag}
+      hexPrefDef@{ag}2_zero()
+    elif s[y@ag]&2
+      gateDef_changeHexPref@{ag}2(zero(),y@ag)
+    else
+      hexPrefDef@{ag}2_zero()
+    endif
+  endfunc
+  #$ ag+=1
+#$ endwhile
+

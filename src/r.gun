@@ -1,0 +1,99 @@
+#$ nAg=3
+init()
+move[zero()]=m1
+oppsDistance_init()
+verticalMove_init()
+baseMove_init()
+#$ ag=1 
+#$ while @{ag}<=@{nAg}
+  move[@ag]=m1
+  hexPrefDef@ag()
+  escapeMove@{ag}_entryPoint()
+  if gb_agent_status(gb_team_id(),@ag)
+  else
+    moveMaxPref@{ag}_isFinalDecision=zero()
+    moveMaxHexPref@{ag}_012345()
+  endif
+#$ ag+=1
+#$ endwhile
+gb_move(move)
+spiralMove_calcGlobalSafeLevel()
+#$ ag=1 
+#$ while @{ag}<=@{nAg}
+  #$ di=0
+  #$ while @{di}<6
+    if map[y@ag@{di}Gate][x@ag@{di}Gate]==1
+      print '  xx  ag@{ag} dir@{di} Gate (',x@{ag}@{di}Gate,',',y@{ag}@{di}Gate,')'
+      hp@{ag}@{di}=zero()
+    endif
+    #$ di+=1
+  #$ endwhile
+  print 'turn=',turn,' ag@{ag}(',x@{ag},',',y@{ag},') before baseMove'
+  output@{ag}_simple()
+  baseMove@{ag}_entryPoint()
+  print 'turn=',turn,' ag@{ag}(',x@{ag},',',y@{ag},') after baseMove'
+  output@{ag}_simple()
+  moveMaxPref@{ag}_isFinalDecision=1
+  preDir@{ag}=s[101@{ag}]&7
+  if preDir@{ag}<6
+    preStat@{ag}=zero()
+  else
+    preStat@{ag}=(s[101@{ag}]-preDir@{ag})*2
+  endif
+  if gb_agent_status(gb_team_id(),@ag)
+    #$ 'stopHexPref.gun ag=@ag'
+    moveMaxHexPref@{ag}_012345()
+    preStat@{ag}=preStat@{ag}|8
+  else
+    #$ 'afterFreeze.gun ag=@{ag}'
+    #spiralMove@{ag}_test()
+    move[@{ag}]=m1
+    #upDownMove@{ag}_entryPoint()
+		comboMove@{ag}_update()
+    if vm@{ag}_udTask()
+      if cm@{ag}_innerSize>1
+        if cm@{ag}_innerSize<6
+          cm@{ag}_oppsDistanceInner=oppsDistance_dist1
+        endif
+        comboMove@{ag}_decideMove_first()
+        print 'turn=',turn,' ag@{ag}(',x@{ag},',',y@{ag},') has udTask but hasTerritory innerSize=',cm@{ag}_innerSize
+      else
+        print 'turn=',turn,' ag@{ag}(',x@{ag},',',y@{ag},') has udTask innerSize=',cm@{ag}_innerSize
+        verticalMove@{ag}_move()
+      endif
+    else
+      print 'turn=',turn,' ag@{ag}(',x@{ag},',',y@{ag},') does not have udTask innerSize=',cm@{ag}_innerSize
+      comboMove@{ag}_decideMove_first()
+    endif
+    if move[@{ag}]==m1
+      if preStat@{ag}>=48
+        checkMateMove@{ag}()
+        if move[@{ag}]==m1
+          preStat@{ag}=preStat@{ag}|8
+        else
+          preStat@{ag}=zero()
+        endif
+      else
+        preStat@{ag}=preStat@{ag}|8
+      endif
+    else
+      preStat@{ag}=zero()
+    endif
+    preDir@{ag}=move[@{ag}]&7
+  endif
+  gb_move(move)
+  output@{ag}_simple()
+  s[101@{ag}]=preStat@{ag} | preDir@{ag}
+  #$ ag+=1
+#$ endwhile
+inu_main()
+gb_move(move)
+print 'turn=',turn,' zone=[',zone[0],',',zone[1],',',zone[2],'] checkContinental_result=',checkContinental_result,' opps=',checkContinental_resultOpps,' preStat=[',preStat1,',',preStat2,',',preStat3,'] -- begin calc checkContinental'
+checkContinental_entryPoint()
+#$ ag=1
+#$ while @{ag}<=3
+	comboMove@{ag}_decideMove_second()
+	#$ ag+=1
+#$ endwhile
+#print 'turn=',turn,' zone=[',zone[0],',',zone[1],',',zone[2],'] checkContinental_result=',checkContinental_result,' opps=',checkContinental_resultOpps,' preStat=[',preStat1,',',preStat2,',',preStat3,'] -- end calc checkContinental'
+

@@ -1,0 +1,167 @@
+#$ isd0u1=@is1; isd0u1+=1
+#$ isTurn=@is1; isTurn+=2
+#$ mul0=3; mul1=2; mul2=2; mulGate=5
+#$ t0b1=0
+#$ while @{t0b1}<2
+  #$ d0=0;d1=1;d2=2;d3=3;d4=4;d5=5
+  #$ if @{t0b1}==1
+  #$ d0=4;d1=3;d2=2;d3=1;d4=0;d5=5
+  #$ endif
+func upDownMove@{ag}_topMove@{t0b1}()
+  if x@{ag}<=xGateMin
+    if x@{ag}==xGateMin
+      hp@{ag}@{d0}=hp@{ag}@{d0}*@{mulGate}
+      hp@{ag}@{d1}=hp@{ag}@{d1}*@{mulGate}
+      upDownMove@{ag}_d0u1=1
+      upDownMove@{ag}_innerMove()
+    else
+      hp@{ag}@{d2}=hp@{ag}@{d2}*@{mul1}
+      hp@{ag}@{d3}=hp@{ag}@{d3}*@{mul1}
+    endif
+  elif xGateMax<=x@{ag}
+    if xGateMax==x@{ag}
+      hp@{ag}@{d0}=hp@{ag}@{d0}*@{mulGate}
+      hp@{ag}@{d1}=hp@{ag}@{d1}*@{mulGate}
+      upDownMove@{ag}_d0u1=1
+      upDownMove@{ag}_innerMove()
+    else
+      hp@{ag}@{d5}=hp@{ag}@{d5}*@{mul1}
+      hp@{ag}@{d4}=hp@{ag}@{d4}*@{mul1}
+    endif
+  elif x@{ag}<=upDownMove_xCenter
+    hp@{ag}@{d5}=hp@{ag}@{d5}*@{mul1}
+    if ownedMapMe[y@{ag}@{d3}][x@{ag}@{d3}]
+    else
+      hp@{ag}@{d4}=hp@{ag}@{d4}*@{mul0}
+    endif
+  else
+    hp@{ag}@{d2}=hp@{ag}@{d2}*@{mul1}
+    if ownedMapMe[y@{ag}@{d4}][x@{ag}@{d4}]
+    else
+      hp@{ag}@{d3}=hp@{ag}@{d3}*@{mul0}
+    endif
+  endif
+endfunc
+  #$ t0b1+=1
+#$ endwhile
+func upDownMove@{ag}_innerMoveCenter()
+  if upDownMove@{ag}_d0u1
+    hp@{ag}0=hp@{ag}0*@{mul0}
+    hp@{ag}1=hp@{ag}1*@{mul0}
+  else
+    hp@{ag}3=hp@{ag}3*@{mul0}
+    hp@{ag}4=hp@{ag}4*@{mul0}
+  endif
+endfunc
+func upDownMove@{ag}_innerMoveLeft()
+  #hp@{ag}5=hp@{ag}5/@{mul2}
+  #hp@{ag}2=hp@{ag}2*@{mul2}
+  if upDownMove@{ag}_d0u1
+    if y@{ag}1
+      multiplier_=(3*yn-2*y@{ag})/yn
+    else
+      multiplier_=5
+    endif
+    print '  --  path1 x=',x@{ag},' <= upDownMove_xCenter=',upDownMove_xCenter,' d0u1=',upDownMove@{ag}_d0u1,' multiplier=',multiplier_
+    hp@{ag}0=hp@{ag}0*@{mul1}*multiplier_
+    hp@{ag}1=hp@{ag}1*@{mul0}*multiplier_
+  else
+    if y@{ag}3Rev
+      multiplier_=(3*yn-2*y@{ag}Rev)/yn
+    else
+      multiplier_=5
+    endif
+    print '  --  ag@{ag} x=',x@{ag},' <= upDownMove_xCenter=',upDownMove_xCenter,' d0u1=',upDownMove@{ag}_d0u1,' path2 multiplier=',multiplier_
+    hp@{ag}3=hp@{ag}3*@{mul0}*multiplier_
+    hp@{ag}4=hp@{ag}4*@{mul1}*multiplier_
+  endif
+endfunc
+
+func upDownMove@{ag}_innerMove()
+  if x@{ag}<=upDownMove_xCenter
+    upDownMove@{ag}_innerMoveLeft()
+  else
+    upDownMove@{ag}_innerMoveRight()
+  endif
+endfunc
+func upDownMove@{ag}_innerMoveRight()
+  #hp@{ag}2=hp@{ag}2/@{mul2}
+  #hp@{ag}5=hp@{ag}5*@{mul2}
+  if upDownMove@{ag}_d0u1
+    if y@{ag}0
+      multiplier_=(3*yn-2*y@{ag})/yn
+    else
+      multiplier_=5
+    endif
+    print '  --  ag@{ag} x=',x@{ag},' > upDownMove_xCenter=',upDownMove_xCenter,' d0u1=',upDownMove@{ag}_d0u1,' path3 multiplier=',multiplier_
+    hp@{ag}0=hp@{ag}0*@{mul0}*multiplier_
+    hp@{ag}1=hp@{ag}1*@{mul1}*multiplier_
+  else
+    if y@{ag}4Rev
+      multiplier_=(3*yn-2*y@{ag}Rev)/yn
+    else
+      multiplier_=5
+    endif
+    print '  --  ag@{ag} x=',x@{ag},' > upDownMove_xCenter=',upDownMove_xCenter,' d0u1=',upDownMove@{ag}_d0u1,' path4 multiplier=',multiplier_
+    hp@{ag}3=hp@{ag}3*@{mul1}*multiplier_
+    hp@{ag}4=hp@{ag}4*@{mul0}*multiplier_
+  endif
+endfunc
+func upDownMove@{ag}_entryPoint()
+  print 'turn=',turn,' ag@{ag}(',x@{ag},',',y@{ag},') upDownMove@{ag} begin'
+  output@{ag}_simple()
+  if upDownMove_wasCenterDecided
+  else
+    upDownMove_wasCenterDecided=1
+    jZoneG=xGWithDog/(xnDiv3+1)
+    if zone[jZoneG]>=400
+      if jZoneG>=2
+        if zone[1]<=300
+          upDownMove_xCenter=xnDiv2
+        else
+          upDownMove_xCenter=xGWithDog
+        endif
+      elif jZoneG
+        if xGWithDog<xnDiv2
+          if zone[0]<=300
+            upDownMove_xCenter=xnDiv3/2
+          else 
+            upDownMove_xCenter=xn-xnDiv3/2
+          endif
+        else
+          if zone[2]<=300
+            upDownMove_xCenter=xn-xnDiv3/2
+          else 
+            upDownMove_xCenter=xnDiv3/2
+          endif
+        endif
+      else
+        if zone[1]<=300
+          upDownMove_xCenter=xnDiv2
+        else
+          upDownMove_xCenter=xGWithDog
+        endif
+      endif
+    else
+      upDownMove_xCenter=xGWithDog
+    endif
+    print 'turn=',turn,' upDownMove_xCenter=',upDownMove_xCenter
+  endif
+  if y@ag
+    if y@{ag}Rev
+      upDownMove@{ag}_d0u1=s[@isd0u1]
+      upDownMove@{ag}_innerMove()
+    else
+      upDownMove@{ag}_d0u1=1
+      upDownMove@{ag}_topMove1()
+    endif
+  else
+    upDownMove@{ag}_d0u1=0
+    upDownMove@{ag}_topMove0()
+  endif
+  s[@isd0u1]=upDownMove@{ag}_d0u1
+  print '  --  after finished'
+  output@{ag}_simple()
+  print 'turn=',turn,' ag@{ag}(',x@{ag},',',y@{ag},') upDownMove@{ag} end'
+endfunc
+

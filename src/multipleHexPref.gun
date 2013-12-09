@@ -1,0 +1,13 @@
+#$ mul0=13
+#$ mul1=12
+#$ mul2=10
+#$ mul3=7
+#$ mul4=4
+#$ mul5=3
+#$ rnd =4
+hp@{ag}@di=hp@{ag}@di*(@mul0+gb_random_value(@rnd))
+hp@{ag}@dj=hp@{ag}@dj*(@mul1+gb_random_value(@rnd))
+hp@{ag}@dk=hp@{ag}@dk*(@mul2+gb_random_value(@rnd))
+hp@{ag}@dl=hp@{ag}@dl*(@mul3+gb_random_value(@rnd))
+hp@{ag}@dm=hp@{ag}@dm*(@mul4+gb_random_value(@rnd))
+hp@{ag}@dn=hp@{ag}@dn*(@mul5+gb_random_value(@rnd))

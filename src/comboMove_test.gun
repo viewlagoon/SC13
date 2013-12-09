@@ -1,0 +1,52 @@
+#$ ag=1
+#$ while @{ag}<4
+func cm@{ag}_test()
+	if turn<5
+		return zero()
+	endif
+  print 'turn=',turn,' tid=',gb_team_id(),' cm@{ag}_test() load'
+	cm@{ag}_load()
+  cm@{ag}_test_output1()
+  cm@{ag}_test_output2()
+  cm@{ag}_test_output3()
+  cm@{ag}_test_output4()
+  cm@{ag}_test_output5()
+  print 'turn=',turn,' tid=',gb_team_id(),' cm@{ag}_test() begin'
+  #cm@{ag}_array1_clear()
+  ## inner point seed
+  #cm@{ag}_xI2=x@{ag}2
+  #cm@{ag}_yI2=y@{ag}2
+  ## outer points
+	cm@{ag}_initInner()
+  ## map
+  #cm_m[y@{ag}][x@{ag}]=1
+  #cm_m[y@{ag}1][x@{ag}1]=4
+  #cm_m[y@{ag}12][x@{ag}12]=4
+  #cm_m[y@{ag}2][x@{ag}2]=2
+  #cm_m[y@{ag}][x@{ag}]=1
+  #cm_m[y@{ag}22][x@{ag}22]=1
+  #cm_m[y@{ag}3][x@{ag}3]=1
+  #cm_m[y@{ag}32][x@{ag}32]=1
+  cm@{ag}_expand()
+  cm@{ag}_test_output1()
+  cm@{ag}_test_output2()
+  cm@{ag}_test_output3()
+  cm@{ag}_test_output4()
+  cm@{ag}_test_output5()
+	cm@{ag}_store()
+endfunc
+  #$ chain=0
+  #$ while @{chain}<=5
+func cm@{ag}_test_output@{chain}()
+	print '  --  cm@{ag}_test_output@{chain}() I(',cm@{ag}_xI@{chain},',',cm@{ag}_yI@{chain},') bMin=',cm_bMin@{chain}
+  i=0
+  while i<cm@{ag}_array@{chain}_size()
+    print '    --  p@{chain}[',i,']=(',cm@{ag}_x@{chain}[i],',',cm@{ag}_y@{chain}[i],') b=',cm_b@{chain}[i]
+    i=i+1
+  endwhile
+endfunc
+    #$ chain+=1
+  #$ endwhile
+
+  #$ ag+=1
+#$ endwhile

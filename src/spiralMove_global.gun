@@ -1,0 +1,38 @@
+##############################################################
+#$ ag=1
+#$ while @{ag}<=3
+func spiralMove@{ag}_stack_size()
+  return spiralMove@{ag}_stack_lst
+endfunc
+func spiralMove@{ag}_stack_clear()
+  spiralMove@{ag}_stack_lst=0
+endfunc
+func spiralMove@{ag}_stack_pop()
+  spiralMove@{ag}_stack_lst=spiralMove@{ag}_stack_lst-1
+  spm_yT=spiralMove@{ag}_stack_y[spiralMove@{ag}_stack_lst]
+  spm_xT=spiralMove@{ag}_stack_x[spiralMove@{ag}_stack_lst]
+endfunc
+	#$ ag+=1
+#$ endwhile
+func spiralMove_calcGlobalSafeLevel()
+  ## 0/1 out
+  ## 2   can siege if turnToSiege==1
+  ## 3   can siege although turnToSiege==2
+  if checkContinental_resultOpps
+    spiralMove_globalSafeLevel=zero()
+  else
+    spiralMove_globalSafeLevel=1+gb_remaining_turns()
+    if spiralMove_globalSafeLevel>gb_turns_before_enabling_syzygies()
+      spiralMove_globalSafeLevel=gb_turns_before_enabling_syzygies()
+    endif
+  endif
+endfunc
+func spiralMove_checkOppsDistance(y_,x_)
+  if oppsDistance_map1[y_][x_]>=oppsDistance_map0[y_][x_]
+    res_checkOppsDistance_=oppsDistance_map1[y_][x_]
+  else
+    res_checkOppsDistance_=oppsDistance_map0[y_][x_]
+  endif
+  return res_checkOppsDistance_
+endfunc
+

@@ -1,0 +1,197 @@
+func spiralMove1_test()
+endfunc
+func spiralMove2_test()
+endfunc
+func spiralMove3_test()
+  print 'turn=',turn,' spiralMove3_test (',x3,',',y3,')'
+  #ownedMapMe[19][21]
+  ## 16 |   18  19  20
+  ## 17 | 18  19  20 
+  ## 18 |   18  19  20
+  ## 19 | 18  19  20 [21]
+  ## 20 |   18  19  20
+  ownedMapMe[16][20]=1
+  if turn==0
+    ownedMapMe[19][19]=1
+    ownedMapMe[20][19]=1
+    ownedMapMe[20][20]=1
+  elif turn==1
+    ownedMapMe[17][20]=1
+    ownedMapMe[17][19]=1
+    ownedMapMe[18][18]=1
+    ownedMapMe[19][18]=1
+    ownedMapMe[20][18]=1
+    ownedMapMe[20][19]=1
+    ownedMapMe[19][20]=1
+  elif turn==2
+    ownedMapMe[16][19]=1
+    ownedMapMe[16][18]=1
+    ownedMapMe[17][18]=1
+    ownedMapMe[18][17]=1
+    ownedMapMe[19][18]=1
+    ownedMapMe[20][18]=1
+    ownedMapMe[20][19]=1
+    ownedMapMe[19][20]=1
+  elif turn==3
+    ownedMapMe[16][19]=1
+    ownedMapMe[16][18]=1
+    ownedMapMe[17][18]=1
+    ownedMapMe[18][17]=1
+    ownedMapMe[19][18]=1
+    ownedMapMe[20][18]=1
+    ownedMapMe[20][19]=1
+    ownedMapMe[20][20]=1
+    ownedMapMe[18][19]=1
+  elif turn==4
+    ownedMapMe[16][19]=1
+    ownedMapMe[16][18]=1
+    ownedMapMe[17][18]=1
+    ownedMapMe[18][17]=1
+    ownedMapMe[19][18]=1
+    ownedMapMe[20][18]=1
+    ownedMapMe[20][19]=1
+    ownedMapMe[19][20]=1
+    ownedMapMe[18][19]=1
+  elif turn==5
+    ownedMapMe[16][19]=1
+    ownedMapMe[17][19]=1
+    ownedMapMe[18][19]=1
+    ownedMapMe[18][18]=1
+    ownedMapMe[19][18]=1
+    ownedMapMe[20][18]=1
+    ownedMapMe[20][19]=1
+    ownedMapMe[20][20]=1
+  elif turn==6
+    ownedMapMe[17][19]=1
+    ownedMapMe[17][18]=1
+    ownedMapMe[18][17]=1
+    ownedMapMe[19][18]=1
+    ownedMapMe[19][19]=1
+    ownedMapMe[19][20]=1
+  elif turn==7
+    ownedMapMe[18][18]=1
+    ownedMapMe[19][18]=1
+    ownedMapMe[20][18]=1
+    ownedMapMe[20][19]=1
+    ownedMapMe[20][20]=1
+  elif turn==8
+    ownedMapMe[18][18]=1
+    ownedMapMe[19][18]=1
+    ownedMapMe[20][18]=1
+    ownedMapMe[20][19]=1
+    ownedMapMe[19][20]=1
+  elif turn==9
+    ownedMapMe[18][19]=1
+    ownedMapMe[18][18]=1
+    ownedMapMe[19][18]=1
+    ownedMapMe[20][18]=1
+    ownedMapMe[20][19]=1
+    ownedMapMe[20][20]=1
+  elif turn==10
+    ownedMapMe[16][19]=1
+    ownedMapMe[16][18]=1
+    ownedMapMe[17][18]=1
+    ownedMapMe[18][19]=1
+    ownedMapMe[18][18]=1
+    ownedMapMe[19][18]=1
+    ownedMapMe[20][18]=1
+    ownedMapMe[20][19]=1
+    ownedMapMe[20][20]=1
+  elif turn==11
+    ownedMapMe[16][19]=1
+    ownedMapMe[16][18]=1
+    ownedMapMe[17][18]=1
+    ownedMapMe[18][18]=1
+    ownedMapMe[19][18]=1
+    ownedMapMe[20][18]=1
+    ownedMapMe[20][19]=1
+    ownedMapMe[20][20]=1
+  elif turn==12
+    ownedMapMe[16][19]=1
+    ownedMapMe[17][18]=1
+    ownedMapMe[18][18]=1
+    ownedMapMe[19][18]=1
+    ownedMapMe[20][18]=1
+    ownedMapMe[20][19]=1
+    ownedMapMe[20][20]=1
+  endif
+  spiralMove_output(y3,x3)
+  spiralMove3_rotate5_move0()
+  if spiralMove3_rotate5_move0_turnToSiege>=1
+    if spiralMove3_rotate5_move0_turnToSiege>=2
+      if spiralMove3_rotate5_move0_xRemote==20
+        if spiralMove3_rotate5_move0_yRemote==17
+          spiralMove3_rotate5_neighbor0_remote0()
+          print '  -- dirNeighbor=',spiralMove3_dirNeighbor,' dirRemote=',spiralMove3_dirRemote
+        else
+          print 'ERROR'
+        endif
+      elif spiralMove3_rotate5_move0_xRemote==19
+        if spiralMove3_rotate5_move0_yRemote==18
+          spiralMove3_rotate5_neighbor0_remote5()
+          print '  -- dirNeighbor=',spiralMove3_dirNeighbor,' dirRemote=',spiralMove3_dirRemote
+        else
+          print 'ERROR'
+        endif
+      else
+        print 'ERROR'
+      endif
+    else
+    endif
+  endif
+  #$ dir=0
+  #$ while @{dir}<6
+  hp3@{dir}=0
+  #$ dir+=1
+  #$ endwhile
+endfunc
+func spiralMove_outputOpps(y_,x_)
+  yT_=y_-4
+  while yT_<=y_+4
+    a_=oppsDistance_map1[yT_][x_-4]
+    b_=oppsDistance_map1[yT_][x_-3]
+    c_=oppsDistance_map1[yT_][x_-2]
+    d_=oppsDistance_map1[yT_][x_-1]
+    e_=oppsDistance_map1[yT_][x_  ]
+    f_=oppsDistance_map1[yT_][x_+1]
+    g_=oppsDistance_map1[yT_][x_+2]
+    h_=oppsDistance_map1[yT_][x_+3]
+    i_=oppsDistance_map1[yT_][x_+4]
+    if yT_%2
+      if yT_<0
+        print yT_,':',a_,'  ',b_,'  ',c_,'  ',d_,'  ',e_,'  ',f_,'  ',g_,'  ',h_,'  ',i_
+      elif yT_<10
+        print ' ',yT_,':',a_,'  ',b_,'  ',c_,'  ',d_,'  ',e_,'  ',f_,'  ',g_,'  ',h_,'  ',i_
+      else
+        print yT_,':',a_,'  ',b_,'  ',c_,'  ',d_,'  ',e_,'  ',f_,'  ',g_,'  ',h_,'  ',i_
+      endif
+    else
+      if yT_<0
+        print yT_,':  ',a_,'  ',b_,'  ',c_,'  ',d_,'  ',e_,'  ',f_,'  ',g_,'  ',h_,'  ',i_
+      elif yT_<10
+        print ' ',yT_,':  ',a_,'  ',b_,'  ',c_,'  ',d_,'  ',e_,'  ',f_,'  ',g_,'  ',h_,'  ',i_
+      else
+        print yT_,':  ',a_,'  ',b_,'  ',c_,'  ',d_,'  ',e_,'  ',f_,'  ',g_,'  ',h_,'  ',i_
+      endif
+    endif
+    yT_=yT_+1
+  endwhile
+endfunc
+func spiralMove_output(y_,x_)
+  yT_=y_-3
+  while yT_<=y_+3
+    a_=ownedMapMe[yT_][x_-5]
+    b_=ownedMapMe[yT_][x_-4]
+    c_=ownedMapMe[yT_][x_-3]
+    d_=ownedMapMe[yT_][x_-2]
+    e_=ownedMapMe[yT_][x_-1]
+    f_=ownedMapMe[yT_][x_  ]
+    g_=ownedMapMe[yT_][x_+1]
+    if yT_%2
+      print yT_,':',a_,' ',b_,' ',c_,' ',d_,' ',e_,' ',f_,' ',g_
+    else
+      print yT_,': ',a_,' ',b_,' ',c_,' ',d_,' ',e_,' ',f_,' ',g_
+    endif
+    yT_=yT_+1
+  endwhile
+endfunc

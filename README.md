@@ -2,8 +2,14 @@ SC'13
 ====
 Author: Sho Aita (viewlagoon)
 
-This is not a submitted version. Some bugs are fixed but this change makes it a little weaker than previous one. 
+src/             : sources (strategy:r)
+	to make verbose mode, modify Makefile line 73 <-> 74
+runtime/players/ : executable .gb files
+	i : preliminary round
+	q : final round
+	r : current source
+vim/             : vim syntax and indent files
 
 The concept of this algorithm (Japanese only):
-	http://d.hatena.ne.jp/viewlagoon/20131208
+	ttp://d.hatena.ne.jp/viewlagoon/20131208
 

@@ -1,0 +1,51 @@
+## require ag corner
+#$ if @{corner}==0
+  #$ d0=0; d1=1; d2=2; d3=3; d4=4; d5=5
+  #$ xr= ; yr=
+#$ endif
+#$ if @{corner}==1
+  #$ d0=1; d1=0; d2=5; d3=4; d4=3; d5=2
+  #$ xr=Rev; yr=
+#$ endif
+#$ if @{corner}==2
+  #$ d0=3; d1=4; d2=5; d3=0; d4=1; d5=2
+  #$ xr=Rev; yr=Rev
+#$ endif
+#$ if @{corner}==3
+  #$ d0=4; d1=3; d2=2; d3=1; d4=0; d5=5
+  #$ xr= ; yr=Rev
+#$ endif
+
+if em_distT()
+  if em_distT()<oppsDistance_dist2
+    hp@{ag}@{d5}=zero()
+    hp@{ag}@{d0}=zero()
+    hp@{ag}@{d3}=hp@{ag}@{d3}*5
+    hp@{ag}@{d2}=hp@{ag}@{d2}*5
+  else
+    if y@{ag}@{yr}
+      if x@{ag}@{xr}
+        if ownedMapMe[x@{ag}@{d1}][y@{ag}@{d1}]
+          if ownedMapMe[x@{ag}@{d4}][y@{ag}@{d4}]
+          else
+            hp@{ag}@{d0}=zero()
+            hp@{ag}@{d5}=zero()
+          endif
+        else
+          hp@{ag}@{d0}=zero()
+          hp@{ag}@{d5}=zero()
+        endif
+      elif ownedMapMe[x@{ag}@{d1}][y@{ag}@{d1}]
+      else
+        hp@{ag}@{d0}=zero()
+      endif
+    else
+      hp@{ag}@{d5}=zero()
+    endif
+  endif
+else
+  hp@{ag}@{d0}=zero()
+  hp@{ag}@{d5}=zero()
+endif
+
+

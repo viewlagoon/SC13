@@ -1,0 +1,298 @@
+#$ stack=cm3_array0
+#$ mul0=5; mul1=2
+func verticalMove_init()
+  vm_connectTop_=zero()
+  vm_connectBottom_=zero()
+  vm1_search()
+  vm2_search()
+  vm3_search()
+  vm_createTask()
+  vm1_modifyTask()
+  vm2_modifyTask()
+  vm3_modifyTask()
+  vm_output()
+endfunc
+func vm_yMin()
+  return vm_yMin_
+endfunc
+func vm_agMin()
+  return vm_agMin_
+endfunc
+func vm_output()
+  print 'turn=',turn,' verticalMove_output connectTop=',vm_connectTop(),' connectBottom=',vm_connectBottom()
+  vm1_output()
+  vm2_output()
+  vm3_output()
+endfunc
+func vm_createTask_connectTop()
+  vm_yMin_=ynM1
+  vm_agMin_=0
+  #$ agT=3
+  #$ while @{agT}>=1
+    if vm@{agT}_yTop()
+    elif vm_yMin()>y@{agT}Rev
+      vm_yMin_=y@{agT}Rev
+      vm_agMin_=@{agT}
+    endif
+    #$ agT-=1
+  #$ endwhile
+  if vm_agMin()>=2
+    if vm_agMin()>=3
+      vm3_dTask_=1
+    else
+      vm2_dTask_=1
+    endif
+  elif vm_agMin()
+    vm1_dTask_=1
+  else
+    print '  xx  ERROR vm_createTask_connectTop()'
+  endif
+endfunc
+func vm_createTask_connectBottom()
+  vm_yMin_=ynM1
+  vm_agMin_=0
+  #$ agT=1
+  #$ while @{agT}<=3
+    if vm@{agT}_yBottomRev()
+    elif vm_yMin()>y@{agT}
+      vm_yMin_=y@{agT}
+      vm_agMin_=@{agT}
+    endif
+    #$ agT+=1
+  #$ endwhile
+  if vm_agMin()>=2
+    if vm_agMin()>=3
+      vm3_uTask_=1
+    else
+      vm2_uTask_=1
+    endif
+  elif vm_agMin()
+    vm1_uTask_=1
+  else
+    print '  xx  ERROR vm_createTask_connectBottom()'
+  endif
+endfunc
+
+func vm_createTask()
+  vm1_uTask_=zero()
+  vm2_uTask_=zero()
+  vm3_uTask_=zero()
+  vm1_dTask_=zero()
+  vm2_dTask_=zero()
+  vm3_dTask_=zero()
+  if vm_connectBoth()
+    return zero()
+  endif
+  if vm_connectTop()
+    if vm_connectBottom()
+      vm_createTask_connectBottom()
+    endif
+    return vm_createTask_connectTop()
+  elif vm_connectBottom()
+    return vm_createTask_connectBottom()
+  endif
+  #vm_createUpDownTask()
+endfunc
+#################################################################################
+#$ ag=1
+#$ while @{ag}<=3
+func verticalMove@{ag}_move()
+  print 'turn=',turn,' ag@{ag}(',x@{ag},',',y@{ag},') changeHexPref before-after'
+  output@{ag}_simple()
+  if vm@{ag}_uTask()
+    hp@{ag}0=hp@{ag}0*@{mul0}
+    hp@{ag}1=hp@{ag}1*@{mul0}
+    hp@{ag}2=hp@{ag}2*@{mul1}
+    hp@{ag}5=hp@{ag}5*@{mul1}
+  elif vm@{ag}_dTask()
+    hp@{ag}4=hp@{ag}4*@{mul0}
+    hp@{ag}3=hp@{ag}3*@{mul0}
+    hp@{ag}2=hp@{ag}2*@{mul1}
+    hp@{ag}5=hp@{ag}5*@{mul1}
+  endif
+  output@{ag}_simple()
+  moveMaxHexPref@{ag}_012345()
+endfunc
+func verticalMove@{ag}_entryPoint()
+  print '  xx  ERROR you must use verticalMove_init() instead of verticalMove@{ag}_entryPoint()'
+endfunc
+func vm@{ag}_surrounded()
+  if vm@{ag}_yTop()
+    if vm@{ag}_yBottomRev()
+      if vm@{ag}_distTop()<vm@{ag}_distBottom()
+        vm@{ag}_uTask_=1
+      else
+        vm@{ag}_dTask_=1
+      endif
+    else
+      vm@{ag}_uTask_=1
+    endif
+  else
+    vm@{ag}_dTask_=1
+  endif
+endfunc
+func vm@{ag}_modifyTask()
+  #oppsDistance_map0[y@{ag}][x@{ag}]>=oppsDistance_dist3
+  if hpd@{ag}_surrounded()>=6
+    vm@{ag}_surrounded()
+  elif ownedMapMe[y@{ag}0][x@{ag}0]
+    if ownedMapMe[y@{ag}1][x@{ag}1]
+      if ownedMapMe[y@{ag}2][x@{ag}2]
+        if ownedMapMe[y@{ag}3][x@{ag}3]
+          if ownedMapMe[y@{ag}4][x@{ag}4]
+            if ownedMapMe[y@{ag}5][x@{ag}5]
+              vm@{ag}_surrounded()
+            endif
+          endif
+        endif
+      endif
+    endif
+  endif
+  if isInSiege@{ag}
+    vm@{ag}_surrounded()
+  endif
+  vm@{ag}_udTask_=vm@{ag}_uTask()|vm@{ag}_dTask()
+endfunc
+func vm@{ag}_search()
+  @{stack}_clear()
+  #$ 'comboMove_push.gun ag=3 chain=0 x=x@{ag} y=y@{ag}'
+  vm_yTopT_=y@{ag}
+  vm_yBottomT_=y@{ag}
+  vm_visited=zero()
+  vm_visited[y@{ag}][x@{ag}]=1
+  vm_search_impl()
+  vm@{ag}_update()
+endfunc
+func vm@{ag}_output()
+  print '  --  vm: ag@{ag}(',x@{ag},',',y@{ag},') uT=',vm@{ag}_uTask(),' dT=',vm@{ag}_dTask(),' top[',vm@{ag}_yTop(),'(r',vm@{ag}_yTopRev(),')] bottom[',vm@{ag}_yBottom(),'(r',vm@{ag}_yBottomRev(),')] udT=',vm@{ag}_udTask()
+endfunc
+func vm@{ag}_is()
+  return vm@{ag}_yTop_
+endfunc
+func vm@{ag}_yTop()
+  return vm@{ag}_yTop_
+endfunc
+func vm@{ag}_yTopRev()
+  return vm@{ag}_yTopRev_
+endfunc
+func vm@{ag}_yBottom()
+  return vm@{ag}_yBottom_
+endfunc
+func vm@{ag}_yBottomRev()
+  return vm@{ag}_yBottomRev_
+endfunc
+func vm@{ag}_distTop()
+  return vm@{ag}_distTop_
+endfunc
+func vm@{ag}_distBottom()
+  return vm@{ag}_distBottom_
+endfunc
+func vm@{ag}_udTask()
+  return vm@{ag}_udTask_
+endfunc
+func vm@{ag}_uTask()
+  return vm@{ag}_uTask_
+endfunc
+func vm@{ag}_dTask()
+  return vm@{ag}_dTask_
+endfunc
+#func vm@{ag}_uPref()
+  #return vm@{ag}_uPref_
+#endfunc
+#func vm@{ag}_dPref()
+  #return vm@{ag}_dPref_
+#endfunc
+func vm@{ag}_update()
+  vm@{ag}_yTop_update()
+  vm@{ag}_yBottom_update()
+  if vm@{ag}_yTop()
+    if vm@{ag}_yBottomRev()
+      #vm_distT_=vm@{ag}_distTop()-vm@{ag}_distBottom()
+      #if vm_distT()<m2
+        #vm@{ag}_uPref_=1
+        #vm@{ag}_dPref_=zero()
+      #elif vm_distT()<=2
+        #vm@{ag}_uPref_=1
+        #vm@{ag}_dPref_=1
+      #else
+        #vm@{ag}_uPref_=zero()
+        #vm@{ag}_dPref_=1
+      #endif
+    else
+      vm_connectBottom_=1
+      #vm@{ag}_uPref_=1
+      #vm@{ag}_dPref_=zero()
+    endif
+  elif vm@{ag}_yBottomRev()
+    vm_connectTop_=1
+    #vm@{ag}_uPref_=zero()
+    #vm@{ag}_dPref_=1
+  else
+    vm_connectTop_=1
+    vm_connectBottom_=1
+    vm_connectBoth_=1
+    #vm@{ag}_uPref_=zero()
+    #vm@{ag}_dPref_=zero()
+  endif
+endfunc
+func vm@{ag}_yTop_update()
+  vm@{ag}_yTop_=vm_yTopT()
+  vm@{ag}_yTopRev_=ynM1-vm_yTopT()
+  vm@{ag}_distTop_=y@{ag}-vm@{ag}_yTop()
+endfunc
+func vm@{ag}_yBottom_update()
+  vm@{ag}_yBottom_=vm_yBottomT()
+  vm@{ag}_yBottomRev_=ynM1-vm_yBottomT()
+  vm@{ag}_distBottom_=vm@{ag}_yBottom()-y@{ag}
+endfunc
+  #$ ag+=1
+#$ endwhile
+############################################################################
+func vm_yTopT()
+  return vm_yTopT_
+endfunc
+func vm_yBottomT()
+  return vm_yBottomT_
+endfunc
+func vm_distT()
+  return vm_distT_
+endfunc
+func vm_connectBoth()
+  return vm_connectBoth_
+endfunc
+func vm_connectTop()
+  return vm_connectTop_
+endfunc
+func vm_connectBottom()
+  return vm_connectBottom_
+endfunc
+func vm_yTopT_update()
+  if vm_yTopT()>cm_yT()
+    vm_yTopT_=cm_yT()
+  endif
+endfunc
+func vm_yBottomT_update()
+  if vm_yBottomT()<cm_yT()
+    vm_yBottomT_=cm_yT()
+  endif
+endfunc
+
+
+func vm_search_impl()
+  while @{stack}_size()
+    @{stack}_pop()
+    vm_yTopT_update()
+    vm_yBottomT_update()
+    cm_setNeighborT()
+		#$ d0=0
+		#$ while @{d0}<6
+      if vm_visited[cm_yT@{d0}()][cm_xT@{d0}()]
+      elif ownedMapMe[cm_yT@{d0}()][cm_xT@{d0}()]
+        vm_visited[cm_yT@{d0}()][cm_xT@{d0}()]=1
+				#$ 'comboMove_pushFromFunc.gun ag=3 chain=0 y=cm_yT@{d0} x=cm_xT@{d0}'
+      endif
+			#$ d0+=1
+		#$ endwhile
+  endwhile
+endfunc
+

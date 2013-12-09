@@ -1,0 +1,26 @@
+## require ag yi xi yo1 xo1 yo2 xo2
+## require c1r5 dFirst turnToSiege
+#$ if @{turnToSiege}==2
+  #$ 'spiralMove_call_searchInner2.gun ag=@{ag} yi=@{yi} xi=@{xi} yo1=@{yo1} xo1=@{xo1} yo2=@{yo2} xo2=@{xo2}'
+#$ else
+  #$ 'spiralMove_call_searchInner.gun ag=@{ag} yi=@{yi} xi=@{xi} yo=@{yo1} xo=@{xo1}'
+#$ endif
+if res_searchInner_<=0
+  spiralMove@{ag}_rotate@{c1r5}_move@{dMove}_turnToSiege=@{turnToSiege}
+  spiralMove@{ag}_rotate@{c1r5}_move@{dMove}_innerSize=spiralMove@{ag}_innerSizeT
+  spiralMove@{ag}_rotate@{c1r5}_move@{dMove}_xInner=@{xi}
+  spiralMove@{ag}_rotate@{c1r5}_move@{dMove}_yInner=@{yi}
+  spiralMove@{ag}_rotate@{c1r5}_move@{dMove}_xNeighbor=@{xo1}
+  spiralMove@{ag}_rotate@{c1r5}_move@{dMove}_yNeighbor=@{yo1}
+  spiralMove@{ag}_rotate@{c1r5}_move@{dMove}_shortestOppsDist=-res_searchInner_
+  #$ if @{turnToSiege}==2
+  print '  -- rotate@{c1r5}_move@{dMove} found i(',@{xi},',',@{yi},') o1(',@{xo1},',',@{yo1},') o2(',@{xo2},',',@{yo2},') turnToSiege=@{turnToSiege} innerSize=',spiralMove@{ag}_innerSizeT,' dShort=',-res_searchInner_
+  spiralMove@{ag}_rotate@{c1r5}_move@{dMove}_xRemote=@{xo2}
+  spiralMove@{ag}_rotate@{c1r5}_move@{dMove}_yRemote=@{yo2}
+  #$ else
+  print '  -- rotate@{c1r5}_move@{dMove} found i(',@{xi},',',@{yi},') o1(',@{xo1},',',@{yo1},') turnToSiege=@{turnToSiege} innerSize=',spiralMove@{ag}_innerSizeT,' dShort=',-res_searchInner_
+  #$ endif
+  spiralMove@{ag}_innerSizeT=0
+  return 1
+endif
+

@@ -1,0 +1,3 @@
+cm@{ag}_x@{chain}[cm@{ag}_array@{chain}_size()]=@{x}
+cm@{ag}_y@{chain}[cm@{ag}_array@{chain}_size()]=@{y}
+cm@{ag}_array@{chain}_addSize()

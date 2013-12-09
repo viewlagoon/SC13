@@ -1,0 +1,6882 @@
+func zero()
+endfunc
+func init()
+  s=gb_storage()
+  turn=s[1019]
+  s[1019]=turn+1
+  wh     =gb_field_size()
+  map    =gb_team_id()
+  xn     =wh[zero()]
+  yn     =wh[1]
+  xnDiv2 =xn/2
+  ynDiv2 =yn/2
+  un     =xn-1+ynDiv2
+  ynM1   =yn-1
+  xnM1   =xn-1
+  xnM2   =xn-2
+  pAll   =gb_agent_positions()
+  pWe    =pAll[gb_team_id()]
+  m1     =-1
+  m2     =-2
+p0=pWe[0]
+x0=p0[zero()]
+y0=p0[1]
+y0Mod2=y0%2
+y0Div2=y0/2
+y0M1Div2=(y0-1)/2
+y0P1Div2=y0M1Div2+1
+x02=x0+1
+x05=x0-1
+if y0Mod2
+  x00=x05
+  x01=x0
+  x0n=xn
+  x0nM1=xnM1
+  x0nM1Other=xnM2
+else
+  x00=x0
+  x01=x02
+  x0n=xnM1
+  x0nM1=xnM2
+  x0nM1Other=xnM1
+endif
+x0Rev=x0nM1-x0
+x03=x01
+x04=x00
+y00=y0-1
+y03=y0+1
+y02=y0
+y05=y0
+y01=y00
+y04=y03
+y0Rev=ynM1-y0
+x0Pre=s[1000]
+s[1000]=x0
+y0Pre=s[1004]
+s[1004]=y0
+map[y0][x0]=1
+u0=x0+y0Div2
+v0=x0-y0P1Div2
+u00=u0-1
+u05=u00
+u01=u0
+u04=u0
+u02=u0+1
+u03=u02
+v04=v0-1
+v05=v04
+v00=v0
+v03=v0
+v01=v0+1
+v02=v01
+p1=pWe[1]
+x1=p1[zero()]
+y1=p1[1]
+y1Mod2=y1%2
+y1Div2=y1/2
+y1M1Div2=(y1-1)/2
+y1P1Div2=y1M1Div2+1
+x12=x1+1
+x15=x1-1
+if y1Mod2
+  x10=x15
+  x11=x1
+  x1n=xn
+  x1nM1=xnM1
+  x1nM1Other=xnM2
+else
+  x10=x1
+  x11=x12
+  x1n=xnM1
+  x1nM1=xnM2
+  x1nM1Other=xnM1
+endif
+x1Rev=x1nM1-x1
+x13=x11
+x14=x10
+y10=y1-1
+y13=y1+1
+y12=y1
+y15=y1
+y11=y10
+y14=y13
+y1Rev=ynM1-y1
+x1Pre=s[1001]
+s[1001]=x1
+y1Pre=s[1005]
+s[1005]=y1
+map[y1][x1]=1
+u1=x1+y1Div2
+v1=x1-y1P1Div2
+u10=u1-1
+u15=u10
+u11=u1
+u14=u1
+u12=u1+1
+u13=u12
+v14=v1-1
+v15=v14
+v10=v1
+v13=v1
+v11=v1+1
+v12=v11
+p2=pWe[2]
+x2=p2[zero()]
+y2=p2[1]
+y2Mod2=y2%2
+y2Div2=y2/2
+y2M1Div2=(y2-1)/2
+y2P1Div2=y2M1Div2+1
+x22=x2+1
+x25=x2-1
+if y2Mod2
+  x20=x25
+  x21=x2
+  x2n=xn
+  x2nM1=xnM1
+  x2nM1Other=xnM2
+else
+  x20=x2
+  x21=x22
+  x2n=xnM1
+  x2nM1=xnM2
+  x2nM1Other=xnM1
+endif
+x2Rev=x2nM1-x2
+x23=x21
+x24=x20
+y20=y2-1
+y23=y2+1
+y22=y2
+y25=y2
+y21=y20
+y24=y23
+y2Rev=ynM1-y2
+x2Pre=s[1002]
+s[1002]=x2
+y2Pre=s[1006]
+s[1006]=y2
+map[y2][x2]=1
+u2=x2+y2Div2
+v2=x2-y2P1Div2
+u20=u2-1
+u25=u20
+u21=u2
+u24=u2
+u22=u2+1
+u23=u22
+v24=v2-1
+v25=v24
+v20=v2
+v23=v2
+v21=v2+1
+v22=v21
+p3=pWe[3]
+x3=p3[zero()]
+y3=p3[1]
+y3Mod2=y3%2
+y3Div2=y3/2
+y3M1Div2=(y3-1)/2
+y3P1Div2=y3M1Div2+1
+x32=x3+1
+x35=x3-1
+if y3Mod2
+  x30=x35
+  x31=x3
+  x3n=xn
+  x3nM1=xnM1
+  x3nM1Other=xnM2
+else
+  x30=x3
+  x31=x32
+  x3n=xnM1
+  x3nM1=xnM2
+  x3nM1Other=xnM1
+endif
+x3Rev=x3nM1-x3
+x33=x31
+x34=x30
+y30=y3-1
+y33=y3+1
+y32=y3
+y35=y3
+y31=y30
+y34=y33
+y3Rev=ynM1-y3
+x3Pre=s[1003]
+s[1003]=x3
+y3Pre=s[1007]
+s[1007]=y3
+map[y3][x3]=1
+u3=x3+y3Div2
+v3=x3-y3P1Div2
+u30=u3-1
+u35=u30
+u31=u3
+u34=u3
+u32=u3+1
+u33=u32
+v34=v3-1
+v35=v34
+v30=v3
+v33=v3
+v31=v3+1
+v32=v31
+xG=(x1+x2+x3)/3
+yG=(y1+y2+y3)/3
+  if turn
+  else
+    gateDef()
+  endif
+endfunc
+
+func moveMaxHexPref0_012345()
+if   hp00<hp01
+if   hp01<hp02
+if   hp02<hp03
+if   hp03<hp04
+if   hp04<hp05
+if   hp05
+  move[0]=5
+  map[y0][x05]=1
+else
+  move[0]=m1
+endif
+else
+if   hp04
+  move[0]=4
+  map[y03][x00]=1
+else
+  move[0]=m1
+endif
+endif
+elif hp03<hp05 
+if   hp05
+  move[0]=5
+  map[y0][x05]=1
+else
+  move[0]=m1
+endif
+else
+if   hp03
+  move[0]=3
+  map[y03][x01]=1
+else
+  move[0]=m1
+endif
+endif
+elif hp02<hp04
+if   hp04<hp05
+if   hp05
+  move[0]=5
+  map[y0][x05]=1
+else
+  move[0]=m1
+endif
+else
+if   hp04
+  move[0]=4
+  map[y03][x00]=1
+else
+  move[0]=m1
+endif
+endif
+elif hp02<hp05 
+if   hp05
+  move[0]=5
+  map[y0][x05]=1
+else
+  move[0]=m1
+endif
+else
+if   hp02
+  move[0]=2
+  map[y0][x02]=1
+else
+  move[0]=m1
+endif
+endif
+elif hp01<hp03
+if   hp03<hp04
+if   hp04<hp05
+if   hp05
+  move[0]=5
+  map[y0][x05]=1
+else
+  move[0]=m1
+endif
+else
+if   hp04
+  move[0]=4
+  map[y03][x00]=1
+else
+  move[0]=m1
+endif
+endif
+elif hp03<hp05 
+if   hp05
+  move[0]=5
+  map[y0][x05]=1
+else
+  move[0]=m1
+endif
+else
+if   hp03
+  move[0]=3
+  map[y03][x01]=1
+else
+  move[0]=m1
+endif
+endif
+elif hp01<hp04
+if   hp04<hp05
+if   hp05
+  move[0]=5
+  map[y0][x05]=1
+else
+  move[0]=m1
+endif
+else
+if   hp04
+  move[0]=4
+  map[y03][x00]=1
+else
+  move[0]=m1
+endif
+endif
+elif hp01<hp05 
+if   hp05
+  move[0]=5
+  map[y0][x05]=1
+else
+  move[0]=m1
+endif
+else
+if   hp01
+  move[0]=1
+  map[y00][x01]=1
+else
+  move[0]=m1
+endif
+endif
+elif hp00<hp02
+if   hp02<hp03
+if   hp03<hp04
+if   hp04<hp05
+if   hp05
+  move[0]=5
+  map[y0][x05]=1
+else
+  move[0]=m1
+endif
+else
+if   hp04
+  move[0]=4
+  map[y03][x00]=1
+else
+  move[0]=m1
+endif
+endif
+elif hp03<hp05 
+if   hp05
+  move[0]=5
+  map[y0][x05]=1
+else
+  move[0]=m1
+endif
+else
+if   hp03
+  move[0]=3
+  map[y03][x01]=1
+else
+  move[0]=m1
+endif
+endif
+elif hp02<hp04
+if   hp04<hp05
+if   hp05
+  move[0]=5
+  map[y0][x05]=1
+else
+  move[0]=m1
+endif
+else
+if   hp04
+  move[0]=4
+  map[y03][x00]=1
+else
+  move[0]=m1
+endif
+endif
+elif hp02<hp05 
+if   hp05
+  move[0]=5
+  map[y0][x05]=1
+else
+  move[0]=m1
+endif
+else
+if   hp02
+  move[0]=2
+  map[y0][x02]=1
+else
+  move[0]=m1
+endif
+endif
+elif hp00<hp03
+if   hp03<hp04
+if   hp04<hp05
+if   hp05
+  move[0]=5
+  map[y0][x05]=1
+else
+  move[0]=m1
+endif
+else
+if   hp04
+  move[0]=4
+  map[y03][x00]=1
+else
+  move[0]=m1
+endif
+endif
+elif hp03<hp05 
+if   hp05
+  move[0]=5
+  map[y0][x05]=1
+else
+  move[0]=m1
+endif
+else
+if   hp03
+  move[0]=3
+  map[y03][x01]=1
+else
+  move[0]=m1
+endif
+endif
+elif hp00<hp04
+if   hp04<hp05
+if   hp05
+  move[0]=5
+  map[y0][x05]=1
+else
+  move[0]=m1
+endif
+else
+if   hp04
+  move[0]=4
+  map[y03][x00]=1
+else
+  move[0]=m1
+endif
+endif
+elif hp00<hp05 
+if   hp05
+  move[0]=5
+  map[y0][x05]=1
+else
+  move[0]=m1
+endif
+else
+if   hp00
+  move[0]=0
+  map[y00][x00]=1
+else
+  move[0]=m1
+endif
+endif
+endfunc
+func moveMaxHexPref1_012345()
+if   hp10<hp11
+if   hp11<hp12
+if   hp12<hp13
+if   hp13<hp14
+if   hp14<hp15
+if   hp15
+  move[1]=5
+  map[y1][x15]=1
+else
+  move[1]=m1
+endif
+else
+if   hp14
+  move[1]=4
+  map[y13][x10]=1
+else
+  move[1]=m1
+endif
+endif
+elif hp13<hp15 
+if   hp15
+  move[1]=5
+  map[y1][x15]=1
+else
+  move[1]=m1
+endif
+else
+if   hp13
+  move[1]=3
+  map[y13][x11]=1
+else
+  move[1]=m1
+endif
+endif
+elif hp12<hp14
+if   hp14<hp15
+if   hp15
+  move[1]=5
+  map[y1][x15]=1
+else
+  move[1]=m1
+endif
+else
+if   hp14
+  move[1]=4
+  map[y13][x10]=1
+else
+  move[1]=m1
+endif
+endif
+elif hp12<hp15 
+if   hp15
+  move[1]=5
+  map[y1][x15]=1
+else
+  move[1]=m1
+endif
+else
+if   hp12
+  move[1]=2
+  map[y1][x12]=1
+else
+  move[1]=m1
+endif
+endif
+elif hp11<hp13
+if   hp13<hp14
+if   hp14<hp15
+if   hp15
+  move[1]=5
+  map[y1][x15]=1
+else
+  move[1]=m1
+endif
+else
+if   hp14
+  move[1]=4
+  map[y13][x10]=1
+else
+  move[1]=m1
+endif
+endif
+elif hp13<hp15 
+if   hp15
+  move[1]=5
+  map[y1][x15]=1
+else
+  move[1]=m1
+endif
+else
+if   hp13
+  move[1]=3
+  map[y13][x11]=1
+else
+  move[1]=m1
+endif
+endif
+elif hp11<hp14
+if   hp14<hp15
+if   hp15
+  move[1]=5
+  map[y1][x15]=1
+else
+  move[1]=m1
+endif
+else
+if   hp14
+  move[1]=4
+  map[y13][x10]=1
+else
+  move[1]=m1
+endif
+endif
+elif hp11<hp15 
+if   hp15
+  move[1]=5
+  map[y1][x15]=1
+else
+  move[1]=m1
+endif
+else
+if   hp11
+  move[1]=1
+  map[y10][x11]=1
+else
+  move[1]=m1
+endif
+endif
+elif hp10<hp12
+if   hp12<hp13
+if   hp13<hp14
+if   hp14<hp15
+if   hp15
+  move[1]=5
+  map[y1][x15]=1
+else
+  move[1]=m1
+endif
+else
+if   hp14
+  move[1]=4
+  map[y13][x10]=1
+else
+  move[1]=m1
+endif
+endif
+elif hp13<hp15 
+if   hp15
+  move[1]=5
+  map[y1][x15]=1
+else
+  move[1]=m1
+endif
+else
+if   hp13
+  move[1]=3
+  map[y13][x11]=1
+else
+  move[1]=m1
+endif
+endif
+elif hp12<hp14
+if   hp14<hp15
+if   hp15
+  move[1]=5
+  map[y1][x15]=1
+else
+  move[1]=m1
+endif
+else
+if   hp14
+  move[1]=4
+  map[y13][x10]=1
+else
+  move[1]=m1
+endif
+endif
+elif hp12<hp15 
+if   hp15
+  move[1]=5
+  map[y1][x15]=1
+else
+  move[1]=m1
+endif
+else
+if   hp12
+  move[1]=2
+  map[y1][x12]=1
+else
+  move[1]=m1
+endif
+endif
+elif hp10<hp13
+if   hp13<hp14
+if   hp14<hp15
+if   hp15
+  move[1]=5
+  map[y1][x15]=1
+else
+  move[1]=m1
+endif
+else
+if   hp14
+  move[1]=4
+  map[y13][x10]=1
+else
+  move[1]=m1
+endif
+endif
+elif hp13<hp15 
+if   hp15
+  move[1]=5
+  map[y1][x15]=1
+else
+  move[1]=m1
+endif
+else
+if   hp13
+  move[1]=3
+  map[y13][x11]=1
+else
+  move[1]=m1
+endif
+endif
+elif hp10<hp14
+if   hp14<hp15
+if   hp15
+  move[1]=5
+  map[y1][x15]=1
+else
+  move[1]=m1
+endif
+else
+if   hp14
+  move[1]=4
+  map[y13][x10]=1
+else
+  move[1]=m1
+endif
+endif
+elif hp10<hp15 
+if   hp15
+  move[1]=5
+  map[y1][x15]=1
+else
+  move[1]=m1
+endif
+else
+if   hp10
+  move[1]=0
+  map[y10][x10]=1
+else
+  move[1]=m1
+endif
+endif
+endfunc
+func moveMaxHexPref2_012345()
+if   hp20<hp21
+if   hp21<hp22
+if   hp22<hp23
+if   hp23<hp24
+if   hp24<hp25
+if   hp25
+  move[2]=5
+  map[y2][x25]=1
+else
+  move[2]=m1
+endif
+else
+if   hp24
+  move[2]=4
+  map[y23][x20]=1
+else
+  move[2]=m1
+endif
+endif
+elif hp23<hp25 
+if   hp25
+  move[2]=5
+  map[y2][x25]=1
+else
+  move[2]=m1
+endif
+else
+if   hp23
+  move[2]=3
+  map[y23][x21]=1
+else
+  move[2]=m1
+endif
+endif
+elif hp22<hp24
+if   hp24<hp25
+if   hp25
+  move[2]=5
+  map[y2][x25]=1
+else
+  move[2]=m1
+endif
+else
+if   hp24
+  move[2]=4
+  map[y23][x20]=1
+else
+  move[2]=m1
+endif
+endif
+elif hp22<hp25 
+if   hp25
+  move[2]=5
+  map[y2][x25]=1
+else
+  move[2]=m1
+endif
+else
+if   hp22
+  move[2]=2
+  map[y2][x22]=1
+else
+  move[2]=m1
+endif
+endif
+elif hp21<hp23
+if   hp23<hp24
+if   hp24<hp25
+if   hp25
+  move[2]=5
+  map[y2][x25]=1
+else
+  move[2]=m1
+endif
+else
+if   hp24
+  move[2]=4
+  map[y23][x20]=1
+else
+  move[2]=m1
+endif
+endif
+elif hp23<hp25 
+if   hp25
+  move[2]=5
+  map[y2][x25]=1
+else
+  move[2]=m1
+endif
+else
+if   hp23
+  move[2]=3
+  map[y23][x21]=1
+else
+  move[2]=m1
+endif
+endif
+elif hp21<hp24
+if   hp24<hp25
+if   hp25
+  move[2]=5
+  map[y2][x25]=1
+else
+  move[2]=m1
+endif
+else
+if   hp24
+  move[2]=4
+  map[y23][x20]=1
+else
+  move[2]=m1
+endif
+endif
+elif hp21<hp25 
+if   hp25
+  move[2]=5
+  map[y2][x25]=1
+else
+  move[2]=m1
+endif
+else
+if   hp21
+  move[2]=1
+  map[y20][x21]=1
+else
+  move[2]=m1
+endif
+endif
+elif hp20<hp22
+if   hp22<hp23
+if   hp23<hp24
+if   hp24<hp25
+if   hp25
+  move[2]=5
+  map[y2][x25]=1
+else
+  move[2]=m1
+endif
+else
+if   hp24
+  move[2]=4
+  map[y23][x20]=1
+else
+  move[2]=m1
+endif
+endif
+elif hp23<hp25 
+if   hp25
+  move[2]=5
+  map[y2][x25]=1
+else
+  move[2]=m1
+endif
+else
+if   hp23
+  move[2]=3
+  map[y23][x21]=1
+else
+  move[2]=m1
+endif
+endif
+elif hp22<hp24
+if   hp24<hp25
+if   hp25
+  move[2]=5
+  map[y2][x25]=1
+else
+  move[2]=m1
+endif
+else
+if   hp24
+  move[2]=4
+  map[y23][x20]=1
+else
+  move[2]=m1
+endif
+endif
+elif hp22<hp25 
+if   hp25
+  move[2]=5
+  map[y2][x25]=1
+else
+  move[2]=m1
+endif
+else
+if   hp22
+  move[2]=2
+  map[y2][x22]=1
+else
+  move[2]=m1
+endif
+endif
+elif hp20<hp23
+if   hp23<hp24
+if   hp24<hp25
+if   hp25
+  move[2]=5
+  map[y2][x25]=1
+else
+  move[2]=m1
+endif
+else
+if   hp24
+  move[2]=4
+  map[y23][x20]=1
+else
+  move[2]=m1
+endif
+endif
+elif hp23<hp25 
+if   hp25
+  move[2]=5
+  map[y2][x25]=1
+else
+  move[2]=m1
+endif
+else
+if   hp23
+  move[2]=3
+  map[y23][x21]=1
+else
+  move[2]=m1
+endif
+endif
+elif hp20<hp24
+if   hp24<hp25
+if   hp25
+  move[2]=5
+  map[y2][x25]=1
+else
+  move[2]=m1
+endif
+else
+if   hp24
+  move[2]=4
+  map[y23][x20]=1
+else
+  move[2]=m1
+endif
+endif
+elif hp20<hp25 
+if   hp25
+  move[2]=5
+  map[y2][x25]=1
+else
+  move[2]=m1
+endif
+else
+if   hp20
+  move[2]=0
+  map[y20][x20]=1
+else
+  move[2]=m1
+endif
+endif
+endfunc
+func moveMaxHexPref3_012345()
+if   hp30<hp31
+if   hp31<hp32
+if   hp32<hp33
+if   hp33<hp34
+if   hp34<hp35
+if   hp35
+  move[3]=5
+  map[y3][x35]=1
+else
+  move[3]=m1
+endif
+else
+if   hp34
+  move[3]=4
+  map[y33][x30]=1
+else
+  move[3]=m1
+endif
+endif
+elif hp33<hp35 
+if   hp35
+  move[3]=5
+  map[y3][x35]=1
+else
+  move[3]=m1
+endif
+else
+if   hp33
+  move[3]=3
+  map[y33][x31]=1
+else
+  move[3]=m1
+endif
+endif
+elif hp32<hp34
+if   hp34<hp35
+if   hp35
+  move[3]=5
+  map[y3][x35]=1
+else
+  move[3]=m1
+endif
+else
+if   hp34
+  move[3]=4
+  map[y33][x30]=1
+else
+  move[3]=m1
+endif
+endif
+elif hp32<hp35 
+if   hp35
+  move[3]=5
+  map[y3][x35]=1
+else
+  move[3]=m1
+endif
+else
+if   hp32
+  move[3]=2
+  map[y3][x32]=1
+else
+  move[3]=m1
+endif
+endif
+elif hp31<hp33
+if   hp33<hp34
+if   hp34<hp35
+if   hp35
+  move[3]=5
+  map[y3][x35]=1
+else
+  move[3]=m1
+endif
+else
+if   hp34
+  move[3]=4
+  map[y33][x30]=1
+else
+  move[3]=m1
+endif
+endif
+elif hp33<hp35 
+if   hp35
+  move[3]=5
+  map[y3][x35]=1
+else
+  move[3]=m1
+endif
+else
+if   hp33
+  move[3]=3
+  map[y33][x31]=1
+else
+  move[3]=m1
+endif
+endif
+elif hp31<hp34
+if   hp34<hp35
+if   hp35
+  move[3]=5
+  map[y3][x35]=1
+else
+  move[3]=m1
+endif
+else
+if   hp34
+  move[3]=4
+  map[y33][x30]=1
+else
+  move[3]=m1
+endif
+endif
+elif hp31<hp35 
+if   hp35
+  move[3]=5
+  map[y3][x35]=1
+else
+  move[3]=m1
+endif
+else
+if   hp31
+  move[3]=1
+  map[y30][x31]=1
+else
+  move[3]=m1
+endif
+endif
+elif hp30<hp32
+if   hp32<hp33
+if   hp33<hp34
+if   hp34<hp35
+if   hp35
+  move[3]=5
+  map[y3][x35]=1
+else
+  move[3]=m1
+endif
+else
+if   hp34
+  move[3]=4
+  map[y33][x30]=1
+else
+  move[3]=m1
+endif
+endif
+elif hp33<hp35 
+if   hp35
+  move[3]=5
+  map[y3][x35]=1
+else
+  move[3]=m1
+endif
+else
+if   hp33
+  move[3]=3
+  map[y33][x31]=1
+else
+  move[3]=m1
+endif
+endif
+elif hp32<hp34
+if   hp34<hp35
+if   hp35
+  move[3]=5
+  map[y3][x35]=1
+else
+  move[3]=m1
+endif
+else
+if   hp34
+  move[3]=4
+  map[y33][x30]=1
+else
+  move[3]=m1
+endif
+endif
+elif hp32<hp35 
+if   hp35
+  move[3]=5
+  map[y3][x35]=1
+else
+  move[3]=m1
+endif
+else
+if   hp32
+  move[3]=2
+  map[y3][x32]=1
+else
+  move[3]=m1
+endif
+endif
+elif hp30<hp33
+if   hp33<hp34
+if   hp34<hp35
+if   hp35
+  move[3]=5
+  map[y3][x35]=1
+else
+  move[3]=m1
+endif
+else
+if   hp34
+  move[3]=4
+  map[y33][x30]=1
+else
+  move[3]=m1
+endif
+endif
+elif hp33<hp35 
+if   hp35
+  move[3]=5
+  map[y3][x35]=1
+else
+  move[3]=m1
+endif
+else
+if   hp33
+  move[3]=3
+  map[y33][x31]=1
+else
+  move[3]=m1
+endif
+endif
+elif hp30<hp34
+if   hp34<hp35
+if   hp35
+  move[3]=5
+  map[y3][x35]=1
+else
+  move[3]=m1
+endif
+else
+if   hp34
+  move[3]=4
+  map[y33][x30]=1
+else
+  move[3]=m1
+endif
+endif
+elif hp30<hp35 
+if   hp35
+  move[3]=5
+  map[y3][x35]=1
+else
+  move[3]=m1
+endif
+else
+if   hp30
+  move[3]=0
+  map[y30][x30]=1
+else
+  move[3]=m1
+endif
+endif
+endfunc
+func hexPrefDef0()
+if x0
+  hexPrefDef05()
+  if x0Rev
+    hexPrefDef02()
+    if   y0
+      hexPrefDef00()
+      hexPrefDef01()
+      if y0Rev
+        hexPrefDef03()
+        hexPrefDef04()
+      else
+        gateDef_hexPrefDownMove0()
+      endif
+    else
+      hexPrefDef03()
+      hexPrefDef04()
+      gateDef_hexPrefUpMove0()
+    endif
+  else
+    gateDef_hexPrefRightMove0()
+    if   y0Mod2
+hex01=m2
+hp01 =zero()
+hex03=m2
+hp03 =zero()
+      hexPrefDef00()
+      hexPrefDef04()
+    elif y0
+      hexPrefDef00()
+      hexPrefDef01()
+      if y0Rev
+        hexPrefDef03()
+        hexPrefDef04()
+      else
+hex03=m2
+hp03 =zero()
+hex04=m2
+hp04 =zero()
+      endif
+    else
+hex00=m2
+hp00 =zero()
+hex01=m2
+hp01 =zero()
+      hexPrefDef03()
+      hexPrefDef04()
+    endif
+  endif
+else
+  gateDef_hexPrefLeftMove0()
+  hexPrefDef02()
+  if   y0Mod2
+hex00=m2
+hp00 =zero()
+hex04=m2
+hp04 =zero()
+    hexPrefDef01()
+    hexPrefDef03()
+  elif y0
+    hexPrefDef00()
+    hexPrefDef01()
+    if y0Rev
+      hexPrefDef03()
+      hexPrefDef04()
+    else
+hex03=m2
+hp03 =zero()
+hex04=m2
+hp04 =zero()
+    endif
+  else
+hex00=m2
+hp00 =zero()
+hex01=m2
+hp01 =zero()
+    hexPrefDef03()
+    hexPrefDef04()
+  endif
+endif
+endfunc
+func hexPrefDef00()
+hex00=gb_hexel_owner(x00,y00)
+if hex00>=zero()
+  if   hex00==gb_team_id()
+    hp00=1921
+  else
+    hp00=1920
+  endif
+elif hex00==m1
+    hp00=1920
+else
+  hp00=zero()
+endif
+mp00=map[y00][x00]
+if   (mp00 & 1)
+  hp00=zero()
+elif (mp00 & 2  ) 
+  hp00=hp00/2
+endif
+endfunc
+func hexPrefDef01()
+hex01=gb_hexel_owner(x01,y00)
+if hex01>=zero()
+  if   hex01==gb_team_id()
+    hp01=1921
+  else
+    hp01=1920
+  endif
+elif hex01==m1
+    hp01=1920
+else
+  hp01=zero()
+endif
+mp01=map[y00][x01]
+if   (mp01 & 1)
+  hp01=zero()
+elif (mp01 & 2  ) 
+  hp01=hp01/2
+endif
+endfunc
+func hexPrefDef02()
+hex02=gb_hexel_owner(x02,y0)
+if hex02>=zero()
+  if   hex02==gb_team_id()
+    hp02=1921
+  else
+    hp02=1920
+  endif
+elif hex02==m1
+    hp02=1920
+else
+  hp02=zero()
+endif
+mp02=map[y0][x02]
+if   (mp02 & 1)
+  hp02=zero()
+elif (mp02 & 2  ) 
+  hp02=hp02/2
+endif
+endfunc
+func hexPrefDef03()
+hex03=gb_hexel_owner(x01,y03)
+if hex03>=zero()
+  if   hex03==gb_team_id()
+    hp03=1921
+  else
+    hp03=1920
+  endif
+elif hex03==m1
+    hp03=1920
+else
+  hp03=zero()
+endif
+mp03=map[y03][x01]
+if   (mp03 & 1)
+  hp03=zero()
+elif (mp03 & 2  ) 
+  hp03=hp03/2
+endif
+endfunc
+func hexPrefDef04()
+hex04=gb_hexel_owner(x00,y03)
+if hex04>=zero()
+  if   hex04==gb_team_id()
+    hp04=1921
+  else
+    hp04=1920
+  endif
+elif hex04==m1
+    hp04=1920
+else
+  hp04=zero()
+endif
+mp04=map[y03][x00]
+if   (mp04 & 1)
+  hp04=zero()
+elif (mp04 & 2  ) 
+  hp04=hp04/2
+endif
+endfunc
+func hexPrefDef05()
+hex05=gb_hexel_owner(x05,y0)
+if hex05>=zero()
+  if   hex05==gb_team_id()
+    hp05=1921
+  else
+    hp05=1920
+  endif
+elif hex05==m1
+    hp05=1920
+else
+  hp05=zero()
+endif
+mp05=map[y0][x05]
+if   (mp05 & 1)
+  hp05=zero()
+elif (mp05 & 2  ) 
+  hp05=hp05/2
+endif
+endfunc
+func hexPrefDef1()
+if x1
+  hexPrefDef15()
+  if x1Rev
+    hexPrefDef12()
+    if   y1
+      hexPrefDef10()
+      hexPrefDef11()
+      if y1Rev
+        hexPrefDef13()
+        hexPrefDef14()
+      else
+        gateDef_hexPrefDownMove1()
+      endif
+    else
+      hexPrefDef13()
+      hexPrefDef14()
+      gateDef_hexPrefUpMove1()
+    endif
+  else
+    gateDef_hexPrefRightMove1()
+    if   y1Mod2
+hex11=m2
+hp11 =zero()
+hex13=m2
+hp13 =zero()
+      hexPrefDef10()
+      hexPrefDef14()
+    elif y1
+      hexPrefDef10()
+      hexPrefDef11()
+      if y1Rev
+        hexPrefDef13()
+        hexPrefDef14()
+      else
+hex13=m2
+hp13 =zero()
+hex14=m2
+hp14 =zero()
+      endif
+    else
+hex10=m2
+hp10 =zero()
+hex11=m2
+hp11 =zero()
+      hexPrefDef13()
+      hexPrefDef14()
+    endif
+  endif
+else
+  gateDef_hexPrefLeftMove1()
+  hexPrefDef12()
+  if   y1Mod2
+hex10=m2
+hp10 =zero()
+hex14=m2
+hp14 =zero()
+    hexPrefDef11()
+    hexPrefDef13()
+  elif y1
+    hexPrefDef10()
+    hexPrefDef11()
+    if y1Rev
+      hexPrefDef13()
+      hexPrefDef14()
+    else
+hex13=m2
+hp13 =zero()
+hex14=m2
+hp14 =zero()
+    endif
+  else
+hex10=m2
+hp10 =zero()
+hex11=m2
+hp11 =zero()
+    hexPrefDef13()
+    hexPrefDef14()
+  endif
+endif
+endfunc
+func hexPrefDef10()
+hex10=gb_hexel_owner(x10,y10)
+if hex10>=zero()
+  if   hex10==gb_team_id()
+    hp10=1100
+  else
+    hp10=2048
+  endif
+elif hex10==m1
+    hp10=1920
+else
+  hp10=zero()
+endif
+mp10=map[y10][x10]
+if   (mp10 & 3)
+  hp10=zero()
+elif (mp10 & 4  ) 
+  hp10=hp10*4/5
+elif (mp10 & 8  ) 
+  hp10=hp10*2/3
+endif
+endfunc
+func hexPrefDef11()
+hex11=gb_hexel_owner(x11,y10)
+if hex11>=zero()
+  if   hex11==gb_team_id()
+    hp11=1100
+  else
+    hp11=2048
+  endif
+elif hex11==m1
+    hp11=1920
+else
+  hp11=zero()
+endif
+mp11=map[y10][x11]
+if   (mp11 & 3)
+  hp11=zero()
+elif (mp11 & 4  ) 
+  hp11=hp11*4/5
+elif (mp11 & 8  ) 
+  hp11=hp11*2/3
+endif
+endfunc
+func hexPrefDef12()
+hex12=gb_hexel_owner(x12,y1)
+if hex12>=zero()
+  if   hex12==gb_team_id()
+    hp12=1100
+  else
+    hp12=2048
+  endif
+elif hex12==m1
+    hp12=1920
+else
+  hp12=zero()
+endif
+mp12=map[y1][x12]
+if   (mp12 & 3)
+  hp12=zero()
+elif (mp12 & 4  ) 
+  hp12=hp12*4/5
+elif (mp12 & 8  ) 
+  hp12=hp12*2/3
+endif
+endfunc
+func hexPrefDef13()
+hex13=gb_hexel_owner(x11,y13)
+if hex13>=zero()
+  if   hex13==gb_team_id()
+    hp13=1100
+  else
+    hp13=2048
+  endif
+elif hex13==m1
+    hp13=1920
+else
+  hp13=zero()
+endif
+mp13=map[y13][x11]
+if   (mp13 & 3)
+  hp13=zero()
+elif (mp13 & 4  ) 
+  hp13=hp13*4/5
+elif (mp13 & 8  ) 
+  hp13=hp13*2/3
+endif
+endfunc
+func hexPrefDef14()
+hex14=gb_hexel_owner(x10,y13)
+if hex14>=zero()
+  if   hex14==gb_team_id()
+    hp14=1100
+  else
+    hp14=2048
+  endif
+elif hex14==m1
+    hp14=1920
+else
+  hp14=zero()
+endif
+mp14=map[y13][x10]
+if   (mp14 & 3)
+  hp14=zero()
+elif (mp14 & 4  ) 
+  hp14=hp14*4/5
+elif (mp14 & 8  ) 
+  hp14=hp14*2/3
+endif
+endfunc
+func hexPrefDef15()
+hex15=gb_hexel_owner(x15,y1)
+if hex15>=zero()
+  if   hex15==gb_team_id()
+    hp15=1100
+  else
+    hp15=2048
+  endif
+elif hex15==m1
+    hp15=1920
+else
+  hp15=zero()
+endif
+mp15=map[y1][x15]
+if   (mp15 & 3)
+  hp15=zero()
+elif (mp15 & 4  ) 
+  hp15=hp15*4/5
+elif (mp15 & 8  ) 
+  hp15=hp15*2/3
+endif
+endfunc
+func hexPrefDef2()
+if x2
+  hexPrefDef25()
+  if x2Rev
+    hexPrefDef22()
+    if   y2
+      hexPrefDef20()
+      hexPrefDef21()
+      if y2Rev
+        hexPrefDef23()
+        hexPrefDef24()
+      else
+        gateDef_hexPrefDownMove2()
+      endif
+    else
+      hexPrefDef23()
+      hexPrefDef24()
+      gateDef_hexPrefUpMove2()
+    endif
+  else
+    gateDef_hexPrefRightMove2()
+    if   y2Mod2
+hex21=m2
+hp21 =zero()
+hex23=m2
+hp23 =zero()
+      hexPrefDef20()
+      hexPrefDef24()
+    elif y2
+      hexPrefDef20()
+      hexPrefDef21()
+      if y2Rev
+        hexPrefDef23()
+        hexPrefDef24()
+      else
+hex23=m2
+hp23 =zero()
+hex24=m2
+hp24 =zero()
+      endif
+    else
+hex20=m2
+hp20 =zero()
+hex21=m2
+hp21 =zero()
+      hexPrefDef23()
+      hexPrefDef24()
+    endif
+  endif
+else
+  gateDef_hexPrefLeftMove2()
+  hexPrefDef22()
+  if   y2Mod2
+hex20=m2
+hp20 =zero()
+hex24=m2
+hp24 =zero()
+    hexPrefDef21()
+    hexPrefDef23()
+  elif y2
+    hexPrefDef20()
+    hexPrefDef21()
+    if y2Rev
+      hexPrefDef23()
+      hexPrefDef24()
+    else
+hex23=m2
+hp23 =zero()
+hex24=m2
+hp24 =zero()
+    endif
+  else
+hex20=m2
+hp20 =zero()
+hex21=m2
+hp21 =zero()
+    hexPrefDef23()
+    hexPrefDef24()
+  endif
+endif
+endfunc
+func hexPrefDef20()
+hex20=gb_hexel_owner(x20,y20)
+if hex20>=zero()
+  if   hex20==gb_team_id()
+    hp20=1100
+  else
+    hp20=2048
+  endif
+elif hex20==m1
+    hp20=1920
+else
+  hp20=zero()
+endif
+mp20=map[y20][x20]
+if   (mp20 & 3)
+  hp20=zero()
+elif (mp20 & 4  ) 
+  hp20=hp20*4/5
+elif (mp20 & 8  ) 
+  hp20=hp20*2/3
+endif
+endfunc
+func hexPrefDef21()
+hex21=gb_hexel_owner(x21,y20)
+if hex21>=zero()
+  if   hex21==gb_team_id()
+    hp21=1100
+  else
+    hp21=2048
+  endif
+elif hex21==m1
+    hp21=1920
+else
+  hp21=zero()
+endif
+mp21=map[y20][x21]
+if   (mp21 & 3)
+  hp21=zero()
+elif (mp21 & 4  ) 
+  hp21=hp21*4/5
+elif (mp21 & 8  ) 
+  hp21=hp21*2/3
+endif
+endfunc
+func hexPrefDef22()
+hex22=gb_hexel_owner(x22,y2)
+if hex22>=zero()
+  if   hex22==gb_team_id()
+    hp22=1100
+  else
+    hp22=2048
+  endif
+elif hex22==m1
+    hp22=1920
+else
+  hp22=zero()
+endif
+mp22=map[y2][x22]
+if   (mp22 & 3)
+  hp22=zero()
+elif (mp22 & 4  ) 
+  hp22=hp22*4/5
+elif (mp22 & 8  ) 
+  hp22=hp22*2/3
+endif
+endfunc
+func hexPrefDef23()
+hex23=gb_hexel_owner(x21,y23)
+if hex23>=zero()
+  if   hex23==gb_team_id()
+    hp23=1100
+  else
+    hp23=2048
+  endif
+elif hex23==m1
+    hp23=1920
+else
+  hp23=zero()
+endif
+mp23=map[y23][x21]
+if   (mp23 & 3)
+  hp23=zero()
+elif (mp23 & 4  ) 
+  hp23=hp23*4/5
+elif (mp23 & 8  ) 
+  hp23=hp23*2/3
+endif
+endfunc
+func hexPrefDef24()
+hex24=gb_hexel_owner(x20,y23)
+if hex24>=zero()
+  if   hex24==gb_team_id()
+    hp24=1100
+  else
+    hp24=2048
+  endif
+elif hex24==m1
+    hp24=1920
+else
+  hp24=zero()
+endif
+mp24=map[y23][x20]
+if   (mp24 & 3)
+  hp24=zero()
+elif (mp24 & 4  ) 
+  hp24=hp24*4/5
+elif (mp24 & 8  ) 
+  hp24=hp24*2/3
+endif
+endfunc
+func hexPrefDef25()
+hex25=gb_hexel_owner(x25,y2)
+if hex25>=zero()
+  if   hex25==gb_team_id()
+    hp25=1100
+  else
+    hp25=2048
+  endif
+elif hex25==m1
+    hp25=1920
+else
+  hp25=zero()
+endif
+mp25=map[y2][x25]
+if   (mp25 & 3)
+  hp25=zero()
+elif (mp25 & 4  ) 
+  hp25=hp25*4/5
+elif (mp25 & 8  ) 
+  hp25=hp25*2/3
+endif
+endfunc
+func hexPrefDef3()
+if x3
+  hexPrefDef35()
+  if x3Rev
+    hexPrefDef32()
+    if   y3
+      hexPrefDef30()
+      hexPrefDef31()
+      if y3Rev
+        hexPrefDef33()
+        hexPrefDef34()
+      else
+        gateDef_hexPrefDownMove3()
+      endif
+    else
+      hexPrefDef33()
+      hexPrefDef34()
+      gateDef_hexPrefUpMove3()
+    endif
+  else
+    gateDef_hexPrefRightMove3()
+    if   y3Mod2
+hex31=m2
+hp31 =zero()
+hex33=m2
+hp33 =zero()
+      hexPrefDef30()
+      hexPrefDef34()
+    elif y3
+      hexPrefDef30()
+      hexPrefDef31()
+      if y3Rev
+        hexPrefDef33()
+        hexPrefDef34()
+      else
+hex33=m2
+hp33 =zero()
+hex34=m2
+hp34 =zero()
+      endif
+    else
+hex30=m2
+hp30 =zero()
+hex31=m2
+hp31 =zero()
+      hexPrefDef33()
+      hexPrefDef34()
+    endif
+  endif
+else
+  gateDef_hexPrefLeftMove3()
+  hexPrefDef32()
+  if   y3Mod2
+hex30=m2
+hp30 =zero()
+hex34=m2
+hp34 =zero()
+    hexPrefDef31()
+    hexPrefDef33()
+  elif y3
+    hexPrefDef30()
+    hexPrefDef31()
+    if y3Rev
+      hexPrefDef33()
+      hexPrefDef34()
+    else
+hex33=m2
+hp33 =zero()
+hex34=m2
+hp34 =zero()
+    endif
+  else
+hex30=m2
+hp30 =zero()
+hex31=m2
+hp31 =zero()
+    hexPrefDef33()
+    hexPrefDef34()
+  endif
+endif
+endfunc
+func hexPrefDef30()
+hex30=gb_hexel_owner(x30,y30)
+if hex30>=zero()
+  if   hex30==gb_team_id()
+    hp30=1100
+  else
+    hp30=2048
+  endif
+elif hex30==m1
+    hp30=1920
+else
+  hp30=zero()
+endif
+mp30=map[y30][x30]
+if   (mp30 & 3)
+  hp30=zero()
+elif (mp30 & 4  ) 
+  hp30=hp30*4/5
+elif (mp30 & 8  ) 
+  hp30=hp30*2/3
+endif
+endfunc
+func hexPrefDef31()
+hex31=gb_hexel_owner(x31,y30)
+if hex31>=zero()
+  if   hex31==gb_team_id()
+    hp31=1100
+  else
+    hp31=2048
+  endif
+elif hex31==m1
+    hp31=1920
+else
+  hp31=zero()
+endif
+mp31=map[y30][x31]
+if   (mp31 & 3)
+  hp31=zero()
+elif (mp31 & 4  ) 
+  hp31=hp31*4/5
+elif (mp31 & 8  ) 
+  hp31=hp31*2/3
+endif
+endfunc
+func hexPrefDef32()
+hex32=gb_hexel_owner(x32,y3)
+if hex32>=zero()
+  if   hex32==gb_team_id()
+    hp32=1100
+  else
+    hp32=2048
+  endif
+elif hex32==m1
+    hp32=1920
+else
+  hp32=zero()
+endif
+mp32=map[y3][x32]
+if   (mp32 & 3)
+  hp32=zero()
+elif (mp32 & 4  ) 
+  hp32=hp32*4/5
+elif (mp32 & 8  ) 
+  hp32=hp32*2/3
+endif
+endfunc
+func hexPrefDef33()
+hex33=gb_hexel_owner(x31,y33)
+if hex33>=zero()
+  if   hex33==gb_team_id()
+    hp33=1100
+  else
+    hp33=2048
+  endif
+elif hex33==m1
+    hp33=1920
+else
+  hp33=zero()
+endif
+mp33=map[y33][x31]
+if   (mp33 & 3)
+  hp33=zero()
+elif (mp33 & 4  ) 
+  hp33=hp33*4/5
+elif (mp33 & 8  ) 
+  hp33=hp33*2/3
+endif
+endfunc
+func hexPrefDef34()
+hex34=gb_hexel_owner(x30,y33)
+if hex34>=zero()
+  if   hex34==gb_team_id()
+    hp34=1100
+  else
+    hp34=2048
+  endif
+elif hex34==m1
+    hp34=1920
+else
+  hp34=zero()
+endif
+mp34=map[y33][x30]
+if   (mp34 & 3)
+  hp34=zero()
+elif (mp34 & 4  ) 
+  hp34=hp34*4/5
+elif (mp34 & 8  ) 
+  hp34=hp34*2/3
+endif
+endfunc
+func hexPrefDef35()
+hex35=gb_hexel_owner(x35,y3)
+if hex35>=zero()
+  if   hex35==gb_team_id()
+    hp35=1100
+  else
+    hp35=2048
+  endif
+elif hex35==m1
+    hp35=1920
+else
+  hp35=zero()
+endif
+mp35=map[y3][x35]
+if   (mp35 & 3)
+  hp35=zero()
+elif (mp35 & 4  ) 
+  hp35=hp35*4/5
+elif (mp35 & 8  ) 
+  hp35=hp35*2/3
+endif
+endfunc
+func otherPos0()
+         op0=pAll[1]
+     op00=op0   [0]
+     ox00=op00[zero()]
+     oy00=op00[1]
+     oy00Mod2=oy00 % 2
+     oy000   =oy00-1
+     oy003   =oy00+1
+     ox002   =ox00+1
+     ox005   =ox00-1
+     ox000   =ox00-oy00Mod2
+     ox001   =ox000+1
+       oy00u   =oy00-2
+       oy00d   =oy00+2
+       ox00l   =ox000-1
+       ox00r   =ox001+1
+       if gb_agent_status(1,0)
+       else
+         map[oy00u][ox005]=map[oy00u][ox005]| 8
+         map[oy00u][ox00 ]=map[oy00u][ox00 ]| 8
+         map[oy00u][ox002]=map[oy00u][ox002]| 8
+         map[oy00d][ox005]=map[oy00d][ox005]| 8
+         map[oy00d][ox00 ]=map[oy00d][ox00 ]| 8
+         map[oy00d][ox002]=map[oy00d][ox002]| 8
+         map[oy000][ox00l]=map[oy000][ox00l]| 8
+         map[oy000][ox00r]=map[oy000][ox00r]| 8
+         map[oy003][ox00l]=map[oy003][ox00l]| 8
+         map[oy003][ox00r]=map[oy003][ox00r]| 8
+         map[oy00][ox00-2]=map[oy00][ox00-2]| 8
+         map[oy00][ox00+2]=map[oy00][ox00+2]| 8
+       endif
+       map[oy000][ox000]=map[oy000][ox000] | 6
+       map[oy000][ox001]=map[oy000][ox001] | 6
+       map[oy00 ][ox002]=map[oy00 ][ox002] | 6
+       map[oy003][ox001]=map[oy003][ox001] | 6
+       map[oy003][ox000]=map[oy003][ox000] | 6
+       map[oy00 ][ox005]=map[oy00 ][ox005] | 6
+     map[oy00 ][ox00 ]=1
+     op01=op0   [1]
+     ox01=op01[zero()]
+     oy01=op01[1]
+     oy01Mod2=oy01 % 2
+     oy010   =oy01-1
+     oy013   =oy01+1
+     ox012   =ox01+1
+     ox015   =ox01-1
+     ox010   =ox01-oy01Mod2
+     ox011   =ox010+1
+       if gb_agent_status(1,1)
+       else
+       map[oy010][ox010]=map[oy010][ox010] | 4
+       map[oy010][ox011]=map[oy010][ox011] | 4
+       map[oy01 ][ox012]=map[oy01 ][ox012] | 4
+       map[oy013][ox011]=map[oy013][ox011] | 4
+       map[oy013][ox010]=map[oy013][ox010] | 4
+       map[oy01 ][ox015]=map[oy01 ][ox015] | 4
+       endif
+     map[oy01 ][ox01 ]=1
+     op02=op0   [2]
+     ox02=op02[zero()]
+     oy02=op02[1]
+     oy02Mod2=oy02 % 2
+     oy020   =oy02-1
+     oy023   =oy02+1
+     ox022   =ox02+1
+     ox025   =ox02-1
+     ox020   =ox02-oy02Mod2
+     ox021   =ox020+1
+       if gb_agent_status(1,2)
+       else
+       map[oy020][ox020]=map[oy020][ox020] | 4
+       map[oy020][ox021]=map[oy020][ox021] | 4
+       map[oy02 ][ox022]=map[oy02 ][ox022] | 4
+       map[oy023][ox021]=map[oy023][ox021] | 4
+       map[oy023][ox020]=map[oy023][ox020] | 4
+       map[oy02 ][ox025]=map[oy02 ][ox025] | 4
+       endif
+     map[oy02 ][ox02 ]=1
+     op03=op0   [3]
+     ox03=op03[zero()]
+     oy03=op03[1]
+     oy03Mod2=oy03 % 2
+     oy030   =oy03-1
+     oy033   =oy03+1
+     ox032   =ox03+1
+     ox035   =ox03-1
+     ox030   =ox03-oy03Mod2
+     ox031   =ox030+1
+       if gb_agent_status(1,3)
+       else
+       map[oy030][ox030]=map[oy030][ox030] | 4
+       map[oy030][ox031]=map[oy030][ox031] | 4
+       map[oy03 ][ox032]=map[oy03 ][ox032] | 4
+       map[oy033][ox031]=map[oy033][ox031] | 4
+       map[oy033][ox030]=map[oy033][ox030] | 4
+       map[oy03 ][ox035]=map[oy03 ][ox035] | 4
+       endif
+     map[oy03 ][ox03 ]=1
+         op1=pAll[2]
+     op10=op1   [0]
+     ox10=op10[zero()]
+     oy10=op10[1]
+     oy10Mod2=oy10 % 2
+     oy100   =oy10-1
+     oy103   =oy10+1
+     ox102   =ox10+1
+     ox105   =ox10-1
+     ox100   =ox10-oy10Mod2
+     ox101   =ox100+1
+       oy10u   =oy10-2
+       oy10d   =oy10+2
+       ox10l   =ox100-1
+       ox10r   =ox101+1
+       if gb_agent_status(2,0)
+       else
+         map[oy10u][ox105]=map[oy10u][ox105]| 8
+         map[oy10u][ox10 ]=map[oy10u][ox10 ]| 8
+         map[oy10u][ox102]=map[oy10u][ox102]| 8
+         map[oy10d][ox105]=map[oy10d][ox105]| 8
+         map[oy10d][ox10 ]=map[oy10d][ox10 ]| 8
+         map[oy10d][ox102]=map[oy10d][ox102]| 8
+         map[oy100][ox10l]=map[oy100][ox10l]| 8
+         map[oy100][ox10r]=map[oy100][ox10r]| 8
+         map[oy103][ox10l]=map[oy103][ox10l]| 8
+         map[oy103][ox10r]=map[oy103][ox10r]| 8
+         map[oy10][ox10-2]=map[oy10][ox10-2]| 8
+         map[oy10][ox10+2]=map[oy10][ox10+2]| 8
+       endif
+       map[oy100][ox100]=map[oy100][ox100] | 6
+       map[oy100][ox101]=map[oy100][ox101] | 6
+       map[oy10 ][ox102]=map[oy10 ][ox102] | 6
+       map[oy103][ox101]=map[oy103][ox101] | 6
+       map[oy103][ox100]=map[oy103][ox100] | 6
+       map[oy10 ][ox105]=map[oy10 ][ox105] | 6
+     map[oy10 ][ox10 ]=1
+     op11=op1   [1]
+     ox11=op11[zero()]
+     oy11=op11[1]
+     oy11Mod2=oy11 % 2
+     oy110   =oy11-1
+     oy113   =oy11+1
+     ox112   =ox11+1
+     ox115   =ox11-1
+     ox110   =ox11-oy11Mod2
+     ox111   =ox110+1
+       if gb_agent_status(2,1)
+       else
+       map[oy110][ox110]=map[oy110][ox110] | 4
+       map[oy110][ox111]=map[oy110][ox111] | 4
+       map[oy11 ][ox112]=map[oy11 ][ox112] | 4
+       map[oy113][ox111]=map[oy113][ox111] | 4
+       map[oy113][ox110]=map[oy113][ox110] | 4
+       map[oy11 ][ox115]=map[oy11 ][ox115] | 4
+       endif
+     map[oy11 ][ox11 ]=1
+     op12=op1   [2]
+     ox12=op12[zero()]
+     oy12=op12[1]
+     oy12Mod2=oy12 % 2
+     oy120   =oy12-1
+     oy123   =oy12+1
+     ox122   =ox12+1
+     ox125   =ox12-1
+     ox120   =ox12-oy12Mod2
+     ox121   =ox120+1
+       if gb_agent_status(2,2)
+       else
+       map[oy120][ox120]=map[oy120][ox120] | 4
+       map[oy120][ox121]=map[oy120][ox121] | 4
+       map[oy12 ][ox122]=map[oy12 ][ox122] | 4
+       map[oy123][ox121]=map[oy123][ox121] | 4
+       map[oy123][ox120]=map[oy123][ox120] | 4
+       map[oy12 ][ox125]=map[oy12 ][ox125] | 4
+       endif
+     map[oy12 ][ox12 ]=1
+     op13=op1   [3]
+     ox13=op13[zero()]
+     oy13=op13[1]
+     oy13Mod2=oy13 % 2
+     oy130   =oy13-1
+     oy133   =oy13+1
+     ox132   =ox13+1
+     ox135   =ox13-1
+     ox130   =ox13-oy13Mod2
+     ox131   =ox130+1
+       if gb_agent_status(2,3)
+       else
+       map[oy130][ox130]=map[oy130][ox130] | 4
+       map[oy130][ox131]=map[oy130][ox131] | 4
+       map[oy13 ][ox132]=map[oy13 ][ox132] | 4
+       map[oy133][ox131]=map[oy133][ox131] | 4
+       map[oy133][ox130]=map[oy133][ox130] | 4
+       map[oy13 ][ox135]=map[oy13 ][ox135] | 4
+       endif
+     map[oy13 ][ox13 ]=1
+         op2=pAll[3]
+     op20=op2   [0]
+     ox20=op20[zero()]
+     oy20=op20[1]
+     oy20Mod2=oy20 % 2
+     oy200   =oy20-1
+     oy203   =oy20+1
+     ox202   =ox20+1
+     ox205   =ox20-1
+     ox200   =ox20-oy20Mod2
+     ox201   =ox200+1
+       oy20u   =oy20-2
+       oy20d   =oy20+2
+       ox20l   =ox200-1
+       ox20r   =ox201+1
+       if gb_agent_status(3,0)
+       else
+         map[oy20u][ox205]=map[oy20u][ox205]| 8
+         map[oy20u][ox20 ]=map[oy20u][ox20 ]| 8
+         map[oy20u][ox202]=map[oy20u][ox202]| 8
+         map[oy20d][ox205]=map[oy20d][ox205]| 8
+         map[oy20d][ox20 ]=map[oy20d][ox20 ]| 8
+         map[oy20d][ox202]=map[oy20d][ox202]| 8
+         map[oy200][ox20l]=map[oy200][ox20l]| 8
+         map[oy200][ox20r]=map[oy200][ox20r]| 8
+         map[oy203][ox20l]=map[oy203][ox20l]| 8
+         map[oy203][ox20r]=map[oy203][ox20r]| 8
+         map[oy20][ox20-2]=map[oy20][ox20-2]| 8
+         map[oy20][ox20+2]=map[oy20][ox20+2]| 8
+       endif
+       map[oy200][ox200]=map[oy200][ox200] | 6
+       map[oy200][ox201]=map[oy200][ox201] | 6
+       map[oy20 ][ox202]=map[oy20 ][ox202] | 6
+       map[oy203][ox201]=map[oy203][ox201] | 6
+       map[oy203][ox200]=map[oy203][ox200] | 6
+       map[oy20 ][ox205]=map[oy20 ][ox205] | 6
+     map[oy20 ][ox20 ]=1
+     op21=op2   [1]
+     ox21=op21[zero()]
+     oy21=op21[1]
+     oy21Mod2=oy21 % 2
+     oy210   =oy21-1
+     oy213   =oy21+1
+     ox212   =ox21+1
+     ox215   =ox21-1
+     ox210   =ox21-oy21Mod2
+     ox211   =ox210+1
+       if gb_agent_status(3,1)
+       else
+       map[oy210][ox210]=map[oy210][ox210] | 4
+       map[oy210][ox211]=map[oy210][ox211] | 4
+       map[oy21 ][ox212]=map[oy21 ][ox212] | 4
+       map[oy213][ox211]=map[oy213][ox211] | 4
+       map[oy213][ox210]=map[oy213][ox210] | 4
+       map[oy21 ][ox215]=map[oy21 ][ox215] | 4
+       endif
+     map[oy21 ][ox21 ]=1
+     op22=op2   [2]
+     ox22=op22[zero()]
+     oy22=op22[1]
+     oy22Mod2=oy22 % 2
+     oy220   =oy22-1
+     oy223   =oy22+1
+     ox222   =ox22+1
+     ox225   =ox22-1
+     ox220   =ox22-oy22Mod2
+     ox221   =ox220+1
+       if gb_agent_status(3,2)
+       else
+       map[oy220][ox220]=map[oy220][ox220] | 4
+       map[oy220][ox221]=map[oy220][ox221] | 4
+       map[oy22 ][ox222]=map[oy22 ][ox222] | 4
+       map[oy223][ox221]=map[oy223][ox221] | 4
+       map[oy223][ox220]=map[oy223][ox220] | 4
+       map[oy22 ][ox225]=map[oy22 ][ox225] | 4
+       endif
+     map[oy22 ][ox22 ]=1
+     op23=op2   [3]
+     ox23=op23[zero()]
+     oy23=op23[1]
+     oy23Mod2=oy23 % 2
+     oy230   =oy23-1
+     oy233   =oy23+1
+     ox232   =ox23+1
+     ox235   =ox23-1
+     ox230   =ox23-oy23Mod2
+     ox231   =ox230+1
+       if gb_agent_status(3,3)
+       else
+       map[oy230][ox230]=map[oy230][ox230] | 4
+       map[oy230][ox231]=map[oy230][ox231] | 4
+       map[oy23 ][ox232]=map[oy23 ][ox232] | 4
+       map[oy233][ox231]=map[oy233][ox231] | 4
+       map[oy233][ox230]=map[oy233][ox230] | 4
+       map[oy23 ][ox235]=map[oy23 ][ox235] | 4
+       endif
+     map[oy23 ][ox23 ]=1
+endfunc
+func otherPos1()
+         op0=pAll[0]
+     op00=op0   [0]
+     ox00=op00[zero()]
+     oy00=op00[1]
+     oy00Mod2=oy00 % 2
+     oy000   =oy00-1
+     oy003   =oy00+1
+     ox002   =ox00+1
+     ox005   =ox00-1
+     ox000   =ox00-oy00Mod2
+     ox001   =ox000+1
+       oy00u   =oy00-2
+       oy00d   =oy00+2
+       ox00l   =ox000-1
+       ox00r   =ox001+1
+       if gb_agent_status(0,0)
+       else
+         map[oy00u][ox005]=map[oy00u][ox005]| 8
+         map[oy00u][ox00 ]=map[oy00u][ox00 ]| 8
+         map[oy00u][ox002]=map[oy00u][ox002]| 8
+         map[oy00d][ox005]=map[oy00d][ox005]| 8
+         map[oy00d][ox00 ]=map[oy00d][ox00 ]| 8
+         map[oy00d][ox002]=map[oy00d][ox002]| 8
+         map[oy000][ox00l]=map[oy000][ox00l]| 8
+         map[oy000][ox00r]=map[oy000][ox00r]| 8
+         map[oy003][ox00l]=map[oy003][ox00l]| 8
+         map[oy003][ox00r]=map[oy003][ox00r]| 8
+         map[oy00][ox00-2]=map[oy00][ox00-2]| 8
+         map[oy00][ox00+2]=map[oy00][ox00+2]| 8
+       endif
+       map[oy000][ox000]=map[oy000][ox000] | 6
+       map[oy000][ox001]=map[oy000][ox001] | 6
+       map[oy00 ][ox002]=map[oy00 ][ox002] | 6
+       map[oy003][ox001]=map[oy003][ox001] | 6
+       map[oy003][ox000]=map[oy003][ox000] | 6
+       map[oy00 ][ox005]=map[oy00 ][ox005] | 6
+     map[oy00 ][ox00 ]=1
+     op01=op0   [1]
+     ox01=op01[zero()]
+     oy01=op01[1]
+     oy01Mod2=oy01 % 2
+     oy010   =oy01-1
+     oy013   =oy01+1
+     ox012   =ox01+1
+     ox015   =ox01-1
+     ox010   =ox01-oy01Mod2
+     ox011   =ox010+1
+       if gb_agent_status(0,1)
+       else
+       map[oy010][ox010]=map[oy010][ox010] | 4
+       map[oy010][ox011]=map[oy010][ox011] | 4
+       map[oy01 ][ox012]=map[oy01 ][ox012] | 4
+       map[oy013][ox011]=map[oy013][ox011] | 4
+       map[oy013][ox010]=map[oy013][ox010] | 4
+       map[oy01 ][ox015]=map[oy01 ][ox015] | 4
+       endif
+     map[oy01 ][ox01 ]=1
+     op02=op0   [2]
+     ox02=op02[zero()]
+     oy02=op02[1]
+     oy02Mod2=oy02 % 2
+     oy020   =oy02-1
+     oy023   =oy02+1
+     ox022   =ox02+1
+     ox025   =ox02-1
+     ox020   =ox02-oy02Mod2
+     ox021   =ox020+1
+       if gb_agent_status(0,2)
+       else
+       map[oy020][ox020]=map[oy020][ox020] | 4
+       map[oy020][ox021]=map[oy020][ox021] | 4
+       map[oy02 ][ox022]=map[oy02 ][ox022] | 4
+       map[oy023][ox021]=map[oy023][ox021] | 4
+       map[oy023][ox020]=map[oy023][ox020] | 4
+       map[oy02 ][ox025]=map[oy02 ][ox025] | 4
+       endif
+     map[oy02 ][ox02 ]=1
+     op03=op0   [3]
+     ox03=op03[zero()]
+     oy03=op03[1]
+     oy03Mod2=oy03 % 2
+     oy030   =oy03-1
+     oy033   =oy03+1
+     ox032   =ox03+1
+     ox035   =ox03-1
+     ox030   =ox03-oy03Mod2
+     ox031   =ox030+1
+       if gb_agent_status(0,3)
+       else
+       map[oy030][ox030]=map[oy030][ox030] | 4
+       map[oy030][ox031]=map[oy030][ox031] | 4
+       map[oy03 ][ox032]=map[oy03 ][ox032] | 4
+       map[oy033][ox031]=map[oy033][ox031] | 4
+       map[oy033][ox030]=map[oy033][ox030] | 4
+       map[oy03 ][ox035]=map[oy03 ][ox035] | 4
+       endif
+     map[oy03 ][ox03 ]=1
+         op1=pAll[2]
+     op10=op1   [0]
+     ox10=op10[zero()]
+     oy10=op10[1]
+     oy10Mod2=oy10 % 2
+     oy100   =oy10-1
+     oy103   =oy10+1
+     ox102   =ox10+1
+     ox105   =ox10-1
+     ox100   =ox10-oy10Mod2
+     ox101   =ox100+1
+       oy10u   =oy10-2
+       oy10d   =oy10+2
+       ox10l   =ox100-1
+       ox10r   =ox101+1
+       if gb_agent_status(2,0)
+       else
+         map[oy10u][ox105]=map[oy10u][ox105]| 8
+         map[oy10u][ox10 ]=map[oy10u][ox10 ]| 8
+         map[oy10u][ox102]=map[oy10u][ox102]| 8
+         map[oy10d][ox105]=map[oy10d][ox105]| 8
+         map[oy10d][ox10 ]=map[oy10d][ox10 ]| 8
+         map[oy10d][ox102]=map[oy10d][ox102]| 8
+         map[oy100][ox10l]=map[oy100][ox10l]| 8
+         map[oy100][ox10r]=map[oy100][ox10r]| 8
+         map[oy103][ox10l]=map[oy103][ox10l]| 8
+         map[oy103][ox10r]=map[oy103][ox10r]| 8
+         map[oy10][ox10-2]=map[oy10][ox10-2]| 8
+         map[oy10][ox10+2]=map[oy10][ox10+2]| 8
+       endif
+       map[oy100][ox100]=map[oy100][ox100] | 6
+       map[oy100][ox101]=map[oy100][ox101] | 6
+       map[oy10 ][ox102]=map[oy10 ][ox102] | 6
+       map[oy103][ox101]=map[oy103][ox101] | 6
+       map[oy103][ox100]=map[oy103][ox100] | 6
+       map[oy10 ][ox105]=map[oy10 ][ox105] | 6
+     map[oy10 ][ox10 ]=1
+     op11=op1   [1]
+     ox11=op11[zero()]
+     oy11=op11[1]
+     oy11Mod2=oy11 % 2
+     oy110   =oy11-1
+     oy113   =oy11+1
+     ox112   =ox11+1
+     ox115   =ox11-1
+     ox110   =ox11-oy11Mod2
+     ox111   =ox110+1
+       if gb_agent_status(2,1)
+       else
+       map[oy110][ox110]=map[oy110][ox110] | 4
+       map[oy110][ox111]=map[oy110][ox111] | 4
+       map[oy11 ][ox112]=map[oy11 ][ox112] | 4
+       map[oy113][ox111]=map[oy113][ox111] | 4
+       map[oy113][ox110]=map[oy113][ox110] | 4
+       map[oy11 ][ox115]=map[oy11 ][ox115] | 4
+       endif
+     map[oy11 ][ox11 ]=1
+     op12=op1   [2]
+     ox12=op12[zero()]
+     oy12=op12[1]
+     oy12Mod2=oy12 % 2
+     oy120   =oy12-1
+     oy123   =oy12+1
+     ox122   =ox12+1
+     ox125   =ox12-1
+     ox120   =ox12-oy12Mod2
+     ox121   =ox120+1
+       if gb_agent_status(2,2)
+       else
+       map[oy120][ox120]=map[oy120][ox120] | 4
+       map[oy120][ox121]=map[oy120][ox121] | 4
+       map[oy12 ][ox122]=map[oy12 ][ox122] | 4
+       map[oy123][ox121]=map[oy123][ox121] | 4
+       map[oy123][ox120]=map[oy123][ox120] | 4
+       map[oy12 ][ox125]=map[oy12 ][ox125] | 4
+       endif
+     map[oy12 ][ox12 ]=1
+     op13=op1   [3]
+     ox13=op13[zero()]
+     oy13=op13[1]
+     oy13Mod2=oy13 % 2
+     oy130   =oy13-1
+     oy133   =oy13+1
+     ox132   =ox13+1
+     ox135   =ox13-1
+     ox130   =ox13-oy13Mod2
+     ox131   =ox130+1
+       if gb_agent_status(2,3)
+       else
+       map[oy130][ox130]=map[oy130][ox130] | 4
+       map[oy130][ox131]=map[oy130][ox131] | 4
+       map[oy13 ][ox132]=map[oy13 ][ox132] | 4
+       map[oy133][ox131]=map[oy133][ox131] | 4
+       map[oy133][ox130]=map[oy133][ox130] | 4
+       map[oy13 ][ox135]=map[oy13 ][ox135] | 4
+       endif
+     map[oy13 ][ox13 ]=1
+         op2=pAll[3]
+     op20=op2   [0]
+     ox20=op20[zero()]
+     oy20=op20[1]
+     oy20Mod2=oy20 % 2
+     oy200   =oy20-1
+     oy203   =oy20+1
+     ox202   =ox20+1
+     ox205   =ox20-1
+     ox200   =ox20-oy20Mod2
+     ox201   =ox200+1
+       oy20u   =oy20-2
+       oy20d   =oy20+2
+       ox20l   =ox200-1
+       ox20r   =ox201+1
+       if gb_agent_status(3,0)
+       else
+         map[oy20u][ox205]=map[oy20u][ox205]| 8
+         map[oy20u][ox20 ]=map[oy20u][ox20 ]| 8
+         map[oy20u][ox202]=map[oy20u][ox202]| 8
+         map[oy20d][ox205]=map[oy20d][ox205]| 8
+         map[oy20d][ox20 ]=map[oy20d][ox20 ]| 8
+         map[oy20d][ox202]=map[oy20d][ox202]| 8
+         map[oy200][ox20l]=map[oy200][ox20l]| 8
+         map[oy200][ox20r]=map[oy200][ox20r]| 8
+         map[oy203][ox20l]=map[oy203][ox20l]| 8
+         map[oy203][ox20r]=map[oy203][ox20r]| 8
+         map[oy20][ox20-2]=map[oy20][ox20-2]| 8
+         map[oy20][ox20+2]=map[oy20][ox20+2]| 8
+       endif
+       map[oy200][ox200]=map[oy200][ox200] | 6
+       map[oy200][ox201]=map[oy200][ox201] | 6
+       map[oy20 ][ox202]=map[oy20 ][ox202] | 6
+       map[oy203][ox201]=map[oy203][ox201] | 6
+       map[oy203][ox200]=map[oy203][ox200] | 6
+       map[oy20 ][ox205]=map[oy20 ][ox205] | 6
+     map[oy20 ][ox20 ]=1
+     op21=op2   [1]
+     ox21=op21[zero()]
+     oy21=op21[1]
+     oy21Mod2=oy21 % 2
+     oy210   =oy21-1
+     oy213   =oy21+1
+     ox212   =ox21+1
+     ox215   =ox21-1
+     ox210   =ox21-oy21Mod2
+     ox211   =ox210+1
+       if gb_agent_status(3,1)
+       else
+       map[oy210][ox210]=map[oy210][ox210] | 4
+       map[oy210][ox211]=map[oy210][ox211] | 4
+       map[oy21 ][ox212]=map[oy21 ][ox212] | 4
+       map[oy213][ox211]=map[oy213][ox211] | 4
+       map[oy213][ox210]=map[oy213][ox210] | 4
+       map[oy21 ][ox215]=map[oy21 ][ox215] | 4
+       endif
+     map[oy21 ][ox21 ]=1
+     op22=op2   [2]
+     ox22=op22[zero()]
+     oy22=op22[1]
+     oy22Mod2=oy22 % 2
+     oy220   =oy22-1
+     oy223   =oy22+1
+     ox222   =ox22+1
+     ox225   =ox22-1
+     ox220   =ox22-oy22Mod2
+     ox221   =ox220+1
+       if gb_agent_status(3,2)
+       else
+       map[oy220][ox220]=map[oy220][ox220] | 4
+       map[oy220][ox221]=map[oy220][ox221] | 4
+       map[oy22 ][ox222]=map[oy22 ][ox222] | 4
+       map[oy223][ox221]=map[oy223][ox221] | 4
+       map[oy223][ox220]=map[oy223][ox220] | 4
+       map[oy22 ][ox225]=map[oy22 ][ox225] | 4
+       endif
+     map[oy22 ][ox22 ]=1
+     op23=op2   [3]
+     ox23=op23[zero()]
+     oy23=op23[1]
+     oy23Mod2=oy23 % 2
+     oy230   =oy23-1
+     oy233   =oy23+1
+     ox232   =ox23+1
+     ox235   =ox23-1
+     ox230   =ox23-oy23Mod2
+     ox231   =ox230+1
+       if gb_agent_status(3,3)
+       else
+       map[oy230][ox230]=map[oy230][ox230] | 4
+       map[oy230][ox231]=map[oy230][ox231] | 4
+       map[oy23 ][ox232]=map[oy23 ][ox232] | 4
+       map[oy233][ox231]=map[oy233][ox231] | 4
+       map[oy233][ox230]=map[oy233][ox230] | 4
+       map[oy23 ][ox235]=map[oy23 ][ox235] | 4
+       endif
+     map[oy23 ][ox23 ]=1
+endfunc
+func otherPos2()
+         op0=pAll[0]
+     op00=op0   [0]
+     ox00=op00[zero()]
+     oy00=op00[1]
+     oy00Mod2=oy00 % 2
+     oy000   =oy00-1
+     oy003   =oy00+1
+     ox002   =ox00+1
+     ox005   =ox00-1
+     ox000   =ox00-oy00Mod2
+     ox001   =ox000+1
+       oy00u   =oy00-2
+       oy00d   =oy00+2
+       ox00l   =ox000-1
+       ox00r   =ox001+1
+       if gb_agent_status(0,0)
+       else
+         map[oy00u][ox005]=map[oy00u][ox005]| 8
+         map[oy00u][ox00 ]=map[oy00u][ox00 ]| 8
+         map[oy00u][ox002]=map[oy00u][ox002]| 8
+         map[oy00d][ox005]=map[oy00d][ox005]| 8
+         map[oy00d][ox00 ]=map[oy00d][ox00 ]| 8
+         map[oy00d][ox002]=map[oy00d][ox002]| 8
+         map[oy000][ox00l]=map[oy000][ox00l]| 8
+         map[oy000][ox00r]=map[oy000][ox00r]| 8
+         map[oy003][ox00l]=map[oy003][ox00l]| 8
+         map[oy003][ox00r]=map[oy003][ox00r]| 8
+         map[oy00][ox00-2]=map[oy00][ox00-2]| 8
+         map[oy00][ox00+2]=map[oy00][ox00+2]| 8
+       endif
+       map[oy000][ox000]=map[oy000][ox000] | 6
+       map[oy000][ox001]=map[oy000][ox001] | 6
+       map[oy00 ][ox002]=map[oy00 ][ox002] | 6
+       map[oy003][ox001]=map[oy003][ox001] | 6
+       map[oy003][ox000]=map[oy003][ox000] | 6
+       map[oy00 ][ox005]=map[oy00 ][ox005] | 6
+     map[oy00 ][ox00 ]=1
+     op01=op0   [1]
+     ox01=op01[zero()]
+     oy01=op01[1]
+     oy01Mod2=oy01 % 2
+     oy010   =oy01-1
+     oy013   =oy01+1
+     ox012   =ox01+1
+     ox015   =ox01-1
+     ox010   =ox01-oy01Mod2
+     ox011   =ox010+1
+       if gb_agent_status(0,1)
+       else
+       map[oy010][ox010]=map[oy010][ox010] | 4
+       map[oy010][ox011]=map[oy010][ox011] | 4
+       map[oy01 ][ox012]=map[oy01 ][ox012] | 4
+       map[oy013][ox011]=map[oy013][ox011] | 4
+       map[oy013][ox010]=map[oy013][ox010] | 4
+       map[oy01 ][ox015]=map[oy01 ][ox015] | 4
+       endif
+     map[oy01 ][ox01 ]=1
+     op02=op0   [2]
+     ox02=op02[zero()]
+     oy02=op02[1]
+     oy02Mod2=oy02 % 2
+     oy020   =oy02-1
+     oy023   =oy02+1
+     ox022   =ox02+1
+     ox025   =ox02-1
+     ox020   =ox02-oy02Mod2
+     ox021   =ox020+1
+       if gb_agent_status(0,2)
+       else
+       map[oy020][ox020]=map[oy020][ox020] | 4
+       map[oy020][ox021]=map[oy020][ox021] | 4
+       map[oy02 ][ox022]=map[oy02 ][ox022] | 4
+       map[oy023][ox021]=map[oy023][ox021] | 4
+       map[oy023][ox020]=map[oy023][ox020] | 4
+       map[oy02 ][ox025]=map[oy02 ][ox025] | 4
+       endif
+     map[oy02 ][ox02 ]=1
+     op03=op0   [3]
+     ox03=op03[zero()]
+     oy03=op03[1]
+     oy03Mod2=oy03 % 2
+     oy030   =oy03-1
+     oy033   =oy03+1
+     ox032   =ox03+1
+     ox035   =ox03-1
+     ox030   =ox03-oy03Mod2
+     ox031   =ox030+1
+       if gb_agent_status(0,3)
+       else
+       map[oy030][ox030]=map[oy030][ox030] | 4
+       map[oy030][ox031]=map[oy030][ox031] | 4
+       map[oy03 ][ox032]=map[oy03 ][ox032] | 4
+       map[oy033][ox031]=map[oy033][ox031] | 4
+       map[oy033][ox030]=map[oy033][ox030] | 4
+       map[oy03 ][ox035]=map[oy03 ][ox035] | 4
+       endif
+     map[oy03 ][ox03 ]=1
+         op1=pAll[1]
+     op10=op1   [0]
+     ox10=op10[zero()]
+     oy10=op10[1]
+     oy10Mod2=oy10 % 2
+     oy100   =oy10-1
+     oy103   =oy10+1
+     ox102   =ox10+1
+     ox105   =ox10-1
+     ox100   =ox10-oy10Mod2
+     ox101   =ox100+1
+       oy10u   =oy10-2
+       oy10d   =oy10+2
+       ox10l   =ox100-1
+       ox10r   =ox101+1
+       if gb_agent_status(1,0)
+       else
+         map[oy10u][ox105]=map[oy10u][ox105]| 8
+         map[oy10u][ox10 ]=map[oy10u][ox10 ]| 8
+         map[oy10u][ox102]=map[oy10u][ox102]| 8
+         map[oy10d][ox105]=map[oy10d][ox105]| 8
+         map[oy10d][ox10 ]=map[oy10d][ox10 ]| 8
+         map[oy10d][ox102]=map[oy10d][ox102]| 8
+         map[oy100][ox10l]=map[oy100][ox10l]| 8
+         map[oy100][ox10r]=map[oy100][ox10r]| 8
+         map[oy103][ox10l]=map[oy103][ox10l]| 8
+         map[oy103][ox10r]=map[oy103][ox10r]| 8
+         map[oy10][ox10-2]=map[oy10][ox10-2]| 8
+         map[oy10][ox10+2]=map[oy10][ox10+2]| 8
+       endif
+       map[oy100][ox100]=map[oy100][ox100] | 6
+       map[oy100][ox101]=map[oy100][ox101] | 6
+       map[oy10 ][ox102]=map[oy10 ][ox102] | 6
+       map[oy103][ox101]=map[oy103][ox101] | 6
+       map[oy103][ox100]=map[oy103][ox100] | 6
+       map[oy10 ][ox105]=map[oy10 ][ox105] | 6
+     map[oy10 ][ox10 ]=1
+     op11=op1   [1]
+     ox11=op11[zero()]
+     oy11=op11[1]
+     oy11Mod2=oy11 % 2
+     oy110   =oy11-1
+     oy113   =oy11+1
+     ox112   =ox11+1
+     ox115   =ox11-1
+     ox110   =ox11-oy11Mod2
+     ox111   =ox110+1
+       if gb_agent_status(1,1)
+       else
+       map[oy110][ox110]=map[oy110][ox110] | 4
+       map[oy110][ox111]=map[oy110][ox111] | 4
+       map[oy11 ][ox112]=map[oy11 ][ox112] | 4
+       map[oy113][ox111]=map[oy113][ox111] | 4
+       map[oy113][ox110]=map[oy113][ox110] | 4
+       map[oy11 ][ox115]=map[oy11 ][ox115] | 4
+       endif
+     map[oy11 ][ox11 ]=1
+     op12=op1   [2]
+     ox12=op12[zero()]
+     oy12=op12[1]
+     oy12Mod2=oy12 % 2
+     oy120   =oy12-1
+     oy123   =oy12+1
+     ox122   =ox12+1
+     ox125   =ox12-1
+     ox120   =ox12-oy12Mod2
+     ox121   =ox120+1
+       if gb_agent_status(1,2)
+       else
+       map[oy120][ox120]=map[oy120][ox120] | 4
+       map[oy120][ox121]=map[oy120][ox121] | 4
+       map[oy12 ][ox122]=map[oy12 ][ox122] | 4
+       map[oy123][ox121]=map[oy123][ox121] | 4
+       map[oy123][ox120]=map[oy123][ox120] | 4
+       map[oy12 ][ox125]=map[oy12 ][ox125] | 4
+       endif
+     map[oy12 ][ox12 ]=1
+     op13=op1   [3]
+     ox13=op13[zero()]
+     oy13=op13[1]
+     oy13Mod2=oy13 % 2
+     oy130   =oy13-1
+     oy133   =oy13+1
+     ox132   =ox13+1
+     ox135   =ox13-1
+     ox130   =ox13-oy13Mod2
+     ox131   =ox130+1
+       if gb_agent_status(1,3)
+       else
+       map[oy130][ox130]=map[oy130][ox130] | 4
+       map[oy130][ox131]=map[oy130][ox131] | 4
+       map[oy13 ][ox132]=map[oy13 ][ox132] | 4
+       map[oy133][ox131]=map[oy133][ox131] | 4
+       map[oy133][ox130]=map[oy133][ox130] | 4
+       map[oy13 ][ox135]=map[oy13 ][ox135] | 4
+       endif
+     map[oy13 ][ox13 ]=1
+         op2=pAll[3]
+     op20=op2   [0]
+     ox20=op20[zero()]
+     oy20=op20[1]
+     oy20Mod2=oy20 % 2
+     oy200   =oy20-1
+     oy203   =oy20+1
+     ox202   =ox20+1
+     ox205   =ox20-1
+     ox200   =ox20-oy20Mod2
+     ox201   =ox200+1
+       oy20u   =oy20-2
+       oy20d   =oy20+2
+       ox20l   =ox200-1
+       ox20r   =ox201+1
+       if gb_agent_status(3,0)
+       else
+         map[oy20u][ox205]=map[oy20u][ox205]| 8
+         map[oy20u][ox20 ]=map[oy20u][ox20 ]| 8
+         map[oy20u][ox202]=map[oy20u][ox202]| 8
+         map[oy20d][ox205]=map[oy20d][ox205]| 8
+         map[oy20d][ox20 ]=map[oy20d][ox20 ]| 8
+         map[oy20d][ox202]=map[oy20d][ox202]| 8
+         map[oy200][ox20l]=map[oy200][ox20l]| 8
+         map[oy200][ox20r]=map[oy200][ox20r]| 8
+         map[oy203][ox20l]=map[oy203][ox20l]| 8
+         map[oy203][ox20r]=map[oy203][ox20r]| 8
+         map[oy20][ox20-2]=map[oy20][ox20-2]| 8
+         map[oy20][ox20+2]=map[oy20][ox20+2]| 8
+       endif
+       map[oy200][ox200]=map[oy200][ox200] | 6
+       map[oy200][ox201]=map[oy200][ox201] | 6
+       map[oy20 ][ox202]=map[oy20 ][ox202] | 6
+       map[oy203][ox201]=map[oy203][ox201] | 6
+       map[oy203][ox200]=map[oy203][ox200] | 6
+       map[oy20 ][ox205]=map[oy20 ][ox205] | 6
+     map[oy20 ][ox20 ]=1
+     op21=op2   [1]
+     ox21=op21[zero()]
+     oy21=op21[1]
+     oy21Mod2=oy21 % 2
+     oy210   =oy21-1
+     oy213   =oy21+1
+     ox212   =ox21+1
+     ox215   =ox21-1
+     ox210   =ox21-oy21Mod2
+     ox211   =ox210+1
+       if gb_agent_status(3,1)
+       else
+       map[oy210][ox210]=map[oy210][ox210] | 4
+       map[oy210][ox211]=map[oy210][ox211] | 4
+       map[oy21 ][ox212]=map[oy21 ][ox212] | 4
+       map[oy213][ox211]=map[oy213][ox211] | 4
+       map[oy213][ox210]=map[oy213][ox210] | 4
+       map[oy21 ][ox215]=map[oy21 ][ox215] | 4
+       endif
+     map[oy21 ][ox21 ]=1
+     op22=op2   [2]
+     ox22=op22[zero()]
+     oy22=op22[1]
+     oy22Mod2=oy22 % 2
+     oy220   =oy22-1
+     oy223   =oy22+1
+     ox222   =ox22+1
+     ox225   =ox22-1
+     ox220   =ox22-oy22Mod2
+     ox221   =ox220+1
+       if gb_agent_status(3,2)
+       else
+       map[oy220][ox220]=map[oy220][ox220] | 4
+       map[oy220][ox221]=map[oy220][ox221] | 4
+       map[oy22 ][ox222]=map[oy22 ][ox222] | 4
+       map[oy223][ox221]=map[oy223][ox221] | 4
+       map[oy223][ox220]=map[oy223][ox220] | 4
+       map[oy22 ][ox225]=map[oy22 ][ox225] | 4
+       endif
+     map[oy22 ][ox22 ]=1
+     op23=op2   [3]
+     ox23=op23[zero()]
+     oy23=op23[1]
+     oy23Mod2=oy23 % 2
+     oy230   =oy23-1
+     oy233   =oy23+1
+     ox232   =ox23+1
+     ox235   =ox23-1
+     ox230   =ox23-oy23Mod2
+     ox231   =ox230+1
+       if gb_agent_status(3,3)
+       else
+       map[oy230][ox230]=map[oy230][ox230] | 4
+       map[oy230][ox231]=map[oy230][ox231] | 4
+       map[oy23 ][ox232]=map[oy23 ][ox232] | 4
+       map[oy233][ox231]=map[oy233][ox231] | 4
+       map[oy233][ox230]=map[oy233][ox230] | 4
+       map[oy23 ][ox235]=map[oy23 ][ox235] | 4
+       endif
+     map[oy23 ][ox23 ]=1
+endfunc
+func otherPos3()
+         op0=pAll[0]
+     op00=op0   [0]
+     ox00=op00[zero()]
+     oy00=op00[1]
+     oy00Mod2=oy00 % 2
+     oy000   =oy00-1
+     oy003   =oy00+1
+     ox002   =ox00+1
+     ox005   =ox00-1
+     ox000   =ox00-oy00Mod2
+     ox001   =ox000+1
+       oy00u   =oy00-2
+       oy00d   =oy00+2
+       ox00l   =ox000-1
+       ox00r   =ox001+1
+       if gb_agent_status(0,0)
+       else
+         map[oy00u][ox005]=map[oy00u][ox005]| 8
+         map[oy00u][ox00 ]=map[oy00u][ox00 ]| 8
+         map[oy00u][ox002]=map[oy00u][ox002]| 8
+         map[oy00d][ox005]=map[oy00d][ox005]| 8
+         map[oy00d][ox00 ]=map[oy00d][ox00 ]| 8
+         map[oy00d][ox002]=map[oy00d][ox002]| 8
+         map[oy000][ox00l]=map[oy000][ox00l]| 8
+         map[oy000][ox00r]=map[oy000][ox00r]| 8
+         map[oy003][ox00l]=map[oy003][ox00l]| 8
+         map[oy003][ox00r]=map[oy003][ox00r]| 8
+         map[oy00][ox00-2]=map[oy00][ox00-2]| 8
+         map[oy00][ox00+2]=map[oy00][ox00+2]| 8
+       endif
+       map[oy000][ox000]=map[oy000][ox000] | 6
+       map[oy000][ox001]=map[oy000][ox001] | 6
+       map[oy00 ][ox002]=map[oy00 ][ox002] | 6
+       map[oy003][ox001]=map[oy003][ox001] | 6
+       map[oy003][ox000]=map[oy003][ox000] | 6
+       map[oy00 ][ox005]=map[oy00 ][ox005] | 6
+     map[oy00 ][ox00 ]=1
+     op01=op0   [1]
+     ox01=op01[zero()]
+     oy01=op01[1]
+     oy01Mod2=oy01 % 2
+     oy010   =oy01-1
+     oy013   =oy01+1
+     ox012   =ox01+1
+     ox015   =ox01-1
+     ox010   =ox01-oy01Mod2
+     ox011   =ox010+1
+       if gb_agent_status(0,1)
+       else
+       map[oy010][ox010]=map[oy010][ox010] | 4
+       map[oy010][ox011]=map[oy010][ox011] | 4
+       map[oy01 ][ox012]=map[oy01 ][ox012] | 4
+       map[oy013][ox011]=map[oy013][ox011] | 4
+       map[oy013][ox010]=map[oy013][ox010] | 4
+       map[oy01 ][ox015]=map[oy01 ][ox015] | 4
+       endif
+     map[oy01 ][ox01 ]=1
+     op02=op0   [2]
+     ox02=op02[zero()]
+     oy02=op02[1]
+     oy02Mod2=oy02 % 2
+     oy020   =oy02-1
+     oy023   =oy02+1
+     ox022   =ox02+1
+     ox025   =ox02-1
+     ox020   =ox02-oy02Mod2
+     ox021   =ox020+1
+       if gb_agent_status(0,2)
+       else
+       map[oy020][ox020]=map[oy020][ox020] | 4
+       map[oy020][ox021]=map[oy020][ox021] | 4
+       map[oy02 ][ox022]=map[oy02 ][ox022] | 4
+       map[oy023][ox021]=map[oy023][ox021] | 4
+       map[oy023][ox020]=map[oy023][ox020] | 4
+       map[oy02 ][ox025]=map[oy02 ][ox025] | 4
+       endif
+     map[oy02 ][ox02 ]=1
+     op03=op0   [3]
+     ox03=op03[zero()]
+     oy03=op03[1]
+     oy03Mod2=oy03 % 2
+     oy030   =oy03-1
+     oy033   =oy03+1
+     ox032   =ox03+1
+     ox035   =ox03-1
+     ox030   =ox03-oy03Mod2
+     ox031   =ox030+1
+       if gb_agent_status(0,3)
+       else
+       map[oy030][ox030]=map[oy030][ox030] | 4
+       map[oy030][ox031]=map[oy030][ox031] | 4
+       map[oy03 ][ox032]=map[oy03 ][ox032] | 4
+       map[oy033][ox031]=map[oy033][ox031] | 4
+       map[oy033][ox030]=map[oy033][ox030] | 4
+       map[oy03 ][ox035]=map[oy03 ][ox035] | 4
+       endif
+     map[oy03 ][ox03 ]=1
+         op1=pAll[1]
+     op10=op1   [0]
+     ox10=op10[zero()]
+     oy10=op10[1]
+     oy10Mod2=oy10 % 2
+     oy100   =oy10-1
+     oy103   =oy10+1
+     ox102   =ox10+1
+     ox105   =ox10-1
+     ox100   =ox10-oy10Mod2
+     ox101   =ox100+1
+       oy10u   =oy10-2
+       oy10d   =oy10+2
+       ox10l   =ox100-1
+       ox10r   =ox101+1
+       if gb_agent_status(1,0)
+       else
+         map[oy10u][ox105]=map[oy10u][ox105]| 8
+         map[oy10u][ox10 ]=map[oy10u][ox10 ]| 8
+         map[oy10u][ox102]=map[oy10u][ox102]| 8
+         map[oy10d][ox105]=map[oy10d][ox105]| 8
+         map[oy10d][ox10 ]=map[oy10d][ox10 ]| 8
+         map[oy10d][ox102]=map[oy10d][ox102]| 8
+         map[oy100][ox10l]=map[oy100][ox10l]| 8
+         map[oy100][ox10r]=map[oy100][ox10r]| 8
+         map[oy103][ox10l]=map[oy103][ox10l]| 8
+         map[oy103][ox10r]=map[oy103][ox10r]| 8
+         map[oy10][ox10-2]=map[oy10][ox10-2]| 8
+         map[oy10][ox10+2]=map[oy10][ox10+2]| 8
+       endif
+       map[oy100][ox100]=map[oy100][ox100] | 6
+       map[oy100][ox101]=map[oy100][ox101] | 6
+       map[oy10 ][ox102]=map[oy10 ][ox102] | 6
+       map[oy103][ox101]=map[oy103][ox101] | 6
+       map[oy103][ox100]=map[oy103][ox100] | 6
+       map[oy10 ][ox105]=map[oy10 ][ox105] | 6
+     map[oy10 ][ox10 ]=1
+     op11=op1   [1]
+     ox11=op11[zero()]
+     oy11=op11[1]
+     oy11Mod2=oy11 % 2
+     oy110   =oy11-1
+     oy113   =oy11+1
+     ox112   =ox11+1
+     ox115   =ox11-1
+     ox110   =ox11-oy11Mod2
+     ox111   =ox110+1
+       if gb_agent_status(1,1)
+       else
+       map[oy110][ox110]=map[oy110][ox110] | 4
+       map[oy110][ox111]=map[oy110][ox111] | 4
+       map[oy11 ][ox112]=map[oy11 ][ox112] | 4
+       map[oy113][ox111]=map[oy113][ox111] | 4
+       map[oy113][ox110]=map[oy113][ox110] | 4
+       map[oy11 ][ox115]=map[oy11 ][ox115] | 4
+       endif
+     map[oy11 ][ox11 ]=1
+     op12=op1   [2]
+     ox12=op12[zero()]
+     oy12=op12[1]
+     oy12Mod2=oy12 % 2
+     oy120   =oy12-1
+     oy123   =oy12+1
+     ox122   =ox12+1
+     ox125   =ox12-1
+     ox120   =ox12-oy12Mod2
+     ox121   =ox120+1
+       if gb_agent_status(1,2)
+       else
+       map[oy120][ox120]=map[oy120][ox120] | 4
+       map[oy120][ox121]=map[oy120][ox121] | 4
+       map[oy12 ][ox122]=map[oy12 ][ox122] | 4
+       map[oy123][ox121]=map[oy123][ox121] | 4
+       map[oy123][ox120]=map[oy123][ox120] | 4
+       map[oy12 ][ox125]=map[oy12 ][ox125] | 4
+       endif
+     map[oy12 ][ox12 ]=1
+     op13=op1   [3]
+     ox13=op13[zero()]
+     oy13=op13[1]
+     oy13Mod2=oy13 % 2
+     oy130   =oy13-1
+     oy133   =oy13+1
+     ox132   =ox13+1
+     ox135   =ox13-1
+     ox130   =ox13-oy13Mod2
+     ox131   =ox130+1
+       if gb_agent_status(1,3)
+       else
+       map[oy130][ox130]=map[oy130][ox130] | 4
+       map[oy130][ox131]=map[oy130][ox131] | 4
+       map[oy13 ][ox132]=map[oy13 ][ox132] | 4
+       map[oy133][ox131]=map[oy133][ox131] | 4
+       map[oy133][ox130]=map[oy133][ox130] | 4
+       map[oy13 ][ox135]=map[oy13 ][ox135] | 4
+       endif
+     map[oy13 ][ox13 ]=1
+         op2=pAll[2]
+     op20=op2   [0]
+     ox20=op20[zero()]
+     oy20=op20[1]
+     oy20Mod2=oy20 % 2
+     oy200   =oy20-1
+     oy203   =oy20+1
+     ox202   =ox20+1
+     ox205   =ox20-1
+     ox200   =ox20-oy20Mod2
+     ox201   =ox200+1
+       oy20u   =oy20-2
+       oy20d   =oy20+2
+       ox20l   =ox200-1
+       ox20r   =ox201+1
+       if gb_agent_status(2,0)
+       else
+         map[oy20u][ox205]=map[oy20u][ox205]| 8
+         map[oy20u][ox20 ]=map[oy20u][ox20 ]| 8
+         map[oy20u][ox202]=map[oy20u][ox202]| 8
+         map[oy20d][ox205]=map[oy20d][ox205]| 8
+         map[oy20d][ox20 ]=map[oy20d][ox20 ]| 8
+         map[oy20d][ox202]=map[oy20d][ox202]| 8
+         map[oy200][ox20l]=map[oy200][ox20l]| 8
+         map[oy200][ox20r]=map[oy200][ox20r]| 8
+         map[oy203][ox20l]=map[oy203][ox20l]| 8
+         map[oy203][ox20r]=map[oy203][ox20r]| 8
+         map[oy20][ox20-2]=map[oy20][ox20-2]| 8
+         map[oy20][ox20+2]=map[oy20][ox20+2]| 8
+       endif
+       map[oy200][ox200]=map[oy200][ox200] | 6
+       map[oy200][ox201]=map[oy200][ox201] | 6
+       map[oy20 ][ox202]=map[oy20 ][ox202] | 6
+       map[oy203][ox201]=map[oy203][ox201] | 6
+       map[oy203][ox200]=map[oy203][ox200] | 6
+       map[oy20 ][ox205]=map[oy20 ][ox205] | 6
+     map[oy20 ][ox20 ]=1
+     op21=op2   [1]
+     ox21=op21[zero()]
+     oy21=op21[1]
+     oy21Mod2=oy21 % 2
+     oy210   =oy21-1
+     oy213   =oy21+1
+     ox212   =ox21+1
+     ox215   =ox21-1
+     ox210   =ox21-oy21Mod2
+     ox211   =ox210+1
+       if gb_agent_status(2,1)
+       else
+       map[oy210][ox210]=map[oy210][ox210] | 4
+       map[oy210][ox211]=map[oy210][ox211] | 4
+       map[oy21 ][ox212]=map[oy21 ][ox212] | 4
+       map[oy213][ox211]=map[oy213][ox211] | 4
+       map[oy213][ox210]=map[oy213][ox210] | 4
+       map[oy21 ][ox215]=map[oy21 ][ox215] | 4
+       endif
+     map[oy21 ][ox21 ]=1
+     op22=op2   [2]
+     ox22=op22[zero()]
+     oy22=op22[1]
+     oy22Mod2=oy22 % 2
+     oy220   =oy22-1
+     oy223   =oy22+1
+     ox222   =ox22+1
+     ox225   =ox22-1
+     ox220   =ox22-oy22Mod2
+     ox221   =ox220+1
+       if gb_agent_status(2,2)
+       else
+       map[oy220][ox220]=map[oy220][ox220] | 4
+       map[oy220][ox221]=map[oy220][ox221] | 4
+       map[oy22 ][ox222]=map[oy22 ][ox222] | 4
+       map[oy223][ox221]=map[oy223][ox221] | 4
+       map[oy223][ox220]=map[oy223][ox220] | 4
+       map[oy22 ][ox225]=map[oy22 ][ox225] | 4
+       endif
+     map[oy22 ][ox22 ]=1
+     op23=op2   [3]
+     ox23=op23[zero()]
+     oy23=op23[1]
+     oy23Mod2=oy23 % 2
+     oy230   =oy23-1
+     oy233   =oy23+1
+     ox232   =ox23+1
+     ox235   =ox23-1
+     ox230   =ox23-oy23Mod2
+     ox231   =ox230+1
+       if gb_agent_status(2,3)
+       else
+       map[oy230][ox230]=map[oy230][ox230] | 4
+       map[oy230][ox231]=map[oy230][ox231] | 4
+       map[oy23 ][ox232]=map[oy23 ][ox232] | 4
+       map[oy233][ox231]=map[oy233][ox231] | 4
+       map[oy233][ox230]=map[oy233][ox230] | 4
+       map[oy23 ][ox235]=map[oy23 ][ox235] | 4
+       endif
+     map[oy23 ][ox23 ]=1
+endfunc
+
+
+func localDogCalculateDistanceCommon01()
+  dxDogOther01=ox01-x0
+  dyDogOther01=oy01-y0
+  if dxDogOther01<zero()
+    dxAbsDogOther01=-dxDogOther01
+  else
+    dxAbsDogOther01=dxDogOther01
+  endif
+  if dyDogOther01<zero()
+    dyAbsDogOther01=-dyDogOther01
+  else
+    dyAbsDogOther01=dyDogOther01
+  endif
+endfunc
+func localDogUpdateDistance01()
+  dMinDogOther=dyAbsDogOther01
+  dxMinDogOther=dxDogOther01
+  dyMinDogOther=dyDogOther01
+  agMinDogOther=1
+endfunc
+func localDogCalculateDistance9_01()
+  localDogCalculateDistanceCommon01()
+  if dyAbsDogOther01/2<dxAbsDogOther01
+    if dyAbsDogOther01%2
+      if dxDogOther01 > zero()
+        dyAbsDogOther01=1+dyAbsDogOther01/2+dxAbsDogOther01+05
+      else
+        dyAbsDogOther01=dyAbsDogOther01/2+dxAbsDogOther01
+      endif
+    else
+      dyAbsDogOther01=dyAbsDogOther01/2+dxAbsDogOther01
+    endif
+  endif
+endfunc
+func localDogCalculateDistance8_01()
+  localDogCalculateDistanceCommon01()
+  if dyAbsDogOther01/2<dxAbsDogOther01
+    if dyAbsDogOther01%2
+      if dxDogOther01 < zero()
+        dyAbsDogOther01=1+dyAbsDogOther01/2+dxAbsDogOther01
+      else
+        dyAbsDogOther01=dyAbsDogOther01/2+dxAbsDogOther01
+      endif
+    else
+      dyAbsDogOther01=dyAbsDogOther01/2+dxAbsDogOther01
+    endif
+  endif
+endfunc
+func localDogCalculateDistanceCommon02()
+  dxDogOther02=ox02-x0
+  dyDogOther02=oy02-y0
+  if dxDogOther02<zero()
+    dxAbsDogOther02=-dxDogOther02
+  else
+    dxAbsDogOther02=dxDogOther02
+  endif
+  if dyDogOther02<zero()
+    dyAbsDogOther02=-dyDogOther02
+  else
+    dyAbsDogOther02=dyDogOther02
+  endif
+endfunc
+func localDogUpdateDistance02()
+  dMinDogOther=dyAbsDogOther02
+  dxMinDogOther=dxDogOther02
+  dyMinDogOther=dyDogOther02
+  agMinDogOther=2
+endfunc
+func localDogCalculateDistance9_02()
+  localDogCalculateDistanceCommon02()
+  if dyAbsDogOther02/2<dxAbsDogOther02
+    if dyAbsDogOther02%2
+      if dxDogOther02 > zero()
+        dyAbsDogOther02=1+dyAbsDogOther02/2+dxAbsDogOther02+05
+      else
+        dyAbsDogOther02=dyAbsDogOther02/2+dxAbsDogOther02
+      endif
+    else
+      dyAbsDogOther02=dyAbsDogOther02/2+dxAbsDogOther02
+    endif
+  endif
+endfunc
+func localDogCalculateDistance8_02()
+  localDogCalculateDistanceCommon02()
+  if dyAbsDogOther02/2<dxAbsDogOther02
+    if dyAbsDogOther02%2
+      if dxDogOther02 < zero()
+        dyAbsDogOther02=1+dyAbsDogOther02/2+dxAbsDogOther02
+      else
+        dyAbsDogOther02=dyAbsDogOther02/2+dxAbsDogOther02
+      endif
+    else
+      dyAbsDogOther02=dyAbsDogOther02/2+dxAbsDogOther02
+    endif
+  endif
+endfunc
+func localDogCalculateDistanceCommon03()
+  dxDogOther03=ox03-x0
+  dyDogOther03=oy03-y0
+  if dxDogOther03<zero()
+    dxAbsDogOther03=-dxDogOther03
+  else
+    dxAbsDogOther03=dxDogOther03
+  endif
+  if dyDogOther03<zero()
+    dyAbsDogOther03=-dyDogOther03
+  else
+    dyAbsDogOther03=dyDogOther03
+  endif
+endfunc
+func localDogUpdateDistance03()
+  dMinDogOther=dyAbsDogOther03
+  dxMinDogOther=dxDogOther03
+  dyMinDogOther=dyDogOther03
+  agMinDogOther=3
+endfunc
+func localDogCalculateDistance9_03()
+  localDogCalculateDistanceCommon03()
+  if dyAbsDogOther03/2<dxAbsDogOther03
+    if dyAbsDogOther03%2
+      if dxDogOther03 > zero()
+        dyAbsDogOther03=1+dyAbsDogOther03/2+dxAbsDogOther03+05
+      else
+        dyAbsDogOther03=dyAbsDogOther03/2+dxAbsDogOther03
+      endif
+    else
+      dyAbsDogOther03=dyAbsDogOther03/2+dxAbsDogOther03
+    endif
+  endif
+endfunc
+func localDogCalculateDistance8_03()
+  localDogCalculateDistanceCommon03()
+  if dyAbsDogOther03/2<dxAbsDogOther03
+    if dyAbsDogOther03%2
+      if dxDogOther03 < zero()
+        dyAbsDogOther03=1+dyAbsDogOther03/2+dxAbsDogOther03
+      else
+        dyAbsDogOther03=dyAbsDogOther03/2+dxAbsDogOther03
+      endif
+    else
+      dyAbsDogOther03=dyAbsDogOther03/2+dxAbsDogOther03
+    endif
+  endif
+endfunc
+func localDogCalculateDistanceCommon11()
+  dxDogOther11=ox11-x0
+  dyDogOther11=oy11-y0
+  if dxDogOther11<zero()
+    dxAbsDogOther11=-dxDogOther11
+  else
+    dxAbsDogOther11=dxDogOther11
+  endif
+  if dyDogOther11<zero()
+    dyAbsDogOther11=-dyDogOther11
+  else
+    dyAbsDogOther11=dyDogOther11
+  endif
+endfunc
+func localDogUpdateDistance11()
+  dMinDogOther=dyAbsDogOther11
+  dxMinDogOther=dxDogOther11
+  dyMinDogOther=dyDogOther11
+  agMinDogOther=1
+endfunc
+func localDogCalculateDistance9_11()
+  localDogCalculateDistanceCommon11()
+  if dyAbsDogOther11/2<dxAbsDogOther11
+    if dyAbsDogOther11%2
+      if dxDogOther11 > zero()
+        dyAbsDogOther11=1+dyAbsDogOther11/2+dxAbsDogOther11+15
+      else
+        dyAbsDogOther11=dyAbsDogOther11/2+dxAbsDogOther11
+      endif
+    else
+      dyAbsDogOther11=dyAbsDogOther11/2+dxAbsDogOther11
+    endif
+  endif
+endfunc
+func localDogCalculateDistance8_11()
+  localDogCalculateDistanceCommon11()
+  if dyAbsDogOther11/2<dxAbsDogOther11
+    if dyAbsDogOther11%2
+      if dxDogOther11 < zero()
+        dyAbsDogOther11=1+dyAbsDogOther11/2+dxAbsDogOther11
+      else
+        dyAbsDogOther11=dyAbsDogOther11/2+dxAbsDogOther11
+      endif
+    else
+      dyAbsDogOther11=dyAbsDogOther11/2+dxAbsDogOther11
+    endif
+  endif
+endfunc
+func localDogCalculateDistanceCommon12()
+  dxDogOther12=ox12-x0
+  dyDogOther12=oy12-y0
+  if dxDogOther12<zero()
+    dxAbsDogOther12=-dxDogOther12
+  else
+    dxAbsDogOther12=dxDogOther12
+  endif
+  if dyDogOther12<zero()
+    dyAbsDogOther12=-dyDogOther12
+  else
+    dyAbsDogOther12=dyDogOther12
+  endif
+endfunc
+func localDogUpdateDistance12()
+  dMinDogOther=dyAbsDogOther12
+  dxMinDogOther=dxDogOther12
+  dyMinDogOther=dyDogOther12
+  agMinDogOther=2
+endfunc
+func localDogCalculateDistance9_12()
+  localDogCalculateDistanceCommon12()
+  if dyAbsDogOther12/2<dxAbsDogOther12
+    if dyAbsDogOther12%2
+      if dxDogOther12 > zero()
+        dyAbsDogOther12=1+dyAbsDogOther12/2+dxAbsDogOther12+15
+      else
+        dyAbsDogOther12=dyAbsDogOther12/2+dxAbsDogOther12
+      endif
+    else
+      dyAbsDogOther12=dyAbsDogOther12/2+dxAbsDogOther12
+    endif
+  endif
+endfunc
+func localDogCalculateDistance8_12()
+  localDogCalculateDistanceCommon12()
+  if dyAbsDogOther12/2<dxAbsDogOther12
+    if dyAbsDogOther12%2
+      if dxDogOther12 < zero()
+        dyAbsDogOther12=1+dyAbsDogOther12/2+dxAbsDogOther12
+      else
+        dyAbsDogOther12=dyAbsDogOther12/2+dxAbsDogOther12
+      endif
+    else
+      dyAbsDogOther12=dyAbsDogOther12/2+dxAbsDogOther12
+    endif
+  endif
+endfunc
+func localDogCalculateDistanceCommon13()
+  dxDogOther13=ox13-x0
+  dyDogOther13=oy13-y0
+  if dxDogOther13<zero()
+    dxAbsDogOther13=-dxDogOther13
+  else
+    dxAbsDogOther13=dxDogOther13
+  endif
+  if dyDogOther13<zero()
+    dyAbsDogOther13=-dyDogOther13
+  else
+    dyAbsDogOther13=dyDogOther13
+  endif
+endfunc
+func localDogUpdateDistance13()
+  dMinDogOther=dyAbsDogOther13
+  dxMinDogOther=dxDogOther13
+  dyMinDogOther=dyDogOther13
+  agMinDogOther=3
+endfunc
+func localDogCalculateDistance9_13()
+  localDogCalculateDistanceCommon13()
+  if dyAbsDogOther13/2<dxAbsDogOther13
+    if dyAbsDogOther13%2
+      if dxDogOther13 > zero()
+        dyAbsDogOther13=1+dyAbsDogOther13/2+dxAbsDogOther13+15
+      else
+        dyAbsDogOther13=dyAbsDogOther13/2+dxAbsDogOther13
+      endif
+    else
+      dyAbsDogOther13=dyAbsDogOther13/2+dxAbsDogOther13
+    endif
+  endif
+endfunc
+func localDogCalculateDistance8_13()
+  localDogCalculateDistanceCommon13()
+  if dyAbsDogOther13/2<dxAbsDogOther13
+    if dyAbsDogOther13%2
+      if dxDogOther13 < zero()
+        dyAbsDogOther13=1+dyAbsDogOther13/2+dxAbsDogOther13
+      else
+        dyAbsDogOther13=dyAbsDogOther13/2+dxAbsDogOther13
+      endif
+    else
+      dyAbsDogOther13=dyAbsDogOther13/2+dxAbsDogOther13
+    endif
+  endif
+endfunc
+func localDogCalculateDistanceCommon21()
+  dxDogOther21=ox21-x0
+  dyDogOther21=oy21-y0
+  if dxDogOther21<zero()
+    dxAbsDogOther21=-dxDogOther21
+  else
+    dxAbsDogOther21=dxDogOther21
+  endif
+  if dyDogOther21<zero()
+    dyAbsDogOther21=-dyDogOther21
+  else
+    dyAbsDogOther21=dyDogOther21
+  endif
+endfunc
+func localDogUpdateDistance21()
+  dMinDogOther=dyAbsDogOther21
+  dxMinDogOther=dxDogOther21
+  dyMinDogOther=dyDogOther21
+  agMinDogOther=1
+endfunc
+func localDogCalculateDistance9_21()
+  localDogCalculateDistanceCommon21()
+  if dyAbsDogOther21/2<dxAbsDogOther21
+    if dyAbsDogOther21%2
+      if dxDogOther21 > zero()
+        dyAbsDogOther21=1+dyAbsDogOther21/2+dxAbsDogOther21+25
+      else
+        dyAbsDogOther21=dyAbsDogOther21/2+dxAbsDogOther21
+      endif
+    else
+      dyAbsDogOther21=dyAbsDogOther21/2+dxAbsDogOther21
+    endif
+  endif
+endfunc
+func localDogCalculateDistance8_21()
+  localDogCalculateDistanceCommon21()
+  if dyAbsDogOther21/2<dxAbsDogOther21
+    if dyAbsDogOther21%2
+      if dxDogOther21 < zero()
+        dyAbsDogOther21=1+dyAbsDogOther21/2+dxAbsDogOther21
+      else
+        dyAbsDogOther21=dyAbsDogOther21/2+dxAbsDogOther21
+      endif
+    else
+      dyAbsDogOther21=dyAbsDogOther21/2+dxAbsDogOther21
+    endif
+  endif
+endfunc
+func localDogCalculateDistanceCommon22()
+  dxDogOther22=ox22-x0
+  dyDogOther22=oy22-y0
+  if dxDogOther22<zero()
+    dxAbsDogOther22=-dxDogOther22
+  else
+    dxAbsDogOther22=dxDogOther22
+  endif
+  if dyDogOther22<zero()
+    dyAbsDogOther22=-dyDogOther22
+  else
+    dyAbsDogOther22=dyDogOther22
+  endif
+endfunc
+func localDogUpdateDistance22()
+  dMinDogOther=dyAbsDogOther22
+  dxMinDogOther=dxDogOther22
+  dyMinDogOther=dyDogOther22
+  agMinDogOther=2
+endfunc
+func localDogCalculateDistance9_22()
+  localDogCalculateDistanceCommon22()
+  if dyAbsDogOther22/2<dxAbsDogOther22
+    if dyAbsDogOther22%2
+      if dxDogOther22 > zero()
+        dyAbsDogOther22=1+dyAbsDogOther22/2+dxAbsDogOther22+25
+      else
+        dyAbsDogOther22=dyAbsDogOther22/2+dxAbsDogOther22
+      endif
+    else
+      dyAbsDogOther22=dyAbsDogOther22/2+dxAbsDogOther22
+    endif
+  endif
+endfunc
+func localDogCalculateDistance8_22()
+  localDogCalculateDistanceCommon22()
+  if dyAbsDogOther22/2<dxAbsDogOther22
+    if dyAbsDogOther22%2
+      if dxDogOther22 < zero()
+        dyAbsDogOther22=1+dyAbsDogOther22/2+dxAbsDogOther22
+      else
+        dyAbsDogOther22=dyAbsDogOther22/2+dxAbsDogOther22
+      endif
+    else
+      dyAbsDogOther22=dyAbsDogOther22/2+dxAbsDogOther22
+    endif
+  endif
+endfunc
+func localDogCalculateDistanceCommon23()
+  dxDogOther23=ox23-x0
+  dyDogOther23=oy23-y0
+  if dxDogOther23<zero()
+    dxAbsDogOther23=-dxDogOther23
+  else
+    dxAbsDogOther23=dxDogOther23
+  endif
+  if dyDogOther23<zero()
+    dyAbsDogOther23=-dyDogOther23
+  else
+    dyAbsDogOther23=dyDogOther23
+  endif
+endfunc
+func localDogUpdateDistance23()
+  dMinDogOther=dyAbsDogOther23
+  dxMinDogOther=dxDogOther23
+  dyMinDogOther=dyDogOther23
+  agMinDogOther=3
+endfunc
+func localDogCalculateDistance9_23()
+  localDogCalculateDistanceCommon23()
+  if dyAbsDogOther23/2<dxAbsDogOther23
+    if dyAbsDogOther23%2
+      if dxDogOther23 > zero()
+        dyAbsDogOther23=1+dyAbsDogOther23/2+dxAbsDogOther23+25
+      else
+        dyAbsDogOther23=dyAbsDogOther23/2+dxAbsDogOther23
+      endif
+    else
+      dyAbsDogOther23=dyAbsDogOther23/2+dxAbsDogOther23
+    endif
+  endif
+endfunc
+func localDogCalculateDistance8_23()
+  localDogCalculateDistanceCommon23()
+  if dyAbsDogOther23/2<dxAbsDogOther23
+    if dyAbsDogOther23%2
+      if dxDogOther23 < zero()
+        dyAbsDogOther23=1+dyAbsDogOther23/2+dxAbsDogOther23
+      else
+        dyAbsDogOther23=dyAbsDogOther23/2+dxAbsDogOther23
+      endif
+    else
+      dyAbsDogOther23=dyAbsDogOther23/2+dxAbsDogOther23
+    endif
+  endif
+endfunc
+  
+  func dog_init8()
+    dMinDogOther=9999
+    localDogCalculateDistance8_01()
+    if dMinDogOther>dyAbsDogOther01
+      localDogUpdateDistance01()
+      ixMinDogOther=0
+    endif
+    localDogCalculateDistance8_02()
+    if dMinDogOther>dyAbsDogOther02
+      localDogUpdateDistance02()
+      ixMinDogOther=0
+    endif
+    localDogCalculateDistance8_03()
+    if dMinDogOther>dyAbsDogOther03
+      localDogUpdateDistance03()
+      ixMinDogOther=0
+    endif
+    s[503]=x0+dxMinDogOther
+    s[504]=y0+dyMinDogOther
+    s[501]     =ixMinDogOther
+    s[502]     =agMinDogOther
+    s[500]=1
+    if gb_team_id()<=ixMinDogOther
+      dogTidPre=ixMinDogOther+1
+    else
+      dogTidPre=ixMinDogOther
+    endif
+    dogTargetSt=gb_agent_status(dogTidPre,agMinDogOther)
+  endfunc
+  func dog_load8()
+    gState0=s[500]
+    if gState0
+      ixMinDogOther  =s[501]
+      if gb_team_id()<=dogTidPre
+        dogTidPre=ixMinDogOther+1
+      else
+        dogTidPre=ixMinDogOther
+      endif
+      agMinDogOther  =s[502]
+      dogPreTargetPos=pAll[dogTidPre][agMinDogOther]
+      dogTargetX=dogPreTargetPos[zero()]
+      dogTargetY=dogPreTargetPos[1]
+      dogTargetDX=dogTargetX-s[503]
+      dogTargetDY=dogTargetY-s[504]
+      if dog_checkWarp()
+        dog_init8()
+      else
+        dogTargetSt=gb_agent_status(dogTidPre,agMinDogOther)
+        dxMinDogOther=dogTargetX-x0
+        dyMinDogOther=dogTargetY-y0
+        s[503]=dogTargetX
+        s[504]=dogTargetY
+      endif
+    else
+      dog_init8()
+    endif
+    dogDefenseLine_init()
+  endfunc
+  func dog_init9()
+    dMinDogOther=9999
+    localDogCalculateDistance9_01()
+    if dMinDogOther>dyAbsDogOther01
+      localDogUpdateDistance01()
+      ixMinDogOther=0
+    endif
+    localDogCalculateDistance9_02()
+    if dMinDogOther>dyAbsDogOther02
+      localDogUpdateDistance02()
+      ixMinDogOther=0
+    endif
+    localDogCalculateDistance9_03()
+    if dMinDogOther>dyAbsDogOther03
+      localDogUpdateDistance03()
+      ixMinDogOther=0
+    endif
+    s[503]=x0+dxMinDogOther
+    s[504]=y0+dyMinDogOther
+    s[501]     =ixMinDogOther
+    s[502]     =agMinDogOther
+    s[500]=1
+    if gb_team_id()<=ixMinDogOther
+      dogTidPre=ixMinDogOther+1
+    else
+      dogTidPre=ixMinDogOther
+    endif
+    dogTargetSt=gb_agent_status(dogTidPre,agMinDogOther)
+  endfunc
+  func dog_load9()
+    gState0=s[500]
+    if gState0
+      ixMinDogOther  =s[501]
+      if gb_team_id()<=dogTidPre
+        dogTidPre=ixMinDogOther+1
+      else
+        dogTidPre=ixMinDogOther
+      endif
+      agMinDogOther  =s[502]
+      dogPreTargetPos=pAll[dogTidPre][agMinDogOther]
+      dogTargetX=dogPreTargetPos[zero()]
+      dogTargetY=dogPreTargetPos[1]
+      dogTargetDX=dogTargetX-s[503]
+      dogTargetDY=dogTargetY-s[504]
+      if dog_checkWarp()
+        dog_init9()
+      else
+        dogTargetSt=gb_agent_status(dogTidPre,agMinDogOther)
+        dxMinDogOther=dogTargetX-x0
+        dyMinDogOther=dogTargetY-y0
+        s[503]=dogTargetX
+        s[504]=dogTargetY
+      endif
+    else
+      dog_init9()
+    endif
+    dogDefenseLine_init()
+  endfunc
+func dog_checkWarp()
+  if   x02<x0Pre
+    return 1
+  elif x0Pre<x05
+    return 1
+  elif y03<y0Pre
+    return 1
+  elif y0Pre<y00
+    return 1
+  elif dogTargetDX<m1
+    return 1
+  elif dogTargetDX>1
+    return 1
+  elif dogTargetDY<m1
+    return 1
+  elif dogTargetDY>1
+    return 1
+  endif
+  return zero()
+endfunc
+
+func dogMain()
+  if gb_agent_status(gb_team_id(),zero())
+    move[zero()]=m1
+  else
+    hexPrefDef0()
+    if y0Mod2
+      dog_load9()
+    else
+      dog_load8()
+    endif
+
+    if y0==1
+      hp00=zero()
+      hp01=zero()
+    elif y0Rev==1
+      hp03=zero()
+      hp04=zero()
+    endif
+    if x0==1
+      hp05=zero()
+      if y0Mod2
+        hp04=zero()
+        hp00=zero()
+      endif
+    elif x0Rev==1
+      hp02=zero()
+      if y0Mod2
+        hp01=zero()
+        hp03=zero()
+      endif
+    endif
+
+    dogDefenseLine_main()
+    moveMaxHexPref0_012345()
+  endif
+endfunc
+func dogDefenseLine_abs(a_)
+  if a_<zero()
+    return -a
+  else
+    return a
+  endif
+endfunc
+func dogDefenseLine_verifyRangeDir()
+  if dogDefenseLineDir>=4
+    if dogDefenseLineDir>=5
+      return dogDefenseLine_verifyRangeDir5()
+    else
+      return dogDefenseLine_verifyRangeDir4()
+    endif
+  elif dogDefenseLineDir>=2
+    if dogDefenseLineDir>=3
+      return dogDefenseLine_verifyRangeDir3()
+    else
+      return dogDefenseLine_verifyRangeDir2()
+    endif
+  elif dogDefenseLineDir
+      return dogDefenseLine_verifyRangeDir1()
+  else
+      return dogDefenseLine_verifyRangeDir0()
+  endif
+endfunc
+
+func dogDefenseLine_calcFreedom()
+  u0Rev=un-u0-1
+  vnMv0=xn-v0
+  v0PynDiv2=v0+ynDiv2
+  dogDefenseLine_freedom0 =u0Rev*(u0Rev+1)
+  dogDefenseLine_freedom0a=u0Rev*(u0Rev-1)
+  dogDefenseLine_freedom1 =y0Rev*xn
+  dogDefenseLine_freedom1a=(y0Rev-1)*xn
+  dogDefenseLine_freedom2 =v0PynDiv2*(v0PynDiv2+1)
+  dogDefenseLine_freedom2a=v0PynDiv2*(v0PynDiv2-1)
+  dogDefenseLine_freedom3 =(u0+1)*u0
+  dogDefenseLine_freedom3a=(u0-1)*u0
+  dogDefenseLine_freedom4 =y0*xn
+  dogDefenseLine_freedom4a=(y0-1)*xn
+  dogDefenseLine_freedom5 =(vnMv0-1)*vnMv0
+  dogDefenseLine_freedom5a=(vnMv0-1)*(vnMv0-2)
+endfunc
+
+func dogDefenseLine_main()
+  if dogDefenseLineDir>=4
+    if dogDefenseLineDir>=5
+      dogDefenseLine_loadDZ5()
+      dogDefenseLine_changeHexPref5()
+    else
+      dogDefenseLine_loadDZ4()
+      dogDefenseLine_changeHexPref4()
+    endif
+  elif dogDefenseLineDir>=2
+    if dogDefenseLineDir>=3
+      dogDefenseLine_loadDZ3()
+      dogDefenseLine_changeHexPref3()
+    else
+      dogDefenseLine_loadDZ2()
+      dogDefenseLine_changeHexPref2()
+    endif
+  elif dogDefenseLineDir
+      dogDefenseLine_loadDZ1()
+      dogDefenseLine_changeHexPref1()
+  else
+      dogDefenseLine_loadDZ0()
+      dogDefenseLine_changeHexPref0()
+  endif
+endfunc
+func dogDefenseLine_decideDir()
+  if   dyMinDogOther>zero()
+    if   dvMinDogOther>zero()
+      dogDefenseLineDir=zero()
+    elif dvMinDogOther
+      if duMinDogOther>zero()
+        dogDefenseLineDir=1
+      elif duMinDogOther
+        dogDefenseLineDir=2
+      else
+        dogDefenseLine_compareFreedom1()
+      endif
+    else
+      dogDefenseLine_compareFreedom0()
+    endif
+  elif dyMinDogOther
+    if   dvMinDogOther<zero()
+      dogDefenseLineDir=3
+    elif dvMinDogOther
+      if duMinDogOther<zero()
+        dogDefenseLineDir=4
+      elif duMinDogOther
+        dogDefenseLineDir=5
+      else
+        dogDefenseLine_compareFreedom4()
+      endif
+    else
+      dogDefenseLine_compareFreedom3()
+    endif
+  elif dvMinDogOther>zero()
+    dogDefenseLine_compareFreedom5()
+  else
+    dogDefenseLine_compareFreedom2()
+  endif
+endfunc
+
+  func dogDefenseLine_output0()
+  endfunc
+  func dogDefenseLine_init0()
+      dxMinDogOther=xnDiv2-x0
+      dyMinDogOther=ynDiv2-y0
+    dogDefenseLine_loadMain()
+    dogDefenseLine_calcFreedom()
+    dogDefenseLine_decideDir()
+  endfunc
+  func dogDefenseLine_output1()
+  endfunc
+  func dogDefenseLine_init1()
+    dogDefenseLine_loadMain()
+    dogDefenseLine_calcFreedom()
+    dogDefenseLine_decideDir()
+      if dogDefenseLine_verifyRangeDir()
+        dogDefenseLine_output1()
+        return dogDefenseLine_init0()
+      endif
+  endfunc
+func dogDefenseLine_init()
+  dogDefenseLine_init1()
+endfunc
+func dogDefenseLine_loadMain()
+  xOts=x0+dxMinDogOther
+  yOts=y0+dyMinDogOther
+  yOtsDiv2=yOts/2
+  yOtsP1Div2=(yOts+1)/2
+  yOtsMod2=yOts%2
+  yOtsRev=ynM1-yOts
+  uOts=xOts+yOtsDiv2
+  vOts=xOts-yOtsP1Div2
+  duMinDogOther=uOts-u0
+  dvMinDogOther=vOts-v0
+  if yOtsMod2
+    xOtsRev=xnM1-xOts
+    if dogTargetSt
+      dogDefenseLine_cannotMoveOts0=1
+      dogDefenseLine_cannotMoveOts1=1
+      dogDefenseLine_cannotMoveOts2=1
+      dogDefenseLine_cannotMoveOts3=1
+      dogDefenseLine_cannotMoveOts4=1
+      dogDefenseLine_cannotMoveOts5=1
+    else
+      if xOts
+        if xOtsRev
+        else
+          dogDefenseLine_cannotMoveOts1=1
+          dogDefenseLine_cannotMoveOts2=1
+          dogDefenseLine_cannotMoveOts3=1
+        endif
+      else
+        dogDefenseLine_cannotMoveOts4=1
+        dogDefenseLine_cannotMoveOts5=1
+        dogDefenseLine_cannotMoveOts0=1
+      endif
+    endif
+  else
+    xOtsRev=xnM2-xOts
+    if dogTargetSt
+      dogDefenseLine_cannotMoveOts0=1
+      dogDefenseLine_cannotMoveOts1=1
+      dogDefenseLine_cannotMoveOts2=1
+      dogDefenseLine_cannotMoveOts3=1
+      dogDefenseLine_cannotMoveOts4=1
+      dogDefenseLine_cannotMoveOts5=1
+    else
+      if xOts
+        if xOtsRev
+        else
+          dogDefenseLine_cannotMoveOts2=1
+        endif
+      else
+        dogDefenseLine_cannotMoveOts5=1
+      endif
+      if yOts
+        if yOtsRev
+        else
+          dogDefenseLine_cannotMoveOts3=1
+          dogDefenseLine_cannotMoveOts4=1
+        endif
+      else
+        dogDefenseLine_cannotMoveOts0=1
+        dogDefenseLine_cannotMoveOts1=1
+      endif
+    endif
+  endif
+endfunc
+func dogDefenseLine_verifyRangeDir0()
+  if xOts<xnDiv2
+    return 1
+  endif
+  return zero()
+endfunc
+func dogDefenseLine_verifyRangeDir5()
+  if xOts<xnDiv2
+    return 1
+  endif
+  return zero()
+endfunc
+func dogDefenseLine_verifyRangeDir3()
+  if xOts>=xnDiv2
+    return 1
+  endif
+  return zero()
+endfunc
+func dogDefenseLine_verifyRangeDir2()
+  if xOts>=xnDiv2
+    return 1
+  endif
+  return zero()
+endfunc
+func dogDefenseLine_verifyRangeDir1()
+  if yOts<ynDiv2
+    return 1
+  endif
+  return zero()
+endfunc
+func dogDefenseLine_verifyRangeDir4()
+  if yOts>=ynDiv2
+    return 1
+  endif
+  return zero()
+endfunc
+func dogDefenseLine_compareFreedom0()
+  if dogDefenseLine_freedom0<=dogDefenseLine_freedom1
+    dogDefenseLineDir=0
+  else
+    dogDefenseLineDir=1
+  endif
+endfunc
+func dogDefenseLine_loadDZ0()
+    dzy=dyMinDogOther
+    dzv=dvMinDogOther
+    dzu=duMinDogOther
+endfunc
+func dogDefenseLine_changeHexPref0()
+  if dzu==dzy
+    hp05=zero()
+    hp00=zero()
+    hp01=zero()
+    hp02=zero()
+    if dogDefenseLine_freedom1a<dogDefenseLine_freedom0
+      hp03=hp03*2
+    else
+      hp03=zero()
+    endif
+  elif dzu==dzv
+    hp03=zero()
+    hp04=zero()
+    hp05=zero()
+    hp00=zero()
+    if dogDefenseLine_freedom5a<dogDefenseLine_freedom0
+      hp02=hp02*2
+    else
+      hp02=zero()
+    endif
+  elif dzu==2
+    if   dogDefenseLine_cannotMoveOts1
+    hp00=zero()
+    hp01=zero()
+    hp02=zero()
+    hp04=zero()
+    hp05=zero()
+    elif dogDefenseLine_cannotMoveOts4
+    hp00=zero()
+    hp01=zero()
+    hp03=zero()
+    hp04=zero()
+    hp05=zero()
+    else
+hp00=zero()
+hp01=zero()
+hp02=zero()
+hp03=zero()
+hp04=zero()
+hp05=zero()
+    endif
+  else
+    hp00=zero()
+    hp01=zero()
+    hp04=zero()
+    hp05=zero()
+    if dzv==dzy
+    elif dzv<dzy
+      if dzy<dzu-1
+        hp03=hp03*2
+      else
+        hp02=zero()
+      endif
+    elif dzv<dzu-1
+      hp02=hp02*2
+    else
+      hp03=zero()
+    endif
+  endif
+endfunc 
+func dogDefenseLine_compareFreedom1()
+  if dogDefenseLine_freedom1<=dogDefenseLine_freedom2
+    dogDefenseLineDir=1
+  else
+    dogDefenseLineDir=2
+  endif
+endfunc
+func dogDefenseLine_loadDZ1()
+    dzy=-dvMinDogOther
+    dzv=duMinDogOther
+    dzu=dyMinDogOther
+endfunc
+func dogDefenseLine_changeHexPref1()
+  if dzu==dzy
+    hp00=zero()
+    hp01=zero()
+    hp02=zero()
+    hp03=zero()
+    if dogDefenseLine_freedom2a<dogDefenseLine_freedom1
+      hp04=hp04*2
+    else
+      hp04=zero()
+    endif
+  elif dzu==dzv
+    hp04=zero()
+    hp05=zero()
+    hp00=zero()
+    hp01=zero()
+    if dogDefenseLine_freedom0a<dogDefenseLine_freedom1
+      hp03=hp03*2
+    else
+      hp03=zero()
+    endif
+  elif dzu==2
+    if   dogDefenseLine_cannotMoveOts2
+    hp00=zero()
+    hp01=zero()
+    hp02=zero()
+    hp03=zero()
+    hp05=zero()
+    elif dogDefenseLine_cannotMoveOts5
+    hp00=zero()
+    hp01=zero()
+    hp02=zero()
+    hp04=zero()
+    hp05=zero()
+    else
+hp00=zero()
+hp01=zero()
+hp02=zero()
+hp03=zero()
+hp04=zero()
+hp05=zero()
+    endif
+  else
+    hp01=zero()
+    hp02=zero()
+    hp05=zero()
+    hp00=zero()
+    if dzv==dzy
+    elif dzv<dzy
+      if dzy<dzu-1
+        hp04=hp04*2
+      else
+        hp03=zero()
+      endif
+    elif dzv<dzu-1
+      hp03=hp03*2
+    else
+      hp04=zero()
+    endif
+  endif
+endfunc 
+func dogDefenseLine_compareFreedom2()
+  if dogDefenseLine_freedom2<=dogDefenseLine_freedom3
+    dogDefenseLineDir=2
+  else
+    dogDefenseLineDir=3
+  endif
+endfunc
+func dogDefenseLine_loadDZ2()
+    dzy=-duMinDogOther
+    dzv=dyMinDogOther
+    dzu=-dvMinDogOther
+endfunc
+func dogDefenseLine_changeHexPref2()
+  if dzu==dzy
+    hp01=zero()
+    hp02=zero()
+    hp03=zero()
+    hp04=zero()
+    if dogDefenseLine_freedom3a<dogDefenseLine_freedom2
+      hp05=hp05*2
+    else
+      hp05=zero()
+    endif
+  elif dzu==dzv
+    hp05=zero()
+    hp00=zero()
+    hp01=zero()
+    hp02=zero()
+    if dogDefenseLine_freedom1a<dogDefenseLine_freedom2
+      hp04=hp04*2
+    else
+      hp04=zero()
+    endif
+  elif dzu==2
+    if   dogDefenseLine_cannotMoveOts3
+    hp00=zero()
+    hp01=zero()
+    hp02=zero()
+    hp03=zero()
+    hp04=zero()
+    elif dogDefenseLine_cannotMoveOts0
+    hp00=zero()
+    hp01=zero()
+    hp02=zero()
+    hp03=zero()
+    hp05=zero()
+    else
+hp00=zero()
+hp01=zero()
+hp02=zero()
+hp03=zero()
+hp04=zero()
+hp05=zero()
+    endif
+  else
+    hp02=zero()
+    hp03=zero()
+    hp00=zero()
+    hp01=zero()
+    if dzv==dzy
+    elif dzv<dzy
+      if dzy<dzu-1
+        hp05=hp05*2
+      else
+        hp04=zero()
+      endif
+    elif dzv<dzu-1
+      hp04=hp04*2
+    else
+      hp05=zero()
+    endif
+  endif
+endfunc 
+func dogDefenseLine_compareFreedom3()
+  if dogDefenseLine_freedom3<=dogDefenseLine_freedom4
+    dogDefenseLineDir=3
+  else
+    dogDefenseLineDir=4
+  endif
+endfunc
+func dogDefenseLine_loadDZ3()
+    dzy=-dyMinDogOther
+    dzv=-dvMinDogOther
+    dzu=-duMinDogOther
+endfunc
+func dogDefenseLine_changeHexPref3()
+  if dzu==dzy
+    hp02=zero()
+    hp03=zero()
+    hp04=zero()
+    hp05=zero()
+    if dogDefenseLine_freedom4a<dogDefenseLine_freedom3
+      hp00=hp00*2
+    else
+      hp00=zero()
+    endif
+  elif dzu==dzv
+    hp00=zero()
+    hp01=zero()
+    hp02=zero()
+    hp03=zero()
+    if dogDefenseLine_freedom2a<dogDefenseLine_freedom3
+      hp05=hp05*2
+    else
+      hp05=zero()
+    endif
+  elif dzu==2
+    if   dogDefenseLine_cannotMoveOts4
+    hp01=zero()
+    hp02=zero()
+    hp03=zero()
+    hp04=zero()
+    hp05=zero()
+    elif dogDefenseLine_cannotMoveOts1
+    hp00=zero()
+    hp01=zero()
+    hp02=zero()
+    hp03=zero()
+    hp04=zero()
+    else
+hp00=zero()
+hp01=zero()
+hp02=zero()
+hp03=zero()
+hp04=zero()
+hp05=zero()
+    endif
+  else
+    hp03=zero()
+    hp04=zero()
+    hp01=zero()
+    hp02=zero()
+    if dzv==dzy
+    elif dzv<dzy
+      if dzy<dzu-1
+        hp00=hp00*2
+      else
+        hp05=zero()
+      endif
+    elif dzv<dzu-1
+      hp05=hp05*2
+    else
+      hp00=zero()
+    endif
+  endif
+endfunc 
+func dogDefenseLine_compareFreedom4()
+  if dogDefenseLine_freedom4<=dogDefenseLine_freedom5
+    dogDefenseLineDir=4
+  else
+    dogDefenseLineDir=5
+  endif
+endfunc
+func dogDefenseLine_loadDZ4()
+    dzy=dvMinDogOther
+    dzv=-duMinDogOther
+    dzu=-dyMinDogOther
+endfunc
+func dogDefenseLine_changeHexPref4()
+  if dzu==dzy
+    hp03=zero()
+    hp04=zero()
+    hp05=zero()
+    hp00=zero()
+    if dogDefenseLine_freedom5a<dogDefenseLine_freedom4
+      hp01=hp01*2
+    else
+      hp01=zero()
+    endif
+  elif dzu==dzv
+    hp01=zero()
+    hp02=zero()
+    hp03=zero()
+    hp04=zero()
+    if dogDefenseLine_freedom3a<dogDefenseLine_freedom4
+      hp00=hp00*2
+    else
+      hp00=zero()
+    endif
+  elif dzu==2
+    if   dogDefenseLine_cannotMoveOts5
+    hp00=zero()
+    hp02=zero()
+    hp03=zero()
+    hp04=zero()
+    hp05=zero()
+    elif dogDefenseLine_cannotMoveOts2
+    hp01=zero()
+    hp02=zero()
+    hp03=zero()
+    hp04=zero()
+    hp05=zero()
+    else
+hp00=zero()
+hp01=zero()
+hp02=zero()
+hp03=zero()
+hp04=zero()
+hp05=zero()
+    endif
+  else
+    hp04=zero()
+    hp05=zero()
+    hp02=zero()
+    hp03=zero()
+    if dzv==dzy
+    elif dzv<dzy
+      if dzy<dzu-1
+        hp01=hp01*2
+      else
+        hp00=zero()
+      endif
+    elif dzv<dzu-1
+      hp00=hp00*2
+    else
+      hp01=zero()
+    endif
+  endif
+endfunc 
+func dogDefenseLine_compareFreedom5()
+  if dogDefenseLine_freedom5<=dogDefenseLine_freedom0
+    dogDefenseLineDir=5
+  else
+    dogDefenseLineDir=0
+  endif
+endfunc
+func dogDefenseLine_loadDZ5()
+    dzy=duMinDogOther
+    dzv=-dyMinDogOther
+    dzu=dvMinDogOther
+endfunc
+func dogDefenseLine_changeHexPref5()
+  if dzu==dzy
+    hp04=zero()
+    hp05=zero()
+    hp00=zero()
+    hp01=zero()
+    if dogDefenseLine_freedom0a<dogDefenseLine_freedom5
+      hp02=hp02*2
+    else
+      hp02=zero()
+    endif
+  elif dzu==dzv
+    hp02=zero()
+    hp03=zero()
+    hp04=zero()
+    hp05=zero()
+    if dogDefenseLine_freedom4a<dogDefenseLine_freedom5
+      hp01=hp01*2
+    else
+      hp01=zero()
+    endif
+  elif dzu==2
+    if   dogDefenseLine_cannotMoveOts0
+    hp00=zero()
+    hp01=zero()
+    hp03=zero()
+    hp04=zero()
+    hp05=zero()
+    elif dogDefenseLine_cannotMoveOts3
+    hp00=zero()
+    hp02=zero()
+    hp03=zero()
+    hp04=zero()
+    hp05=zero()
+    else
+hp00=zero()
+hp01=zero()
+hp02=zero()
+hp03=zero()
+hp04=zero()
+hp05=zero()
+    endif
+  else
+    hp05=zero()
+    hp00=zero()
+    hp03=zero()
+    hp04=zero()
+    if dzv==dzy
+    elif dzv<dzy
+      if dzy<dzu-1
+        hp02=hp02*2
+      else
+        hp01=zero()
+      endif
+    elif dzv<dzu-1
+      hp01=hp01*2
+    else
+      hp02=zero()
+    endif
+  endif
+endfunc 
+  func stateMove1_checkWarp()
+    if   x12<x1Pre
+      return 1
+    elif x1Pre<x15
+      return 1
+    elif y13<y1Pre
+      return 1
+    elif y1Pre<y10
+      return 1
+    endif
+    return zero()
+  endfunc
+  func stateMove1_load()
+    if stateMove1_checkWarp()
+      gState1=zero()
+    else
+      gState1=s[600]
+    endif
+    if gState1
+      if   gState1==1
+        circleMove1_load()
+      elif gState1==2
+        upDownMove1_load()
+      endif
+    else
+      circleMove1_init()
+    endif
+  endfunc
+  func stateMove1_main()
+    if   gState1==1
+      circleMove1_main()
+    elif gState1==2
+      upDownMove1_main()
+    else
+      s[600]=zero()
+    endif
+  endfunc
+  func stateMove1()
+    stateMove1_load()
+    stateMove1_main()
+  endfunc
+
+  func circleMove1_distanceCommon()
+    if dx1<zero()
+      dxAbs1=-dx1
+    else
+      dxAbs1=dx1
+    endif
+    if dy1<zero()
+      dyAbs1=-dy1
+    else
+      dyAbs1=dy1
+    endif
+  endfunc
+  func circleMove1_distance8()
+    circleMove1_distanceCommon()
+    if dyAbs1/2<dxAbs1
+      if dyAbs1%2
+        if dx1 > zero()
+            return dyAbs1/2+dxAbs1
+        else
+            return 1+dyAbs1/2+dxAbs1
+        endif
+      else
+        return dyAbs1/2+dxAbs1
+      endif
+    endif
+    return dyAbs1
+  endfunc
+  func circleMove1_evadeCenter8()
+      dx1=cmXg1-x10
+      dy1=cmYg1-y10
+      dT1=circleMove1_distance9()
+      if dT1<cmR1
+        hp10=hp10/8
+      else
+        hp10=hp10*10/dT1
+      endif
+      dx1=cmXg1-x11
+      dy1=cmYg1-y10
+      dT1=circleMove1_distance9()
+      if dT1<cmR1
+        hp11=hp11/8
+      else
+        hp11=hp11*10/dT1
+      endif
+      dx1=cmXg1-x12
+      dy1=cmYg1-y1
+      dT1=circleMove1_distance8()
+      if dT1<cmR1
+        hp12=hp12/8
+      else
+        hp12=hp12*10/dT1
+      endif
+      dx1=cmXg1-x11
+      dy1=cmYg1-y13
+      dT1=circleMove1_distance9()
+      if dT1<cmR1
+        hp13=hp13/8
+      else
+        hp13=hp13*10/dT1
+      endif
+      dx1=cmXg1-x10
+      dy1=cmYg1-y13
+      dT1=circleMove1_distance9()
+      if dT1<cmR1
+        hp14=hp14/8
+      else
+        hp14=hp14*10/dT1
+      endif
+      dx1=cmXg1-x15
+      dy1=cmYg1-y1
+      dT1=circleMove1_distance8()
+      if dT1<cmR1
+        hp15=hp15/8
+      else
+        hp15=hp15*10/dT1
+      endif
+  endfunc
+  func circleMove1_distance9()
+    circleMove1_distanceCommon()
+    if dyAbs1/2<dxAbs1
+      if dyAbs1%2
+        if dx1 > zero()
+            return 1+dyAbs1/2+dxAbs1
+        else
+            return dyAbs1/2+dxAbs1
+        endif
+      else
+        return dyAbs1/2+dxAbs1
+      endif
+    endif
+    return dyAbs1
+  endfunc
+  func circleMove1_evadeCenter9()
+      dx1=cmXg1-x10
+      dy1=cmYg1-y10
+      dT1=circleMove1_distance8()
+      if dT1<cmR1
+        hp10=hp10/8
+      else
+        hp10=hp10*10/dT1
+      endif
+      dx1=cmXg1-x11
+      dy1=cmYg1-y10
+      dT1=circleMove1_distance8()
+      if dT1<cmR1
+        hp11=hp11/8
+      else
+        hp11=hp11*10/dT1
+      endif
+      dx1=cmXg1-x12
+      dy1=cmYg1-y1
+      dT1=circleMove1_distance9()
+      if dT1<cmR1
+        hp12=hp12/8
+      else
+        hp12=hp12*10/dT1
+      endif
+      dx1=cmXg1-x11
+      dy1=cmYg1-y13
+      dT1=circleMove1_distance8()
+      if dT1<cmR1
+        hp13=hp13/8
+      else
+        hp13=hp13*10/dT1
+      endif
+      dx1=cmXg1-x10
+      dy1=cmYg1-y13
+      dT1=circleMove1_distance8()
+      if dT1<cmR1
+        hp14=hp14/8
+      else
+        hp14=hp14*10/dT1
+      endif
+      dx1=cmXg1-x15
+      dy1=cmYg1-y1
+      dT1=circleMove1_distance9()
+      if dT1<cmR1
+        hp15=hp15/8
+      else
+        hp15=hp15*10/dT1
+      endif
+  endfunc
+func circleMove1_init_decideCenter()
+        cmXg1  =x1-1
+        cmYg1  =y1-2
+        cmStat1=4
+        cmXg1Rev=x1nM1-cmXg1
+    cmYg1Rev=ynM1-cmYg1
+    if circleMove1_init_verifyCenter()
+      return 1
+    endif
+        cmXg1  =x11+2
+        cmYg1  =y1+1
+        cmStat1=6
+        cmXg1Rev=x1nM1Other-cmXg1
+    cmYg1Rev=ynM1-cmYg1
+    if circleMove1_init_verifyCenter()
+      return 1
+    endif
+        cmXg1  =x10-1
+        cmYg1  =y1+3
+        cmStat1=3
+        cmXg1Rev=x1nM1Other-cmXg1
+    cmYg1Rev=ynM1-cmYg1
+    if circleMove1_init_verifyCenter()
+      return 1
+    endif
+  return zero()
+endfunc
+func circleMove1_modifyState()
+	if cmStat1>=4
+		if   cmStat1>=6
+			if y1<=cmYg1-cmR1
+				cmStat1=1
+			endif
+		elif cmStat1>=5
+			if y1<=cmYg1
+				cmStat1=6
+			endif
+		else
+			if x1<=cmXg1-(cmR1/2)
+				cmStat1=5
+			endif
+    endif
+	elif cmStat1>=3
+		if y1>=cmYg1+cmR1
+			cmStat1=4
+		endif
+	elif cmStat1>=2
+		if y1>=cmYg1
+			cmStat1=3
+		endif
+	else
+		if x1>=cmXg1+(cmR1/2)
+			cmStat1=2
+		endif
+	endif
+  s[604]=cmStat1
+endfunc
+func circleMove1_main()
+  if y1Mod2
+    circleMove1_evadeCenter9()
+  else
+    circleMove1_evadeCenter8()
+  endif
+  circleMove1_modifyState()
+	if cmStat1>=4
+		if   cmStat1>=6
+      if x1>=cmXg1-(cmR1/2)
+hp10=hp10*(13+gb_random_value(4))
+hp11=hp11*(12+gb_random_value(4))
+hp15=hp15*(10+gb_random_value(4))
+hp12=hp12*(7+gb_random_value(4))
+hp14=hp14*(4+gb_random_value(4))
+hp13=hp13*(3+gb_random_value(4))
+      else
+hp11=hp11*(13+gb_random_value(4))
+hp10=hp10*(12+gb_random_value(4))
+hp12=hp12*(10+gb_random_value(4))
+hp15=hp15*(7+gb_random_value(4))
+hp13=hp13*(4+gb_random_value(4))
+hp14=hp14*(3+gb_random_value(4))
+      endif
+		elif cmStat1>=5
+      if x1>=cmXg1-cmR1
+hp10=hp10*(13+gb_random_value(4))
+hp11=hp11*(12+gb_random_value(4))
+hp15=hp15*(10+gb_random_value(4))
+hp12=hp12*(7+gb_random_value(4))
+hp14=hp14*(4+gb_random_value(4))
+hp13=hp13*(3+gb_random_value(4))
+      else
+hp11=hp11*(13+gb_random_value(4))
+hp10=hp10*(12+gb_random_value(4))
+hp12=hp12*(10+gb_random_value(4))
+hp15=hp15*(7+gb_random_value(4))
+hp13=hp13*(4+gb_random_value(4))
+hp14=hp14*(3+gb_random_value(4))
+      endif
+		else
+      if   y1>cmYg1+cmR1
+hp10=hp10*(13+gb_random_value(4))
+hp15=hp15*(12+gb_random_value(4))
+hp14=hp14*(10+gb_random_value(4))
+hp11=hp11*(7+gb_random_value(4))
+hp13=hp13*(4+gb_random_value(4))
+hp12=hp12*(3+gb_random_value(4))
+      elif y1<cmYg1+cmR1
+hp14=hp14*(13+gb_random_value(4))
+hp15=hp15*(12+gb_random_value(4))
+hp10=hp10*(10+gb_random_value(4))
+hp13=hp13*(7+gb_random_value(4))
+hp11=hp11*(4+gb_random_value(4))
+hp12=hp12*(3+gb_random_value(4))
+      else
+hp15=hp15*(13+gb_random_value(4))
+hp14=hp14*(12+gb_random_value(4))
+hp10=hp10*(10+gb_random_value(4))
+hp11=hp11*(7+gb_random_value(4))
+hp13=hp13*(4+gb_random_value(4))
+hp12=hp12*(3+gb_random_value(4))
+      endif
+		endif
+	elif cmStat1>=3
+    if x1<=cmXg1+(cmR1/2)
+hp13=hp13*(13+gb_random_value(4))
+hp14=hp14*(12+gb_random_value(4))
+hp12=hp12*(10+gb_random_value(4))
+hp15=hp15*(7+gb_random_value(4))
+hp11=hp11*(4+gb_random_value(4))
+hp10=hp10*(3+gb_random_value(4))
+    else
+hp14=hp14*(13+gb_random_value(4))
+hp13=hp13*(12+gb_random_value(4))
+hp15=hp15*(10+gb_random_value(4))
+hp12=hp12*(7+gb_random_value(4))
+hp10=hp10*(4+gb_random_value(4))
+hp11=hp11*(3+gb_random_value(4))
+    endif
+	elif cmStat1>=2
+    if x1<=cmXg1+cmR1
+hp13=hp13*(13+gb_random_value(4))
+hp14=hp14*(12+gb_random_value(4))
+hp12=hp12*(10+gb_random_value(4))
+hp15=hp15*(7+gb_random_value(4))
+hp11=hp11*(4+gb_random_value(4))
+hp10=hp10*(3+gb_random_value(4))
+    else
+hp14=hp14*(13+gb_random_value(4))
+hp13=hp13*(12+gb_random_value(4))
+hp15=hp15*(10+gb_random_value(4))
+hp12=hp12*(7+gb_random_value(4))
+hp10=hp10*(4+gb_random_value(4))
+hp11=hp11*(3+gb_random_value(4))
+    endif
+	else
+    if   y1>cmYg1-cmR1
+hp11=hp11*(13+gb_random_value(4))
+hp12=hp12*(12+gb_random_value(4))
+hp13=hp13*(10+gb_random_value(4))
+hp10=hp10*(7+gb_random_value(4))
+hp14=hp14*(4+gb_random_value(4))
+hp15=hp15*(3+gb_random_value(4))
+    elif y1<cmYg1-cmR1
+hp13=hp13*(13+gb_random_value(4))
+hp12=hp12*(12+gb_random_value(4))
+hp11=hp11*(10+gb_random_value(4))
+hp14=hp14*(7+gb_random_value(4))
+hp10=hp10*(4+gb_random_value(4))
+hp15=hp15*(3+gb_random_value(4))
+    else
+hp12=hp12*(13+gb_random_value(4))
+hp11=hp11*(12+gb_random_value(4))
+hp13=hp13*(10+gb_random_value(4))
+hp10=hp10*(7+gb_random_value(4))
+hp14=hp14*(4+gb_random_value(4))
+hp15=hp15*(3+gb_random_value(4))
+    endif
+	endif
+endfunc
+func circleMove1_init_verifyCenter()
+  if cmXg1<cmR1
+    return zero()
+  elif cmYg1<cmR1
+    return zero()
+  elif cmXg1Rev<cmR1
+    return zero()
+  elif cmYg1Rev<cmR1
+    return zero()
+  elif gb_hexel_owner(cmXg1,cmYg1)==gb_team_id()
+    return zero()
+  endif
+  return 1
+endfunc
+func circleMove1_initSetToStorage()
+  gState1 =1
+  s[604]=cmStat1
+  s[605]=1
+  s[601]  =cmXg1  
+  s[602]  =cmYg1
+  s[603 ]  =cmR1
+  s[600] =gState1
+endfunc
+func circleMove1_init()
+  cmR1=2
+  if circleMove1_init_decideCenter()
+    circleMove1_initSetToStorage()
+  else
+    upDownMove1_init()
+  endif
+endfunc
+func circleMove1_load()
+  cmXg1  =s[601]
+  cmYg1  =s[602]
+  cmR1   =s[603]
+	cmStat1=s[604]
+  cmTurn1=s[605]
+  if cmTurn1>=18
+    upDownMove1_init()
+  elif gb_hexel_owner(cmXg1,cmYg1)==gb_team_id()
+    circleMove1_init()
+  else
+    s[605]=cmTurn1+1
+  endif
+endfunc
+
+func upDownMove1_main()
+  if udmStat1>=3
+    if udmStat1>=4
+hp14=hp14*(13+gb_random_value(4))
+hp13=hp13*(12+gb_random_value(4))
+hp15=hp15*(10+gb_random_value(4))
+hp12=hp12*(7+gb_random_value(4))
+hp10=hp10*(4+gb_random_value(4))
+hp11=hp11*(3+gb_random_value(4))
+    else
+hp13=hp13*(13+gb_random_value(4))
+hp14=hp14*(12+gb_random_value(4))
+hp12=hp12*(10+gb_random_value(4))
+hp15=hp15*(7+gb_random_value(4))
+hp11=hp11*(4+gb_random_value(4))
+hp10=hp10*(3+gb_random_value(4))
+    endif
+  elif udmStat1>=2
+hp11=hp11*(13+gb_random_value(4))
+hp10=hp10*(12+gb_random_value(4))
+hp12=hp12*(10+gb_random_value(4))
+hp15=hp15*(7+gb_random_value(4))
+hp13=hp13*(4+gb_random_value(4))
+hp14=hp14*(3+gb_random_value(4))
+  else
+hp10=hp10*(13+gb_random_value(4))
+hp11=hp11*(12+gb_random_value(4))
+hp15=hp15*(10+gb_random_value(4))
+hp12=hp12*(7+gb_random_value(4))
+hp14=hp14*(4+gb_random_value(4))
+hp13=hp13*(3+gb_random_value(4))
+  endif
+endfunc
+func upDownMove1_initUp()
+  if x1<xnDiv2
+    udmStat1=1
+  else
+    udmStat1=2
+  endif
+endfunc
+func upDownMove1_initDown()
+  if x1<xnDiv2
+    udmStat1=4
+  else
+    udmStat1=3
+  endif
+endfunc
+func upDownMove1_initDecideDirection()
+  if y1<ynDiv2
+    if y1
+      upDownMove1_initUp()
+    else
+      upDownMove1_initDown()
+    endif
+  elif y1Rev
+    upDownMove1_initDown()
+  else
+    upDownMove1_initUp()
+  endif
+endfunc
+func upDownMove1_load()
+  udmTurn1=s[607]+1
+  if udmTurn1>=10
+    gState1=zero()
+    return zero()
+  endif
+  udmStat1=s[606]
+  if y1
+    if y1Rev
+    elif udmStat1>=3
+      udmStat1=5-udmStat1
+      s[606]=udmStat1
+    endif
+  elif udmStat1<=2
+    udmStat1=5-udmStat1
+    s[606]=udmStat1
+  endif
+  s[607]=udmTurn1
+endfunc
+func upDownMove1_init()
+  gState1=2
+  udmStat1=s[606]
+  if udmStat1
+  else
+    upDownMove1_initDecideDirection()
+    s[606]=udmStat1
+  endif
+  s[607]=1
+  s[600]   =gState1
+endfunc
+  func stateMove2_checkWarp()
+    if   x22<x2Pre
+      return 1
+    elif x2Pre<x25
+      return 1
+    elif y23<y2Pre
+      return 1
+    elif y2Pre<y20
+      return 1
+    endif
+    return zero()
+  endfunc
+  func stateMove2_load()
+    if stateMove2_checkWarp()
+      gState2=zero()
+    else
+      gState2=s[700]
+    endif
+    if gState2
+      if   gState2==1
+        circleMove2_load()
+      elif gState2==2
+        upDownMove2_load()
+      endif
+    else
+      circleMove2_init()
+    endif
+  endfunc
+  func stateMove2_main()
+    if   gState2==1
+      circleMove2_main()
+    elif gState2==2
+      upDownMove2_main()
+    else
+      s[700]=zero()
+    endif
+  endfunc
+  func stateMove2()
+    stateMove2_load()
+    stateMove2_main()
+  endfunc
+
+  func circleMove2_distanceCommon()
+    if dx2<zero()
+      dxAbs2=-dx2
+    else
+      dxAbs2=dx2
+    endif
+    if dy2<zero()
+      dyAbs2=-dy2
+    else
+      dyAbs2=dy2
+    endif
+  endfunc
+  func circleMove2_distance8()
+    circleMove2_distanceCommon()
+    if dyAbs2/2<dxAbs2
+      if dyAbs2%2
+        if dx2 > zero()
+            return dyAbs2/2+dxAbs2
+        else
+            return 1+dyAbs2/2+dxAbs2
+        endif
+      else
+        return dyAbs2/2+dxAbs2
+      endif
+    endif
+    return dyAbs2
+  endfunc
+  func circleMove2_evadeCenter8()
+      dx2=cmXg2-x20
+      dy2=cmYg2-y20
+      dT2=circleMove2_distance9()
+      if dT2<cmR2
+        hp20=hp20/8
+      else
+        hp20=hp20*10/dT2
+      endif
+      dx2=cmXg2-x21
+      dy2=cmYg2-y20
+      dT2=circleMove2_distance9()
+      if dT2<cmR2
+        hp21=hp21/8
+      else
+        hp21=hp21*10/dT2
+      endif
+      dx2=cmXg2-x22
+      dy2=cmYg2-y2
+      dT2=circleMove2_distance8()
+      if dT2<cmR2
+        hp22=hp22/8
+      else
+        hp22=hp22*10/dT2
+      endif
+      dx2=cmXg2-x21
+      dy2=cmYg2-y23
+      dT2=circleMove2_distance9()
+      if dT2<cmR2
+        hp23=hp23/8
+      else
+        hp23=hp23*10/dT2
+      endif
+      dx2=cmXg2-x20
+      dy2=cmYg2-y23
+      dT2=circleMove2_distance9()
+      if dT2<cmR2
+        hp24=hp24/8
+      else
+        hp24=hp24*10/dT2
+      endif
+      dx2=cmXg2-x25
+      dy2=cmYg2-y2
+      dT2=circleMove2_distance8()
+      if dT2<cmR2
+        hp25=hp25/8
+      else
+        hp25=hp25*10/dT2
+      endif
+  endfunc
+  func circleMove2_distance9()
+    circleMove2_distanceCommon()
+    if dyAbs2/2<dxAbs2
+      if dyAbs2%2
+        if dx2 > zero()
+            return 1+dyAbs2/2+dxAbs2
+        else
+            return dyAbs2/2+dxAbs2
+        endif
+      else
+        return dyAbs2/2+dxAbs2
+      endif
+    endif
+    return dyAbs2
+  endfunc
+  func circleMove2_evadeCenter9()
+      dx2=cmXg2-x20
+      dy2=cmYg2-y20
+      dT2=circleMove2_distance8()
+      if dT2<cmR2
+        hp20=hp20/8
+      else
+        hp20=hp20*10/dT2
+      endif
+      dx2=cmXg2-x21
+      dy2=cmYg2-y20
+      dT2=circleMove2_distance8()
+      if dT2<cmR2
+        hp21=hp21/8
+      else
+        hp21=hp21*10/dT2
+      endif
+      dx2=cmXg2-x22
+      dy2=cmYg2-y2
+      dT2=circleMove2_distance9()
+      if dT2<cmR2
+        hp22=hp22/8
+      else
+        hp22=hp22*10/dT2
+      endif
+      dx2=cmXg2-x21
+      dy2=cmYg2-y23
+      dT2=circleMove2_distance8()
+      if dT2<cmR2
+        hp23=hp23/8
+      else
+        hp23=hp23*10/dT2
+      endif
+      dx2=cmXg2-x20
+      dy2=cmYg2-y23
+      dT2=circleMove2_distance8()
+      if dT2<cmR2
+        hp24=hp24/8
+      else
+        hp24=hp24*10/dT2
+      endif
+      dx2=cmXg2-x25
+      dy2=cmYg2-y2
+      dT2=circleMove2_distance9()
+      if dT2<cmR2
+        hp25=hp25/8
+      else
+        hp25=hp25*10/dT2
+      endif
+  endfunc
+func circleMove2_init_decideCenter()
+        cmXg2  =x2-1
+        cmYg2  =y2-2
+        cmStat2=4
+        cmXg2Rev=x2nM1-cmXg2
+    cmYg2Rev=ynM1-cmYg2
+    if circleMove2_init_verifyCenter()
+      return 1
+    endif
+        cmXg2  =x21+2
+        cmYg2  =y2+1
+        cmStat2=6
+        cmXg2Rev=x2nM1Other-cmXg2
+    cmYg2Rev=ynM1-cmYg2
+    if circleMove2_init_verifyCenter()
+      return 1
+    endif
+        cmXg2  =x20-1
+        cmYg2  =y2+3
+        cmStat2=3
+        cmXg2Rev=x2nM1Other-cmXg2
+    cmYg2Rev=ynM1-cmYg2
+    if circleMove2_init_verifyCenter()
+      return 1
+    endif
+  return zero()
+endfunc
+func circleMove2_modifyState()
+	if cmStat2>=4
+		if   cmStat2>=6
+			if y2<=cmYg2-cmR2
+				cmStat2=1
+			endif
+		elif cmStat2>=5
+			if y2<=cmYg2
+				cmStat2=6
+			endif
+		else
+			if x2<=cmXg2-(cmR2/2)
+				cmStat2=5
+			endif
+    endif
+	elif cmStat2>=3
+		if y2>=cmYg2+cmR2
+			cmStat2=4
+		endif
+	elif cmStat2>=2
+		if y2>=cmYg2
+			cmStat2=3
+		endif
+	else
+		if x2>=cmXg2+(cmR2/2)
+			cmStat2=2
+		endif
+	endif
+  s[704]=cmStat2
+endfunc
+func circleMove2_main()
+  if y2Mod2
+    circleMove2_evadeCenter9()
+  else
+    circleMove2_evadeCenter8()
+  endif
+  circleMove2_modifyState()
+	if cmStat2>=4
+		if   cmStat2>=6
+      if x2>=cmXg2-(cmR2/2)
+hp20=hp20*(13+gb_random_value(4))
+hp21=hp21*(12+gb_random_value(4))
+hp25=hp25*(10+gb_random_value(4))
+hp22=hp22*(7+gb_random_value(4))
+hp24=hp24*(4+gb_random_value(4))
+hp23=hp23*(3+gb_random_value(4))
+      else
+hp21=hp21*(13+gb_random_value(4))
+hp20=hp20*(12+gb_random_value(4))
+hp22=hp22*(10+gb_random_value(4))
+hp25=hp25*(7+gb_random_value(4))
+hp23=hp23*(4+gb_random_value(4))
+hp24=hp24*(3+gb_random_value(4))
+      endif
+		elif cmStat2>=5
+      if x2>=cmXg2-cmR2
+hp20=hp20*(13+gb_random_value(4))
+hp21=hp21*(12+gb_random_value(4))
+hp25=hp25*(10+gb_random_value(4))
+hp22=hp22*(7+gb_random_value(4))
+hp24=hp24*(4+gb_random_value(4))
+hp23=hp23*(3+gb_random_value(4))
+      else
+hp21=hp21*(13+gb_random_value(4))
+hp20=hp20*(12+gb_random_value(4))
+hp22=hp22*(10+gb_random_value(4))
+hp25=hp25*(7+gb_random_value(4))
+hp23=hp23*(4+gb_random_value(4))
+hp24=hp24*(3+gb_random_value(4))
+      endif
+		else
+      if   y2>cmYg2+cmR2
+hp20=hp20*(13+gb_random_value(4))
+hp25=hp25*(12+gb_random_value(4))
+hp24=hp24*(10+gb_random_value(4))
+hp21=hp21*(7+gb_random_value(4))
+hp23=hp23*(4+gb_random_value(4))
+hp22=hp22*(3+gb_random_value(4))
+      elif y2<cmYg2+cmR2
+hp24=hp24*(13+gb_random_value(4))
+hp25=hp25*(12+gb_random_value(4))
+hp20=hp20*(10+gb_random_value(4))
+hp23=hp23*(7+gb_random_value(4))
+hp21=hp21*(4+gb_random_value(4))
+hp22=hp22*(3+gb_random_value(4))
+      else
+hp25=hp25*(13+gb_random_value(4))
+hp24=hp24*(12+gb_random_value(4))
+hp20=hp20*(10+gb_random_value(4))
+hp21=hp21*(7+gb_random_value(4))
+hp23=hp23*(4+gb_random_value(4))
+hp22=hp22*(3+gb_random_value(4))
+      endif
+		endif
+	elif cmStat2>=3
+    if x2<=cmXg2+(cmR2/2)
+hp23=hp23*(13+gb_random_value(4))
+hp24=hp24*(12+gb_random_value(4))
+hp22=hp22*(10+gb_random_value(4))
+hp25=hp25*(7+gb_random_value(4))
+hp21=hp21*(4+gb_random_value(4))
+hp20=hp20*(3+gb_random_value(4))
+    else
+hp24=hp24*(13+gb_random_value(4))
+hp23=hp23*(12+gb_random_value(4))
+hp25=hp25*(10+gb_random_value(4))
+hp22=hp22*(7+gb_random_value(4))
+hp20=hp20*(4+gb_random_value(4))
+hp21=hp21*(3+gb_random_value(4))
+    endif
+	elif cmStat2>=2
+    if x2<=cmXg2+cmR2
+hp23=hp23*(13+gb_random_value(4))
+hp24=hp24*(12+gb_random_value(4))
+hp22=hp22*(10+gb_random_value(4))
+hp25=hp25*(7+gb_random_value(4))
+hp21=hp21*(4+gb_random_value(4))
+hp20=hp20*(3+gb_random_value(4))
+    else
+hp24=hp24*(13+gb_random_value(4))
+hp23=hp23*(12+gb_random_value(4))
+hp25=hp25*(10+gb_random_value(4))
+hp22=hp22*(7+gb_random_value(4))
+hp20=hp20*(4+gb_random_value(4))
+hp21=hp21*(3+gb_random_value(4))
+    endif
+	else
+    if   y2>cmYg2-cmR2
+hp21=hp21*(13+gb_random_value(4))
+hp22=hp22*(12+gb_random_value(4))
+hp23=hp23*(10+gb_random_value(4))
+hp20=hp20*(7+gb_random_value(4))
+hp24=hp24*(4+gb_random_value(4))
+hp25=hp25*(3+gb_random_value(4))
+    elif y2<cmYg2-cmR2
+hp23=hp23*(13+gb_random_value(4))
+hp22=hp22*(12+gb_random_value(4))
+hp21=hp21*(10+gb_random_value(4))
+hp24=hp24*(7+gb_random_value(4))
+hp20=hp20*(4+gb_random_value(4))
+hp25=hp25*(3+gb_random_value(4))
+    else
+hp22=hp22*(13+gb_random_value(4))
+hp21=hp21*(12+gb_random_value(4))
+hp23=hp23*(10+gb_random_value(4))
+hp20=hp20*(7+gb_random_value(4))
+hp24=hp24*(4+gb_random_value(4))
+hp25=hp25*(3+gb_random_value(4))
+    endif
+	endif
+endfunc
+func circleMove2_init_verifyCenter()
+  if cmXg2<cmR2
+    return zero()
+  elif cmYg2<cmR2
+    return zero()
+  elif cmXg2Rev<cmR2
+    return zero()
+  elif cmYg2Rev<cmR2
+    return zero()
+  elif gb_hexel_owner(cmXg2,cmYg2)==gb_team_id()
+    return zero()
+  endif
+  return 1
+endfunc
+func circleMove2_initSetToStorage()
+  gState2 =1
+  s[704]=cmStat2
+  s[705]=1
+  s[701]  =cmXg2  
+  s[702]  =cmYg2
+  s[703 ]  =cmR2
+  s[700] =gState2
+endfunc
+func circleMove2_init()
+  cmR2=2
+  if circleMove2_init_decideCenter()
+    circleMove2_initSetToStorage()
+  else
+    upDownMove2_init()
+  endif
+endfunc
+func circleMove2_load()
+  cmXg2  =s[701]
+  cmYg2  =s[702]
+  cmR2   =s[703]
+	cmStat2=s[704]
+  cmTurn2=s[705]
+  if cmTurn2>=18
+    upDownMove2_init()
+  elif gb_hexel_owner(cmXg2,cmYg2)==gb_team_id()
+    circleMove2_init()
+  else
+    s[705]=cmTurn2+1
+  endif
+endfunc
+
+func upDownMove2_main()
+  if udmStat2>=3
+    if udmStat2>=4
+hp24=hp24*(13+gb_random_value(4))
+hp23=hp23*(12+gb_random_value(4))
+hp25=hp25*(10+gb_random_value(4))
+hp22=hp22*(7+gb_random_value(4))
+hp20=hp20*(4+gb_random_value(4))
+hp21=hp21*(3+gb_random_value(4))
+    else
+hp23=hp23*(13+gb_random_value(4))
+hp24=hp24*(12+gb_random_value(4))
+hp22=hp22*(10+gb_random_value(4))
+hp25=hp25*(7+gb_random_value(4))
+hp21=hp21*(4+gb_random_value(4))
+hp20=hp20*(3+gb_random_value(4))
+    endif
+  elif udmStat2>=2
+hp21=hp21*(13+gb_random_value(4))
+hp20=hp20*(12+gb_random_value(4))
+hp22=hp22*(10+gb_random_value(4))
+hp25=hp25*(7+gb_random_value(4))
+hp23=hp23*(4+gb_random_value(4))
+hp24=hp24*(3+gb_random_value(4))
+  else
+hp20=hp20*(13+gb_random_value(4))
+hp21=hp21*(12+gb_random_value(4))
+hp25=hp25*(10+gb_random_value(4))
+hp22=hp22*(7+gb_random_value(4))
+hp24=hp24*(4+gb_random_value(4))
+hp23=hp23*(3+gb_random_value(4))
+  endif
+endfunc
+func upDownMove2_initUp()
+  if x2<xnDiv2
+    udmStat2=1
+  else
+    udmStat2=2
+  endif
+endfunc
+func upDownMove2_initDown()
+  if x2<xnDiv2
+    udmStat2=4
+  else
+    udmStat2=3
+  endif
+endfunc
+func upDownMove2_initDecideDirection()
+  if y2<ynDiv2
+    if y2
+      upDownMove2_initUp()
+    else
+      upDownMove2_initDown()
+    endif
+  elif y2Rev
+    upDownMove2_initDown()
+  else
+    upDownMove2_initUp()
+  endif
+endfunc
+func upDownMove2_load()
+  udmTurn2=s[707]+1
+  if udmTurn2>=10
+    gState2=zero()
+    return zero()
+  endif
+  udmStat2=s[706]
+  if y2
+    if y2Rev
+    elif udmStat2>=3
+      udmStat2=5-udmStat2
+      s[706]=udmStat2
+    endif
+  elif udmStat2<=2
+    udmStat2=5-udmStat2
+    s[706]=udmStat2
+  endif
+  s[707]=udmTurn2
+endfunc
+func upDownMove2_init()
+  gState2=2
+  udmStat2=s[706]
+  if udmStat2
+  else
+    upDownMove2_initDecideDirection()
+    s[706]=udmStat2
+  endif
+  s[707]=1
+  s[700]   =gState2
+endfunc
+  func stateMove3_checkWarp()
+    if   x32<x3Pre
+      return 1
+    elif x3Pre<x35
+      return 1
+    elif y33<y3Pre
+      return 1
+    elif y3Pre<y30
+      return 1
+    endif
+    return zero()
+  endfunc
+  func stateMove3_load()
+    if stateMove3_checkWarp()
+      gState3=zero()
+    else
+      gState3=s[800]
+    endif
+    if gState3
+      if   gState3==1
+        circleMove3_load()
+      elif gState3==2
+        upDownMove3_load()
+      endif
+    else
+      circleMove3_init()
+    endif
+  endfunc
+  func stateMove3_main()
+    if   gState3==1
+      circleMove3_main()
+    elif gState3==2
+      upDownMove3_main()
+    else
+      s[800]=zero()
+    endif
+  endfunc
+  func stateMove3()
+    stateMove3_load()
+    stateMove3_main()
+  endfunc
+
+  func circleMove3_distanceCommon()
+    if dx3<zero()
+      dxAbs3=-dx3
+    else
+      dxAbs3=dx3
+    endif
+    if dy3<zero()
+      dyAbs3=-dy3
+    else
+      dyAbs3=dy3
+    endif
+  endfunc
+  func circleMove3_distance8()
+    circleMove3_distanceCommon()
+    if dyAbs3/2<dxAbs3
+      if dyAbs3%2
+        if dx3 > zero()
+            return dyAbs3/2+dxAbs3
+        else
+            return 1+dyAbs3/2+dxAbs3
+        endif
+      else
+        return dyAbs3/2+dxAbs3
+      endif
+    endif
+    return dyAbs3
+  endfunc
+  func circleMove3_evadeCenter8()
+      dx3=cmXg3-x30
+      dy3=cmYg3-y30
+      dT3=circleMove3_distance9()
+      if dT3<cmR3
+        hp30=hp30/8
+      else
+        hp30=hp30*10/dT3
+      endif
+      dx3=cmXg3-x31
+      dy3=cmYg3-y30
+      dT3=circleMove3_distance9()
+      if dT3<cmR3
+        hp31=hp31/8
+      else
+        hp31=hp31*10/dT3
+      endif
+      dx3=cmXg3-x32
+      dy3=cmYg3-y3
+      dT3=circleMove3_distance8()
+      if dT3<cmR3
+        hp32=hp32/8
+      else
+        hp32=hp32*10/dT3
+      endif
+      dx3=cmXg3-x31
+      dy3=cmYg3-y33
+      dT3=circleMove3_distance9()
+      if dT3<cmR3
+        hp33=hp33/8
+      else
+        hp33=hp33*10/dT3
+      endif
+      dx3=cmXg3-x30
+      dy3=cmYg3-y33
+      dT3=circleMove3_distance9()
+      if dT3<cmR3
+        hp34=hp34/8
+      else
+        hp34=hp34*10/dT3
+      endif
+      dx3=cmXg3-x35
+      dy3=cmYg3-y3
+      dT3=circleMove3_distance8()
+      if dT3<cmR3
+        hp35=hp35/8
+      else
+        hp35=hp35*10/dT3
+      endif
+  endfunc
+  func circleMove3_distance9()
+    circleMove3_distanceCommon()
+    if dyAbs3/2<dxAbs3
+      if dyAbs3%2
+        if dx3 > zero()
+            return 1+dyAbs3/2+dxAbs3
+        else
+            return dyAbs3/2+dxAbs3
+        endif
+      else
+        return dyAbs3/2+dxAbs3
+      endif
+    endif
+    return dyAbs3
+  endfunc
+  func circleMove3_evadeCenter9()
+      dx3=cmXg3-x30
+      dy3=cmYg3-y30
+      dT3=circleMove3_distance8()
+      if dT3<cmR3
+        hp30=hp30/8
+      else
+        hp30=hp30*10/dT3
+      endif
+      dx3=cmXg3-x31
+      dy3=cmYg3-y30
+      dT3=circleMove3_distance8()
+      if dT3<cmR3
+        hp31=hp31/8
+      else
+        hp31=hp31*10/dT3
+      endif
+      dx3=cmXg3-x32
+      dy3=cmYg3-y3
+      dT3=circleMove3_distance9()
+      if dT3<cmR3
+        hp32=hp32/8
+      else
+        hp32=hp32*10/dT3
+      endif
+      dx3=cmXg3-x31
+      dy3=cmYg3-y33
+      dT3=circleMove3_distance8()
+      if dT3<cmR3
+        hp33=hp33/8
+      else
+        hp33=hp33*10/dT3
+      endif
+      dx3=cmXg3-x30
+      dy3=cmYg3-y33
+      dT3=circleMove3_distance8()
+      if dT3<cmR3
+        hp34=hp34/8
+      else
+        hp34=hp34*10/dT3
+      endif
+      dx3=cmXg3-x35
+      dy3=cmYg3-y3
+      dT3=circleMove3_distance9()
+      if dT3<cmR3
+        hp35=hp35/8
+      else
+        hp35=hp35*10/dT3
+      endif
+  endfunc
+func circleMove3_init_decideCenter()
+        cmXg3  =x3-1
+        cmYg3  =y3-2
+        cmStat3=4
+        cmXg3Rev=x3nM1-cmXg3
+    cmYg3Rev=ynM1-cmYg3
+    if circleMove3_init_verifyCenter()
+      return 1
+    endif
+        cmXg3  =x31+2
+        cmYg3  =y3+1
+        cmStat3=6
+        cmXg3Rev=x3nM1Other-cmXg3
+    cmYg3Rev=ynM1-cmYg3
+    if circleMove3_init_verifyCenter()
+      return 1
+    endif
+        cmXg3  =x30-1
+        cmYg3  =y3+3
+        cmStat3=3
+        cmXg3Rev=x3nM1Other-cmXg3
+    cmYg3Rev=ynM1-cmYg3
+    if circleMove3_init_verifyCenter()
+      return 1
+    endif
+  return zero()
+endfunc
+func circleMove3_modifyState()
+	if cmStat3>=4
+		if   cmStat3>=6
+			if y3<=cmYg3-cmR3
+				cmStat3=1
+			endif
+		elif cmStat3>=5
+			if y3<=cmYg3
+				cmStat3=6
+			endif
+		else
+			if x3<=cmXg3-(cmR3/2)
+				cmStat3=5
+			endif
+    endif
+	elif cmStat3>=3
+		if y3>=cmYg3+cmR3
+			cmStat3=4
+		endif
+	elif cmStat3>=2
+		if y3>=cmYg3
+			cmStat3=3
+		endif
+	else
+		if x3>=cmXg3+(cmR3/2)
+			cmStat3=2
+		endif
+	endif
+  s[804]=cmStat3
+endfunc
+func circleMove3_main()
+  if y3Mod2
+    circleMove3_evadeCenter9()
+  else
+    circleMove3_evadeCenter8()
+  endif
+  circleMove3_modifyState()
+	if cmStat3>=4
+		if   cmStat3>=6
+      if x3>=cmXg3-(cmR3/2)
+hp30=hp30*(13+gb_random_value(4))
+hp31=hp31*(12+gb_random_value(4))
+hp35=hp35*(10+gb_random_value(4))
+hp32=hp32*(7+gb_random_value(4))
+hp34=hp34*(4+gb_random_value(4))
+hp33=hp33*(3+gb_random_value(4))
+      else
+hp31=hp31*(13+gb_random_value(4))
+hp30=hp30*(12+gb_random_value(4))
+hp32=hp32*(10+gb_random_value(4))
+hp35=hp35*(7+gb_random_value(4))
+hp33=hp33*(4+gb_random_value(4))
+hp34=hp34*(3+gb_random_value(4))
+      endif
+		elif cmStat3>=5
+      if x3>=cmXg3-cmR3
+hp30=hp30*(13+gb_random_value(4))
+hp31=hp31*(12+gb_random_value(4))
+hp35=hp35*(10+gb_random_value(4))
+hp32=hp32*(7+gb_random_value(4))
+hp34=hp34*(4+gb_random_value(4))
+hp33=hp33*(3+gb_random_value(4))
+      else
+hp31=hp31*(13+gb_random_value(4))
+hp30=hp30*(12+gb_random_value(4))
+hp32=hp32*(10+gb_random_value(4))
+hp35=hp35*(7+gb_random_value(4))
+hp33=hp33*(4+gb_random_value(4))
+hp34=hp34*(3+gb_random_value(4))
+      endif
+		else
+      if   y3>cmYg3+cmR3
+hp30=hp30*(13+gb_random_value(4))
+hp35=hp35*(12+gb_random_value(4))
+hp34=hp34*(10+gb_random_value(4))
+hp31=hp31*(7+gb_random_value(4))
+hp33=hp33*(4+gb_random_value(4))
+hp32=hp32*(3+gb_random_value(4))
+      elif y3<cmYg3+cmR3
+hp34=hp34*(13+gb_random_value(4))
+hp35=hp35*(12+gb_random_value(4))
+hp30=hp30*(10+gb_random_value(4))
+hp33=hp33*(7+gb_random_value(4))
+hp31=hp31*(4+gb_random_value(4))
+hp32=hp32*(3+gb_random_value(4))
+      else
+hp35=hp35*(13+gb_random_value(4))
+hp34=hp34*(12+gb_random_value(4))
+hp30=hp30*(10+gb_random_value(4))
+hp31=hp31*(7+gb_random_value(4))
+hp33=hp33*(4+gb_random_value(4))
+hp32=hp32*(3+gb_random_value(4))
+      endif
+		endif
+	elif cmStat3>=3
+    if x3<=cmXg3+(cmR3/2)
+hp33=hp33*(13+gb_random_value(4))
+hp34=hp34*(12+gb_random_value(4))
+hp32=hp32*(10+gb_random_value(4))
+hp35=hp35*(7+gb_random_value(4))
+hp31=hp31*(4+gb_random_value(4))
+hp30=hp30*(3+gb_random_value(4))
+    else
+hp34=hp34*(13+gb_random_value(4))
+hp33=hp33*(12+gb_random_value(4))
+hp35=hp35*(10+gb_random_value(4))
+hp32=hp32*(7+gb_random_value(4))
+hp30=hp30*(4+gb_random_value(4))
+hp31=hp31*(3+gb_random_value(4))
+    endif
+	elif cmStat3>=2
+    if x3<=cmXg3+cmR3
+hp33=hp33*(13+gb_random_value(4))
+hp34=hp34*(12+gb_random_value(4))
+hp32=hp32*(10+gb_random_value(4))
+hp35=hp35*(7+gb_random_value(4))
+hp31=hp31*(4+gb_random_value(4))
+hp30=hp30*(3+gb_random_value(4))
+    else
+hp34=hp34*(13+gb_random_value(4))
+hp33=hp33*(12+gb_random_value(4))
+hp35=hp35*(10+gb_random_value(4))
+hp32=hp32*(7+gb_random_value(4))
+hp30=hp30*(4+gb_random_value(4))
+hp31=hp31*(3+gb_random_value(4))
+    endif
+	else
+    if   y3>cmYg3-cmR3
+hp31=hp31*(13+gb_random_value(4))
+hp32=hp32*(12+gb_random_value(4))
+hp33=hp33*(10+gb_random_value(4))
+hp30=hp30*(7+gb_random_value(4))
+hp34=hp34*(4+gb_random_value(4))
+hp35=hp35*(3+gb_random_value(4))
+    elif y3<cmYg3-cmR3
+hp33=hp33*(13+gb_random_value(4))
+hp32=hp32*(12+gb_random_value(4))
+hp31=hp31*(10+gb_random_value(4))
+hp34=hp34*(7+gb_random_value(4))
+hp30=hp30*(4+gb_random_value(4))
+hp35=hp35*(3+gb_random_value(4))
+    else
+hp32=hp32*(13+gb_random_value(4))
+hp31=hp31*(12+gb_random_value(4))
+hp33=hp33*(10+gb_random_value(4))
+hp30=hp30*(7+gb_random_value(4))
+hp34=hp34*(4+gb_random_value(4))
+hp35=hp35*(3+gb_random_value(4))
+    endif
+	endif
+endfunc
+func circleMove3_init_verifyCenter()
+  if cmXg3<cmR3
+    return zero()
+  elif cmYg3<cmR3
+    return zero()
+  elif cmXg3Rev<cmR3
+    return zero()
+  elif cmYg3Rev<cmR3
+    return zero()
+  elif gb_hexel_owner(cmXg3,cmYg3)==gb_team_id()
+    return zero()
+  endif
+  return 1
+endfunc
+func circleMove3_initSetToStorage()
+  gState3 =1
+  s[804]=cmStat3
+  s[805]=1
+  s[801]  =cmXg3  
+  s[802]  =cmYg3
+  s[803 ]  =cmR3
+  s[800] =gState3
+endfunc
+func circleMove3_init()
+  cmR3=2
+  if circleMove3_init_decideCenter()
+    circleMove3_initSetToStorage()
+  else
+    upDownMove3_init()
+  endif
+endfunc
+func circleMove3_load()
+  cmXg3  =s[801]
+  cmYg3  =s[802]
+  cmR3   =s[803]
+	cmStat3=s[804]
+  cmTurn3=s[805]
+  if cmTurn3>=18
+    upDownMove3_init()
+  elif gb_hexel_owner(cmXg3,cmYg3)==gb_team_id()
+    circleMove3_init()
+  else
+    s[805]=cmTurn3+1
+  endif
+endfunc
+
+func upDownMove3_main()
+  if udmStat3>=3
+    if udmStat3>=4
+hp34=hp34*(13+gb_random_value(4))
+hp33=hp33*(12+gb_random_value(4))
+hp35=hp35*(10+gb_random_value(4))
+hp32=hp32*(7+gb_random_value(4))
+hp30=hp30*(4+gb_random_value(4))
+hp31=hp31*(3+gb_random_value(4))
+    else
+hp33=hp33*(13+gb_random_value(4))
+hp34=hp34*(12+gb_random_value(4))
+hp32=hp32*(10+gb_random_value(4))
+hp35=hp35*(7+gb_random_value(4))
+hp31=hp31*(4+gb_random_value(4))
+hp30=hp30*(3+gb_random_value(4))
+    endif
+  elif udmStat3>=2
+hp31=hp31*(13+gb_random_value(4))
+hp30=hp30*(12+gb_random_value(4))
+hp32=hp32*(10+gb_random_value(4))
+hp35=hp35*(7+gb_random_value(4))
+hp33=hp33*(4+gb_random_value(4))
+hp34=hp34*(3+gb_random_value(4))
+  else
+hp30=hp30*(13+gb_random_value(4))
+hp31=hp31*(12+gb_random_value(4))
+hp35=hp35*(10+gb_random_value(4))
+hp32=hp32*(7+gb_random_value(4))
+hp34=hp34*(4+gb_random_value(4))
+hp33=hp33*(3+gb_random_value(4))
+  endif
+endfunc
+func upDownMove3_initUp()
+  if x3<xnDiv2
+    udmStat3=1
+  else
+    udmStat3=2
+  endif
+endfunc
+func upDownMove3_initDown()
+  if x3<xnDiv2
+    udmStat3=4
+  else
+    udmStat3=3
+  endif
+endfunc
+func upDownMove3_initDecideDirection()
+  if y3<ynDiv2
+    if y3
+      upDownMove3_initUp()
+    else
+      upDownMove3_initDown()
+    endif
+  elif y3Rev
+    upDownMove3_initDown()
+  else
+    upDownMove3_initUp()
+  endif
+endfunc
+func upDownMove3_load()
+  udmTurn3=s[807]+1
+  if udmTurn3>=10
+    gState3=zero()
+    return zero()
+  endif
+  udmStat3=s[806]
+  if y3
+    if y3Rev
+    elif udmStat3>=3
+      udmStat3=5-udmStat3
+      s[806]=udmStat3
+    endif
+  elif udmStat3<=2
+    udmStat3=5-udmStat3
+    s[806]=udmStat3
+  endif
+  s[807]=udmTurn3
+endfunc
+func upDownMove3_init()
+  gState3=2
+  udmStat3=s[806]
+  if udmStat3
+  else
+    upDownMove3_initDecideDirection()
+    s[806]=udmStat3
+  endif
+  s[807]=1
+  s[800]   =gState3
+endfunc
+func gateDef_horizontalGate()
+  yGate=gates[iGate][1]
+  s[yGate]=s[yGate]|2
+endfunc
+func gateDef()
+  gates=gb_gate_positions()
+  iGate=$gates
+  while iGate
+    iGate=iGate-1
+    xGate=gates[iGate][zero()]
+    if xGate
+      if xGate<xnM1
+        s[xGate]=s[xGate]|1
+      else
+        gateDef_horizontalGate()
+      endif
+    else
+      gateDef_horizontalGate()
+    endif
+  endwhile
+endfunc
+func gateDef_changeHexPref00(x_,y_)
+  hexGate0=gb_hexel_owner(x_,y_)
+  if hexGate0>=zero()
+    if   hexGate0==gb_team_id()
+      hp00=1921
+    else
+      hp00=1920
+    endif
+  elif hexGate0==m1
+      hp00=1920
+  else
+    hp00=zero()
+  endif
+  mp00=map[y_][x_]
+    if   (mp0 & 1)
+      hp0=zero()
+    elif (mp0 & 2  ) 
+      hp0=hp0/2
+    endif
+    hp01=hp00
+    mp01=mp00
+endfunc
+func gateDef_changeHexPref01(x_,y_)
+  hexGate0=gb_hexel_owner(x_,y_)
+  if hexGate0>=zero()
+    if   hexGate0==gb_team_id()
+      hp01=1921
+    else
+      hp01=1920
+    endif
+  elif hexGate0==m1
+      hp01=1920
+  else
+    hp01=zero()
+  endif
+  mp01=map[y_][x_]
+    if   (mp0 & 1)
+      hp0=zero()
+    elif (mp0 & 2  ) 
+      hp0=hp0/2
+    endif
+    hp00=hp01
+    mp00=mp01
+endfunc
+func gateDef_changeHexPref02(x_,y_)
+  hexGate0=gb_hexel_owner(x_,y_)
+  if hexGate0>=zero()
+    if   hexGate0==gb_team_id()
+      hp02=1921
+    else
+      hp02=1920
+    endif
+  elif hexGate0==m1
+      hp02=1920
+  else
+    hp02=zero()
+  endif
+  mp02=map[y_][x_]
+    if   (mp0 & 1)
+      hp0=zero()
+    elif (mp0 & 2  ) 
+      hp0=hp0/2
+    endif
+endfunc
+func gateDef_changeHexPref03(x_,y_)
+  hexGate0=gb_hexel_owner(x_,y_)
+  if hexGate0>=zero()
+    if   hexGate0==gb_team_id()
+      hp03=1921
+    else
+      hp03=1920
+    endif
+  elif hexGate0==m1
+      hp03=1920
+  else
+    hp03=zero()
+  endif
+  mp03=map[y_][x_]
+    if   (mp0 & 1)
+      hp0=zero()
+    elif (mp0 & 2  ) 
+      hp0=hp0/2
+    endif
+    hp04=hp03
+    mp04=mp03
+endfunc
+func gateDef_changeHexPref04(x_,y_)
+  hexGate0=gb_hexel_owner(x_,y_)
+  if hexGate0>=zero()
+    if   hexGate0==gb_team_id()
+      hp04=1921
+    else
+      hp04=1920
+    endif
+  elif hexGate0==m1
+      hp04=1920
+  else
+    hp04=zero()
+  endif
+  mp04=map[y_][x_]
+    if   (mp0 & 1)
+      hp0=zero()
+    elif (mp0 & 2  ) 
+      hp0=hp0/2
+    endif
+    hp03=hp04
+    mp03=mp04
+endfunc
+func gateDef_changeHexPref05(x_,y_)
+  hexGate0=gb_hexel_owner(x_,y_)
+  if hexGate0>=zero()
+    if   hexGate0==gb_team_id()
+      hp05=1921
+    else
+      hp05=1920
+    endif
+  elif hexGate0==m1
+      hp05=1920
+  else
+    hp05=zero()
+  endif
+  mp05=map[y_][x_]
+    if   (mp0 & 1)
+      hp0=zero()
+    elif (mp0 & 2  ) 
+      hp0=hp0/2
+    endif
+endfunc
+
+  func gateDef_hexPrefUpMove0()
+    if s[x0]&1
+      gateDef_changeHexPref00(x0,ynM1)
+    else
+hex00=m2
+hp00 =zero()
+hex01=m2
+hp01 =zero()
+    endif
+  endfunc
+  func gateDef_hexPrefDownMove0()
+    if s[x0]&1
+      gateDef_changeHexPref03(x0,zero())
+    else
+hex03=m2
+hp03 =zero()
+hex04=m2
+hp04 =zero()
+    endif
+  endfunc
+  func gateDef_hexPrefLeftMove0()
+    if s[y0]&2
+      gateDef_changeHexPref05(x0nM1,y0)
+    else
+hex05=m2
+hp05 =zero()
+    endif
+  endfunc
+  func gateDef_hexPrefRightMove0()
+    if s[y0]&2
+      gateDef_changeHexPref02(zero(),y0)
+    else
+hex02=m2
+hp02 =zero()
+    endif
+  endfunc
+func gateDef_changeHexPref10(x_,y_)
+  hexGate1=gb_hexel_owner(x_,y_)
+  if hexGate1>=zero()
+    if   hexGate1==gb_team_id()
+      hp10=1100
+    else
+      hp10=2048
+    endif
+  elif hexGate1==m1
+      hp10=1920
+  else
+    hp10=zero()
+  endif
+  mp10=map[y_][x_]
+    if   (mp1 & 3)
+      hp1=zero()
+    elif (mp1 & 4  ) 
+      hp1=hp1*4/5
+    elif (mp1 & 8  ) 
+      hp1=hp1*2/3
+    endif
+    hp11=hp10
+    mp11=mp10
+endfunc
+func gateDef_changeHexPref11(x_,y_)
+  hexGate1=gb_hexel_owner(x_,y_)
+  if hexGate1>=zero()
+    if   hexGate1==gb_team_id()
+      hp11=1100
+    else
+      hp11=2048
+    endif
+  elif hexGate1==m1
+      hp11=1920
+  else
+    hp11=zero()
+  endif
+  mp11=map[y_][x_]
+    if   (mp1 & 3)
+      hp1=zero()
+    elif (mp1 & 4  ) 
+      hp1=hp1*4/5
+    elif (mp1 & 8  ) 
+      hp1=hp1*2/3
+    endif
+    hp10=hp11
+    mp10=mp11
+endfunc
+func gateDef_changeHexPref12(x_,y_)
+  hexGate1=gb_hexel_owner(x_,y_)
+  if hexGate1>=zero()
+    if   hexGate1==gb_team_id()
+      hp12=1100
+    else
+      hp12=2048
+    endif
+  elif hexGate1==m1
+      hp12=1920
+  else
+    hp12=zero()
+  endif
+  mp12=map[y_][x_]
+    if   (mp1 & 3)
+      hp1=zero()
+    elif (mp1 & 4  ) 
+      hp1=hp1*4/5
+    elif (mp1 & 8  ) 
+      hp1=hp1*2/3
+    endif
+endfunc
+func gateDef_changeHexPref13(x_,y_)
+  hexGate1=gb_hexel_owner(x_,y_)
+  if hexGate1>=zero()
+    if   hexGate1==gb_team_id()
+      hp13=1100
+    else
+      hp13=2048
+    endif
+  elif hexGate1==m1
+      hp13=1920
+  else
+    hp13=zero()
+  endif
+  mp13=map[y_][x_]
+    if   (mp1 & 3)
+      hp1=zero()
+    elif (mp1 & 4  ) 
+      hp1=hp1*4/5
+    elif (mp1 & 8  ) 
+      hp1=hp1*2/3
+    endif
+    hp14=hp13
+    mp14=mp13
+endfunc
+func gateDef_changeHexPref14(x_,y_)
+  hexGate1=gb_hexel_owner(x_,y_)
+  if hexGate1>=zero()
+    if   hexGate1==gb_team_id()
+      hp14=1100
+    else
+      hp14=2048
+    endif
+  elif hexGate1==m1
+      hp14=1920
+  else
+    hp14=zero()
+  endif
+  mp14=map[y_][x_]
+    if   (mp1 & 3)
+      hp1=zero()
+    elif (mp1 & 4  ) 
+      hp1=hp1*4/5
+    elif (mp1 & 8  ) 
+      hp1=hp1*2/3
+    endif
+    hp13=hp14
+    mp13=mp14
+endfunc
+func gateDef_changeHexPref15(x_,y_)
+  hexGate1=gb_hexel_owner(x_,y_)
+  if hexGate1>=zero()
+    if   hexGate1==gb_team_id()
+      hp15=1100
+    else
+      hp15=2048
+    endif
+  elif hexGate1==m1
+      hp15=1920
+  else
+    hp15=zero()
+  endif
+  mp15=map[y_][x_]
+    if   (mp1 & 3)
+      hp1=zero()
+    elif (mp1 & 4  ) 
+      hp1=hp1*4/5
+    elif (mp1 & 8  ) 
+      hp1=hp1*2/3
+    endif
+endfunc
+
+  func gateDef_hexPrefUpMove1()
+    if s[x1]&1
+      gateDef_changeHexPref10(x1,ynM1)
+    else
+hex10=m2
+hp10 =zero()
+hex11=m2
+hp11 =zero()
+    endif
+  endfunc
+  func gateDef_hexPrefDownMove1()
+    if s[x1]&1
+      gateDef_changeHexPref13(x1,zero())
+    else
+hex13=m2
+hp13 =zero()
+hex14=m2
+hp14 =zero()
+    endif
+  endfunc
+  func gateDef_hexPrefLeftMove1()
+    if s[y1]&2
+      gateDef_changeHexPref15(x1nM1,y1)
+    else
+hex15=m2
+hp15 =zero()
+    endif
+  endfunc
+  func gateDef_hexPrefRightMove1()
+    if s[y1]&2
+      gateDef_changeHexPref12(zero(),y1)
+    else
+hex12=m2
+hp12 =zero()
+    endif
+  endfunc
+func gateDef_changeHexPref20(x_,y_)
+  hexGate2=gb_hexel_owner(x_,y_)
+  if hexGate2>=zero()
+    if   hexGate2==gb_team_id()
+      hp20=1100
+    else
+      hp20=2048
+    endif
+  elif hexGate2==m1
+      hp20=1920
+  else
+    hp20=zero()
+  endif
+  mp20=map[y_][x_]
+    if   (mp2 & 3)
+      hp2=zero()
+    elif (mp2 & 4  ) 
+      hp2=hp2*4/5
+    elif (mp2 & 8  ) 
+      hp2=hp2*2/3
+    endif
+    hp21=hp20
+    mp21=mp20
+endfunc
+func gateDef_changeHexPref21(x_,y_)
+  hexGate2=gb_hexel_owner(x_,y_)
+  if hexGate2>=zero()
+    if   hexGate2==gb_team_id()
+      hp21=1100
+    else
+      hp21=2048
+    endif
+  elif hexGate2==m1
+      hp21=1920
+  else
+    hp21=zero()
+  endif
+  mp21=map[y_][x_]
+    if   (mp2 & 3)
+      hp2=zero()
+    elif (mp2 & 4  ) 
+      hp2=hp2*4/5
+    elif (mp2 & 8  ) 
+      hp2=hp2*2/3
+    endif
+    hp20=hp21
+    mp20=mp21
+endfunc
+func gateDef_changeHexPref22(x_,y_)
+  hexGate2=gb_hexel_owner(x_,y_)
+  if hexGate2>=zero()
+    if   hexGate2==gb_team_id()
+      hp22=1100
+    else
+      hp22=2048
+    endif
+  elif hexGate2==m1
+      hp22=1920
+  else
+    hp22=zero()
+  endif
+  mp22=map[y_][x_]
+    if   (mp2 & 3)
+      hp2=zero()
+    elif (mp2 & 4  ) 
+      hp2=hp2*4/5
+    elif (mp2 & 8  ) 
+      hp2=hp2*2/3
+    endif
+endfunc
+func gateDef_changeHexPref23(x_,y_)
+  hexGate2=gb_hexel_owner(x_,y_)
+  if hexGate2>=zero()
+    if   hexGate2==gb_team_id()
+      hp23=1100
+    else
+      hp23=2048
+    endif
+  elif hexGate2==m1
+      hp23=1920
+  else
+    hp23=zero()
+  endif
+  mp23=map[y_][x_]
+    if   (mp2 & 3)
+      hp2=zero()
+    elif (mp2 & 4  ) 
+      hp2=hp2*4/5
+    elif (mp2 & 8  ) 
+      hp2=hp2*2/3
+    endif
+    hp24=hp23
+    mp24=mp23
+endfunc
+func gateDef_changeHexPref24(x_,y_)
+  hexGate2=gb_hexel_owner(x_,y_)
+  if hexGate2>=zero()
+    if   hexGate2==gb_team_id()
+      hp24=1100
+    else
+      hp24=2048
+    endif
+  elif hexGate2==m1
+      hp24=1920
+  else
+    hp24=zero()
+  endif
+  mp24=map[y_][x_]
+    if   (mp2 & 3)
+      hp2=zero()
+    elif (mp2 & 4  ) 
+      hp2=hp2*4/5
+    elif (mp2 & 8  ) 
+      hp2=hp2*2/3
+    endif
+    hp23=hp24
+    mp23=mp24
+endfunc
+func gateDef_changeHexPref25(x_,y_)
+  hexGate2=gb_hexel_owner(x_,y_)
+  if hexGate2>=zero()
+    if   hexGate2==gb_team_id()
+      hp25=1100
+    else
+      hp25=2048
+    endif
+  elif hexGate2==m1
+      hp25=1920
+  else
+    hp25=zero()
+  endif
+  mp25=map[y_][x_]
+    if   (mp2 & 3)
+      hp2=zero()
+    elif (mp2 & 4  ) 
+      hp2=hp2*4/5
+    elif (mp2 & 8  ) 
+      hp2=hp2*2/3
+    endif
+endfunc
+
+  func gateDef_hexPrefUpMove2()
+    if s[x2]&1
+      gateDef_changeHexPref20(x2,ynM1)
+    else
+hex20=m2
+hp20 =zero()
+hex21=m2
+hp21 =zero()
+    endif
+  endfunc
+  func gateDef_hexPrefDownMove2()
+    if s[x2]&1
+      gateDef_changeHexPref23(x2,zero())
+    else
+hex23=m2
+hp23 =zero()
+hex24=m2
+hp24 =zero()
+    endif
+  endfunc
+  func gateDef_hexPrefLeftMove2()
+    if s[y2]&2
+      gateDef_changeHexPref25(x2nM1,y2)
+    else
+hex25=m2
+hp25 =zero()
+    endif
+  endfunc
+  func gateDef_hexPrefRightMove2()
+    if s[y2]&2
+      gateDef_changeHexPref22(zero(),y2)
+    else
+hex22=m2
+hp22 =zero()
+    endif
+  endfunc
+func gateDef_changeHexPref30(x_,y_)
+  hexGate3=gb_hexel_owner(x_,y_)
+  if hexGate3>=zero()
+    if   hexGate3==gb_team_id()
+      hp30=1100
+    else
+      hp30=2048
+    endif
+  elif hexGate3==m1
+      hp30=1920
+  else
+    hp30=zero()
+  endif
+  mp30=map[y_][x_]
+    if   (mp3 & 3)
+      hp3=zero()
+    elif (mp3 & 4  ) 
+      hp3=hp3*4/5
+    elif (mp3 & 8  ) 
+      hp3=hp3*2/3
+    endif
+    hp31=hp30
+    mp31=mp30
+endfunc
+func gateDef_changeHexPref31(x_,y_)
+  hexGate3=gb_hexel_owner(x_,y_)
+  if hexGate3>=zero()
+    if   hexGate3==gb_team_id()
+      hp31=1100
+    else
+      hp31=2048
+    endif
+  elif hexGate3==m1
+      hp31=1920
+  else
+    hp31=zero()
+  endif
+  mp31=map[y_][x_]
+    if   (mp3 & 3)
+      hp3=zero()
+    elif (mp3 & 4  ) 
+      hp3=hp3*4/5
+    elif (mp3 & 8  ) 
+      hp3=hp3*2/3
+    endif
+    hp30=hp31
+    mp30=mp31
+endfunc
+func gateDef_changeHexPref32(x_,y_)
+  hexGate3=gb_hexel_owner(x_,y_)
+  if hexGate3>=zero()
+    if   hexGate3==gb_team_id()
+      hp32=1100
+    else
+      hp32=2048
+    endif
+  elif hexGate3==m1
+      hp32=1920
+  else
+    hp32=zero()
+  endif
+  mp32=map[y_][x_]
+    if   (mp3 & 3)
+      hp3=zero()
+    elif (mp3 & 4  ) 
+      hp3=hp3*4/5
+    elif (mp3 & 8  ) 
+      hp3=hp3*2/3
+    endif
+endfunc
+func gateDef_changeHexPref33(x_,y_)
+  hexGate3=gb_hexel_owner(x_,y_)
+  if hexGate3>=zero()
+    if   hexGate3==gb_team_id()
+      hp33=1100
+    else
+      hp33=2048
+    endif
+  elif hexGate3==m1
+      hp33=1920
+  else
+    hp33=zero()
+  endif
+  mp33=map[y_][x_]
+    if   (mp3 & 3)
+      hp3=zero()
+    elif (mp3 & 4  ) 
+      hp3=hp3*4/5
+    elif (mp3 & 8  ) 
+      hp3=hp3*2/3
+    endif
+    hp34=hp33
+    mp34=mp33
+endfunc
+func gateDef_changeHexPref34(x_,y_)
+  hexGate3=gb_hexel_owner(x_,y_)
+  if hexGate3>=zero()
+    if   hexGate3==gb_team_id()
+      hp34=1100
+    else
+      hp34=2048
+    endif
+  elif hexGate3==m1
+      hp34=1920
+  else
+    hp34=zero()
+  endif
+  mp34=map[y_][x_]
+    if   (mp3 & 3)
+      hp3=zero()
+    elif (mp3 & 4  ) 
+      hp3=hp3*4/5
+    elif (mp3 & 8  ) 
+      hp3=hp3*2/3
+    endif
+    hp33=hp34
+    mp33=mp34
+endfunc
+func gateDef_changeHexPref35(x_,y_)
+  hexGate3=gb_hexel_owner(x_,y_)
+  if hexGate3>=zero()
+    if   hexGate3==gb_team_id()
+      hp35=1100
+    else
+      hp35=2048
+    endif
+  elif hexGate3==m1
+      hp35=1920
+  else
+    hp35=zero()
+  endif
+  mp35=map[y_][x_]
+    if   (mp3 & 3)
+      hp3=zero()
+    elif (mp3 & 4  ) 
+      hp3=hp3*4/5
+    elif (mp3 & 8  ) 
+      hp3=hp3*2/3
+    endif
+endfunc
+
+  func gateDef_hexPrefUpMove3()
+    if s[x3]&1
+      gateDef_changeHexPref30(x3,ynM1)
+    else
+hex30=m2
+hp30 =zero()
+hex31=m2
+hp31 =zero()
+    endif
+  endfunc
+  func gateDef_hexPrefDownMove3()
+    if s[x3]&1
+      gateDef_changeHexPref33(x3,zero())
+    else
+hex33=m2
+hp33 =zero()
+hex34=m2
+hp34 =zero()
+    endif
+  endfunc
+  func gateDef_hexPrefLeftMove3()
+    if s[y3]&2
+      gateDef_changeHexPref35(x3nM1,y3)
+    else
+hex35=m2
+hp35 =zero()
+    endif
+  endfunc
+  func gateDef_hexPrefRightMove3()
+    if s[y3]&2
+      gateDef_changeHexPref32(zero(),y3)
+    else
+hex32=m2
+hp32 =zero()
+    endif
+  endfunc
+
+func output0()
+  print 'turn=',turn,' ag0: x=',x0,' xR=',x0Rev,' y=',y0,' yR=',y0Rev,' mv=',move[0]
+  print '  [',x00,',',y00,':',hp00,',',map[y00][x00],'][',  x01,',',y00,':',hp01,',',map[y00][x01],']'
+  print   '[',x05,',',y0 ,':',hp05,',',map[y0 ][x05],']    [',x02,',',y0 ,':',hp02,',',map[y0 ][x02],']'
+  print '  [',x00,',',y03,':',hp04,',',map[y03][x00],'][',  x01,',',y03,':',hp03,',',map[y03][x01],']'
+endfunc
+func output0_simple()
+  print 'turn=',turn,' ag0(',x0,',',y0,') [',hp00,',',hp01,',',hp02,',',hp03,',',hp04,',',hp05,']'
+endfunc
+func output1()
+  print 'turn=',turn,' ag1: x=',x1,' xR=',x1Rev,' y=',y1,' yR=',y1Rev,' mv=',move[1]
+  print '  [',x10,',',y10,':',hp10,',',map[y10][x10],'][',  x11,',',y10,':',hp11,',',map[y10][x11],']'
+  print   '[',x15,',',y1 ,':',hp15,',',map[y1 ][x15],']    [',x12,',',y1 ,':',hp12,',',map[y1 ][x12],']'
+  print '  [',x10,',',y13,':',hp14,',',map[y13][x10],'][',  x11,',',y13,':',hp13,',',map[y13][x11],']'
+endfunc
+func output1_simple()
+  print 'turn=',turn,' ag1(',x1,',',y1,') [',hp10,',',hp11,',',hp12,',',hp13,',',hp14,',',hp15,']'
+endfunc
+func output2()
+  print 'turn=',turn,' ag2: x=',x2,' xR=',x2Rev,' y=',y2,' yR=',y2Rev,' mv=',move[2]
+  print '  [',x20,',',y20,':',hp20,',',map[y20][x20],'][',  x21,',',y20,':',hp21,',',map[y20][x21],']'
+  print   '[',x25,',',y2 ,':',hp25,',',map[y2 ][x25],']    [',x22,',',y2 ,':',hp22,',',map[y2 ][x22],']'
+  print '  [',x20,',',y23,':',hp24,',',map[y23][x20],'][',  x21,',',y23,':',hp23,',',map[y23][x21],']'
+endfunc
+func output2_simple()
+  print 'turn=',turn,' ag2(',x2,',',y2,') [',hp20,',',hp21,',',hp22,',',hp23,',',hp24,',',hp25,']'
+endfunc
+func output3()
+  print 'turn=',turn,' ag3: x=',x3,' xR=',x3Rev,' y=',y3,' yR=',y3Rev,' mv=',move[3]
+  print '  [',x30,',',y30,':',hp30,',',map[y30][x30],'][',  x31,',',y30,':',hp31,',',map[y30][x31],']'
+  print   '[',x35,',',y3 ,':',hp35,',',map[y3 ][x35],']    [',x32,',',y3 ,':',hp32,',',map[y3 ][x32],']'
+  print '  [',x30,',',y33,':',hp34,',',map[y33][x30],'][',  x31,',',y33,':',hp33,',',map[y33][x31],']'
+endfunc
+func output3_simple()
+  print 'turn=',turn,' ag3(',x3,',',y3,') [',hp30,',',hp31,',',hp32,',',hp33,',',hp34,',',hp35,']'
+endfunc
+func outputAll()
+  print '--- outputAll() turn=',turn,' ---'
+     output0()
+     output1()
+     output2()
+     output3()
+	print '--- outputAll() end ---'
+endfunc
+init()
+if gb_team_id()>=2
+  if gb_team_id()>=3
+    otherPos3()
+  else
+    otherPos2()
+  endif
+elif gb_team_id()
+  otherPos1()
+else
+  otherPos0()
+endif
+turnDivN=turn/8
+     hexPrefDef3()
+     if gb_agent_status(gb_team_id(),3)
+hp30=zero()
+hp31=zero()
+hp32=zero()
+hp33=zero()
+hp34=zero()
+hp35=zero()
+       s[1013]=1
+     elif s[1013]
+       s[1013]=zero()
+			 hp30=hp30*gb_random_value(100)
+			 hp31=hp31*gb_random_value(100)
+			 hp32=hp32*gb_random_value(100)
+			 hp33=hp33*gb_random_value(100)
+			 hp34=hp34*gb_random_value(100)
+			 hp35=hp35*gb_random_value(100)
+		 else
+			 stateMove3()
+		 endif
+		 moveMaxHexPref3_012345()
+     hexPrefDef2()
+     if gb_agent_status(gb_team_id(),2)
+hp20=zero()
+hp21=zero()
+hp22=zero()
+hp23=zero()
+hp24=zero()
+hp25=zero()
+       s[1012]=1
+     elif s[1012]
+       s[1012]=zero()
+			 hp20=hp20*gb_random_value(100)
+			 hp21=hp21*gb_random_value(100)
+			 hp22=hp22*gb_random_value(100)
+			 hp23=hp23*gb_random_value(100)
+			 hp24=hp24*gb_random_value(100)
+			 hp25=hp25*gb_random_value(100)
+		 else
+			 stateMove2()
+		 endif
+		 moveMaxHexPref2_012345()
+     hexPrefDef1()
+     if gb_agent_status(gb_team_id(),1)
+hp10=zero()
+hp11=zero()
+hp12=zero()
+hp13=zero()
+hp14=zero()
+hp15=zero()
+       s[1011]=1
+     elif s[1011]
+       s[1011]=zero()
+			 hp10=hp10*gb_random_value(100)
+			 hp11=hp11*gb_random_value(100)
+			 hp12=hp12*gb_random_value(100)
+			 hp13=hp13*gb_random_value(100)
+			 hp14=hp14*gb_random_value(100)
+			 hp15=hp15*gb_random_value(100)
+		 else
+			 stateMove1()
+		 endif
+		 moveMaxHexPref1_012345()
+dogMain()
+gb_move(move)

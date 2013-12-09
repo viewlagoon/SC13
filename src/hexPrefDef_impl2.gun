@@ -1,0 +1,18 @@
+#$ if @dir==0
+#$   'hexPrefDef_impl.gun ag=@ag dir=0 k=0 l=0'
+#$ endif
+#$ if @dir==1
+#$   'hexPrefDef_impl.gun ag=@ag dir=1 k=1 l=0';
+#$ endif
+#$ if @dir==2
+#$   'hexPrefDef_impl.gun ag=@ag dir=2 k=2 l=' ;
+#$ endif
+#$ if @dir==3
+#$   'hexPrefDef_impl.gun ag=@ag dir=3 k=1 l=3';
+#$ endif
+#$ if @dir==4
+#$   'hexPrefDef_impl.gun ag=@ag dir=4 k=0 l=3';
+#$ endif
+#$ if @dir==5
+#$   'hexPrefDef_impl.gun ag=@ag dir=5 k=5 l=' ;
+#$ endif

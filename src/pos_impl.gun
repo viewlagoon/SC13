@@ -1,0 +1,28 @@
+## require base
+@{prefix}y@{base}Mod2=@{prefix}y@{base}%2
+@{prefix}x@{base}2=@{prefix}x@{base}+1
+@{prefix}x@{base}5=@{prefix}x@{base}-1
+if @{prefix}y@{base}Mod2
+  @{prefix}x@{base}0=@{prefix}x@{base}5
+  @{prefix}x@{base}1=@{prefix}x@{base}
+  @{prefix}x@{base}n=@{prefix}xn
+  @{prefix}x@{base}nM1=@{prefix}xnM1
+  @{prefix}x@{base}nM1Other=@{prefix}xnM2
+else
+  @{prefix}x@{base}0=@{prefix}x@{base}
+  @{prefix}x@{base}1=@{prefix}x@{base}2
+  @{prefix}x@{base}n=@{prefix}xnM1
+  @{prefix}x@{base}nM1=@{prefix}xnM2
+  @{prefix}x@{base}nM1Other=@{prefix}xnM1
+endif
+@{prefix}x@{base}Rev=@{prefix}x@{base}nM1-@{prefix}x@base
+@{prefix}x@{base}3=@{prefix}x@{base}1
+@{prefix}x@{base}4=@{prefix}x@{base}0
+@{prefix}y@{base}0=@{prefix}y@{base}-1
+@{prefix}y@{base}3=@{prefix}y@{base}+1
+@{prefix}y@{base}2=@{prefix}y@{base}
+@{prefix}y@{base}5=@{prefix}y@{base}
+@{prefix}y@{base}1=@{prefix}y@{base}0
+@{prefix}y@{base}4=@{prefix}y@{base}3
+@{prefix}y@{base}Rev=@{prefix}ynM1-@{prefix}y@{base}
+

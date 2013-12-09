@@ -1,0 +1,146 @@
+func cm_setNeighborT()
+  cm_yTMod2_=cm_yT()%2
+  cm_yT0_=cm_yT()-1
+  cm_yT3_=cm_yT()+1
+  cm_xT2_=cm_xT()+1
+  cm_xT5_=cm_xT()-1
+  if cm_yTMod2_
+    cm_xT0_=cm_xT5()
+    cm_xT1_=cm_xT()
+  else
+    cm_xT0_=cm_xT()
+    cm_xT1_=cm_xT2()
+  endif
+endfunc
+func cm_outputNeighborT()
+  print '  --  T    (',cm_xT0(),',',cm_yT0(),') (',cm_xT1(),',',cm_yT1(),')'
+  print '  --  T(',cm_xT5(),',',cm_yT5(),') (',cm_xT(),',',cm_yT(),') (',cm_xT2(),',',cm_yT2(),')'
+  print '  --  T    (',cm_xT4(),',',cm_yT4(),') (',cm_xT3(),',',cm_yT3(),')'
+endfunc
+func cm_xT()
+  return cm_xT_
+endfunc
+func cm_xU()
+  return cm_xU_
+endfunc
+func cm_xT0()
+  return cm_xT0_
+endfunc
+func cm_xT1()
+  return cm_xT1_
+endfunc
+func cm_xT2()
+  return cm_xT2_
+endfunc
+func cm_xT3()
+  return cm_xT1_
+endfunc
+func cm_xT4()
+  return cm_xT0_
+endfunc
+func cm_xT5()
+  return cm_xT5_
+endfunc
+func cm_yT()
+  return cm_yT_
+endfunc
+func cm_yU()
+  return cm_yU_
+endfunc
+func cm_yT0()
+  return cm_yT0_
+endfunc
+func cm_yT1()
+  return cm_yT0_
+endfunc
+func cm_yT2()
+  return cm_yT_
+endfunc
+func cm_yT3()
+  return cm_yT3_
+endfunc
+func cm_yT4()
+  return cm_yT3_
+endfunc
+func cm_yT5()
+  return cm_yT_
+endfunc
+func cm_iT()
+  return cm_iT_
+endfunc
+func cm_iT_add()
+  cm_iT_=cm_iTP1()
+endfunc
+func cm_iT_sub()
+  cm_iT_=cm_iTM1()
+endfunc
+func cm_iTM1()
+  return cm_iT()-1
+endfunc
+func cm_iTP1()
+  return cm_iT()+1
+endfunc
+func cm_iT_clear()
+  cm_iT_=zero()
+endfunc
+func cm_bT()
+  return cm_bT_
+endfunc
+func cm_cntT()
+  return cm_cntT_
+endfunc
+func cm_cntT_clear()
+  cm_cntT_=zero()
+endfunc
+func cm_cntT_add()
+  cm_cntT_=cm_cntT_+1
+endfunc
+func cm_distU()
+  return cm_distU_
+endfunc
+func cm_distT()
+  return cm_distT_
+endfunc
+#$ chain=0
+#$ while @{chain}<=6
+  #$ ag=1
+  #$ while @{ag}<=3
+func cm@{ag}_array@{chain}_pop()
+	cm@{ag}_array@{chain}_subSize()
+	cm_xT_=cm@{ag}_x@{chain}[cm@{ag}_array@{chain}_size()]
+	cm_yT_=cm@{ag}_y@{chain}[cm@{ag}_array@{chain}_size()]
+endfunc
+func cm@{ag}_array@{chain}_size()
+  return cm@{ag}_array@{chain}_lst_
+endfunc
+func cm@{ag}_array@{chain}_addSize()
+  cm@{ag}_array@{chain}_lst_=cm@{ag}_array@{chain}_size()+1
+endfunc
+func cm@{ag}_array@{chain}_subSize()
+  cm@{ag}_array@{chain}_lst_=cm@{ag}_array@{chain}_size()-1
+endfunc
+func cm@{ag}_array@{chain}_clear()
+  cm@{ag}_array@{chain}_lst_=zero()
+endfunc
+func cm@{ag}_array@{chain}_setGuard()
+  cm@{ag}_x@{chain}[m1]=x@{ag}
+  cm@{ag}_y@{chain}[m1]=y@{ag}
+endfunc
+    #$ ag+=1
+  #$ endwhile
+func cm_distT_set@{chain}()
+  cm_distT_=oppsDistance_dist@{chain}
+endfunc
+  #$ chain+=1
+#$ endwhile
+func cm_distT_set(chain_)
+  cm_distT_=oppsDistance_dist0-chain_
+endfunc
+####################################################3
+#$ d0=0
+#$ while @{d0}<6
+func cm_breath@{d0}()
+  return cm_breath@{d0}_
+endfunc
+  #$ d0+=1
+#$ endwhile

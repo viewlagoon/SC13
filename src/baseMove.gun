@@ -1,0 +1,199 @@
+#$ isXCenter=98
+#$ ag=1
+#$ while @{ag}<=3
+  #$ d0=0
+  #$ while @{d0}<6
+func bm@{ag}_dir@{d0}_checkNeighborShape()
+  if ownedMapMe[y@{ag}@{d0}][x@{ag}@{d0}]
+    bm@{ag}_dir@{d0}_surrounded_=zero()
+    #$ d1=0
+    #$ while @{d1}<6
+      if ownedMapMe[y@{ag}@{d0}@{d1}][x@{ag}@{d0}@{d1}]
+        bm@{ag}_dir@{d0}_surrounded_=bm@{ag}_dir@{d0}_surrounded_+1
+      elif safeField_map[y@{ag}@{d0}@{d1}][x@{ag}@{d0}@{d1}]
+        bm@{ag}_dir@{d0}_surrounded_=bm@{ag}_dir@{d0}_surrounded_+1
+      endif
+      #$ d1+=1
+    #$ endwhile
+    if bm@{ag}_dir@{d0}_surrounded_>1
+      hp@{ag}@{d0}=hp@{ag}@{d0}/bm@{ag}_dir@{d0}_surrounded_
+    endif
+  else
+    #$ d1=0
+    #$ while @{d1}<6
+      #safeField_map[y@{ag}@{d0}@{d1}][x@{ag}@{d0}@{d1}]>=2
+      bm_ownedT@{d1}_=ownedMapMe[y@{ag}@{d0}@{d1}][x@{ag}@{d0}@{d1}]
+      #$ d1+=1
+    #$ endwhile
+    hp@{ag}@{d0}=bm_checkNeighborShape(hp@{ag}@{d0})
+    #$ d1=@{d0}; d1+=1; d1%=6
+    #$ d2=@{d0}; d2+=2; d2%=6
+    #$ d3=@{d0}; d3+=3; d3%=6
+    #$ d4=@{d0}; d4+=4; d4%=6
+    #$ d5=@{d0}; d5+=5; d5%=6
+    #oppsDistance_map1[y@{ag}@{d0}][x@{ag}@{d0}]>=oppsDistance_dist4
+    if ownedMapMe[y@{ag}@{d0}@{d0}][x@{ag}@{d0}@{d0}]
+    elif ownedMapMe[y@{ag}@{d1}][x@{ag}@{d1}]
+      if ownedMapMe[y@{ag}@{d5}][x@{ag}@{d5}]
+      elif ownedMapMe[y@{ag}@{d0}@{d5}][x@{ag}@{d0}@{d5}]
+      else
+        print '  --  creating seed seedDir=@{d0} gotoDir=@{d5} boosted'
+        hp@{ag}@{d5}=hp@{ag}@{d5}*3/2
+      endif
+    elif ownedMapMe[y@{ag}@{d0}@{d1}][x@{ag}@{d0}@{d1}]
+    elif ownedMapMe[y@{ag}@{d5}][x@{ag}@{d5}]
+      print '  --  creating seed seedDir=@{d0} gotoDir=@{d1} boosted'
+      hp@{ag}@{d1}=hp@{ag}@{d1}*3/2
+    endif
+  endif
+endfunc
+    #$ d0+=1
+  #$ endwhile
+func baseMove@{ag}_entryPoint()
+  if y@{ag}
+    if y@{ag}Rev
+      if x@{ag}<1
+      elif x@{ag}Rev<1
+      else
+        #$ d1=0
+        #$ while @{d1}<6
+          bm@{ag}_dir@{d1}_checkNeighborShape()
+          #$ d1+=1
+        #$ endwhile
+      endif
+    endif
+  endif
+  bm_zoneT_=zone[jZone@{ag}]
+  print '  --  ag@{ag} zone[',jZone@{ag},']=',bm_zoneT(),' /150=',bm_zoneT()/150,' /120=',bm_zoneT()/120
+  if bm_zoneT()>=400
+    if jZone@{ag}
+      if jZone@{ag}>=2
+        if zone[0]<zone[1]
+          bm@{ag}_gotoHorizontalGate()
+        else
+          bm@{ag}_gotoLeft()
+        endif
+      elif zone[0]<zone[1]
+        bm@{ag}_gotoLeft()
+      elif zone[0]==zone[1]
+        if x@{ag}<xnDiv2
+          bm@{ag}_gotoLeft()
+        else
+          bm@{ag}_gotoRight()
+        endif
+      else
+        bm@{ag}_gotoRight()
+      endif
+    elif zone[1]>zone[2]
+      bm@{ag}_gotoHorizontalGate()
+    else
+      bm@{ag}_gotoRight()
+    endif
+  endif
+endfunc
+func bm@{ag}_gotoLeft()
+  hp@{ag}4=hp@{ag}4*bm_zoneT()/150
+  hp@{ag}5=hp@{ag}5*bm_zoneT()/120
+  hp@{ag}0=hp@{ag}0*bm_zoneT()/150
+endfunc
+func bm@{ag}_gotoRight()
+  hp@{ag}1=hp@{ag}1*bm_zoneT()/150
+  hp@{ag}2=hp@{ag}2*bm_zoneT()/120
+  hp@{ag}3=hp@{ag}3*bm_zoneT()/150
+endfunc
+func bm@{ag}_gotoHorizontalGate()
+  if y@{ag}<ynDiv2
+    if x@{ag}<xnDiv2
+      if y@{ag}<=yGateMin
+        hp@{ag}1=hp@{ag}1*bm_zoneT()/200
+        hp@{ag}2=hp@{ag}2*bm_zoneT()/120
+        hp@{ag}3=hp@{ag}3*bm_zoneT()/120
+      else
+        hp@{ag}1=hp@{ag}1*bm_zoneT()/120
+        hp@{ag}2=hp@{ag}2*bm_zoneT()/120
+        hp@{ag}3=hp@{ag}3*bm_zoneT()/200
+      endif
+    elif y@{ag}<=yGateMin
+      hp@{ag}4=hp@{ag}4*bm_zoneT()/120
+      hp@{ag}5=hp@{ag}5*bm_zoneT()/120
+      hp@{ag}0=hp@{ag}0*bm_zoneT()/200
+    else
+      hp@{ag}4=hp@{ag}4*bm_zoneT()/200
+      hp@{ag}5=hp@{ag}5*bm_zoneT()/120
+      hp@{ag}0=hp@{ag}0*bm_zoneT()/120
+    endif
+  elif x@{ag}<xnDiv2
+    if y@{ag}<yGateMax
+      hp@{ag}1=hp@{ag}1*bm_zoneT()/200
+      hp@{ag}2=hp@{ag}2*bm_zoneT()/120
+      hp@{ag}3=hp@{ag}3*bm_zoneT()/120
+    else
+      hp@{ag}1=hp@{ag}1*bm_zoneT()/120
+      hp@{ag}2=hp@{ag}2*bm_zoneT()/120
+      hp@{ag}3=hp@{ag}3*bm_zoneT()/200
+    endif
+  elif y@{ag}<yGateMax
+    hp@{ag}4=hp@{ag}4*bm_zoneT()/120
+    hp@{ag}5=hp@{ag}5*bm_zoneT()/120
+    hp@{ag}0=hp@{ag}0*bm_zoneT()/200
+  else
+    hp@{ag}4=hp@{ag}4*bm_zoneT()/200
+    hp@{ag}5=hp@{ag}5*bm_zoneT()/120
+    hp@{ag}0=hp@{ag}0*bm_zoneT()/120
+  endif
+endfunc
+  #$ ag+=1
+#$ endwhile
+###############################################################################
+#$ d0=0
+#$ while @{d0}<6
+func bm_ownedT@{d0}_reset()
+  bm_ownedT@{d0}_=zero()
+endfunc
+func bm_ownedT@{d0}_set()
+  bm_ownedT@{d0}_=1
+endfunc
+func bm_ownedT@{d0}()
+  return bm_ownedT@{d0}_
+endfunc
+  #$ d0+=1
+#$ endwhile
+
+func baseMove_init()
+  #$ xG=xMutG
+  ##xGWithDog
+  #if turn%40
+    #bm_xCenter=s[@{isXCenter}]
+  #elif turn
+    jZoneG=xGWithDog/(xnDiv3+1)
+    if zone[jZoneG]<=300
+      bm_xCenter=@{xG}
+    elif jZone
+      if jZone>=2
+        if zone[0]<zone[1]
+          bm_xCenter=xn/6
+        else
+          bm_xCenter=xn*5/6
+        endif
+      elif zone[0]<zone[1]
+        bm_xCenter=xn/6
+      else
+        bm_xCenter=xnDiv2
+      endif
+    elif zone[1]<=zone[2]
+      bm_xCenter=xnDiv2
+    else
+      bm_xCenter=xn*5/6
+    endif
+    #s[@{isXCenter}]=bm_xCenter
+  #else
+    #bm_xCenter=@{xG}
+    #s[@{isXCenter}]=bm_xCenter
+  #endif
+  bm_xCenterL=bm_xCenter-6
+  bm_xCenterR=bm_xCenter+6
+  print 'turn=',turn,' bm_xCenter=(',bm_xCenterL,'<',bm_xCenter,'<',bm_xCenterR,')'
+endfunc
+func bm_zoneT()
+  return bm_zoneT_
+endfunc

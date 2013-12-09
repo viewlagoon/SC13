@@ -1,0 +1,144 @@
+#$ ag=1
+#$ while @{ag}<4
+#$ dF=0
+#$ while @{dF}<6
+#$ c1r5=1
+#$ while @{c1r5}<6
+  #$ c5r25=@{c1r5}; c5r25*=5
+  #$ dP=@{dF}; dP+=@{c5r25}; dP%=6
+  #$ dN=@{dF}; dN+=@{c1r5}; dN%=6
+  #$ sP_=@{ag}@{dP}
+  #$ sN_=@{ag}@{dN}
+  #$ sNN_=@{ag}@{dN}@{dN}
+  #$ sF_=@{ag}@{dF}
+  #$ sFP_=@{ag}@{dF}@{dP}
+  #$ sFN_=@{ag}@{dF}@{dN}
+  #$ sFNN_=@{ag}@{dF}@{dN}@{dN}
+  #$ sFF_=@{ag}@{dF}@{dF}
+  #$ sFFP_=@{ag}@{dF}@{dF}@{dP}
+  #$ sFFN_=@{ag}@{dF}@{dF}@{dN}
+  #$ sFFF_=@{ag}@{dF}@{dF}@{dF}
+  #$ sN_=@{ag}@{dN}
+  #$ sNN_=@{ag}@{dN}@{dN}
+###################################################################
+func spiralMove@{ag}_single_rotate@{c1r5}_neighbor@{dF}()
+  print '  -- single_rotate@{c1r5}_neighbor@{dF}'
+  spiralMove@{ag}_checkOppsDist_dest@{dF}()
+  if spiralMove@{ag}_shortestOppsDist>=oppsDistance_dist2
+    print '  -- single_rotate@{c1r5}_neighbor@{dF} too short distance shortestOppsDist=',spiralMove@{ag}_shortestOppsDist
+  elif ownedMapMe[y@{sP_}][x@{sP_}]
+    print '  -- single_rotate@{c1r5}_neighbor@{dF} sP_=@{dP}(',x@{sP_},',',y@{sP_},' is already owned'
+  elif ownedMapMe[y@{sFP_}][x@{sFP_}]
+    print '  -- single_rotate@{c1r5}_neighbor@{dF} sFP_(',x@{sFP_},',',y@{sFP_},') is owned begin check curious shape'
+    if ownedMapMe[y@{sFF_}][x@{sFF_}]
+      isCuriousShape_=zero()
+      print '  -- single_rotate@{c1r5}_neighbor@{dF} sFF_(',x@{sFF_},',',y@{sFF_},') is owned then not curious shape'
+    elif ownedMapMe[y@{sFN_}][x@{sFN_}]
+      print '  -- single_rotate@{c1r5}_neighbor@{dF} sFN_(',x@{sFN_},',',y@{sFN_},') is owned then curious shape'
+      isCuriousShape_=1
+    else
+      print '  -- single_rotate@{c1r5}_neighbor@{dF} sFN_(',x@{sFN_},',',y@{sFN_},') is not owned then not curious shape'
+      isCuriousShape_=zero()
+    endif
+    if isCuriousShape_
+      print '  -- single_rotate@{c1r5}_neighbor@{dF} curious shape'
+    elif spiralMove_globalSafeLevel<=2
+      print '  -- single_rotate@{c1r5}_neighbor@{dF} dangerous gSafeLv=',spiralMove_globalSafeLevel
+    else
+      if spiralMove_checkOppsDistance(y@{sP_},x@{sP_})>=oppsDistance_dist1
+        print '  -- single_rotate@{c1r5}_neighbor@{dF} sP_=@{dP}(',x@{sP_},',',y@{sP_},' is near samurai/dog'
+      else
+        if res_checkOppsDistance_>spiralMove@{ag}_shortestOppsDist
+          spiralMove@{ag}_shortestOppsDist=res_checkOppsDistance_
+        endif
+        return spiralMove@{ag}_single_rotate@{c1r5}_neighbor@{dP}()
+      endif
+    endif
+  elif ownedMapMe[y@{sFF_}][x@{sFF_}]
+    if spiralMove_checkOppsDistance(y@{sP_},x@{sP_})>=oppsDistance_dist1
+      print '  -- single_rotate@{c1r5}_neighbor@{dF} sP_=@{dP}(',x@{sP_},',',y@{sP_},' is near samurai/dog'
+    else
+      if res_checkOppsDistance_>spiralMove@{ag}_shortestOppsDist
+        spiralMove@{ag}_shortestOppsDist=res_checkOppsDistance_
+      endif
+      return spiralMove@{ag}_rotate@{c1r5}_neighbor@{dP}_remote@{dF}()
+    endif
+  elif spiralMove_globalSafeLevel<=3
+    print '  -- single_rotate@{c1r5}_neighbor@{dF} gsf match gSafeLv=',spiralMove_globalSafeLevel
+  elif spiralMove@{ag}_shortestOppsDist>=oppsDistance_dist3
+    print '  -- single_rotate@{c1r5}_neighbor@{dF} gsf match oppsDist=',spiralMove@{ag}_shortestOppsDist
+  else
+    spiralMove@{ag}_continue_dest@{dP}()
+  endif
+  spiralMove@{ag}_finish_dest@{dF}()
+  spiralMove@{ag}_numBreath=1
+  spiralMove@{ag}_yNeighbor=y@{sF_}
+  spiralMove@{ag}_xNeighbor=x@{sF_}
+endfunc
+#$ c1r5+=4
+#$ endwhile
+
+func spiralMove@{ag}_dispatchSingle_neighbor@{dF}()
+  print '  -- dispatchSingle neighbor=@{dF} gSafeLv=',spiralMove_globalSafeLevel
+  #$ 'spiralMove_call_searchInner.gun ag=@{ag} yi=spiralMove@{ag}_yInner xi=spiralMove@{ag}_xInner yo=spiralMove@{ag}_yNeighbor xo=spiralMove@{ag}_xNeighbor'
+  if res_searchInner_<=zero()
+    spiralMove@{ag}_innerSize=spiralMove@{ag}_innerSizeT
+    if spiralMove_globalSafeLevel<=2
+      print '  -- dispatchSingle too dangerous global'
+      return spiralMove@{ag}_finish_dest@{dF}()
+    elif spiralMove_checkOppsDistance(y@{ag},x@{ag})>=oppsDistance_dist2
+      print '  -- dispatchSingle current position is near to samurai/dog'
+      return spiralMove@{ag}_finish_dest@{dF}()
+    endif
+    if res_checkOppsDistance_>=spiralMove@{ag}_shortestOppsDist
+      spiralMove@{ag}_shortestOppsDist=res_checkOppsDistance_
+    endif
+    if spiralMove@{ag}_c1r5==1
+      return spiralMove@{ag}_single_rotate1_neighbor@{dF}()
+    endif
+    return spiralMove@{ag}_single_rotate5_neighbor@{dF}()
+  endif
+  return spiralMove@{ag}_init()
+endfunc
+
+func spiralMove@{ag}_checkBorder_neighbor@{dF}()
+  if x@{sF_}
+    if x@{sF_}Rev
+    else
+      return 1
+    endif
+  else
+    return 1
+  endif
+  if y@{sF_}
+    if y@{sF_}Rev
+    else
+      return 1
+    endif
+  else
+    return 1
+  endif
+endfunc
+
+
+func spiralMove@{ag}_finish_dest@{dF}()
+  print ' -- ag@{ag} finish_dest@{dF}'
+  hp@{sF_}=hp@{sF_}*20
+endfunc
+func spiralMove@{ag}_continue_dest@{dF}()
+  print ' -- ag@{ag} continue_dest@{dF}'
+  hp@{sF_}=hp@{sF_}*3000
+endfunc
+func spiralMove@{ag}_checkOppsDist_dest@{dF}()
+  if oppsDistance_map1[y@{sF_}][x@{sF_}]>=spiralMove@{ag}_shortestOppsDist
+    spiralMove@{ag}_shortestOppsDist=oppsDistance_map1[y@{sF_}][x@{sF_}]
+  endif
+  if oppsDistance_map0[y@{sF_}][x@{sF_}]>=spiralMove@{ag}_shortestOppsDist
+    spiralMove@{ag}_shortestOppsDist=oppsDistance_map0[y@{sF_}][x@{sF_}]
+  endif
+endfunc
+#$ dF+=1
+#$ endwhile
+#$ ag+=1
+#$ endwhile
+

@@ -1,0 +1,9 @@
+yOutT=@{yo}
+xOutT=@{xo}
+yInT=@{yi}
+xInT=@{xi}
+print '  -- call_searchInner i(',xInT,',',yInT,') o(',@{xo},',',@{yo},')'
+#$ 'spiralMove_searchInner_init.gun hash=1 y=@{yo} x=@{xo}'
+res_searchInner_=spiralMove@{ag}_searchInner_impl2()
+#$ 'spiralMove_searchInner_dispose.gun hash=1 y=@{yo} x=@{xo}'
+

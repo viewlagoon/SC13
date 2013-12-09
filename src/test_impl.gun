@@ -1,0 +1,3 @@
+test_stack_y[test_stack_lst]=@{pushY}
+test_stack_x[test_stack_lst]=@{pushX}
+test_stack_lst=test_stack_lst+1

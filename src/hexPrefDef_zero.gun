@@ -1,0 +1,11 @@
+hex@ag@dir=m2
+hp@ag@dir =zero()
+#$ dN=@dir; dN+=1; dN%=6
+#$ dP=@dir; dP+=5; dP%=6
+hexSurrounded@ag=hexSurrounded@ag+1
+hexSurrounded@ag@dir=hexSurrounded@ag@dir+1
+hexSurrounded@ag@dN=hexSurrounded@ag@dN+1
+hexSurrounded@ag@dP=hexSurrounded@ag@dP+1
+#$ if @ag==1
+  print 'turn=',turn,' tid=',gb_team_id(),' hexPrefDef_zero@ag@dir dN=@dN dP=@dP'
+#$ endif

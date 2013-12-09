@@ -1,0 +1,81 @@
+#$ m0=1;m1=3;m2=7;m3=15;m4=31;m5=63
+#$ b0=1;b1=2;b2=4;b3=8 ;b4=16;b5=32
+#$ stack=cm2_array0; nChain=5
+#$ ag=1; 
+#$ while @{ag}<=3
+func cm@{ag}_initInner()
+  cm@{ag}_oppsDistanceInner=zero()
+  cm_m=zero()
+  cm@{ag}_innerSize=zero()
+  @{stack}_clear()
+  print '  !! cm@{ag}_initInner'
+	if cm@{ag}_chMin()>=4
+		if cm@{ag}_chMin()>=5
+			cm@{ag}_initInner5()
+		else
+			cm@{ag}_initInner4()
+		endif
+	elif cm@{ag}_chMin()>=2
+		if cm@{ag}_chMin()>=3
+			cm@{ag}_initInner3()
+		else
+			cm@{ag}_initInner2()
+		endif
+  elif cm@{ag}_chMin()
+		cm@{ag}_initInner1()
+	endif
+endfunc
+	#$ chain=1; 
+  #$ while @{chain}<=@{nChain}
+func cm@{ag}_initInner@{chain}()
+	print '  --  cm@{ag}_initInner@{chain} begin'
+	#$ ich=0
+	#$ while @{ich}<@{chain}
+		cm_m[cm@{ag}_y@{chain}[@{ich}]][cm@{ag}_x@{chain}[@{ich}]]=@{b@{chain}}
+		print '    --  [@{ich}](',cm@{ag}_x@{chain}[@{ich}],',',cm@{ag}_y@{chain}[@{ich}],')=@{b@{chain}}'
+		#$ ich+=1
+	#$ endwhile
+	print '    --  [I](',cm@{ag}_xI@{chain},',',cm@{ag}_yI@{chain},')=2'
+  cm_m[cm@{ag}_yI@{chain}][cm@{ag}_xI@{chain}]=2
+	#$ 'comboMove_push.gun ag=2 chain=0 y=cm@{ag}_yI@{chain} x=cm@{ag}_xI@{chain}'
+	if cm@{ag}_search_impl()
+    cm@{ag}_innerSize=zero()
+    print '  --  search_impl failed: cm@{ag}_innerSize=',cm@{ag}_innerSize
+    return 9999
+  endif
+  print '  --  search_impl succeeded: cm@{ag}_innerSize=',cm@{ag}_innerSize
+endfunc
+		#$ chain+=1
+	#$ endwhile
+func cm@{ag}_search_impl()
+	#print '    --  cm@{ag}_search_impl size=',@{stack}_size()
+	while @{stack}_size()
+    cm@{ag}_innerSize=cm@{ag}_innerSize+1
+		@{stack}_pop()
+		print '    --  cm@{ag}_search_impl (',cm_xT(),',',cm_yT(),') size=',@{stack}_size()
+		cm_setNeighborT()
+		#$ d0=0
+		#$ while @{d0}<6
+			#### CM_M
+			if cm_m[cm_yT@{d0}()][cm_xT@{d0}()]
+			elif ownedMapMe[cm_yT@{d0}()][cm_xT@{d0}()]
+				cm_m[cm_yT@{d0}()][cm_xT@{d0}()]=1
+				if oppsDistance_map1[cm_yT@{d0}()][cm_xT@{d0}()]>cm@{ag}_oppsDistanceInner
+					cm@{ag}_oppsDistanceInner=oppsDistance_map1[cm_yT@{d0}()][cm_xT@{d0}()]
+				endif
+			elif safeField_map[cm_yT@{d0}()][cm_xT@{d0}()]>=2
+        print '    xx  at (',cm_xT(),',',cm_yT(),') safeField_map(',cm_xT@{d0}(),',',cm_yT@{d0}(),')>=2 dir=@{d0}'
+				return 9999
+			else
+				cm_m[cm_yT@{d0}()][cm_xT@{d0}()]=2
+				#$ 'comboMove_pushFromFunc.gun ag=2 chain=0 y=cm_yT@{d0} x=cm_xT@{d0}'
+			endif
+			#$ d0+=1
+		#$ endwhile
+	endwhile
+endfunc
+	#$ ag+=1
+#$ endwhile
+func cm_bitT()
+	return cm_bitT_
+endfunc

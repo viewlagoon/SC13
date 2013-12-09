@@ -1,0 +1,283 @@
+func oppsDistance_bfsAll()
+  oppsDistance_bfs0()
+  oppsDistance_bfs1()
+  oppsDistance_bfs2()
+  oppsDistance_bfs3()
+  oppsDistance_bfs4()
+  oppsDistance_bfs5()
+endfunc
+func oppsDistance_bfs()
+  if opd_yT
+  else
+    return oppsDistance_bfsAll()
+  endif
+  if opd_xT
+  else
+    return oppsDistance_bfsAll()
+  endif
+  if opd_yT>=ynM1
+    return oppsDistance_bfsAll()
+  endif
+  if opd_xT>=opd_yT%2+xnM2
+    return oppsDistance_bfsAll()
+  endif
+	if opd_dirT>=4
+		if opd_dirT>=6
+      oppsDistance_bfsAll()
+		elif opd_dirT>=5
+			oppsDistance_bfs5()
+			oppsDistance_bfs0()
+		else
+			oppsDistance_bfs4()
+			oppsDistance_bfs5()
+		endif
+	elif opd_dirT>=2
+		if opd_dirT>=3
+			oppsDistance_bfs3()
+			oppsDistance_bfs4()
+		else
+			oppsDistance_bfs2()
+			oppsDistance_bfs3()
+		endif
+	elif opd_dirT
+		oppsDistance_bfs1()
+		oppsDistance_bfs2()
+	else
+		oppsDistance_bfs0()
+		oppsDistance_bfs1()
+	endif
+endfunc
+func oppsDistance_UfromT0()
+	if opd_yT%2
+		opd_xU=opd_xT-1
+		opd_yU=opd_yT-1
+	elif opd_yT
+		opd_xU=opd_xT
+		opd_yU=opd_yT-1
+	elif s[opd_xT]&1
+		opd_xU=opd_xT
+		opd_yU=ynM1
+	else
+		return 1
+	endif
+endfunc
+func oppsDistance_UfromT1()
+	if opd_yT%2
+		opd_xU=opd_xT
+		opd_yU=opd_yT-1
+	elif opd_yT
+		opd_xU=opd_xT+1
+		opd_yU=opd_yT-1
+	elif s[opd_xT]&1
+		opd_xU=opd_xT
+		opd_yU=ynM1
+	else
+		return 1
+	endif
+endfunc
+func oppsDistance_UfromT4()
+	if opd_yT%2
+		opd_xU=opd_xT-1
+		opd_yU=opd_yT+1
+	elif opd_yT<ynM1
+		opd_xU=opd_xT
+		opd_yU=opd_yT+1
+	elif s[opd_xT]&1
+		opd_xU=opd_xT
+		opd_yU=zero()
+	else
+		return 1
+	endif
+endfunc
+func oppsDistance_UfromT3()
+	if opd_yT%2
+		opd_xU=opd_xT
+		opd_yU=opd_yT+1
+	elif opd_yT<ynM1
+		opd_xU=opd_xT+1
+		opd_yU=opd_yT+1
+	elif s[opd_xT]&1
+		opd_xU=opd_xT
+		opd_yU=zero()
+	else
+		return 1
+	endif
+endfunc
+func oppsDistance_UfromT5()
+	if opd_xT
+		opd_xU=opd_xT-1
+		opd_yU=opd_yT
+	elif s[opd_yT]&2
+		opd_xU=opd_yT%2+xnM2
+		opd_yU=opd_yT
+	else
+    return 1
+	endif
+endfunc
+func oppsDistance_UfromT2()
+	if opd_xT<opd_yT%2+xnM2
+		opd_xU=opd_xT+1
+		opd_yU=opd_yT
+	elif s[opd_yT]&2
+		opd_xU=zero()
+		opd_yU=opd_yT
+	else
+		return 1
+	endif
+endfunc
+#$ dir=0
+#$ while @{dir}<6
+func oppsDistance_bfs@{dir}()
+	if oppsDistance_UfromT@{dir}()
+	elif opd_visited[opd_yU][opd_xU] 
+  else
+    #$ 'oppsDistance_queue_push.gun valy=opd_yU valx=opd_xU valdist=opd_distU valdir=@{dir}'
+	endif
+endfunc
+	#$ dir+=1
+#$ endwhile
+func oppsDistance_queue_pop()
+  opd_yT=opd_queue_y[opd_queue_fst]
+  opd_xT=opd_queue_x[opd_queue_fst]
+  opd_distT=opd_queue_dist[opd_queue_fst]
+  opd_dirT=opd_queue_dir[opd_queue_fst]
+	opd_queue_fst=opd_queue_fst+1
+endfunc
+func oppsDistance_queue_clear()
+  opd_queue_lst=opd_queue_fst
+endfunc
+func oppsDistance_queue_hasElement()
+  return opd_queue_lst>opd_queue_fst
+endfunc
+#$ ds=0
+#$ while @{ds}<2
+  func oppsDistance_output@{ds}()
+    y_=yn
+    while y_
+			y_=y_-1
+      x_=xnM1+y_%2
+      while x_
+				x_=x_-1
+        print 'turn=',turn,' tid=',gb_team_id(),' oppsDistance_output@{ds}_map y_=',y_,' x_=',x_,' map=',oppsDistance_map[y_][x_]
+        #$ tid=0
+        #$ while @{tid}<1
+        #print 'turn=',turn,' tid=',gb_team_id(),' oppsDistance_output@{ds}_single@{tid} y_=',y_,' x_=',x_,' map=',oppsDistance_single@{ds}@{tid}[y_][x_]
+        #$ tid+=1
+        #$ endwhile
+      endwhile
+    endwhile
+  endfunc
+  #$ ds+=1
+#$ endwhile
+func oppsDistance_init_common()
+	oppsDistance_dist0=6
+	oppsDistance_dist1=5
+	oppsDistance_dist2=4
+	oppsDistance_dist3=3
+	oppsDistance_dist4=2
+	oppsDistance_dist5=1
+	oppsDistance_dist6=zero()
+	#oppsDistance_dist[0]=oppsDistance_dist0
+	#oppsDistance_dist[1]=oppsDistance_dist1
+	#oppsDistance_dist[2]=oppsDistance_dist2
+	#oppsDistance_dist[3]=oppsDistance_dist3
+	#oppsDistance_dist[4]=oppsDistance_dist4
+	#oppsDistance_dist[5]=oppsDistance_dist5
+endfunc
+func oppsDistance_init()
+	oppsDistance_init_common()
+	if gb_team_id()>=2
+		if gb_team_id()>=3
+			oppsDistance00_main1()
+			oppsDistance01_main1()
+			oppsDistance02_main1()
+			oppsDistance03_main0()
+			oppsDistance10_main1()
+			oppsDistance11_main1()
+			oppsDistance12_main1()
+			oppsDistance13_main0()
+		else
+			oppsDistance00_main1()
+			oppsDistance01_main1()
+			oppsDistance02_main0()
+			oppsDistance03_main1()
+			oppsDistance10_main1()
+			oppsDistance11_main1()
+			oppsDistance12_main0()
+			oppsDistance13_main1()
+		endif
+	elif gb_team_id()
+		oppsDistance00_main1()
+		oppsDistance01_main0()
+		oppsDistance02_main1()
+		oppsDistance03_main1()
+		oppsDistance10_main1()
+		oppsDistance11_main0()
+		oppsDistance12_main1()
+		oppsDistance13_main1()
+	else
+		oppsDistance00_main0()
+		oppsDistance01_main1()
+		oppsDistance02_main1()
+		oppsDistance03_main1()
+		oppsDistance10_main0()
+		oppsDistance11_main1()
+		oppsDistance12_main1()
+		oppsDistance13_main1()
+	endif
+  oppsDistance_single0[0]=oppsDistance_single00
+  oppsDistance_single0[1]=oppsDistance_single01
+  oppsDistance_single0[2]=oppsDistance_single02
+  oppsDistance_single0[3]=oppsDistance_single03
+  oppsDistance_single1[0]=oppsDistance_single10
+  oppsDistance_single1[1]=oppsDistance_single11
+  oppsDistance_single1[2]=oppsDistance_single12
+  oppsDistance_single1[3]=oppsDistance_single13
+  oppsDistance_self0=oppsDistance_single0[gb_team_id()]
+  oppsDistance_self1=oppsDistance_single1[gb_team_id()]
+  #oppsDistance_output1()
+endfunc
+#$ tid=0
+#$ while @{tid}<4
+	#$ ds=0
+	#$ while @{ds}<2
+		#$ so=0
+    #$ while @{so}<2
+func oppsDistance@{ds}@{tid}_main@{so}()
+	oppsDistance_queue_clear()
+	opd_visited=zero()
+	#$ ag0=1; ag1=3
+	#$ if @{ds}==0
+		#$ ag0=0; ag1=0
+	#$ endif
+	#$ while @{ag0}<=@{ag1}
+		#$ 'oppsDistance_queue_push.gun valy=oty@{tid}@{ag0} valx=otx@{tid}@{ag0} valdist=oppsDistance_dist0 valdir=6'
+		#$ ag0+=1
+	#$ endwhile
+	while oppsDistance_queue_hasElement()
+		oppsDistance_queue_pop()
+		if opd_visited[opd_yT][opd_xT]
+		else
+      opd_visited[opd_yT][opd_xT]=1
+			oppsDistance_single@{ds}@{tid}[opd_yT][opd_xT]=opd_distT
+			#$ if @{so}==1
+        if oppsDistance_map[opd_yT][opd_xT]<opd_distT
+          oppsDistance_map[opd_yT][opd_xT]=opd_distT
+          oppsDistance_map@{ds}[opd_yT][opd_xT]=opd_distT
+        elif oppsDistance_map@{ds}[opd_yT][opd_xT]<opd_distT
+          oppsDistance_map@{ds}[opd_yT][opd_xT]=opd_distT
+        endif
+			#$ endif
+			opd_distU=opd_distT-1
+			if opd_distU
+				oppsDistance_bfs()
+			endif
+		endif
+  endwhile
+endfunc
+			#$ so+=1
+		#$ endwhile
+		#$ ds+=1
+	#$ endwhile
+	#$ tid+=1
+#$ endwhile

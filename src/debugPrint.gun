@@ -1,0 +1,28 @@
+#$ ag=0
+#$ while @ag<4
+#$   'debugPrint_impl.gun ag=@ag'
+#$   ag+=1
+#$ endwhile
+#$ a0s1=0
+#$ while @{a0s1}<2
+	#$ strs=
+	#$ if @{a0s1}==1
+		#$ strs=_simple
+	#$ endif
+func outputAll@{strs}()
+#$ ag=0
+#$ while @ag<4
+     output@{ag}@{strs}()
+#$   ag+=1
+#$ endwhile
+endfunc
+  #$ a0s1+=1
+#$ endwhile
+func outputZone()
+  print 'turn=',turn,' tid=',gb_team_id(),' outputZone'
+  #$ iZone=0
+  #$ while @iZone<3
+    print '| ',zone[@iZone][0],' ',zone[@iZone][1],' ',zone[@iZone][2],' |'
+    #$ iZone+=1
+  #$ endwhile
+endfunc

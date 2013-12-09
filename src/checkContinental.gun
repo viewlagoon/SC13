@@ -1,0 +1,90 @@
+#$ nopd=5
+func checkContinental_entryPoint()
+	checkCont_dT=987654
+  checkContinental_result=zero()
+  checkContinentalOpps_distNearest=zero()
+#$ tid=0
+#$ bitTid=1
+#$ while @{tid}<4
+  if @{tid}==gb_team_id()
+    #checkContinentalSelf_distNearest=checkContinental@{tid}_distNearest
+  else
+    checkContinental@{tid}_distNearest=checkContinental@{tid}_main()
+    if checkContinental@{tid}_distNearest>=oppsDistance_dist2
+      checkContinental_result=checkContinental_result|@{bitTid}
+      print 'turn=',turn,' tid=@{tid} checkContinental@{tid}_main_succeeded dNearest=',checkContinental@{tid}_distNearest
+    else
+      print 'turn=',turn,' tid=@{tid} checkContinental@{tid}_main_failed dNearest=',checkContinental@{tid}_distNearest
+    endif
+    if checkContinentalOpps_distNearest<checkContinental@{tid}_distNearest
+      checkContinentalOpps_distNearest=checkContinental@{tid}_distNearest
+    endif
+  endif
+  #$ tid+=1
+  #$ bitTid*=2
+#$ endwhile
+  print '  --  selfDistNearest=',checkContinentalSelf_distNearest,' distOppsNearest=',checkContinentalOpps_distNearest
+  if gb_team_id()>=2
+    if gb_team_id()>=3
+      checkContinental_resultOpps=(checkContinental_result & 7)
+    else
+      checkContinental_resultOpps=(checkContinental_result & 11)
+    endif
+  elif gb_team_id()
+    checkContinental_resultOpps=(checkContinental_result & 13)
+  else
+    checkContinental_resultOpps=(checkContinental_result & 14)
+  endif
+endfunc
+
+################################################################
+#$ tid=0
+#$ while @{tid}<4
+  #$ hve=0
+  #$ while @{hve}<=2
+  #$ hvo=@{hve}; hvo+=1
+    #$ hve+=2
+  #$ endwhile
+
+  #$ hvT=0
+  #$ while @{hvT}<2
+    #$ opd=0
+    #$ while @{opd}<=@{nopd}
+func checkContinental@{tid}_main@{hvT}@{opd}()
+	while checkContinental_stack@{hvT}@{opd}_size()
+		checkContinental_stack@{hvT}@{opd}_pop()
+    #print '  --  tid=@{tid} checkContinental_BFS_pop hv=@{hvT} opd=@{opd} (',chkCont_xT,',',chkCont_yT,') size=',checkContinental_stack@{hvT}@{opd}_size()
+		checkContinental_setNeighbor()
+    #$ 'checkContinental_impl.gun tid=@{tid} hvT=@{hvT} opd=@{opd}'
+	endwhile
+endfunc
+      #$ opd+=1
+    #$ endwhile
+    #$ hvT+=1
+  #$ endwhile
+func checkContinental@{tid}_main()
+	checkContinental@{tid}_main0_startLine()
+	checkContinental@{tid}_main1_startLine()
+  #$ opd=0
+  #$ while @{opd}<=@{nopd}
+    #$ if @{opd}>0
+    if checkContinental@{tid}_distNearest>=oppsDistance_dist@{opd}
+      #print '  --  tid=@{tid} continental_candidate_already_found opd=@{opd}(',oppsDistance_dist@{opd},')'
+      return checkContinental@{tid}_distNearest
+    endif
+    #$ endif
+    #print 'turn=',turn,' tid=@{tid} checkContinental_main_horizontal opd=@{opd}'
+    if checkContinental@{tid}_main0@{opd}()
+      return oppsDistance_dist@{opd}
+    endif
+    #print 'turn=',turn,' tid=@{tid} checkContinental_main_vertical opd=@{opd}'
+    if checkContinental@{tid}_main1@{opd}()
+      return oppsDistance_dist@{opd}
+    endif
+    #$ opd+=1
+  #$ endwhile
+endfunc
+	#$ tid+=1
+#$ endwhile
+#########################################################3
+

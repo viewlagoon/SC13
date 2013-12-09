@@ -1,0 +1,2 @@
+ownedMapMe[@{y}][@{x}]=ownedMapMe[@{y}][@{x}]&1
+print '    --  searchInner_dispose (',@{x},',',@{y},') map=',ownedMapMe[@{y}][@{x}]

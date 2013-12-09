@@ -1,0 +1,36 @@
+if spiralMove@{ag}_outerDir>=2
+  if spiralMove@{ag}_outerDir>=4
+    if spiralMove@{ag}_outerDir>=5
+      spiralMove@{ag}_dOut5@{c1r5}_update()
+    else
+      spiralMove@{ag}_dOut4@{c1r5}_update()
+    endif
+  elif spiralMove@{ag}_outerDir>=3
+    spiralMove@{ag}_dOut3@{c1r5}_update()
+  else
+    spiralMove@{ag}_dOut2@{c1r5}_update()
+  endif
+elif spiralMove@{ag}_outerDir
+  spiralMove@{ag}_dOut1@{c1r5}_update()
+else
+  spiralMove@{ag}_dOut0@{c1r5}_update()
+endif
+
+if spiralMove@{ag}_outerDir>=2
+  if spiralMove@{ag}_outerDir>=4
+    if spiralMove@{ag}_outerDir>=5
+      spiralMove@{ag}_dOut5@{c1r5}_decideFinishOrContinue()
+    else
+      spiralMove@{ag}_dOut4@{c1r5}_decideFinishOrContinue()
+    endif
+  elif spiralMove@{ag}_outerDir>=3
+    spiralMove@{ag}_dOut3@{c1r5}_decideFinishOrContinue()
+  else
+    spiralMove@{ag}_dOut2@{c1r5}_decideFinishOrContinue()
+  endif
+elif spiralMove@{ag}_outerDir
+  spiralMove@{ag}_dOut1@{c1r5}_decideFinishOrContinue()
+else
+  spiralMove@{ag}_dOut0@{c1r5}_decideFinishOrContinue()
+endif
+

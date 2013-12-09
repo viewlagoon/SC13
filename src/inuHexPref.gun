@@ -1,0 +1,127 @@
+#$ mul0=400; mul1=20
+#$ d0=0
+#$ while @{d0}<6
+  #$ d1=@{d0}; d1+=1; d1%=6
+  #$ d2=@{d0}; d2+=2; d2%=6
+  #$ d3=@{d0}; d3+=3; d3%=6
+  #$ d4=@{d0}; d4+=4; d4%=6
+  #$ d5=@{d0}; d5+=5; d5%=6
+func inu_gotoDir@{d0}()
+  hp0@{d0}=hp0@{d0}*@{mul0}
+  hp0@{d1}=hp0@{d1}*@{mul1}
+  hp0@{d5}=hp0@{d5}*@{mul1}
+endfunc
+func inu_gotoDir@{d0}@{d1}()
+  hp0@{d0}=hp0@{d0}*@{mul0}
+  hp0@{d1}=hp0@{d1}*@{mul0}
+  hp0@{d2}=hp0@{d2}*@{mul1}
+  hp0@{d5}=hp0@{d5}*@{mul1}
+  hp0@{d3}=zero()
+  hp0@{d4}=zero()
+endfunc
+func inu_restrictDir@{d0}@{d1}_sub()
+  hp0@{d2}=zero()
+  hp0@{d3}=zero()
+  hp0@{d4}=zero()
+  hp0@{d5}=zero()
+endfunc
+func inu_restrictDir@{d0}()
+  print '  --  inu_restrictDir@{d0}'
+  hp0@{d1}=zero()
+  inu_restrictDir@{d0}@{d1}_sub()
+endfunc
+func inu_restrictDir@{d0}@{d1}()
+  print '  --  inu_restrictDir@{d0}@{d1}'
+  hp0@{d0}=hp0@{d0}*@{mul1}
+  inu_restrictDir@{d0}@{d1}_sub()
+endfunc
+func inu_restrictDir@{d1}@{d0}()
+  print '  --  inu_restrictDir@{d1}@{d0}'
+  hp0@{d1}=hp0@{d1}*@{mul1}
+  inu_restrictDir@{d0}@{d1}_sub()
+endfunc
+  #$ d0+=1
+#$ endwhile
+func inu_stop()
+  hp00=zero()
+  inu_restrictDir0()
+endfunc
+func inu_warpGate0()
+  hp00=hp00*@{mul0}
+  hp01=hp01*@{mul0}
+endfunc
+func inu_warpGate2()
+  hp05=hp05*@{mul0}
+endfunc
+func inu_warpGate4()
+  hp03=hp03*@{mul0}
+  hp04=hp04*@{mul0}
+endfunc
+func inu_warpGate6()
+  hp02=hp02*@{mul0}
+endfunc
+func inu_prohibitBorder()
+  if y0==1
+    hp00=zero()
+    hp01=zero()
+  elif y0Rev==1
+    hp03=zero()
+    hp04=zero()
+  endif
+  if x0==1
+    hp05=zero()
+    if y0Mod2
+      hp04=zero()
+      hp00=zero()
+    endif
+  elif x0Rev==1
+    hp02=zero()
+    if y0Mod2
+      hp01=zero()
+      hp03=zero()
+    endif
+  endif
+  inus_yRev=ynM1-inus_y
+  if gb_agent_status(inus_tid,inus_ag)
+    inus_prohibit0=1
+    inus_prohibit1=1
+    inus_prohibit2=1
+    inus_prohibit3=1
+    inus_prohibit4=1
+    inus_prohibit5=1
+  elif inus_y%2
+    inus_xRev=xnM1-inus_x
+    if inus_x
+      if inus_xRev
+      else
+        inus_prohibit1=1
+        inus_prohibit2=1
+        inus_prohibit3=1
+      endif
+    else
+      inus_prohibit4=1
+      inus_prohibit5=1
+      inus_prohibit0=1
+    endif
+  else
+    inus_xRev=xnM2-inus_x
+    if inus_x
+      if inus_xRev
+      else
+        inus_prohibit2=1
+      endif
+    else
+      inus_prohibit5=1
+    endif
+    if inus_y
+      if inus_yRev
+      else
+        inus_prohibit3=1
+        inus_prohibit4=1
+      endif
+    else
+      inus_prohibit0=1
+      inus_prohibit1=1
+    endif
+  endif
+endfunc

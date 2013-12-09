@@ -1,0 +1,50 @@
+#$ if @ag==0
+  #$ hp0=1921; hp1=1920; hp2=1920; hp3=1920
+#$ else
+  #  hp0=1400;
+  #$ hp0=1000; hp1=3840; hp2=6144; hp3=9999
+#$ endif
+hex@ag@dir=gb_hexel_owner(x@ag@k,y@ag@l)
+if hex@ag@dir>=zero()
+  if   hex@ag@dir==gb_team_id()
+    hp@ag@dir=@hp0+gb_random_value(20)
+    hpd@{ag}_surrounded_add()
+  elif turn<30
+    hp@ag@dir=@hp3+gb_random_value(20)
+  else
+    hp@ag@dir=@hp2+gb_random_value(20)
+  endif
+elif hex@ag@dir==m1
+    hp@ag@dir=@hp1+gb_random_value(20)
+else
+  hp@ag@dir=zero()
+endif
+
+mp@ag@dir=map[y@ag@l][x@ag@k]
+#$ if @ag==0
+#$   maskInvalid=1
+#$   maskEvade=2
+if   (mp@ag@dir & @maskInvalid)
+  hp@ag@dir=zero()
+elif (mp@ag@dir & @maskEvade  ) 
+  hp@ag@dir=hp@ag@dir/2
+endif
+#$ else
+#$   maskInvalid=3
+#$   maskEvadeFromSamurai=4
+#$   maskEvadeFromDog=8
+if   (mp@ag@dir & @maskInvalid)
+  hp@ag@dir=zero()
+elif (mp@ag@dir & @maskEvadeFromSamurai  ) 
+  hp@ag@dir=hp@ag@dir*4/5
+elif (mp@ag@dir & @maskEvadeFromDog  ) 
+  hp@ag@dir=hp@ag@dir*2/3
+endif
+#$ endif
+if x@{ag}Pre==x@ag@dir
+  if y@{ag}Pre==y@ag@dir
+    hp@ag@dir=hp@ag@dir/10
+  endif
+endif
+
+

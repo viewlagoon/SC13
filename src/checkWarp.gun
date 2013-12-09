@@ -1,0 +1,17 @@
+#$ ag=0
+#$ while @ag<4
+  func checkWarp@{ag}()
+    if   x@{ag}2<x@{ag}Pre
+      return 1
+    elif x@{ag}Pre<x@{ag}5
+      return 1
+    elif y@{ag}3<y@{ag}Pre
+      return 1
+    elif y@{ag}Pre<y@{ag}0
+      return 1
+    endif
+    return zero()
+  endfunc
+
+  #$ ag+=1
+#$ endwhile

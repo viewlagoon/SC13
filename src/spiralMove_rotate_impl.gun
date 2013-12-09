@@ -1,0 +1,73 @@
+## next to opposite of dCenter. iDir implies turn to siege
+#$ ag=1
+#$ while @{ag}<4
+#$ c1r5=1
+#$ while @{c1r5}<6
+  #$ c5r25=@{c1r5}; c5r25*=5
+  #$ dCenter=0
+  #$ while @{dCenter}<6
+    #$ dFirst=@{dCenter}; dFirst+=@{c5r25}; dFirst%=6
+    #$ dC_=@{ag}@{dCenter}
+    #$ dCC_=@{ag}@{dCenter}@{dCenter}
+    #$ dF_=@{ag}@{dFirst}
+    #$ dFF_=@{ag}@{dFirst}@{dFirst}
+    #$ dFFF_=@{ag}@{dFirst}@{dFirst}@{dFirst}
+    #$ dFFC_=@{ag}@{dFirst}@{dFirst}@{dCenter}
+    #$ dFC_=@{ag}@{dFirst}@{dCenter}
+    #$ dFCC_=@{ag}@{dFirst}@{dCenter}@{dCenter}
+func spiralMove@{ag}_rotate@{c1r5}_move@{dFirst}_checkRange()
+  if ownedMapMe[y@{dF_}][x@{dF_}]
+    return 1
+  endif
+  if oppsDistance_map1[y@{dF_}][x@{dF_}]>=oppsDistance_dist1
+    return 1
+  endif
+  if y@{dF_}
+  else
+    return 1
+  endif
+  if y@{dF_}Rev
+  else
+    return 1
+  endif
+  if x@{dF_}<=1
+    return 1
+  endif
+  if x@{dF_}Rev<=1
+    return 1
+  endif
+endfunc
+func spiralMove@{ag}_rotate@{c1r5}_move@{dFirst}@{dCenter}_centerNotOwned()
+  print '    --  (',x@{dFCC_},',',y@{dFCC_},') ownedMapMe[y@{dFCC_}][x@{dFCC_}]=',ownedMapMe[y@{dFCC_}][x@{dFCC_}]
+  print '    --  (',x@{dCC_},',',y@{dCC_},') ownedMapMe[y@{dCC_}][x@{dCC_}]=',ownedMapMe[y@{dCC_}][x@{dCC_}]
+  if ownedMapMe[y@{dFCC_}][x@{dFCC_}]
+    ##    f   fc  FCC
+    ##  ME  in  cc
+    #$ 'spiralMove_rotate_call_searchInner.gun ag=@{ag} yi=y@{dC_} xi=x@{dC_} yo1=y@{dF_} xo1=x@{dF_} yo2=y@{dFC_} xo2=x@{dFC_} turnToSiege=2 c1r5=@{c1r5} dMove=@{dFirst}'
+    print '    vv  wrong path3'
+  elif ownedMapMe[y@{dCC_}][x@{dCC_}]
+    ##    f   fc  
+    ##  ME  in  CC
+    print '    vv  correct path2'
+    #$ 'spiralMove_rotate_call_searchInner.gun ag=@{ag} yi=y@{dC_} xi=x@{dC_} yo1=y@{dF_} xo1=x@{dF_} yo2=y@{dFC_} xo2=x@{dFC_} turnToSiege=2 c1r5=@{c1r5} dMove=@{dFirst}'
+  else
+    print '    vv  wrong path4'
+  endif
+endfunc
+func spiralMove@{ag}_rotate@{c1r5}_move@{dFirst}@{dCenter}_centerOwned()
+  if ownedMapMe[y@{dFCC_}][x@{dFCC_}]
+    ##    f   fc  FCC
+    ##  ME  i1  i2
+    if ownedMapMe[y@{dCC_}][x@{dCC_}]
+      return zero()
+    else
+      #$ 'spiralMove_rotate_call_searchInner.gun ag=@{ag} yi=y@{dCC_} xi=x@{dCC_} yo1=y@{dF_} xo1=x@{dF_} yo2=y@{dFC_} xo2=x@{dFC_} turnToSiege=2 c1r5=@{c1r5} dMove=@{dFirst}'
+    endif
+  endif
+endfunc
+    #$ dCenter+=1
+  #$ endwhile
+  #$ c1r5+=4
+#$ endwhile
+#$ ag+=1
+#$ endwhile

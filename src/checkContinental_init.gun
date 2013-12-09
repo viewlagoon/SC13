@@ -1,0 +1,79 @@
+#$ nopd=5
+#$ tid=0
+#$ while @{tid}<4
+  #$ hve=0
+  #$ while @{hve}<2
+    #$ hvo=@{hve}; hvo+=1
+      #$ oe=8
+      #$ while @{oe}<=9
+        #$ valy=iy_; valx=xnM2
+        #$ if @{oe}==9
+          #$ valy=iyP1_; valx=xnM1
+        #$ endif
+func checkContinental@{tid}_main@{hve}_startLineSub@{oe}()
+  if ownedMap@{tid}[@{valy}][@{valx}]
+    #$ 'checkContinental_stack_push.gun hv=@{hve} opd=0 valy=@{valy} valx=@{valx}'
+    chkCont_visited@{hve}[@{valy}][@{valx}]=2
+  elif oppsDistance_single1@{tid}[iy_][xnM2]
+    chkCont_yU=@{valy}
+    chkCont_xU=@{valx}
+    chkCont_distU=oppsDistance_single1@{tid}[chkCont_yU][chkCont_xU]
+    checkContinental_around@{hve}1()
+    chkCont_visited@{hve}[@{valy}][@{valx}]=2
+  else
+    chkCont_visited@{hve}[@{valy}][@{valx}]=1
+  endif
+endfunc
+        #$ oe+=1
+      #$ endwhile
+func checkContinental@{tid}_main@{hve}_startLine()
+  chkCont_visited@{hve}=zero()
+	#$ valx1=0; valx2=0
+	#$ if @{hve}==0
+		#$ valx1=xnM1; valx2=xnM2
+  #$ endif
+  #$ opd=0
+  #$ while @{opd}<=@{nopd}
+    checkContinental_stack@{hve}@{opd}_clear()
+    #$ opd+=1
+  #$ endwhile
+	iy_=ynM1
+  checkContinental@{tid}_main@{hve}_startLineSub8()
+	while iy_
+		iyP1_=iy_-1
+		iy_=iy_-2
+    checkContinental@{tid}_main@{hve}_startLineSub8()
+    checkContinental@{tid}_main@{hve}_startLineSub9()
+	endwhile
+endfunc
+  #$ valy=0
+  #$ if @{hvo}==1
+    #$ valy=ynM1
+  #$ endif
+func checkContinental@{tid}_main@{hvo}_startLine()
+	checkContinental_stack@{hvo}0_clear()
+  chkCont_visited@{hvo}=zero()
+	ix_=xn
+	while ix_
+		ix_=ix_-1
+		if ownedMap@{tid}[@{valy}][ix_]
+			chkCont_visited@{hvo}[@{valy}][ix_]=2
+			#$ 'checkContinental_stack_push.gun hv=@{hvo} opd=0 valy=@{valy} valx=ix_'
+      #print '  --  startLineVertical pushOwned(',ix_,',',@{valy},')'
+    elif oppsDistance_single1@{tid}[@{valy}][ix_]
+      chkCont_visited@{hvo}[@{valy}][ix_]=2
+      chkCont_yU=@{valy}
+      chkCont_xU=ix_
+      chkCont_distU=oppsDistance_single1@{tid}[chkCont_yU][chkCont_xU]
+      #print '  --  startLineVertical pushAround(',ix_,',',@{valy},') dist=',chkCont_distU
+      checkContinental_around@{hvo}1()
+		else
+			chkCont_visited@{hvo}[@{valy}][ix_]=1
+		endif
+	endwhile
+endfunc
+    #$ hve+=2
+  #$ endwhile
+  #$ tid+=1
+#$ endwhile
+

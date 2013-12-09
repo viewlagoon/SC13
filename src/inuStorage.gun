@@ -1,0 +1,19 @@
+#$ is0=550
+#$ isMode=@{is0}; isMode+=1
+#$ isTidPre=@{is0}; isTidPre+=2
+#$ isAgPre=@{is0}; isAgPre+=3
+func inu_load()
+  inup_mode=s[@{isMode}]
+  if inup_mode
+    inup_tid=s[@{isTidPre}]
+    inup_ag=s[@{isAgPre}]
+  else
+    inup_tid=m1
+    inup_ag=m1
+  endif
+endfunc
+func inu_store()
+  s[@{isMode}]=inup_mode
+  s[@{isTidPre}]=inus_tid
+  s[@{isAgPre}]=inus_ag
+endfunc

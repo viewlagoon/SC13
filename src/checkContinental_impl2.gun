@@ -1,0 +1,81 @@
+#$ nopd=5
+func checkContinental_setNeighbor()
+	chkCont_yTMod2=chkCont_yT%2
+	chkCont_yT0=chkCont_yT-1
+	chkCont_yT3=chkCont_yT+1
+	chkCont_xT2=chkCont_xT+1
+	chkCont_xT5=chkCont_xT-1
+	if chkCont_yTMod2
+		chkCont_xT0=chkCont_xT-1
+		chkCont_xT1=chkCont_xT
+	else
+		chkCont_xT0=chkCont_xT
+		chkCont_xT1=chkCont_xT+1
+	endif
+endfunc
+#$ hv=0
+#$ while @{hv}<2
+func checkContinental_around@{hv}1()
+  if chkCont_distU>=oppsDistance_dist3
+    if chkCont_distU>=oppsDistance_dist2
+      if chkCont_distU>=oppsDistance_dist1
+        #$ 'checkContinental_stack_push.gun hv=@{hv} opd=1 valy=chkCont_yU valx=chkCont_xU'
+      else
+        checkContinental_stack@{hv}2_pushU()
+      endif
+    else
+      checkContinental_stack@{hv}3_pushU()
+    endif
+  else
+    checkContinental_around@{hv}4()
+  endif
+endfunc
+func checkContinental_around@{hv}2()
+  if chkCont_distU>=oppsDistance_dist3
+    if chkCont_distU>=oppsDistance_dist2
+      checkContinental_stack@{hv}2_pushU()
+    else
+      checkContinental_stack@{hv}3_pushU()
+    endif
+  else
+    checkContinental_around@{hv}4()
+	endif
+endfunc
+func checkContinental_around@{hv}3()
+  if chkCont_distU>=oppsDistance_dist3 
+    checkContinental_stack@{hv}3_pushU()
+  else
+    checkContinental_around@{hv}4()
+  endif
+endfunc
+func checkContinental_around@{hv}4()
+  if chkCont_distU>=oppsDistance_dist4  
+    #$ 'checkContinental_stack_push.gun hv=@{hv} opd=4 valy=chkCont_yU valx=chkCont_xU'
+  else
+    #$ 'checkContinental_stack_push.gun hv=@{hv} opd=5 valy=chkCont_yU valx=chkCont_xU'
+	endif
+endfunc
+  #$ opd=0
+  #$ while @{opd}<=@{nopd} 
+  #$ if @{opd}>=2
+    #$ if @{opd}<=3
+func checkContinental_stack@{hv}@{opd}_pushU()
+  #$ 'checkContinental_stack_push.gun hv=@{hv} opd=@{opd} valy=chkCont_yU valx=chkCont_xU'
+endfunc
+    #$ endif
+  #$ endif
+func checkContinental_stack@{hv}@{opd}_clear()
+	chkCont_stack@{hv}@{opd}_lst=zero()
+endfunc
+func checkContinental_stack@{hv}@{opd}_pop()
+	chkCont_stack@{hv}@{opd}_lst=chkCont_stack@{hv}@{opd}_lst-1
+	chkCont_yT=chkCont_stack@{hv}@{opd}_y[chkCont_stack@{hv}@{opd}_lst]
+	chkCont_xT=chkCont_stack@{hv}@{opd}_x[chkCont_stack@{hv}@{opd}_lst]
+endfunc
+func checkContinental_stack@{hv}@{opd}_size()
+	return chkCont_stack@{hv}@{opd}_lst
+endfunc
+    #$ opd+=1
+  #$ endwhile
+  #$ hv+=1
+#$ endwhile

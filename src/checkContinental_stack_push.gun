@@ -1,0 +1,5 @@
+## require hv opd valy valx
+chkCont_stack@{hv}@{opd}_y[chkCont_stack@{hv}@{opd}_lst]=@{valy}
+chkCont_stack@{hv}@{opd}_x[chkCont_stack@{hv}@{opd}_lst]=@{valx}
+chkCont_stack@{hv}@{opd}_lst=chkCont_stack@{hv}@{opd}_lst+1
+#print '  **  checkContinental_stack@{hv}@{opd}_push (',@{valx},',',@{valy},')'

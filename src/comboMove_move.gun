@@ -1,0 +1,115 @@
+#$ ag=1; nChain=5; debug=1
+#$ chp0=81; chp1=9; chp2=3
+#$ while @{ag}<=3
+func comboMove@{ag}_decideMove_first()
+	print 'turn=',turn,' tid=',gb_team_id(),' ag=@{ag} decideMove_first()'
+	cm@{ag}_saveHexPref()
+  comboMove@{ag}_calcGlobalSafeLevel_common()
+	comboMove@{ag}_decideMove_common()
+	moveMaxHexPref@{ag}_012345()
+	gb_move(move)
+	cm@{ag}_decideMove_executed=1
+endfunc
+func comboMove@{ag}_decideMove_second()
+	print 'turn=',turn,' tid=',gb_team_id(),' ag=@{ag} decideMove_second() executed=',cm@{ag}_decideMove_executed
+	if cm@{ag}_decideMove_executed
+		comboMove@{ag}_calcGlobalSafeLevel_continental()
+		comboMove@{ag}_decideMove_common()
+    moveMaxHexPref@{ag}_012345()
+		gb_move(move)
+	endif
+endfunc
+func cm@{ag}_maxSafeChain()
+  return cm@{ag}_maxSafeChain_
+endfunc
+func comboMove@{ag}_decideMove_common()
+  print '  --  comboMove@{ag}_decideMove_common() before-after'
+  output@{ag}_simple()
+	cm@{ag}_chMin_update()
+  cm@{ag}_maxSafeChain_=cm@{ag}_chMin()
+  cm@{ag}_moveMap=zero()
+  #$ chU=1
+  #$ while @{chU}<=@{nChain}
+    if cm@{ag}_array@{chU}_size()
+      if @{chU}<=cm@{ag}_globalSafeLv()
+        cm@{ag}_maxSafeChain_=@{chU}
+      endif
+    endif
+    #$ chU+=1
+  #$ endwhile
+	print '  --  gSafeLv=',cm@{ag}_globalSafeLv(),' chMin=',cm@{ag}_chMin(),' chSafeMax=',cm@{ag}_maxSafeChain_
+  #$ chU=1
+  #$ while @{chU}<=@{nChain}
+    if cm@{ag}_array@{chU}_size()
+      cm_yU_=cm@{ag}_y@{chU}[zero()]
+      cm_xU_=cm@{ag}_x@{chU}[zero()]
+      if @{chU}==cm@{ag}_maxSafeChain_
+        cm@{ag}_moveMap[cm_yU()][cm_xU()]=4
+        print '  --  @{chU}==maxSafeChain U(',cm_xU(),',',cm_yU(),')'
+      elif @{chU}<=cm@{ag}_globalSafeLv()
+        cm@{ag}_moveMap[cm_yU()][cm_xU()]=cm@{ag}_moveMap[cm_yU()][cm_xU()]|2
+        print '  --  @{chU}<=gSafeLv U(',cm_xU(),',',cm_yU(),')'
+      else
+        cm@{ag}_moveMap[cm_yU()][cm_xU()]=cm@{ag}_moveMap[cm_yU()][cm_xU()]|1
+        print '  --  @{chU}>gSafeLv U(',cm_xU(),',',cm_yU(),')'
+      endif
+    else
+      print '  --  chain=@{chU} is not exist'
+    endif
+    #$ chU+=1
+  #$ endwhile
+  #$ dU=0
+  #$ while @{dU}<6
+    cm_moveMapT_=cm@{ag}_moveMap[y@{ag}@{dU}][x@{ag}@{dU}]
+    if cm_moveMapT_&4
+			hp@{ag}@{dU}=cm@{ag}_hp@{dU}*@{chp0}
+			print '    --  dir=@{dU} (',x@{ag}@{dU},',',y@{ag}@{dU},') ',cm@{ag}_hp@{dU},' * @{chp0}'
+    elif cm_moveMapT_&2
+			hp@{ag}@{dU}=cm@{ag}_hp@{dU}*@{chp1}
+			print '    --  dir=@{dU} (',x@{ag}@{dU},',',y@{ag}@{dU},') ',cm@{ag}_hp@{dU},' * @{chp1}'
+    elif cm_moveMapT_
+			hp@{ag}@{dU}=cm@{ag}_hp@{dU}*@{chp2}
+			print '    --  dir=@{dU} (',x@{ag}@{dU},',',y@{ag}@{dU},') ',cm@{ag}_hp@{dU},' * @{chp2}'
+    else
+			hp@{ag}@{dU}=cm@{ag}_hp@{dU}
+			print '    --  dir=@{dU} (',x@{ag}@{dU},',',y@{ag}@{dU},') ',cm@{ag}_hp@{dU},' * 1'
+    endif
+    #$ dU+=1
+  #$ endwhile
+  output@{ag}_simple()
+endfunc
+func cm@{ag}_saveHexPref()
+	#$ dT=0
+  #$ while @{dT}<6
+		cm@{ag}_hp@{dT}=hp@{ag}@{dT}
+		#$ dT+=1
+	#$ endwhile
+  print '  --  cm@{ag}_saveHexPref [',cm@{ag}_hp0,',',cm@{ag}_hp1,',',cm@{ag}_hp2,',',cm@{ag}_hp3,',',cm@{ag}_hp4,',',cm@{ag}_hp5,']'
+endfunc
+func comboMove@{ag}_calcGlobalSafeLevel_continental()
+	cm@{ag}_distContinental=oppsDistance_dist0-checkContinentalOpps_distNearest
+	if cm@{ag}_distContinental
+	else
+		cm@{ag}_distContinental=1
+	endif
+	if cm@{ag}_globalSafeLv()>cm@{ag}_distContinental
+		cm@{ag}_globalSafeLv_=cm@{ag}_distContinental
+	endif
+endfunc
+func cm@{ag}_globalSafeLv()
+	return cm@{ag}_globalSafeLv_
+endfunc
+func comboMove@{ag}_calcGlobalSafeLevel_common()
+  print '  --  calcGlobalSafeLevel_common  oppsDistanceInner=',cm@{ag}_oppsDistanceInner
+	cm@{ag}_globalSafeLv_=oppsDistance_dist1-cm@{ag}_oppsDistanceInner
+  if cm@{ag}_globalSafeLv()>gb_remaining_turns()
+    cm@{ag}_globalSafeLv_=gb_remaining_turns()
+  endif
+	cm@{ag}_distSyzygies=gb_turns_before_enabling_syzygies()-1
+	if cm@{ag}_globalSafeLv()>cm@{ag}_distSyzygies
+		cm@{ag}_globalSafeLv_=cm@{ag}_distSyzygies
+	endif
+endfunc
+	#$ ag+=1
+#$ endwhile
+

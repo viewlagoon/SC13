@@ -1,0 +1,6 @@
+## require tid valy valx
+chkCont_queue_y[chkCont_queue_lst]=@{valy}
+chkCont_queue_x[chkCont_queue_lst]=@{valx}
+chkCont_queue_dir[chkCont_queue_lst]=@{valdir}
+chkCont_queue_dist[chkCont_queue_lst]=@{valdist}
+chkCont_queue_lst=chkCont_queue_lst+1

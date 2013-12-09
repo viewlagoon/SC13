@@ -1,0 +1,140 @@
+#$ ag=1
+#$ while @{ag}<4
+
+func checkMateMove@{ag}_executed()
+  return checkMateMove@{ag}_executed_
+endfunc
+func checkMateMove@{ag}_executed_set()
+  checkMateMove@{ag}_executed_=1
+endfunc
+func checkMateMove@{ag}_executed_reset()
+  checkMateMove@{ag}_executed_=zero()
+endfunc
+func checkMateMove@{ag}()
+  checkMateMove@{ag}_executed_reset()
+  if y@{ag}Mod2
+    checkMateMove@{ag}_odd()
+  elif y@{ag}
+    if y@{ag}Rev
+      checkMateMove@{ag}_even()
+    else
+      checkMateMove@{ag}_downMost()
+    endif
+  else 
+    checkMateMove@{ag}_upMost()
+  endif
+  print 'turn=',turn,' checkMateMove@{ag} [',hp@{ag}0,',',hp@{ag}1,',',hp@{ag}2,',',hp@{ag}3,',',hp@{ag}4,',',hp@{ag}5,']'
+  moveMaxHexPref@{ag}_012345()
+  checkMateMove@{ag}_executed_set()
+endfunc
+func checkMateMove@{ag}_odd()
+  if x@{ag}
+    checkMateMove@{ag}_init5()
+    checkMateMove@{ag}_init0()
+    checkMateMove@{ag}_init4()
+    if x@{ag}Rev
+      checkMateMove@{ag}_init1()
+      checkMateMove@{ag}_init2()
+      checkMateMove@{ag}_init3()
+    elif s[y@{ag}]&2
+      checkMateMove@{ag}_gotoRightGate()
+    endif
+  else
+    checkMateMove@{ag}_init1()
+    checkMateMove@{ag}_init2()
+    checkMateMove@{ag}_init3()
+    if s[y@{ag}]&2
+      checkMateMove@{ag}_gotoLeftGate()
+    endif
+  endif
+endfunc
+func checkMateMove@{ag}_even()
+  checkMateMove@{ag}_init0()
+  checkMateMove@{ag}_init4()
+  checkMateMove@{ag}_init1()
+  checkMateMove@{ag}_init3()
+  if x@{ag}
+    checkMateMove@{ag}_init5()
+    if x@{ag}Rev
+      checkMateMove@{ag}_init2()
+    elif s[y@{ag}]&2
+      checkMateMove@{ag}_gotoRightGate()
+    endif
+  elif s[y@{ag}]&2
+    checkMateMove@{ag}_gotoLeftGate()
+  endif
+endfunc
+###########################################################
+func checkMateMove@{ag}_horizontal()
+  if x@{ag}
+    checkMateMove@{ag}_init5()
+    if x@{ag}Rev
+      checkMateMove@{ag}_init2()
+    endif
+  else
+    checkMateMove@{ag}_init2()
+  endif
+endfunc
+func checkMateMove@{ag}_downMost()
+  if s[x@{ag}]&1
+    checkMateMove@{ag}_gotoDownGate()
+  endif
+  checkMateMove@{ag}_init0()
+  checkMateMove@{ag}_init1()
+  checkMateMove@{ag}_horizontal()
+endfunc
+func checkMateMove@{ag}_upMost()
+  if s[x@{ag}]&1
+    checkMateMove@{ag}_gotoUpGate()
+  endif
+  checkMateMove@{ag}_init3()
+  checkMateMove@{ag}_init4()
+  checkMateMove@{ag}_horizontal()
+endfunc
+####################################################
+### gate 
+####################################################
+func checkMateMove@{ag}_gotoRightGate()
+  if oppsDistance_map0[y@{ag}][x@{ag}Rev]>=oppsDistance_dist1
+  elif oppsDistance_map1[y@{ag}][x@{ag}Rev]<oppsDistance_dist0
+    checkMateMove@{ag}_hp2()
+  endif
+endfunc
+func checkMateMove@{ag}_gotoLeftGate()
+  if oppsDistance_map0[y@{ag}][x@{ag}Rev]>=oppsDistance_dist1
+  elif oppsDistance_map1[y@{ag}][x@{ag}Rev]<oppsDistance_dist0
+    checkMateMove@{ag}_hp5()
+  endif
+endfunc
+func checkMateMove@{ag}_gotoUpGate()
+  if oppsDistance_map0[y@{ag}Rev][x@{ag}]>=oppsDistance_dist1
+  elif oppsDistance_map1[y@{ag}Rev][x@{ag}]<oppsDistance_dist0
+    checkMateMove@{ag}_hp0()
+    checkMateMove@{ag}_hp1()
+  endif
+endfunc
+func checkMateMove@{ag}_gotoDownGate()
+  if oppsDistance_map0[y@{ag}Rev][x@{ag}]>=oppsDistance_dist1
+  elif oppsDistance_map1[y@{ag}Rev][x@{ag}]<oppsDistance_dist0
+    checkMateMove@{ag}_hp3()
+    checkMateMove@{ag}_hp4()
+  endif
+endfunc
+###########################################################
+### base
+###########################################################
+#$ dir=0
+#$ while @{dir}<6
+func checkMateMove@{ag}_init@{dir}()
+  if oppsDistance_map0[y@{ag}@{dir}][x@{ag}@{dir}]>=oppsDistance_dist1
+  elif oppsDistance_map1[y@{ag}@{dir}][x@{ag}@{dir}]<oppsDistance_dist0
+    checkMateMove@{ag}_hp@{dir}()
+  endif
+endfunc
+func checkMateMove@{ag}_hp@{dir}()
+  hp@{ag}@{dir}=gb_random_value(999999)
+endfunc
+  #$ dir+=1
+#$ endwhile
+#$ ag+=1
+#$ endwhile

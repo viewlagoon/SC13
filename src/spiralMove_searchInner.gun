@@ -1,0 +1,166 @@
+#$ ag=1
+#$ while @{ag}<4
+func spiralMove@{ag}_searchInner_impl2()
+  spm@{ag}_visited=0
+  spm@{ag}_visited[yInT][xInT]=1
+  spiralMove@{ag}_stack_clear()
+  #$ 'spiralMove_stack_push.gun ag=@{ag} valy=yInT valx=xInT'
+  res_=spiralMove@{ag}_searchInner_impl()
+  if res_
+    print '  -- searchInner_impl failed res=',res_,' yi=',yInT,' xi=',xInT
+  elif spiralMove@{ag}_shortestOppsDist>=oppsDistance_dist3
+    print '  -- searchInner_impl failed shortestOppsDist=',spiralMove@{ag}_shortestOppsDist
+    res_=m1
+  endif
+  return res_
+endfunc
+func spiralMove@{ag}_searchInner_impl()
+  #$ depAfford=36
+  spiralMove@{ag}_innerSizeT=zero()
+  #depth_=spiralMove@{ag}_innerSize+@{depAfford}
+  depth_=@{depAfford}
+  print '  -- searchInner innerSize=',spiralMove@{ag}_innerSize,' maxDepth=',depth_
+  spiralMove@{ag}_shortestOppsDist=zero()
+  spiralMove@{ag}_mapInner=zero()
+  spiralMove@{ag}_mapOuter=zero()
+  isFirstTime_=1
+	while spiralMove@{ag}_stack_size()
+    if depth_-spiralMove@{ag}_stack_size()>zero()
+      depth_=depth_-1
+    else
+      print '  -- searchInner depth_exceeded stackSize=',spiralMove@{ag}_stack_size()
+      return 2
+    endif
+		spiralMove@{ag}_stack_pop()
+    spiralMove@{ag}_mapInner[spm_yT][spm_xT]=1
+    #if isFirstTime_
+      #isFirstTime_=0
+      #print 'turn=',turn,' tid=',gb_team_id(),' ag@{ag}(',x@{ag},',',y@{ag},') spiralMove_searchInner y=',spm_yT,' x=',spm_xT,' visited=',spm@{ag}_visited[spm_yT][spm_xT]
+    #endif
+		spm_yTMod2=spm_yT%2
+		spm_yT0=spm_yT-1
+		spm_yT3=spm_yT+1
+		spm_xT2=spm_xT+1
+		spm_xT5=spm_xT-1
+		if spm_yTMod2
+			spm_xT0=spm_xT-1
+			spm_xT1=spm_xT
+		else
+			spm_xT0=spm_xT
+			spm_xT1=spm_xT+1
+		endif
+    spm_uT=spm_xT+(spm_yT/2)
+    spm_vT=spm_xT-((spm_yT+1)/2)
+    #$ dir=0
+		#$ while @dir<6
+			#$ if @dir==0
+				#$ xdT=0; ydT=0
+      #$ endif
+			#$ if @dir==1
+				#$ xdT=1; ydT=0
+		  #$ endif
+			#$ if @dir==2
+				#$ xdT=2; ydT=
+      #$ endif
+			#$ if @dir==3
+				#$ xdT=1; ydT=3
+		  #$ endif
+			#$ if @dir==4
+				#$ xdT=0; ydT=3
+      #$ endif
+			#$ if @dir==5
+				#$ xdT=5; ydT= 
+		  #$ endif
+			if spm@{ag}_visited[spm_yT@{ydT}][spm_xT@{xdT}]
+			else
+			  spm@{ag}_visited[spm_yT@{ydT}][spm_xT@{xdT}]=1
+				if ownedMapMe[spm_yT@{ydT}][spm_xT@{xdT}]
+          spiralMove@{ag}_mapOuter[spm_yT@{ydT}][spm_xT@{xdT}]=1
+          spm_oppsDistT=oppsDistance_map1[spm_yT@{ydT}][spm_xT@{xdT}]
+          if spiralMove@{ag}_shortestOppsDist<spm_oppsDistT
+            spiralMove@{ag}_shortestOppsDist=spm_oppsDistT
+          endif
+        else
+          #$ if @{dir}==0
+            if spm_yT
+              if spm_uT<=uGateMin
+                return 100
+              elif spm_xT
+              else
+                return 101
+              endif
+            else
+              return 102
+            endif
+          #$ endif
+          #$ if @{dir}==1
+            if spm_yT
+              if spm_vT>=vGateMax
+                return 110
+              elif spm_yTMod2
+                if spm_xT>=xnM1
+                  return 112
+                endif
+              else
+                if spm_xT>=xnM2
+                  return 111
+                endif
+              endif
+            else
+              return 113
+            endif
+          #$ endif
+          #$ if @{dir}==2
+            if spm_xT>=xnM2
+              return 120
+            elif spm_vT>=vGateMax
+              return 121
+            elif spm_uT>=uGateMax
+              return 122
+            endif
+          #$ endif
+          #$ if @{dir}==3
+            if spm_yT>=ynM1
+              return 130
+            elif spm_uT>=uGateMax
+              return 131
+            elif spm_yTMod2
+              if spm_xT>=xnM1
+                return 133
+              endif
+            else
+              if spm_xT>=xnM2
+                return 132
+              endif
+            endif
+          #$ endif
+          #$ if @{dir}==4
+            if spm_yT>=ynM1
+              return 140
+            elif spm_vT<=vGateMin
+              return 141
+            elif spm_xT
+            else
+              return 142
+            endif
+          #$ endif
+          #$ if @{dir}==5
+            if spm_xT<=spm_yTMod2
+              return 150
+            elif spm_vT<=vGateMin
+              return 151
+            elif spm_uT<=uGateMin
+              return 152
+            endif
+          #$ endif
+          #$ 'spiralMove_stack_push.gun ag=@{ag} valy=spm_yT@{ydT} valx=spm_xT@{xdT}'
+				endif
+			endif
+      #$ dir+=1
+    #$ endwhile
+	endwhile
+	spiralMove@{ag}_innerSizeT=spiralMove@{ag}_innerSize-depth_+@{depAfford}
+  print '  -- searchInner after innerSizeT=',spiralMove@{ag}_innerSizeT
+endfunc
+#$ ag+=1
+#$ endwhile

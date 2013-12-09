@@ -1,0 +1,104 @@
+func inu_distance2(y2_,x2_)
+  inud_y2=y2_
+  inud_x2=x2_
+  return inu_distance_yuv()
+endfunc
+func inu_distance(y1_,x1_,y2_,x2_)
+  inud_y1=y1_
+  inud_x1=x1_
+  inud_y2=y2_
+  inud_x2=x2_
+  return inu_distance_yuv()
+endfunc
+#$ ig=0
+#$ while @{ig}<8
+func inu_distanceGate@{ig}()
+  inud_y2=yGate@{ig}
+  inud_x2=xGate@{ig}
+  return inu_distance_yuv()
+endfunc
+  #$ ig+=1
+#$ endwhile
+
+################################################################
+func inu_distance_yuv()
+  inud_u1=inud_x1+(inud_y1/2)
+  inud_v1=inud_x1-((inud_y1+1)/2)
+  inud_u2=inud_x2+(inud_y2/2)
+  inud_v2=inud_x2-((inud_y2+1)/2)
+  inud_yd=inud_y2-inud_y1
+  inud_ud=inud_u2-inud_u1
+  inud_vd=inud_v2-inud_v1
+  inud_yda=inu_abs(inud_yd)
+  inud_uda=inu_abs(inud_ud)
+  inud_vda=inu_abs(inud_vd)
+  if inud_yda>=inud_uda
+    if inud_yda>=inud_vda
+      return inud_yda
+    endif
+    return inud_vda
+  elif inud_uda>=inud_vda
+    return inud_uda
+  endif
+  return inud_vda
+endfunc
+func inu_abs(a_)
+  if a_>=zero()
+    return a_
+  endif
+  return -a_
+endfunc
+#############################################################
+func inu_farMove()
+  if inud_yda>=inud_uda
+    if inud_yda>inud_vda
+      if inud_uda>=inud_vda
+        print '  --  farMove yuv yd=',inud_yd
+        if inud_yd>=zero()
+          inu_gotoDir3()
+        else
+          inu_gotoDir0()
+        endif
+      else
+        print '  --  farMove yvu yd=',inud_yd
+        if inud_yd>=zero()
+          inu_gotoDir4()
+        else
+          inu_gotoDir1()
+        endif
+      endif
+    else
+      print '  --  farMove vyu vd=',inud_vd
+      if inud_vd>=zero()
+        inu_gotoDir1()
+      else
+        inu_gotoDir4()
+      endif
+    endif
+  elif inud_uda>inud_vda
+    if inud_yda>=inud_vda
+      print '  --  farMove uyv ud=',inud_ud
+      if inud_ud>=zero()
+        inu_gotoDir3()
+      else
+        inu_gotoDir0()
+      endif
+    else
+      print '  --  farMove uvy ud=',inud_ud
+      if inud_ud>=zero()
+        inu_gotoDir2()
+      else
+        inu_gotoDir5()
+      endif
+    endif
+  else
+    print '  --  farMove vuy vd=',inud_vd
+    if inud_vd>=zero()
+      inu_gotoDir2()
+    else
+      inu_gotoDir5()
+    endif
+  endif
+endfunc
+
+

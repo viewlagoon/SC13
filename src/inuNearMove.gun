@@ -1,0 +1,103 @@
+func inu_dispatch_nearMove()
+  if inup_mode>=3
+    if inup_mode>=4
+      inu_nearMove5()
+    else
+      inu_nearMove3()
+    endif
+  elif inup_mode>=2
+    inu_nearMove2()
+  else
+    inu_nearMove0()
+  endif
+endfunc
+#$ d0=0
+#$ while @{d0}<6
+  #$ d1=@{d0}; d1+=1; d1%=6
+  #$ d2=@{d0}; d2+=2; d2%=6
+  #$ d3=@{d0}; d3+=3; d3%=6
+  #$ d4=@{d0}; d4+=4; d4%=6
+  #$ d5=@{d0}; d5+=5; d5%=6
+  #$ dMod3=@{d0}; dMod3%=3
+  #$ if @{dMod3}!=1
+func inu_nearMove@{d0}()
+  #$ if @{d0}==0
+    inud_zy=inud_yd
+    inud_zv=inud_vd
+    inud_zu=inud_ud
+  #$ endif
+  #$ if @{d0}==1
+    inud_zy=-inud_vd
+    inud_zv=inud_ud
+    inud_zu=inud_yd
+  #$ endif
+  #$ if @{d0}==2
+    inud_zy=-inud_ud
+    inud_zv=inud_yd
+    inud_zu=-inud_vd
+  #$ endif
+  #$ if @{d0}==3
+    inud_zy=-inud_yd
+    inud_zv=-inud_vd
+    inud_zu=-inud_ud
+  #$ endif
+  #$ if @{d0}==4
+    inud_zy=inud_vd
+    inud_zv=-inud_ud
+    inud_zu=-inud_yd
+  #$ endif
+  #$ if @{d0}==5
+    inud_zy=inud_ud
+    inud_zv=-inud_yd
+    inud_zu=inud_vd
+  #$ endif
+  if inud_zu>=zero()
+    print '  --  inu_nearMove@{d0} overtakeMove dzy=',inud_zy,' dzu=',inud_zu,' dzv=',inud_zv,' dy=',inud_yd,' du=',inud_ud,' dv=',inud_vd
+    if inud_zy<inud_zv
+      inu_gotoDir@{d2}()
+    elif inud_zy==inud_zv
+      inu_gotoDir@{d2}@{d3}()
+    else
+      inu_gotoDir@{d3}()
+    endif
+  else
+    print '  --  inu_nearMove@{d0} approachMove dzy=',inud_zy,' dzu=',inud_zu,' dzv=',inud_zv,' dy=',inud_yd,' du=',inud_ud,' dv=',inud_vd
+    if inud_zv>=zero()
+      if inud_zy==m1
+        inu_restrictDir@{d1}()
+      else
+        inu_restrictDir@{d1}@{d2}()
+      endif
+    elif inud_zy>=zero()
+      if inud_zv==m1
+        inu_restrictDir@{d4}()
+      else
+        inu_restrictDir@{d4}@{d3}()
+      endif
+    elif inud_zu==m2
+      if inus_prohibit@{d4}
+        inu_restrictDir@{d0}()
+      elif inus_prohibit@{d1}
+        inu_restrictDir@{d5}()
+      else
+        inu_stop()
+      endif
+    elif inud_zv<=inud_zy
+      if inud_zv==inud_zy
+        inu_restrictDir@{d5}@{d0}_sub()
+      elif inud_zy==m1
+        inu_restrictDir@{d5}()
+      else
+        inu_restrictDir@{d5}@{d0}()
+      endif
+    elif inud_zv==m1
+      inu_restrictDir@{d0}()
+    else
+      inu_restrictDir@{d0}@{d5}()
+    endif
+  endif
+endfunc 
+  #$ endif
+  #$ d0+=1
+#$ endwhile
+

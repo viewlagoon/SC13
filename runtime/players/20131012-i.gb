@@ -1,0 +1,9646 @@
+func B()
+endfunc
+func TN()
+E=gb_storage()
+N0=E[1019]
+E[1019]=N0+1
+NC =gb_field_size()
+A =gb_team_id()
+Dp =NC[B()]
+KO =NC[1]
+JO =Dp/2
+KA =(Dp/3)+1
+Ul =Dp/4
+ER =KO/2
+K =(KO/3)+1
+VC =KO/4
+FF =KO-1
+AD =Dp-1
+EZ =Dp-2
+RP =AD+ER
+DU =gb_agent_positions()
+Js =DU[gb_team_id()]
+D =-1
+M =-2
+MV=Js[0]
+A5=MV[B()]
+x=MV[1]
+Hu=x%2
+Qx=x/2
+V_=(x-1)/2
+Qu=(x+1)/2
+Ds=A5+1
+Ay=A5-1
+S8=A5-2
+U2=A5+2
+Ll=x-2
+LV=x+2
+if Hu
+Dh=Ay
+DW=A5
+O6=Dp
+LU=AD
+Oy=EZ
+else
+Dh=A5
+DW=Ds
+O6=AD
+LU=EZ
+Oy=AD
+endif
+L_=Dh-1
+N6=DW+1
+Mq=LU-A5
+Ee=DW
+DT=Dh
+Cz=x-1
+Bs=x+1
+J5=x
+C0=x
+Fa=Cz
+Dl=Bs
+Kh=FF-x
+DE=E[1000]
+E[1000]=A5
+D9=E[1004]
+E[1004]=x
+A[x][A5]=A[x][A5] | 1
+Uw=x/K
+VX=A5/KA
+F7=A5+Qx
+H0=A5-Qu
+Te=F7-1
+Vw=Te
+UZ=F7
+V0=F7
+SC=F7+1
+Ua=SC
+PH=H0-1
+WP=PH
+VR=H0
+VM=H0
+Op=H0+1
+V8=Op
+K5=OZ()
+if Lr
+Cw=D
+else
+if Dh==DE
+if Cz==D9
+Cw=0
+endif
+endif
+if DW==DE
+if Fa==D9
+Cw=1
+endif
+endif
+if Ds==DE
+if J5==D9
+Cw=2
+endif
+endif
+if Ee==DE
+if Bs==D9
+Cw=3
+endif
+endif
+if DT==DE
+if Dl==D9
+Cw=4
+endif
+endif
+if Ay==DE
+if C0==D9
+Cw=5
+endif
+endif
+if gb_hexel_owner(DE,D9)!=gb_team_id()
+VP=1
+endif
+endif
+NH=Js[1]
+BQ=NH[B()]
+AH=NH[1]
+DZ=AH%2
+R0=AH/2
+Vj=(AH-1)/2
+OL=(AH+1)/2
+Dn=BQ+1
+AS=BQ-1
+P2=BQ-2
+ON=BQ+2
+La=AH-2
+Lo=AH+2
+if DZ
+D5=AS
+DD=BQ
+NV=Dp
+Lh=AD
+RZ=EZ
+else
+D5=BQ
+DD=Dn
+NV=AD
+Lh=EZ
+RZ=AD
+endif
+Mr=D5-1
+Ms=DD+1
+Lc=Lh-BQ
+E4=DD
+D0=D5
+D1=AH-1
+Bw=AH+1
+H4=AH
+Be=AH
+FZ=D1
+DJ=Bw
+KP=FF-AH
+Dd=E[1001]
+E[1001]=BQ
+DX=E[1005]
+E[1005]=AH
+A[AH][BQ]=A[AH][BQ] | 1
+MJ=AH/K
+Lw=BQ/KA
+J[MJ][Lw]=J[MJ][Lw]+1
+Fh=BQ+R0
+Fe=BQ-OL
+O_=Fh-1
+Uj=O_
+W6=Fh
+W1=Fh
+TX=Fh+1
+VF=TX
+Sx=Fe-1
+VH=Sx
+VO=Fe
+UW=Fe
+Oc=Fe+1
+WC=Oc
+JU=R1()
+if Lr
+Cf=D
+else
+if D5==Dd
+if D1==DX
+Cf=0
+endif
+endif
+if DD==Dd
+if FZ==DX
+Cf=1
+endif
+endif
+if Dn==Dd
+if H4==DX
+Cf=2
+endif
+endif
+if E4==Dd
+if Bw==DX
+Cf=3
+endif
+endif
+if D0==Dd
+if DJ==DX
+Cf=4
+endif
+endif
+if AS==Dd
+if Be==DX
+Cf=5
+endif
+endif
+if gb_hexel_owner(Dd,DX)!=gb_team_id()
+Uo=1
+endif
+endif
+NB=Js[2]
+BM=NB[B()]
+AF=NB[1]
+Df=AF%2
+S2=AF/2
+UX=(AF-1)/2
+Rk=(AF+1)/2
+Do=BM+1
+AU=BM-1
+TQ=BM-2
+TM=BM+2
+LX=AF-2
+Ls=AF+2
+if Df
+DA=AU
+D2=BM
+TE=Dp
+Lf=AD
+OX=EZ
+else
+DA=BM
+D2=Do
+TE=AD
+Lf=EZ
+OX=AD
+endif
+MM=DA-1
+M8=D2+1
+Lj=Lf-BM
+D_=D2
+DF=DA
+DH=AF-1
+Bx=AF+1
+H6=AF
+Bl=AF
+FW=DH
+DM=Bx
+Ju=FF-AF
+Da=E[1002]
+E[1002]=BM
+Db=E[1006]
+E[1006]=AF
+A[AF][BM]=A[AF][BM] | 1
+NJ=AF/K
+MZ=BM/KA
+J[NJ][MZ]=J[NJ][MZ]+1
+Fc=BM+S2
+Ff=BM-Rk
+R3=Fc-1
+UQ=R3
+W8=Fc
+W2=Fc
+Ry=Fc+1
+V6=Ry
+TW=Ff-1
+VA=TW
+VU=Ff
+VJ=Ff
+Po=Ff+1
+WE=Po
+JM=NY()
+if Lr
+Cj=D
+else
+if DA==Da
+if DH==Db
+Cj=0
+endif
+endif
+if D2==Da
+if FW==Db
+Cj=1
+endif
+endif
+if Do==Da
+if H6==Db
+Cj=2
+endif
+endif
+if D_==Da
+if Bx==Db
+Cj=3
+endif
+endif
+if DF==Da
+if DM==Db
+Cj=4
+endif
+endif
+if AU==Da
+if Bl==Db
+Cj=5
+endif
+endif
+if gb_hexel_owner(Da,Db)!=gb_team_id()
+Vq=1
+endif
+endif
+MP=Js[3]
+BW=MP[B()]
+AE=MP[1]
+DV=AE%2
+Od=AE/2
+UP=(AE-1)/2
+OU=(AE+1)/2
+Dq=BW+1
+AX=BW-1
+TR=BW-2
+Rc=BW+2
+LW=AE-2
+Lb=AE+2
+if DV
+D7=AX
+D4=BW
+Nl=Dp
+LY=AD
+U5=EZ
+else
+D7=BW
+D4=Dq
+Nl=AD
+LY=EZ
+U5=AD
+endif
+N5=D7-1
+ND=D4+1
+Ln=LY-BW
+Dz=D4
+D6=D7
+D3=AE-1
+Bu=AE+1
+Ft=AE
+Bh=AE
+FX=D3
+DL=Bu
+L8=FF-AE
+Dj=E[1003]
+E[1003]=BW
+Dc=E[1007]
+E[1007]=AE
+A[AE][BW]=A[AE][BW] | 1
+Mu=AE/K
+NK=BW/KA
+J[Mu][NK]=J[Mu][NK]+1
+Fj=BW+Od
+Fb=BW-OU
+S7=Fj-1
+V2=S7
+Vl=Fj
+UO=Fj
+Or=Fj+1
+VD=Or
+Qo=Fb-1
+WO=Qo
+Vm=Fb
+UY=Fb
+OA=Fb+1
+VS=OA
+Ja=UB()
+if Lr
+Ck=D
+else
+if D7==Dj
+if D3==Dc
+Ck=0
+endif
+endif
+if D4==Dj
+if FX==Dc
+Ck=1
+endif
+endif
+if Dq==Dj
+if Ft==Dc
+Ck=2
+endif
+endif
+if Dz==Dj
+if Bu==Dc
+Ck=3
+endif
+endif
+if D6==Dj
+if DL==Dc
+Ck=4
+endif
+endif
+if AX==Dj
+if Bh==Dc
+Ck=5
+endif
+endif
+if gb_hexel_owner(Dj,Dc)!=gb_team_id()
+Uk=1
+endif
+endif
+Ub=(BQ+BM+BW)/3
+W0=(AH+AF+AE)/3
+if N0
+QO()
+else
+UA()
+endif
+if gb_team_id()>=2
+if gb_team_id()>=3
+Sd()
+else
+Pk()
+endif
+elif gb_team_id()
+PY()
+else
+Sh()
+endif
+endfunc
+func Tu()
+if T<S
+if S<U
+if U<L
+if L<H
+if H<F
+if F
+C[0]=5
+A[C0][Ay]=1
+A[Ct][Cx]=1
+else
+C[0]=D
+endif
+else
+if H
+C[0]=4
+A[Dl][DT]=1
+A[Dr][E3]=1
+else
+C[0]=D
+endif
+endif
+elif L<F 
+if F
+C[0]=5
+A[C0][Ay]=1
+A[Ct][Cx]=1
+else
+C[0]=D
+endif
+else
+if L
+C[0]=3
+A[Bs][Ee]=1
+A[FK][FC]=1
+else
+C[0]=D
+endif
+endif
+elif U<H
+if H<F
+if F
+C[0]=5
+A[C0][Ay]=1
+A[Ct][Cx]=1
+else
+C[0]=D
+endif
+else
+if H
+C[0]=4
+A[Dl][DT]=1
+A[Dr][E3]=1
+else
+C[0]=D
+endif
+endif
+elif U<F 
+if F
+C[0]=5
+A[C0][Ay]=1
+A[Ct][Cx]=1
+else
+C[0]=D
+endif
+else
+if U
+C[0]=2
+A[J5][Ds]=1
+A[Jm][KV]=1
+else
+C[0]=D
+endif
+endif
+elif S<L
+if L<H
+if H<F
+if F
+C[0]=5
+A[C0][Ay]=1
+A[Ct][Cx]=1
+else
+C[0]=D
+endif
+else
+if H
+C[0]=4
+A[Dl][DT]=1
+A[Dr][E3]=1
+else
+C[0]=D
+endif
+endif
+elif L<F 
+if F
+C[0]=5
+A[C0][Ay]=1
+A[Ct][Cx]=1
+else
+C[0]=D
+endif
+else
+if L
+C[0]=3
+A[Bs][Ee]=1
+A[FK][FC]=1
+else
+C[0]=D
+endif
+endif
+elif S<H
+if H<F
+if F
+C[0]=5
+A[C0][Ay]=1
+A[Ct][Cx]=1
+else
+C[0]=D
+endif
+else
+if H
+C[0]=4
+A[Dl][DT]=1
+A[Dr][E3]=1
+else
+C[0]=D
+endif
+endif
+elif S<F 
+if F
+C[0]=5
+A[C0][Ay]=1
+A[Ct][Cx]=1
+else
+C[0]=D
+endif
+else
+if S
+C[0]=1
+A[Fa][DW]=1
+A[Ht][J7]=1
+else
+C[0]=D
+endif
+endif
+elif T<U
+if U<L
+if L<H
+if H<F
+if F
+C[0]=5
+A[C0][Ay]=1
+A[Ct][Cx]=1
+else
+C[0]=D
+endif
+else
+if H
+C[0]=4
+A[Dl][DT]=1
+A[Dr][E3]=1
+else
+C[0]=D
+endif
+endif
+elif L<F 
+if F
+C[0]=5
+A[C0][Ay]=1
+A[Ct][Cx]=1
+else
+C[0]=D
+endif
+else
+if L
+C[0]=3
+A[Bs][Ee]=1
+A[FK][FC]=1
+else
+C[0]=D
+endif
+endif
+elif U<H
+if H<F
+if F
+C[0]=5
+A[C0][Ay]=1
+A[Ct][Cx]=1
+else
+C[0]=D
+endif
+else
+if H
+C[0]=4
+A[Dl][DT]=1
+A[Dr][E3]=1
+else
+C[0]=D
+endif
+endif
+elif U<F 
+if F
+C[0]=5
+A[C0][Ay]=1
+A[Ct][Cx]=1
+else
+C[0]=D
+endif
+else
+if U
+C[0]=2
+A[J5][Ds]=1
+A[Jm][KV]=1
+else
+C[0]=D
+endif
+endif
+elif T<L
+if L<H
+if H<F
+if F
+C[0]=5
+A[C0][Ay]=1
+A[Ct][Cx]=1
+else
+C[0]=D
+endif
+else
+if H
+C[0]=4
+A[Dl][DT]=1
+A[Dr][E3]=1
+else
+C[0]=D
+endif
+endif
+elif L<F 
+if F
+C[0]=5
+A[C0][Ay]=1
+A[Ct][Cx]=1
+else
+C[0]=D
+endif
+else
+if L
+C[0]=3
+A[Bs][Ee]=1
+A[FK][FC]=1
+else
+C[0]=D
+endif
+endif
+elif T<H
+if H<F
+if F
+C[0]=5
+A[C0][Ay]=1
+A[Ct][Cx]=1
+else
+C[0]=D
+endif
+else
+if H
+C[0]=4
+A[Dl][DT]=1
+A[Dr][E3]=1
+else
+C[0]=D
+endif
+endif
+elif T<F 
+if F
+C[0]=5
+A[C0][Ay]=1
+A[Ct][Cx]=1
+else
+C[0]=D
+endif
+else
+if T
+C[0]=0
+A[Cz][Dh]=1
+A[Hq][JH]=1
+else
+C[0]=D
+endif
+endif
+endfunc
+func U9()
+if j<n
+if n<f
+if f<Y
+if Y<V
+if V<R
+if R
+C[1]=5
+A[Be][AS]=1
+A[Cv][Cq]=1
+else
+C[1]=D
+endif
+else
+if V
+C[1]=4
+A[DJ][D0]=1
+A[Dy][E0]=1
+else
+C[1]=D
+endif
+endif
+elif Y<R 
+if R
+C[1]=5
+A[Be][AS]=1
+A[Cv][Cq]=1
+else
+C[1]=D
+endif
+else
+if Y
+C[1]=3
+A[Bw][E4]=1
+A[FN][FM]=1
+else
+C[1]=D
+endif
+endif
+elif f<V
+if V<R
+if R
+C[1]=5
+A[Be][AS]=1
+A[Cv][Cq]=1
+else
+C[1]=D
+endif
+else
+if V
+C[1]=4
+A[DJ][D0]=1
+A[Dy][E0]=1
+else
+C[1]=D
+endif
+endif
+elif f<R 
+if R
+C[1]=5
+A[Be][AS]=1
+A[Cv][Cq]=1
+else
+C[1]=D
+endif
+else
+if f
+C[1]=2
+A[H4][Dn]=1
+A[Jc][LD]=1
+else
+C[1]=D
+endif
+endif
+elif n<Y
+if Y<V
+if V<R
+if R
+C[1]=5
+A[Be][AS]=1
+A[Cv][Cq]=1
+else
+C[1]=D
+endif
+else
+if V
+C[1]=4
+A[DJ][D0]=1
+A[Dy][E0]=1
+else
+C[1]=D
+endif
+endif
+elif Y<R 
+if R
+C[1]=5
+A[Be][AS]=1
+A[Cv][Cq]=1
+else
+C[1]=D
+endif
+else
+if Y
+C[1]=3
+A[Bw][E4]=1
+A[FN][FM]=1
+else
+C[1]=D
+endif
+endif
+elif n<V
+if V<R
+if R
+C[1]=5
+A[Be][AS]=1
+A[Cv][Cq]=1
+else
+C[1]=D
+endif
+else
+if V
+C[1]=4
+A[DJ][D0]=1
+A[Dy][E0]=1
+else
+C[1]=D
+endif
+endif
+elif n<R 
+if R
+C[1]=5
+A[Be][AS]=1
+A[Cv][Cq]=1
+else
+C[1]=D
+endif
+else
+if n
+C[1]=1
+A[FZ][DD]=1
+A[Hp][Hz]=1
+else
+C[1]=D
+endif
+endif
+elif j<f
+if f<Y
+if Y<V
+if V<R
+if R
+C[1]=5
+A[Be][AS]=1
+A[Cv][Cq]=1
+else
+C[1]=D
+endif
+else
+if V
+C[1]=4
+A[DJ][D0]=1
+A[Dy][E0]=1
+else
+C[1]=D
+endif
+endif
+elif Y<R 
+if R
+C[1]=5
+A[Be][AS]=1
+A[Cv][Cq]=1
+else
+C[1]=D
+endif
+else
+if Y
+C[1]=3
+A[Bw][E4]=1
+A[FN][FM]=1
+else
+C[1]=D
+endif
+endif
+elif f<V
+if V<R
+if R
+C[1]=5
+A[Be][AS]=1
+A[Cv][Cq]=1
+else
+C[1]=D
+endif
+else
+if V
+C[1]=4
+A[DJ][D0]=1
+A[Dy][E0]=1
+else
+C[1]=D
+endif
+endif
+elif f<R 
+if R
+C[1]=5
+A[Be][AS]=1
+A[Cv][Cq]=1
+else
+C[1]=D
+endif
+else
+if f
+C[1]=2
+A[H4][Dn]=1
+A[Jc][LD]=1
+else
+C[1]=D
+endif
+endif
+elif j<Y
+if Y<V
+if V<R
+if R
+C[1]=5
+A[Be][AS]=1
+A[Cv][Cq]=1
+else
+C[1]=D
+endif
+else
+if V
+C[1]=4
+A[DJ][D0]=1
+A[Dy][E0]=1
+else
+C[1]=D
+endif
+endif
+elif Y<R 
+if R
+C[1]=5
+A[Be][AS]=1
+A[Cv][Cq]=1
+else
+C[1]=D
+endif
+else
+if Y
+C[1]=3
+A[Bw][E4]=1
+A[FN][FM]=1
+else
+C[1]=D
+endif
+endif
+elif j<V
+if V<R
+if R
+C[1]=5
+A[Be][AS]=1
+A[Cv][Cq]=1
+else
+C[1]=D
+endif
+else
+if V
+C[1]=4
+A[DJ][D0]=1
+A[Dy][E0]=1
+else
+C[1]=D
+endif
+endif
+elif j<R 
+if R
+C[1]=5
+A[Be][AS]=1
+A[Cv][Cq]=1
+else
+C[1]=D
+endif
+else
+if j
+C[1]=0
+A[D1][D5]=1
+A[Hb][Hd]=1
+else
+C[1]=D
+endif
+endif
+endfunc
+func TU()
+if l<m
+if m<e
+if e<a
+if a<X
+if X<Q
+if Q
+C[2]=5
+A[Bl][AU]=1
+A[Cy][Cm]=1
+else
+C[2]=D
+endif
+else
+if X
+C[2]=4
+A[DM][DF]=1
+A[Dt][Du]=1
+else
+C[2]=D
+endif
+endif
+elif a<Q 
+if Q
+C[2]=5
+A[Bl][AU]=1
+A[Cy][Cm]=1
+else
+C[2]=D
+endif
+else
+if a
+C[2]=3
+A[Bx][D_]=1
+A[FD][FY]=1
+else
+C[2]=D
+endif
+endif
+elif e<X
+if X<Q
+if Q
+C[2]=5
+A[Bl][AU]=1
+A[Cy][Cm]=1
+else
+C[2]=D
+endif
+else
+if X
+C[2]=4
+A[DM][DF]=1
+A[Dt][Du]=1
+else
+C[2]=D
+endif
+endif
+elif e<Q 
+if Q
+C[2]=5
+A[Bl][AU]=1
+A[Cy][Cm]=1
+else
+C[2]=D
+endif
+else
+if e
+C[2]=2
+A[H6][Do]=1
+A[Jx][K7]=1
+else
+C[2]=D
+endif
+endif
+elif m<a
+if a<X
+if X<Q
+if Q
+C[2]=5
+A[Bl][AU]=1
+A[Cy][Cm]=1
+else
+C[2]=D
+endif
+else
+if X
+C[2]=4
+A[DM][DF]=1
+A[Dt][Du]=1
+else
+C[2]=D
+endif
+endif
+elif a<Q 
+if Q
+C[2]=5
+A[Bl][AU]=1
+A[Cy][Cm]=1
+else
+C[2]=D
+endif
+else
+if a
+C[2]=3
+A[Bx][D_]=1
+A[FD][FY]=1
+else
+C[2]=D
+endif
+endif
+elif m<X
+if X<Q
+if Q
+C[2]=5
+A[Bl][AU]=1
+A[Cy][Cm]=1
+else
+C[2]=D
+endif
+else
+if X
+C[2]=4
+A[DM][DF]=1
+A[Dt][Du]=1
+else
+C[2]=D
+endif
+endif
+elif m<Q 
+if Q
+C[2]=5
+A[Bl][AU]=1
+A[Cy][Cm]=1
+else
+C[2]=D
+endif
+else
+if m
+C[2]=1
+A[FW][D2]=1
+A[JC][Hf]=1
+else
+C[2]=D
+endif
+endif
+elif l<e
+if e<a
+if a<X
+if X<Q
+if Q
+C[2]=5
+A[Bl][AU]=1
+A[Cy][Cm]=1
+else
+C[2]=D
+endif
+else
+if X
+C[2]=4
+A[DM][DF]=1
+A[Dt][Du]=1
+else
+C[2]=D
+endif
+endif
+elif a<Q 
+if Q
+C[2]=5
+A[Bl][AU]=1
+A[Cy][Cm]=1
+else
+C[2]=D
+endif
+else
+if a
+C[2]=3
+A[Bx][D_]=1
+A[FD][FY]=1
+else
+C[2]=D
+endif
+endif
+elif e<X
+if X<Q
+if Q
+C[2]=5
+A[Bl][AU]=1
+A[Cy][Cm]=1
+else
+C[2]=D
+endif
+else
+if X
+C[2]=4
+A[DM][DF]=1
+A[Dt][Du]=1
+else
+C[2]=D
+endif
+endif
+elif e<Q 
+if Q
+C[2]=5
+A[Bl][AU]=1
+A[Cy][Cm]=1
+else
+C[2]=D
+endif
+else
+if e
+C[2]=2
+A[H6][Do]=1
+A[Jx][K7]=1
+else
+C[2]=D
+endif
+endif
+elif l<a
+if a<X
+if X<Q
+if Q
+C[2]=5
+A[Bl][AU]=1
+A[Cy][Cm]=1
+else
+C[2]=D
+endif
+else
+if X
+C[2]=4
+A[DM][DF]=1
+A[Dt][Du]=1
+else
+C[2]=D
+endif
+endif
+elif a<Q 
+if Q
+C[2]=5
+A[Bl][AU]=1
+A[Cy][Cm]=1
+else
+C[2]=D
+endif
+else
+if a
+C[2]=3
+A[Bx][D_]=1
+A[FD][FY]=1
+else
+C[2]=D
+endif
+endif
+elif l<X
+if X<Q
+if Q
+C[2]=5
+A[Bl][AU]=1
+A[Cy][Cm]=1
+else
+C[2]=D
+endif
+else
+if X
+C[2]=4
+A[DM][DF]=1
+A[Dt][Du]=1
+else
+C[2]=D
+endif
+endif
+elif l<Q 
+if Q
+C[2]=5
+A[Bl][AU]=1
+A[Cy][Cm]=1
+else
+C[2]=D
+endif
+else
+if l
+C[2]=0
+A[DH][DA]=1
+A[J1][Hc]=1
+else
+C[2]=D
+endif
+endif
+endfunc
+func NU()
+if o<k
+if k<h
+if h<Z
+if Z<W
+if W<P
+if P
+C[3]=5
+A[Bh][AX]=1
+A[Cl][Cp]=1
+else
+C[3]=D
+endif
+else
+if W
+C[3]=4
+A[DL][D6]=1
+A[Dv][Dw]=1
+else
+C[3]=D
+endif
+endif
+elif Z<P 
+if P
+C[3]=5
+A[Bh][AX]=1
+A[Cl][Cp]=1
+else
+C[3]=D
+endif
+else
+if Z
+C[3]=3
+A[Bu][Dz]=1
+A[FQ][FL]=1
+else
+C[3]=D
+endif
+endif
+elif h<W
+if W<P
+if P
+C[3]=5
+A[Bh][AX]=1
+A[Cl][Cp]=1
+else
+C[3]=D
+endif
+else
+if W
+C[3]=4
+A[DL][D6]=1
+A[Dv][Dw]=1
+else
+C[3]=D
+endif
+endif
+elif h<P 
+if P
+C[3]=5
+A[Bh][AX]=1
+A[Cl][Cp]=1
+else
+C[3]=D
+endif
+else
+if h
+C[3]=2
+A[Ft][Dq]=1
+A[LA][KS]=1
+else
+C[3]=D
+endif
+endif
+elif k<Z
+if Z<W
+if W<P
+if P
+C[3]=5
+A[Bh][AX]=1
+A[Cl][Cp]=1
+else
+C[3]=D
+endif
+else
+if W
+C[3]=4
+A[DL][D6]=1
+A[Dv][Dw]=1
+else
+C[3]=D
+endif
+endif
+elif Z<P 
+if P
+C[3]=5
+A[Bh][AX]=1
+A[Cl][Cp]=1
+else
+C[3]=D
+endif
+else
+if Z
+C[3]=3
+A[Bu][Dz]=1
+A[FQ][FL]=1
+else
+C[3]=D
+endif
+endif
+elif k<W
+if W<P
+if P
+C[3]=5
+A[Bh][AX]=1
+A[Cl][Cp]=1
+else
+C[3]=D
+endif
+else
+if W
+C[3]=4
+A[DL][D6]=1
+A[Dv][Dw]=1
+else
+C[3]=D
+endif
+endif
+elif k<P 
+if P
+C[3]=5
+A[Bh][AX]=1
+A[Cl][Cp]=1
+else
+C[3]=D
+endif
+else
+if k
+C[3]=1
+A[FX][D4]=1
+A[H_][Hl]=1
+else
+C[3]=D
+endif
+endif
+elif o<h
+if h<Z
+if Z<W
+if W<P
+if P
+C[3]=5
+A[Bh][AX]=1
+A[Cl][Cp]=1
+else
+C[3]=D
+endif
+else
+if W
+C[3]=4
+A[DL][D6]=1
+A[Dv][Dw]=1
+else
+C[3]=D
+endif
+endif
+elif Z<P 
+if P
+C[3]=5
+A[Bh][AX]=1
+A[Cl][Cp]=1
+else
+C[3]=D
+endif
+else
+if Z
+C[3]=3
+A[Bu][Dz]=1
+A[FQ][FL]=1
+else
+C[3]=D
+endif
+endif
+elif h<W
+if W<P
+if P
+C[3]=5
+A[Bh][AX]=1
+A[Cl][Cp]=1
+else
+C[3]=D
+endif
+else
+if W
+C[3]=4
+A[DL][D6]=1
+A[Dv][Dw]=1
+else
+C[3]=D
+endif
+endif
+elif h<P 
+if P
+C[3]=5
+A[Bh][AX]=1
+A[Cl][Cp]=1
+else
+C[3]=D
+endif
+else
+if h
+C[3]=2
+A[Ft][Dq]=1
+A[LA][KS]=1
+else
+C[3]=D
+endif
+endif
+elif o<Z
+if Z<W
+if W<P
+if P
+C[3]=5
+A[Bh][AX]=1
+A[Cl][Cp]=1
+else
+C[3]=D
+endif
+else
+if W
+C[3]=4
+A[DL][D6]=1
+A[Dv][Dw]=1
+else
+C[3]=D
+endif
+endif
+elif Z<P 
+if P
+C[3]=5
+A[Bh][AX]=1
+A[Cl][Cp]=1
+else
+C[3]=D
+endif
+else
+if Z
+C[3]=3
+A[Bu][Dz]=1
+A[FQ][FL]=1
+else
+C[3]=D
+endif
+endif
+elif o<W
+if W<P
+if P
+C[3]=5
+A[Bh][AX]=1
+A[Cl][Cp]=1
+else
+C[3]=D
+endif
+else
+if W
+C[3]=4
+A[DL][D6]=1
+A[Dv][Dw]=1
+else
+C[3]=D
+endif
+endif
+elif o<P 
+if P
+C[3]=5
+A[Bh][AX]=1
+A[Cl][Cp]=1
+else
+C[3]=D
+endif
+else
+if o
+C[3]=0
+A[D3][D7]=1
+A[J3][Hh]=1
+else
+C[3]=D
+endif
+endif
+endfunc
+func U6()
+if A5
+RA()
+if Mq
+Ml()
+if x
+LK()
+Ke()
+if Kh
+HX()
+Fk()
+else
+O2()
+endif
+else
+HX()
+Fk()
+T_()
+endif
+else
+S3()
+if Hu
+J7=DW
+Ht=Fa
+Bq=M
+S =B()
+v=v+1
+Av=Av+1
+BF=BF+1
+Ab=Ab+1
+FC=Ee
+FK=Bs
+Br=M
+L =B()
+v=v+1
+Az=Az+1
+BD=BD+1
+BF=BF+1
+LK()
+Fk()
+elif x
+LK()
+Ke()
+if Kh
+HX()
+Fk()
+else
+FC=Ee
+FK=Bs
+Br=M
+L =B()
+v=v+1
+Az=Az+1
+BD=BD+1
+BF=BF+1
+E3=DT
+Dr=Dl
+Bz=M
+H =B()
+v=v+1
+BD=BD+1
+B0=B0+1
+Az=Az+1
+endif
+else
+JH=Dh
+Hq=Cz
+Bv=M
+T =B()
+v=v+1
+Ab=Ab+1
+Av=Av+1
+B0=B0+1
+J7=DW
+Ht=Fa
+Bq=M
+S =B()
+v=v+1
+Av=Av+1
+BF=BF+1
+Ab=Ab+1
+HX()
+Fk()
+endif
+endif
+else
+NP()
+Ml()
+if Hu
+JH=Dh
+Hq=Cz
+Bv=M
+T =B()
+v=v+1
+Ab=Ab+1
+Av=Av+1
+B0=B0+1
+E3=DT
+Dr=Dl
+Bz=M
+H =B()
+v=v+1
+BD=BD+1
+B0=B0+1
+Az=Az+1
+Ke()
+HX()
+elif x
+LK()
+Ke()
+if Kh
+HX()
+Fk()
+else
+FC=Ee
+FK=Bs
+Br=M
+L =B()
+v=v+1
+Az=Az+1
+BD=BD+1
+BF=BF+1
+E3=DT
+Dr=Dl
+Bz=M
+H =B()
+v=v+1
+BD=BD+1
+B0=B0+1
+Az=Az+1
+endif
+else
+JH=Dh
+Hq=Cz
+Bv=M
+T =B()
+v=v+1
+Ab=Ab+1
+Av=Av+1
+B0=B0+1
+J7=DW
+Ht=Fa
+Bq=M
+S =B()
+v=v+1
+Av=Av+1
+BF=BF+1
+Ab=Ab+1
+HX()
+Fk()
+endif
+endif
+endfunc
+func JE()
+v=v+1
+endfunc
+func LK()
+Bv=gb_hexel_owner(Dh,Cz)
+if Bv>=B()
+if Bv==gb_team_id()
+T=1921+gb_random_value(10)
+else
+T=1920+gb_random_value(10)
+endif
+elif Bv==D
+T=1920+gb_random_value(10)
+else
+T=B()
+endif
+Jb=A[Cz][Dh]
+if (Jb & 1)
+T=B()
+elif (Jb & 2 ) 
+T=T/2
+endif
+if DE==Dh
+if D9==Cz
+T=T/10
+endif
+endif
+endfunc
+func WL()
+if Bv==gb_team_id()
+JE()
+HJ()
+HP()
+HO()
+endif
+endfunc
+func Kl()
+Ab=Ab+1
+endfunc
+func HP()
+Kl()
+T=T*2/3
+endfunc
+func K9(BR)
+T=T*2
+endfunc
+func Ns()
+Kl()
+if Bv!=gb_team_id()
+if Bq!=gb_team_id()
+L3(6)
+endif
+if DY!=gb_team_id()
+Kf(6)
+endif
+else
+T=T*2/3
+endif
+endfunc
+func Ut()
+if Ab>=2
+T=T/Ab
+endif
+endfunc
+func Qb()
+if Bv!=gb_team_id()
+if Bq!=gb_team_id()
+K9(7)
+L3(7)
+Kl()
+Ka()
+else
+HP()
+HO()
+endif
+else
+HP()
+HO()
+endif
+endfunc
+func Pr()
+S=S*2
+U=U*2
+H=H*2
+F=F*2
+E5()
+endfunc
+func T9()
+U=U*2
+H=H*2
+E5()
+endfunc
+func Ke()
+Bq=gb_hexel_owner(DW,Cz)
+if Bq>=B()
+if Bq==gb_team_id()
+S=1921+gb_random_value(10)
+else
+S=1920+gb_random_value(10)
+endif
+elif Bq==D
+S=1920+gb_random_value(10)
+else
+S=B()
+endif
+JR=A[Cz][DW]
+if (JR & 1)
+S=B()
+elif (JR & 2 ) 
+S=S/2
+endif
+if DE==DW
+if D9==Fa
+S=S/10
+endif
+endif
+endfunc
+func V5()
+if Bq==gb_team_id()
+JE()
+HP()
+HO()
+H1()
+endif
+endfunc
+func Ka()
+Av=Av+1
+endfunc
+func HO()
+Ka()
+S=S*2/3
+endfunc
+func L3(BR)
+S=S*2
+endfunc
+func U4()
+Ka()
+if Bq!=gb_team_id()
+if De!=gb_team_id()
+KM(8)
+endif
+if Bv!=gb_team_id()
+K9(8)
+endif
+else
+S=S*2/3
+endif
+endfunc
+func Vx()
+if Av>=2
+S=S/Av
+endif
+endfunc
+func NS()
+if Bq!=gb_team_id()
+if De!=gb_team_id()
+L3(9)
+KM(9)
+Ka()
+LF()
+else
+HO()
+H1()
+endif
+else
+HO()
+H1()
+endif
+endfunc
+func Of()
+U=U*2
+L=L*2
+F=F*2
+T=T*2
+E5()
+endfunc
+func Na()
+L=L*2
+F=F*2
+E5()
+endfunc
+func Ml()
+De=gb_hexel_owner(Ds,x)
+if De>=B()
+if De==gb_team_id()
+U=1921+gb_random_value(10)
+else
+U=1920+gb_random_value(10)
+endif
+elif De==D
+U=1920+gb_random_value(10)
+else
+U=B()
+endif
+Lq=A[x][Ds]
+if (Lq & 1)
+U=B()
+elif (Lq & 2 ) 
+U=U/2
+endif
+if DE==Ds
+if D9==J5
+U=U/10
+endif
+endif
+endfunc
+func V4()
+if De==gb_team_id()
+JE()
+HO()
+H1()
+Fn()
+endif
+endfunc
+func LF()
+BF=BF+1
+endfunc
+func H1()
+LF()
+U=U*2/3
+endfunc
+func KM(BR)
+U=U*2
+endfunc
+func Tp()
+LF()
+if De!=gb_team_id()
+if Br!=gb_team_id()
+Jz(10)
+endif
+if Bq!=gb_team_id()
+L3(10)
+endif
+else
+U=U*2/3
+endif
+endfunc
+func Vc()
+if BF>=2
+U=U/BF
+endif
+endfunc
+func RF()
+if De!=gb_team_id()
+if Br!=gb_team_id()
+KM(11)
+Jz(11)
+LF()
+K8()
+else
+H1()
+Fn()
+endif
+else
+H1()
+Fn()
+endif
+endfunc
+func Ql()
+L=L*2
+H=H*2
+T=T*2
+S=S*2
+E5()
+endfunc
+func SE()
+H=H*2
+T=T*2
+E5()
+endfunc
+func HX()
+Br=gb_hexel_owner(DW,Bs)
+if Br>=B()
+if Br==gb_team_id()
+L=1921+gb_random_value(10)
+else
+L=1920+gb_random_value(10)
+endif
+elif Br==D
+L=1920+gb_random_value(10)
+else
+L=B()
+endif
+JX=A[Bs][DW]
+if (JX & 1)
+L=B()
+elif (JX & 2 ) 
+L=L/2
+endif
+if DE==Ee
+if D9==Bs
+L=L/10
+endif
+endif
+endfunc
+func UU()
+if Br==gb_team_id()
+JE()
+H1()
+Fn()
+HA()
+endif
+endfunc
+func K8()
+Az=Az+1
+endfunc
+func Fn()
+K8()
+L=L*2/3
+endfunc
+func Jz(BR)
+L=L*2
+endfunc
+func Pd()
+K8()
+if Br!=gb_team_id()
+if Bz!=gb_team_id()
+K2(12)
+endif
+if De!=gb_team_id()
+KM(12)
+endif
+else
+L=L*2/3
+endif
+endfunc
+func Ve()
+if Az>=2
+L=L/Az
+endif
+endfunc
+func Ol()
+if Br!=gb_team_id()
+if Bz!=gb_team_id()
+Jz(13)
+K2(13)
+K8()
+L0()
+else
+Fn()
+HA()
+endif
+else
+Fn()
+HA()
+endif
+endfunc
+func Rp()
+H=H*2
+F=F*2
+S=S*2
+U=U*2
+E5()
+endfunc
+func OQ()
+F=F*2
+S=S*2
+E5()
+endfunc
+func Fk()
+Bz=gb_hexel_owner(Dh,Bs)
+if Bz>=B()
+if Bz==gb_team_id()
+H=1921+gb_random_value(10)
+else
+H=1920+gb_random_value(10)
+endif
+elif Bz==D
+H=1920+gb_random_value(10)
+else
+H=B()
+endif
+JQ=A[Bs][Dh]
+if (JQ & 1)
+H=B()
+elif (JQ & 2 ) 
+H=H/2
+endif
+if DE==DT
+if D9==Dl
+H=H/10
+endif
+endif
+endfunc
+func Vr()
+if Bz==gb_team_id()
+JE()
+Fn()
+HA()
+HJ()
+endif
+endfunc
+func L0()
+BD=BD+1
+endfunc
+func HA()
+L0()
+H=H*2/3
+endfunc
+func K2(BR)
+H=H*2
+endfunc
+func Sk()
+L0()
+if Bz!=gb_team_id()
+if DY!=gb_team_id()
+Kf(14)
+endif
+if Br!=gb_team_id()
+Jz(14)
+endif
+else
+H=H*2/3
+endif
+endfunc
+func Up()
+if BD>=2
+H=H/BD
+endif
+endfunc
+func PE()
+if Bz!=gb_team_id()
+if DY!=gb_team_id()
+K2(15)
+Kf(15)
+L0()
+KL()
+else
+HA()
+HJ()
+endif
+else
+HA()
+HJ()
+endif
+endfunc
+func P4()
+F=F*2
+T=T*2
+U=U*2
+L=L*2
+E5()
+endfunc
+func Su()
+T=T*2
+U=U*2
+E5()
+endfunc
+func RA()
+DY=gb_hexel_owner(Ay,x)
+if DY>=B()
+if DY==gb_team_id()
+F=1921+gb_random_value(10)
+else
+F=1920+gb_random_value(10)
+endif
+elif DY==D
+F=1920+gb_random_value(10)
+else
+F=B()
+endif
+Lk=A[x][Ay]
+if (Lk & 1)
+F=B()
+elif (Lk & 2 ) 
+F=F/2
+endif
+if DE==Ay
+if D9==C0
+F=F/10
+endif
+endif
+endfunc
+func Uh()
+if DY==gb_team_id()
+JE()
+HA()
+HJ()
+HP()
+endif
+endfunc
+func KL()
+B0=B0+1
+endfunc
+func HJ()
+KL()
+F=F*2/3
+endfunc
+func Kf(BR)
+F=F*2
+endfunc
+func SJ()
+KL()
+if DY!=gb_team_id()
+if Bv!=gb_team_id()
+K9(16)
+endif
+if Bz!=gb_team_id()
+K2(16)
+endif
+else
+F=F*2/3
+endif
+endfunc
+func WA()
+if B0>=2
+F=F/B0
+endif
+endfunc
+func PA()
+if DY!=gb_team_id()
+if Bv!=gb_team_id()
+Kf(17)
+K9(17)
+KL()
+Kl()
+else
+HJ()
+HP()
+endif
+else
+HJ()
+HP()
+endif
+endfunc
+func Rw()
+T=T*2
+S=S*2
+L=L*2
+H=H*2
+E5()
+endfunc
+func Sn()
+S=S*2
+L=L*2
+E5()
+endfunc
+func VN()
+if Cw>=2
+if Cw>=4
+if Cw>=5
+Rw()
+else
+P4()
+endif
+elif Cw>=3
+Rp()
+else
+Ql()
+endif
+elif Cw>=B()
+if Cw
+Of()
+else
+Pr()
+endif
+endif
+endfunc
+func Uv()
+if Cw>=2
+if Cw>=4
+if Cw>=5
+Sn()
+else
+Su()
+endif
+elif Cw>=3
+OQ()
+else
+SE()
+endif
+elif Cw>=B()
+if Cw
+Na()
+else
+T9()
+endif
+endif
+endfunc
+func WB()
+UC=gb_hexel_owner(Ay ,Ll)
+P9=gb_hexel_owner(A5 ,Ll)
+TH=gb_hexel_owner(Ds ,Ll)
+Q8=gb_hexel_owner(N6,Cz )
+R7=gb_hexel_owner(U2 ,x )
+PF=gb_hexel_owner(N6,Bs )
+SN=gb_hexel_owner(Ds ,LV)
+T6=gb_hexel_owner(A5 ,LV)
+P0=gb_hexel_owner(Ay ,LV)
+UE=gb_hexel_owner(L_,Bs )
+Ps=gb_hexel_owner(S8 ,x )
+Qd=gb_hexel_owner(L_,Cz )
+if UC==gb_team_id()
+Ns()
+endif
+if P9==gb_team_id()
+Qb()
+endif
+if TH==gb_team_id()
+U4()
+endif
+if Q8==gb_team_id()
+NS()
+endif
+if R7==gb_team_id()
+Tp()
+endif
+if PF==gb_team_id()
+RF()
+endif
+if SN==gb_team_id()
+Pd()
+endif
+if T6==gb_team_id()
+Ol()
+endif
+if P0==gb_team_id()
+Sk()
+endif
+if UE==gb_team_id()
+PE()
+endif
+if Ps==gb_team_id()
+SJ()
+endif
+if Qd==gb_team_id()
+PA()
+endif
+endfunc
+func P6()
+if BQ
+U0()
+if Lc
+MF()
+if AH
+Kp()
+KE()
+if KP
+H7()
+HQ()
+else
+Ro()
+endif
+else
+H7()
+HQ()
+P1()
+endif
+else
+O1()
+if DZ
+Hz=DD
+Hp=FZ
+Bf=M
+n =B()
+u=u+1
+Ak=Ak+1
+Am=Am+1
+B4=B4+1
+FM=E4
+FN=Bw
+Bm=M
+Y =B()
+u=u+1
+B7=B7+1
+Af=Af+1
+Am=Am+1
+Kp()
+HQ()
+elif AH
+Kp()
+KE()
+if KP
+H7()
+HQ()
+else
+FM=E4
+FN=Bw
+Bm=M
+Y =B()
+u=u+1
+B7=B7+1
+Af=Af+1
+Am=Am+1
+E0=D0
+Dy=DJ
+Bd=M
+V =B()
+u=u+1
+Af=Af+1
+BC=BC+1
+B7=B7+1
+endif
+else
+Hd=D5
+Hb=D1
+Bo=M
+j =B()
+u=u+1
+B4=B4+1
+Ak=Ak+1
+BC=BC+1
+Hz=DD
+Hp=FZ
+Bf=M
+n =B()
+u=u+1
+Ak=Ak+1
+Am=Am+1
+B4=B4+1
+H7()
+HQ()
+endif
+endif
+else
+Pu()
+MF()
+if DZ
+Hd=D5
+Hb=D1
+Bo=M
+j =B()
+u=u+1
+B4=B4+1
+Ak=Ak+1
+BC=BC+1
+E0=D0
+Dy=DJ
+Bd=M
+V =B()
+u=u+1
+Af=Af+1
+BC=BC+1
+B7=B7+1
+KE()
+H7()
+elif AH
+Kp()
+KE()
+if KP
+H7()
+HQ()
+else
+FM=E4
+FN=Bw
+Bm=M
+Y =B()
+u=u+1
+B7=B7+1
+Af=Af+1
+Am=Am+1
+E0=D0
+Dy=DJ
+Bd=M
+V =B()
+u=u+1
+Af=Af+1
+BC=BC+1
+B7=B7+1
+endif
+else
+Hd=D5
+Hb=D1
+Bo=M
+j =B()
+u=u+1
+B4=B4+1
+Ak=Ak+1
+BC=BC+1
+Hz=DD
+Hp=FZ
+Bf=M
+n =B()
+u=u+1
+Ak=Ak+1
+Am=Am+1
+B4=B4+1
+H7()
+HQ()
+endif
+endif
+Np()
+Nd()
+RJ()
+Td()
+QW()
+Oz()
+P8()
+Sc()
+QV()
+Tj()
+RD()
+NR()
+RK()
+Dx()
+endfunc
+func J0()
+u=u+1
+endfunc
+func Kp()
+Bo=gb_hexel_owner(D5,D1)
+if Bo>=B()
+if Bo==gb_team_id()
+j=1100+gb_random_value(10)
+else
+j=2048+gb_random_value(10)
+endif
+elif Bo==D
+j=1920+gb_random_value(10)
+else
+j=B()
+endif
+J9=A[D1][D5]
+if (J9 & 3)
+j=B()
+elif (J9 & 4 ) 
+j=j*4/5
+elif (J9 & 8 ) 
+j=j*2/3
+endif
+if Dd==D5
+if DX==D1
+j=j/10
+endif
+endif
+endfunc
+func Np()
+if Bo==gb_team_id()
+J0()
+HH()
+Fp()
+H2()
+endif
+endfunc
+func LP()
+B4=B4+1
+endfunc
+func Fp()
+LP()
+j=j*2/3
+endfunc
+func Kw(BR)
+j=j*2
+endfunc
+func QR()
+LP()
+if Bo!=gb_team_id()
+if Bf!=gb_team_id()
+Jq(6)
+endif
+if DN!=gb_team_id()
+L7(6)
+endif
+else
+j=j*2/3
+endif
+endfunc
+func Sc()
+if B4>=2
+j=j/B4
+endif
+endfunc
+func Nw()
+if Bo!=gb_team_id()
+if Bf!=gb_team_id()
+Kw(7)
+Jq(7)
+LP()
+LC()
+else
+Fp()
+H2()
+endif
+else
+Fp()
+H2()
+endif
+endfunc
+func Ne()
+n=n*2
+f=f*2
+V=V*2
+R=R*2
+Dx()
+endfunc
+func O0()
+f=f*2
+V=V*2
+Dx()
+endfunc
+func KE()
+Bf=gb_hexel_owner(DD,D1)
+if Bf>=B()
+if Bf==gb_team_id()
+n=1100+gb_random_value(10)
+else
+n=2048+gb_random_value(10)
+endif
+elif Bf==D
+n=1920+gb_random_value(10)
+else
+n=B()
+endif
+J4=A[D1][DD]
+if (J4 & 3)
+n=B()
+elif (J4 & 4 ) 
+n=n*4/5
+elif (J4 & 8 ) 
+n=n*2/3
+endif
+if Dd==DD
+if DX==FZ
+n=n/10
+endif
+endif
+endfunc
+func Nd()
+if Bf==gb_team_id()
+J0()
+Fp()
+H2()
+H8()
+endif
+endfunc
+func LC()
+Ak=Ak+1
+endfunc
+func H2()
+LC()
+n=n*2/3
+endfunc
+func Jq(BR)
+n=n*2
+endfunc
+func QT()
+LC()
+if Bf!=gb_team_id()
+if DP!=gb_team_id()
+Jt(8)
+endif
+if Bo!=gb_team_id()
+Kw(8)
+endif
+else
+n=n*2/3
+endif
+endfunc
+func QV()
+if Ak>=2
+n=n/Ak
+endif
+endfunc
+func TK()
+if Bf!=gb_team_id()
+if DP!=gb_team_id()
+Jq(9)
+Jt(9)
+LC()
+KT()
+else
+H2()
+H8()
+endif
+else
+H2()
+H8()
+endif
+endfunc
+func SL()
+f=f*2
+Y=Y*2
+R=R*2
+j=j*2
+Dx()
+endfunc
+func S6()
+Y=Y*2
+R=R*2
+Dx()
+endfunc
+func MF()
+DP=gb_hexel_owner(Dn,AH)
+if DP>=B()
+if DP==gb_team_id()
+f=1100+gb_random_value(10)
+else
+f=2048+gb_random_value(10)
+endif
+elif DP==D
+f=1920+gb_random_value(10)
+else
+f=B()
+endif
+K1=A[AH][Dn]
+if (K1 & 3)
+f=B()
+elif (K1 & 4 ) 
+f=f*4/5
+elif (K1 & 8 ) 
+f=f*2/3
+endif
+if Dd==Dn
+if DX==H4
+f=f/10
+endif
+endif
+endfunc
+func RJ()
+if DP==gb_team_id()
+J0()
+H2()
+H8()
+HY()
+endif
+endfunc
+func KT()
+Am=Am+1
+endfunc
+func H8()
+KT()
+f=f*2/3
+endfunc
+func Jt(BR)
+f=f*2
+endfunc
+func Ta()
+KT()
+if DP!=gb_team_id()
+if Bm!=gb_team_id()
+Kk(10)
+endif
+if Bf!=gb_team_id()
+Jq(10)
+endif
+else
+f=f*2/3
+endif
+endfunc
+func Tj()
+if Am>=2
+f=f/Am
+endif
+endfunc
+func PB()
+if DP!=gb_team_id()
+if Bm!=gb_team_id()
+Jt(11)
+Kk(11)
+KT()
+LO()
+else
+H8()
+HY()
+endif
+else
+H8()
+HY()
+endif
+endfunc
+func OB()
+Y=Y*2
+V=V*2
+j=j*2
+n=n*2
+Dx()
+endfunc
+func PM()
+V=V*2
+j=j*2
+Dx()
+endfunc
+func H7()
+Bm=gb_hexel_owner(DD,Bw)
+if Bm>=B()
+if Bm==gb_team_id()
+Y=1100+gb_random_value(10)
+else
+Y=2048+gb_random_value(10)
+endif
+elif Bm==D
+Y=1920+gb_random_value(10)
+else
+Y=B()
+endif
+Hj=A[Bw][DD]
+if (Hj & 3)
+Y=B()
+elif (Hj & 4 ) 
+Y=Y*4/5
+elif (Hj & 8 ) 
+Y=Y*2/3
+endif
+if Dd==E4
+if DX==Bw
+Y=Y/10
+endif
+endif
+endfunc
+func Td()
+if Bm==gb_team_id()
+J0()
+H8()
+HY()
+Fz()
+endif
+endfunc
+func LO()
+B7=B7+1
+endfunc
+func HY()
+LO()
+Y=Y*2/3
+endfunc
+func Kk(BR)
+Y=Y*2
+endfunc
+func Nb()
+LO()
+if Bm!=gb_team_id()
+if Bd!=gb_team_id()
+KR(12)
+endif
+if DP!=gb_team_id()
+Jt(12)
+endif
+else
+Y=Y*2/3
+endif
+endfunc
+func RD()
+if B7>=2
+Y=Y/B7
+endif
+endfunc
+func Q1()
+if Bm!=gb_team_id()
+if Bd!=gb_team_id()
+Kk(13)
+KR(13)
+LO()
+Jl()
+else
+HY()
+Fz()
+endif
+else
+HY()
+Fz()
+endif
+endfunc
+func T0()
+V=V*2
+R=R*2
+n=n*2
+f=f*2
+Dx()
+endfunc
+func Tr()
+R=R*2
+n=n*2
+Dx()
+endfunc
+func HQ()
+Bd=gb_hexel_owner(D5,Bw)
+if Bd>=B()
+if Bd==gb_team_id()
+V=1100+gb_random_value(10)
+else
+V=2048+gb_random_value(10)
+endif
+elif Bd==D
+V=1920+gb_random_value(10)
+else
+V=B()
+endif
+Hs=A[Bw][D5]
+if (Hs & 3)
+V=B()
+elif (Hs & 4 ) 
+V=V*4/5
+elif (Hs & 8 ) 
+V=V*2/3
+endif
+if Dd==D0
+if DX==DJ
+V=V/10
+endif
+endif
+endfunc
+func QW()
+if Bd==gb_team_id()
+J0()
+HY()
+Fz()
+HH()
+endif
+endfunc
+func Jl()
+Af=Af+1
+endfunc
+func Fz()
+Jl()
+V=V*2/3
+endfunc
+func KR(BR)
+V=V*2
+endfunc
+func QZ()
+Jl()
+if Bd!=gb_team_id()
+if DN!=gb_team_id()
+L7(14)
+endif
+if Bm!=gb_team_id()
+Kk(14)
+endif
+else
+V=V*2/3
+endif
+endfunc
+func NR()
+if Af>=2
+V=V/Af
+endif
+endfunc
+func TA()
+if Bd!=gb_team_id()
+if DN!=gb_team_id()
+KR(15)
+L7(15)
+Jl()
+Jn()
+else
+Fz()
+HH()
+endif
+else
+Fz()
+HH()
+endif
+endfunc
+func TT()
+R=R*2
+j=j*2
+f=f*2
+Y=Y*2
+Dx()
+endfunc
+func QX()
+j=j*2
+f=f*2
+Dx()
+endfunc
+func U0()
+DN=gb_hexel_owner(AS,AH)
+if DN>=B()
+if DN==gb_team_id()
+R=1100+gb_random_value(10)
+else
+R=2048+gb_random_value(10)
+endif
+elif DN==D
+R=1920+gb_random_value(10)
+else
+R=B()
+endif
+KH=A[AH][AS]
+if (KH & 3)
+R=B()
+elif (KH & 4 ) 
+R=R*4/5
+elif (KH & 8 ) 
+R=R*2/3
+endif
+if Dd==AS
+if DX==Be
+R=R/10
+endif
+endif
+endfunc
+func Oz()
+if DN==gb_team_id()
+J0()
+Fz()
+HH()
+Fp()
+endif
+endfunc
+func Jn()
+BC=BC+1
+endfunc
+func HH()
+Jn()
+R=R*2/3
+endfunc
+func L7(BR)
+R=R*2
+endfunc
+func Ra()
+Jn()
+if DN!=gb_team_id()
+if Bo!=gb_team_id()
+Kw(16)
+endif
+if Bd!=gb_team_id()
+KR(16)
+endif
+else
+R=R*2/3
+endif
+endfunc
+func RK()
+if BC>=2
+R=R/BC
+endif
+endfunc
+func Qy()
+if DN!=gb_team_id()
+if Bo!=gb_team_id()
+L7(17)
+Kw(17)
+Jn()
+LP()
+else
+HH()
+Fp()
+endif
+else
+HH()
+Fp()
+endif
+endfunc
+func R6()
+j=j*2
+n=n*2
+Y=Y*2
+V=V*2
+Dx()
+endfunc
+func Qm()
+n=n*2
+Y=Y*2
+Dx()
+endfunc
+func W5()
+if Cf>=2
+if Cf>=4
+if Cf>=5
+R6()
+else
+TT()
+endif
+elif Cf>=3
+T0()
+else
+OB()
+endif
+elif Cf>=B()
+if Cf
+SL()
+else
+Ne()
+endif
+endif
+endfunc
+func Ud()
+if Cf>=2
+if Cf>=4
+if Cf>=5
+Qm()
+else
+QX()
+endif
+elif Cf>=3
+Tr()
+else
+PM()
+endif
+elif Cf>=B()
+if Cf
+S6()
+else
+O0()
+endif
+endif
+endfunc
+func P8()
+QH=gb_hexel_owner(AS ,La)
+To=gb_hexel_owner(BQ ,La)
+PK=gb_hexel_owner(Dn ,La)
+TC=gb_hexel_owner(Ms,D1 )
+PX=gb_hexel_owner(ON ,AH )
+OR=gb_hexel_owner(Ms,Bw )
+QS=gb_hexel_owner(Dn ,Lo)
+St=gb_hexel_owner(BQ ,Lo)
+Oh=gb_hexel_owner(AS ,Lo)
+RX=gb_hexel_owner(Mr,Bw )
+Pv=gb_hexel_owner(P2 ,AH )
+RH=gb_hexel_owner(Mr,D1 )
+if QH==gb_team_id()
+QR()
+endif
+if To==gb_team_id()
+Nw()
+endif
+if PK==gb_team_id()
+QT()
+endif
+if TC==gb_team_id()
+TK()
+endif
+if PX==gb_team_id()
+Ta()
+endif
+if OR==gb_team_id()
+PB()
+endif
+if QS==gb_team_id()
+Nb()
+endif
+if St==gb_team_id()
+Q1()
+endif
+if Oh==gb_team_id()
+QZ()
+endif
+if RX==gb_team_id()
+TA()
+endif
+if Pv==gb_team_id()
+Ra()
+endif
+if RH==gb_team_id()
+Qy()
+endif
+endfunc
+func SM()
+if BM
+ST()
+if Lj
+MH()
+if AF
+K3()
+KC()
+if Ju
+HV()
+Fo()
+else
+OC()
+endif
+else
+HV()
+Fo()
+T2()
+endif
+else
+Qk()
+if Df
+Hf=D2
+JC=FW
+Bb=M
+m =B()
+s=s+1
+An=An+1
+Ae=Ae+1
+Ad=Ad+1
+FY=D_
+FD=Bx
+Bk=M
+a =B()
+s=s+1
+Au=Au+1
+B1=B1+1
+Ae=Ae+1
+K3()
+Fo()
+elif AF
+K3()
+KC()
+if Ju
+HV()
+Fo()
+else
+FY=D_
+FD=Bx
+Bk=M
+a =B()
+s=s+1
+Au=Au+1
+B1=B1+1
+Ae=Ae+1
+Du=DF
+Dt=DM
+Ba=M
+X =B()
+s=s+1
+B1=B1+1
+Aa=Aa+1
+Au=Au+1
+endif
+else
+Hc=DA
+J1=DH
+Bn=M
+l =B()
+s=s+1
+Ad=Ad+1
+An=An+1
+Aa=Aa+1
+Hf=D2
+JC=FW
+Bb=M
+m =B()
+s=s+1
+An=An+1
+Ae=Ae+1
+Ad=Ad+1
+HV()
+Fo()
+endif
+endif
+else
+TV()
+MH()
+if Df
+Hc=DA
+J1=DH
+Bn=M
+l =B()
+s=s+1
+Ad=Ad+1
+An=An+1
+Aa=Aa+1
+Du=DF
+Dt=DM
+Ba=M
+X =B()
+s=s+1
+B1=B1+1
+Aa=Aa+1
+Au=Au+1
+KC()
+HV()
+elif AF
+K3()
+KC()
+if Ju
+HV()
+Fo()
+else
+FY=D_
+FD=Bx
+Bk=M
+a =B()
+s=s+1
+Au=Au+1
+B1=B1+1
+Ae=Ae+1
+Du=DF
+Dt=DM
+Ba=M
+X =B()
+s=s+1
+B1=B1+1
+Aa=Aa+1
+Au=Au+1
+endif
+else
+Hc=DA
+J1=DH
+Bn=M
+l =B()
+s=s+1
+Ad=Ad+1
+An=An+1
+Aa=Aa+1
+Hf=D2
+JC=FW
+Bb=M
+m =B()
+s=s+1
+An=An+1
+Ae=Ae+1
+Ad=Ad+1
+HV()
+Fo()
+endif
+endif
+Pj()
+SD()
+OF()
+RE()
+P3()
+OT()
+QP()
+Pc()
+Ss()
+Nm()
+S9()
+Sq()
+PU()
+E2()
+endfunc
+func Hx()
+s=s+1
+endfunc
+func K3()
+Bn=gb_hexel_owner(DA,DH)
+if Bn>=B()
+if Bn==gb_team_id()
+l=1100+gb_random_value(10)
+else
+l=2048+gb_random_value(10)
+endif
+elif Bn==D
+l=1920+gb_random_value(10)
+else
+l=B()
+endif
+Hy=A[DH][DA]
+if (Hy & 3)
+l=B()
+elif (Hy & 4 ) 
+l=l*4/5
+elif (Hy & 8 ) 
+l=l*2/3
+endif
+if Da==DA
+if Db==DH
+l=l/10
+endif
+endif
+endfunc
+func Pj()
+if Bn==gb_team_id()
+Hx()
+H9()
+HE()
+Fv()
+endif
+endfunc
+func L6()
+Ad=Ad+1
+endfunc
+func HE()
+L6()
+l=l*2/3
+endfunc
+func Jo(BR)
+l=l*2
+endfunc
+func OO()
+L6()
+if Bn!=gb_team_id()
+if Bb!=gb_team_id()
+Kv(6)
+endif
+if DO!=gb_team_id()
+KJ(6)
+endif
+else
+l=l*2/3
+endif
+endfunc
+func Pc()
+if Ad>=2
+l=l/Ad
+endif
+endfunc
+func PV()
+if Bn!=gb_team_id()
+if Bb!=gb_team_id()
+Jo(7)
+Kv(7)
+L6()
+Jp()
+else
+HE()
+Fv()
+endif
+else
+HE()
+Fv()
+endif
+endfunc
+func PR()
+m=m*2
+e=e*2
+X=X*2
+Q=Q*2
+E2()
+endfunc
+func TS()
+e=e*2
+X=X*2
+E2()
+endfunc
+func KC()
+Bb=gb_hexel_owner(D2,DH)
+if Bb>=B()
+if Bb==gb_team_id()
+m=1100+gb_random_value(10)
+else
+m=2048+gb_random_value(10)
+endif
+elif Bb==D
+m=1920+gb_random_value(10)
+else
+m=B()
+endif
+Ha=A[DH][D2]
+if (Ha & 3)
+m=B()
+elif (Ha & 4 ) 
+m=m*4/5
+elif (Ha & 8 ) 
+m=m*2/3
+endif
+if Da==D2
+if Db==FW
+m=m/10
+endif
+endif
+endfunc
+func SD()
+if Bb==gb_team_id()
+Hx()
+HE()
+Fv()
+Fs()
+endif
+endfunc
+func Jp()
+An=An+1
+endfunc
+func Fv()
+Jp()
+m=m*2/3
+endfunc
+func Kv(BR)
+m=m*2
+endfunc
+func SB()
+Jp()
+if Bb!=gb_team_id()
+if DR!=gb_team_id()
+K4(8)
+endif
+if Bn!=gb_team_id()
+Jo(8)
+endif
+else
+m=m*2/3
+endif
+endfunc
+func Ss()
+if An>=2
+m=m/An
+endif
+endfunc
+func Qr()
+if Bb!=gb_team_id()
+if DR!=gb_team_id()
+Kv(9)
+K4(9)
+Jp()
+Kx()
+else
+Fv()
+Fs()
+endif
+else
+Fv()
+Fs()
+endif
+endfunc
+func Tc()
+e=e*2
+a=a*2
+Q=Q*2
+l=l*2
+E2()
+endfunc
+func No()
+a=a*2
+Q=Q*2
+E2()
+endfunc
+func MH()
+DR=gb_hexel_owner(Do,AF)
+if DR>=B()
+if DR==gb_team_id()
+e=1100+gb_random_value(10)
+else
+e=2048+gb_random_value(10)
+endif
+elif DR==D
+e=1920+gb_random_value(10)
+else
+e=B()
+endif
+Ky=A[AF][Do]
+if (Ky & 3)
+e=B()
+elif (Ky & 4 ) 
+e=e*4/5
+elif (Ky & 8 ) 
+e=e*2/3
+endif
+if Da==Do
+if Db==H6
+e=e/10
+endif
+endif
+endfunc
+func OF()
+if DR==gb_team_id()
+Hx()
+Fv()
+Fs()
+HK()
+endif
+endfunc
+func Kx()
+Ae=Ae+1
+endfunc
+func Fs()
+Kx()
+e=e*2/3
+endfunc
+func K4(BR)
+e=e*2
+endfunc
+func Pz()
+Kx()
+if DR!=gb_team_id()
+if Bk!=gb_team_id()
+KB(10)
+endif
+if Bb!=gb_team_id()
+Kv(10)
+endif
+else
+e=e*2/3
+endif
+endfunc
+func Nm()
+if Ae>=2
+e=e/Ae
+endif
+endfunc
+func O5()
+if DR!=gb_team_id()
+if Bk!=gb_team_id()
+K4(11)
+KB(11)
+Kx()
+Jh()
+else
+Fs()
+HK()
+endif
+else
+Fs()
+HK()
+endif
+endfunc
+func Sf()
+a=a*2
+X=X*2
+l=l*2
+m=m*2
+E2()
+endfunc
+func Sm()
+X=X*2
+l=l*2
+E2()
+endfunc
+func HV()
+Bk=gb_hexel_owner(D2,Bx)
+if Bk>=B()
+if Bk==gb_team_id()
+a=1100+gb_random_value(10)
+else
+a=2048+gb_random_value(10)
+endif
+elif Bk==D
+a=1920+gb_random_value(10)
+else
+a=B()
+endif
+Ho=A[Bx][D2]
+if (Ho & 3)
+a=B()
+elif (Ho & 4 ) 
+a=a*4/5
+elif (Ho & 8 ) 
+a=a*2/3
+endif
+if Da==D_
+if Db==Bx
+a=a/10
+endif
+endif
+endfunc
+func RE()
+if Bk==gb_team_id()
+Hx()
+Fs()
+HK()
+HR()
+endif
+endfunc
+func Jh()
+Au=Au+1
+endfunc
+func HK()
+Jh()
+a=a*2/3
+endfunc
+func KB(BR)
+a=a*2
+endfunc
+func RR()
+Jh()
+if Bk!=gb_team_id()
+if Ba!=gb_team_id()
+LL(12)
+endif
+if DR!=gb_team_id()
+K4(12)
+endif
+else
+a=a*2/3
+endif
+endfunc
+func S9()
+if Au>=2
+a=a/Au
+endif
+endfunc
+func R_()
+if Bk!=gb_team_id()
+if Ba!=gb_team_id()
+KB(13)
+LL(13)
+Jh()
+Kr()
+else
+HK()
+HR()
+endif
+else
+HK()
+HR()
+endif
+endfunc
+func P7()
+X=X*2
+Q=Q*2
+m=m*2
+e=e*2
+E2()
+endfunc
+func S4()
+Q=Q*2
+m=m*2
+E2()
+endfunc
+func Fo()
+Ba=gb_hexel_owner(DA,Bx)
+if Ba>=B()
+if Ba==gb_team_id()
+X=1100+gb_random_value(10)
+else
+X=2048+gb_random_value(10)
+endif
+elif Ba==D
+X=1920+gb_random_value(10)
+else
+X=B()
+endif
+JD=A[Bx][DA]
+if (JD & 3)
+X=B()
+elif (JD & 4 ) 
+X=X*4/5
+elif (JD & 8 ) 
+X=X*2/3
+endif
+if Da==DF
+if Db==DM
+X=X/10
+endif
+endif
+endfunc
+func P3()
+if Ba==gb_team_id()
+Hx()
+HK()
+HR()
+H9()
+endif
+endfunc
+func Kr()
+B1=B1+1
+endfunc
+func HR()
+Kr()
+X=X*2/3
+endfunc
+func LL(BR)
+X=X*2
+endfunc
+func PS()
+Kr()
+if Ba!=gb_team_id()
+if DO!=gb_team_id()
+KJ(14)
+endif
+if Bk!=gb_team_id()
+KB(14)
+endif
+else
+X=X*2/3
+endif
+endfunc
+func Sq()
+if B1>=2
+X=X/B1
+endif
+endfunc
+func SQ()
+if Ba!=gb_team_id()
+if DO!=gb_team_id()
+LL(15)
+KJ(15)
+Kr()
+LM()
+else
+HR()
+H9()
+endif
+else
+HR()
+H9()
+endif
+endfunc
+func O4()
+Q=Q*2
+l=l*2
+e=e*2
+a=a*2
+E2()
+endfunc
+func Tx()
+l=l*2
+e=e*2
+E2()
+endfunc
+func ST()
+DO=gb_hexel_owner(AU,AF)
+if DO>=B()
+if DO==gb_team_id()
+Q=1100+gb_random_value(10)
+else
+Q=2048+gb_random_value(10)
+endif
+elif DO==D
+Q=1920+gb_random_value(10)
+else
+Q=B()
+endif
+Kd=A[AF][AU]
+if (Kd & 3)
+Q=B()
+elif (Kd & 4 ) 
+Q=Q*4/5
+elif (Kd & 8 ) 
+Q=Q*2/3
+endif
+if Da==AU
+if Db==Bl
+Q=Q/10
+endif
+endif
+endfunc
+func OT()
+if DO==gb_team_id()
+Hx()
+HR()
+H9()
+HE()
+endif
+endfunc
+func LM()
+Aa=Aa+1
+endfunc
+func H9()
+LM()
+Q=Q*2/3
+endfunc
+func KJ(BR)
+Q=Q*2
+endfunc
+func SZ()
+LM()
+if DO!=gb_team_id()
+if Bn!=gb_team_id()
+Jo(16)
+endif
+if Ba!=gb_team_id()
+LL(16)
+endif
+else
+Q=Q*2/3
+endif
+endfunc
+func PU()
+if Aa>=2
+Q=Q/Aa
+endif
+endfunc
+func Sa()
+if DO!=gb_team_id()
+if Bn!=gb_team_id()
+KJ(17)
+Jo(17)
+LM()
+L6()
+else
+H9()
+HE()
+endif
+else
+H9()
+HE()
+endif
+endfunc
+func Rs()
+l=l*2
+m=m*2
+a=a*2
+X=X*2
+E2()
+endfunc
+func OJ()
+m=m*2
+a=a*2
+E2()
+endfunc
+func Vy()
+if Cj>=2
+if Cj>=4
+if Cj>=5
+Rs()
+else
+O4()
+endif
+elif Cj>=3
+P7()
+else
+Sf()
+endif
+elif Cj>=B()
+if Cj
+Tc()
+else
+PR()
+endif
+endif
+endfunc
+func WF()
+if Cj>=2
+if Cj>=4
+if Cj>=5
+OJ()
+else
+Tx()
+endif
+elif Cj>=3
+S4()
+else
+Sm()
+endif
+elif Cj>=B()
+if Cj
+No()
+else
+TS()
+endif
+endif
+endfunc
+func QP()
+Oe=gb_hexel_owner(AU ,LX)
+Rl=gb_hexel_owner(BM ,LX)
+SU=gb_hexel_owner(Do ,LX)
+Q_=gb_hexel_owner(M8,DH )
+Ts=gb_hexel_owner(TM ,AF )
+QE=gb_hexel_owner(M8,Bx )
+SS=gb_hexel_owner(Do ,Ls)
+PT=gb_hexel_owner(BM ,Ls)
+Pm=gb_hexel_owner(AU ,Ls)
+Rv=gb_hexel_owner(MM,Bx )
+Ok=gb_hexel_owner(TQ ,AF )
+Qh=gb_hexel_owner(MM,DH )
+if Oe==gb_team_id()
+OO()
+endif
+if Rl==gb_team_id()
+PV()
+endif
+if SU==gb_team_id()
+SB()
+endif
+if Q_==gb_team_id()
+Qr()
+endif
+if Ts==gb_team_id()
+Pz()
+endif
+if QE==gb_team_id()
+O5()
+endif
+if SS==gb_team_id()
+RR()
+endif
+if PT==gb_team_id()
+R_()
+endif
+if Pm==gb_team_id()
+PS()
+endif
+if Rv==gb_team_id()
+SQ()
+endif
+if Ok==gb_team_id()
+SZ()
+endif
+if Qh==gb_team_id()
+Sa()
+endif
+endfunc
+func PC()
+if BW
+RO()
+if Ln
+MC()
+if AE
+Km()
+L9()
+if L8
+HZ()
+Fy()
+else
+Qz()
+endif
+else
+HZ()
+Fy()
+OM()
+endif
+else
+UL()
+if DV
+Hl=D4
+H_=FX
+Bc=M
+k =B()
+t=t+1
+B6=B6+1
+B3=B3+1
+Ah=Ah+1
+FL=Dz
+FQ=Bu
+BZ=M
+Z =B()
+t=t+1
+B9=B9+1
+Al=Al+1
+B3=B3+1
+Km()
+Fy()
+elif AE
+Km()
+L9()
+if L8
+HZ()
+Fy()
+else
+FL=Dz
+FQ=Bu
+BZ=M
+Z =B()
+t=t+1
+B9=B9+1
+Al=Al+1
+B3=B3+1
+Dw=D6
+Dv=DL
+Bj=M
+W =B()
+t=t+1
+Al=Al+1
+BE=BE+1
+B9=B9+1
+endif
+else
+Hh=D7
+J3=D3
+Bp=M
+o =B()
+t=t+1
+Ah=Ah+1
+B6=B6+1
+BE=BE+1
+Hl=D4
+H_=FX
+Bc=M
+k =B()
+t=t+1
+B6=B6+1
+B3=B3+1
+Ah=Ah+1
+HZ()
+Fy()
+endif
+endif
+else
+QK()
+MC()
+if DV
+Hh=D7
+J3=D3
+Bp=M
+o =B()
+t=t+1
+Ah=Ah+1
+B6=B6+1
+BE=BE+1
+Dw=D6
+Dv=DL
+Bj=M
+W =B()
+t=t+1
+Al=Al+1
+BE=BE+1
+B9=B9+1
+L9()
+HZ()
+elif AE
+Km()
+L9()
+if L8
+HZ()
+Fy()
+else
+FL=Dz
+FQ=Bu
+BZ=M
+Z =B()
+t=t+1
+B9=B9+1
+Al=Al+1
+B3=B3+1
+Dw=D6
+Dv=DL
+Bj=M
+W =B()
+t=t+1
+Al=Al+1
+BE=BE+1
+B9=B9+1
+endif
+else
+Hh=D7
+J3=D3
+Bp=M
+o =B()
+t=t+1
+Ah=Ah+1
+B6=B6+1
+BE=BE+1
+Hl=D4
+H_=FX
+Bc=M
+k =B()
+t=t+1
+B6=B6+1
+B3=B3+1
+Ah=Ah+1
+HZ()
+Fy()
+endif
+endif
+Q0()
+SX()
+Nf()
+T8()
+OH()
+S0()
+R9()
+OV()
+S_()
+Ox()
+Tm()
+RS()
+Nk()
+E1()
+endfunc
+func Hw()
+t=t+1
+endfunc
+func Km()
+Bp=gb_hexel_owner(D7,D3)
+if Bp>=B()
+if Bp==gb_team_id()
+o=1100+gb_random_value(10)
+else
+o=2048+gb_random_value(10)
+endif
+elif Bp==D
+o=1920+gb_random_value(10)
+else
+o=B()
+endif
+Hr=A[D3][D7]
+if (Hr & 3)
+o=B()
+elif (Hr & 4 ) 
+o=o*4/5
+elif (Hr & 8 ) 
+o=o*2/3
+endif
+if Dj==D7
+if Dc==D3
+o=o/10
+endif
+endif
+endfunc
+func Q0()
+if Bp==gb_team_id()
+Hw()
+H3()
+F_()
+HS()
+endif
+endfunc
+func Kn()
+Ah=Ah+1
+endfunc
+func F_()
+Kn()
+o=o*2/3
+endfunc
+func K0(BR)
+o=o*2
+endfunc
+func TO()
+Kn()
+if Bp!=gb_team_id()
+if Bc!=gb_team_id()
+Kz(6)
+endif
+if DS!=gb_team_id()
+Kt(6)
+endif
+else
+o=o*2/3
+endif
+endfunc
+func OV()
+if Ah>=2
+o=o/Ah
+endif
+endfunc
+func Rr()
+if Bp!=gb_team_id()
+if Bc!=gb_team_id()
+K0(7)
+Kz(7)
+Kn()
+KX()
+else
+F_()
+HS()
+endif
+else
+F_()
+HS()
+endif
+endfunc
+func Pq()
+k=k*2
+h=h*2
+W=W*2
+P=P*2
+E1()
+endfunc
+func QU()
+h=h*2
+W=W*2
+E1()
+endfunc
+func L9()
+Bc=gb_hexel_owner(D4,D3)
+if Bc>=B()
+if Bc==gb_team_id()
+k=1100+gb_random_value(10)
+else
+k=2048+gb_random_value(10)
+endif
+elif Bc==D
+k=1920+gb_random_value(10)
+else
+k=B()
+endif
+JJ=A[D3][D4]
+if (JJ & 3)
+k=B()
+elif (JJ & 4 ) 
+k=k*4/5
+elif (JJ & 8 ) 
+k=k*2/3
+endif
+if Dj==D4
+if Dc==FX
+k=k/10
+endif
+endif
+endfunc
+func SX()
+if Bc==gb_team_id()
+Hw()
+F_()
+HS()
+Fw()
+endif
+endfunc
+func KX()
+B6=B6+1
+endfunc
+func HS()
+KX()
+k=k*2/3
+endfunc
+func Kz(BR)
+k=k*2
+endfunc
+func QF()
+KX()
+if Bc!=gb_team_id()
+if DQ!=gb_team_id()
+KQ(8)
+endif
+if Bp!=gb_team_id()
+K0(8)
+endif
+else
+k=k*2/3
+endif
+endfunc
+func S_()
+if B6>=2
+k=k/B6
+endif
+endfunc
+func Ou()
+if Bc!=gb_team_id()
+if DQ!=gb_team_id()
+Kz(9)
+KQ(9)
+KX()
+L5()
+else
+HS()
+Fw()
+endif
+else
+HS()
+Fw()
+endif
+endfunc
+func U3()
+h=h*2
+Z=Z*2
+P=P*2
+o=o*2
+E1()
+endfunc
+func Tl()
+Z=Z*2
+P=P*2
+E1()
+endfunc
+func MC()
+DQ=gb_hexel_owner(Dq,AE)
+if DQ>=B()
+if DQ==gb_team_id()
+h=1100+gb_random_value(10)
+else
+h=2048+gb_random_value(10)
+endif
+elif DQ==D
+h=1920+gb_random_value(10)
+else
+h=B()
+endif
+KN=A[AE][Dq]
+if (KN & 3)
+h=B()
+elif (KN & 4 ) 
+h=h*4/5
+elif (KN & 8 ) 
+h=h*2/3
+endif
+if Dj==Dq
+if Dc==Ft
+h=h/10
+endif
+endif
+endfunc
+func Nf()
+if DQ==gb_team_id()
+Hw()
+HS()
+Fw()
+HC()
+endif
+endfunc
+func L5()
+B3=B3+1
+endfunc
+func Fw()
+L5()
+h=h*2/3
+endfunc
+func KQ(BR)
+h=h*2
+endfunc
+func Nj()
+L5()
+if DQ!=gb_team_id()
+if BZ!=gb_team_id()
+L4(10)
+endif
+if Bc!=gb_team_id()
+Kz(10)
+endif
+else
+h=h*2/3
+endif
+endfunc
+func Ox()
+if B3>=2
+h=h/B3
+endif
+endfunc
+func Qe()
+if DQ!=gb_team_id()
+if BZ!=gb_team_id()
+KQ(11)
+L4(11)
+L5()
+KK()
+else
+Fw()
+HC()
+endif
+else
+Fw()
+HC()
+endif
+endfunc
+func Ot()
+Z=Z*2
+W=W*2
+o=o*2
+k=k*2
+E1()
+endfunc
+func Nu()
+W=W*2
+o=o*2
+E1()
+endfunc
+func HZ()
+BZ=gb_hexel_owner(D4,Bu)
+if BZ>=B()
+if BZ==gb_team_id()
+Z=1100+gb_random_value(10)
+else
+Z=2048+gb_random_value(10)
+endif
+elif BZ==D
+Z=1920+gb_random_value(10)
+else
+Z=B()
+endif
+JB=A[Bu][D4]
+if (JB & 3)
+Z=B()
+elif (JB & 4 ) 
+Z=Z*4/5
+elif (JB & 8 ) 
+Z=Z*2/3
+endif
+if Dj==Dz
+if Dc==Bu
+Z=Z/10
+endif
+endif
+endfunc
+func T8()
+if BZ==gb_team_id()
+Hw()
+Fw()
+HC()
+Fr()
+endif
+endfunc
+func KK()
+B9=B9+1
+endfunc
+func HC()
+KK()
+Z=Z*2/3
+endfunc
+func L4(BR)
+Z=Z*2
+endfunc
+func U7()
+KK()
+if BZ!=gb_team_id()
+if Bj!=gb_team_id()
+Jr(12)
+endif
+if DQ!=gb_team_id()
+KQ(12)
+endif
+else
+Z=Z*2/3
+endif
+endfunc
+func Tm()
+if B9>=2
+Z=Z/B9
+endif
+endfunc
+func Tb()
+if BZ!=gb_team_id()
+if Bj!=gb_team_id()
+L4(13)
+Jr(13)
+KK()
+K_()
+else
+HC()
+Fr()
+endif
+else
+HC()
+Fr()
+endif
+endfunc
+func Qs()
+W=W*2
+P=P*2
+k=k*2
+h=h*2
+E1()
+endfunc
+func Qw()
+P=P*2
+k=k*2
+E1()
+endfunc
+func Fy()
+Bj=gb_hexel_owner(D7,Bu)
+if Bj>=B()
+if Bj==gb_team_id()
+W=1100+gb_random_value(10)
+else
+W=2048+gb_random_value(10)
+endif
+elif Bj==D
+W=1920+gb_random_value(10)
+else
+W=B()
+endif
+J6=A[Bu][D7]
+if (J6 & 3)
+W=B()
+elif (J6 & 4 ) 
+W=W*4/5
+elif (J6 & 8 ) 
+W=W*2/3
+endif
+if Dj==D6
+if Dc==DL
+W=W/10
+endif
+endif
+endfunc
+func OH()
+if Bj==gb_team_id()
+Hw()
+HC()
+Fr()
+H3()
+endif
+endfunc
+func K_()
+Al=Al+1
+endfunc
+func Fr()
+K_()
+W=W*2/3
+endfunc
+func Jr(BR)
+W=W*2
+endfunc
+func Pn()
+K_()
+if Bj!=gb_team_id()
+if DS!=gb_team_id()
+Kt(14)
+endif
+if BZ!=gb_team_id()
+L4(14)
+endif
+else
+W=W*2/3
+endif
+endfunc
+func RS()
+if Al>=2
+W=W/Al
+endif
+endfunc
+func Qf()
+if Bj!=gb_team_id()
+if DS!=gb_team_id()
+Jr(15)
+Kt(15)
+K_()
+Kj()
+else
+Fr()
+H3()
+endif
+else
+Fr()
+H3()
+endif
+endfunc
+func OK()
+P=P*2
+o=o*2
+h=h*2
+Z=Z*2
+E1()
+endfunc
+func Re()
+o=o*2
+h=h*2
+E1()
+endfunc
+func RO()
+DS=gb_hexel_owner(AX,AE)
+if DS>=B()
+if DS==gb_team_id()
+P=1100+gb_random_value(10)
+else
+P=2048+gb_random_value(10)
+endif
+elif DS==D
+P=1920+gb_random_value(10)
+else
+P=B()
+endif
+Jv=A[AE][AX]
+if (Jv & 3)
+P=B()
+elif (Jv & 4 ) 
+P=P*4/5
+elif (Jv & 8 ) 
+P=P*2/3
+endif
+if Dj==AX
+if Dc==Bh
+P=P/10
+endif
+endif
+endfunc
+func S0()
+if DS==gb_team_id()
+Hw()
+Fr()
+H3()
+F_()
+endif
+endfunc
+func Kj()
+BE=BE+1
+endfunc
+func H3()
+Kj()
+P=P*2/3
+endfunc
+func Kt(BR)
+P=P*2
+endfunc
+func T3()
+Kj()
+if DS!=gb_team_id()
+if Bp!=gb_team_id()
+K0(16)
+endif
+if Bj!=gb_team_id()
+Jr(16)
+endif
+else
+P=P*2/3
+endif
+endfunc
+func Nk()
+if BE>=2
+P=P/BE
+endif
+endfunc
+func RL()
+if DS!=gb_team_id()
+if Bp!=gb_team_id()
+Kt(17)
+K0(17)
+Kj()
+Kn()
+else
+H3()
+F_()
+endif
+else
+H3()
+F_()
+endif
+endfunc
+func S5()
+o=o*2
+k=k*2
+Z=Z*2
+W=W*2
+E1()
+endfunc
+func Oo()
+k=k*2
+Z=Z*2
+E1()
+endfunc
+func Uf()
+if Ck>=2
+if Ck>=4
+if Ck>=5
+S5()
+else
+OK()
+endif
+elif Ck>=3
+Qs()
+else
+Ot()
+endif
+elif Ck>=B()
+if Ck
+U3()
+else
+Pq()
+endif
+endif
+endfunc
+func WR()
+if Ck>=2
+if Ck>=4
+if Ck>=5
+Oo()
+else
+Re()
+endif
+elif Ck>=3
+Qw()
+else
+Nu()
+endif
+elif Ck>=B()
+if Ck
+Tl()
+else
+QU()
+endif
+endif
+endfunc
+func R9()
+Py=gb_hexel_owner(AX ,LW)
+Sy=gb_hexel_owner(BW ,LW)
+Pf=gb_hexel_owner(Dq ,LW)
+Qt=gb_hexel_owner(ND,D3 )
+SW=gb_hexel_owner(Rc ,AE )
+Nc=gb_hexel_owner(ND,Bu )
+RQ=gb_hexel_owner(Dq ,Lb)
+UF=gb_hexel_owner(BW ,Lb)
+Qn=gb_hexel_owner(AX ,Lb)
+SV=gb_hexel_owner(N5,Bu )
+Ph=gb_hexel_owner(TR ,AE )
+Tv=gb_hexel_owner(N5,D3 )
+if Py==gb_team_id()
+TO()
+endif
+if Sy==gb_team_id()
+Rr()
+endif
+if Pf==gb_team_id()
+QF()
+endif
+if Qt==gb_team_id()
+Ou()
+endif
+if SW==gb_team_id()
+Nj()
+endif
+if Nc==gb_team_id()
+Qe()
+endif
+if RQ==gb_team_id()
+U7()
+endif
+if UF==gb_team_id()
+Tb()
+endif
+if Qn==gb_team_id()
+Pn()
+endif
+if SV==gb_team_id()
+Qf()
+endif
+if Ph==gb_team_id()
+T3()
+endif
+if Tv==gb_team_id()
+RL()
+endif
+endfunc
+func Sh()
+C4=DU[1]
+EU=C4 [0]
+q=EU[B()]
+d=EU[1]
+Fq=d % 2
+A6 =d-1
+AC =d+1
+Aq =q+1
+A_ =q-1
+Aw =q-Fq
+BV =Aw+1
+BA =d-2
+BB =d+2
+CL =Aw-1
+C8 =BV+1
+if gb_agent_status(1,0)
+else
+A[BA][A_]=A[BA][A_]| 8
+A[BA][q ]=A[BA][q ]| 8
+A[BA][Aq]=A[BA][Aq]| 8
+A[BB][A_]=A[BB][A_]| 8
+A[BB][q ]=A[BB][q ]| 8
+A[BB][Aq]=A[BB][Aq]| 8
+A[A6][CL]=A[A6][CL]| 8
+A[A6][C8]=A[A6][C8]| 8
+A[AC][CL]=A[AC][CL]| 8
+A[AC][C8]=A[AC][C8]| 8
+A[d][q-2]=A[d][q-2]| 8
+A[d][q+2]=A[d][q+2]| 8
+endif
+A[A6][Aw]=A[A6][Aw] | 6
+A[A6][BV]=A[A6][BV] | 6
+A[d ][Aq]=A[d ][Aq] | 6
+A[AC][BV]=A[AC][BV] | 6
+A[AC][Aw]=A[AC][Aw] | 6
+A[d ][A_]=A[d ][A_] | 6
+EN=d/K
+ES=q/K
+J[EN][ES]=J[EN][ES]+100
+A[d ][q ]=A[d][q]| 1
+Et=C4 [1]
+AW=Et[B()]
+A4=Et[1]
+HW=A4 % 2
+CV =A4-1
+Ca =A4+1
+EL =AW+1
+EW =AW-1
+BK =AW-HW
+CA =BK+1
+if gb_agent_status(1,1)
+else
+A[CV][BK]=A[CV][BK] | 4
+A[CV][CA]=A[CV][CA] | 4
+A[A4 ][EL]=A[A4 ][EL] | 4
+A[Ca][CA]=A[Ca][CA] | 4
+A[Ca][BK]=A[Ca][BK] | 4
+A[A4 ][EW]=A[A4 ][EW] | 4
+endif
+Eb=A4/K
+Eu=AW/K
+J[Eb][Eu]=J[Eb][Eu]+100
+A[A4 ][AW ]=A[A4][AW]| 1
+EY=C4 [2]
+AP=EY[B()]
+A0=EY[1]
+Fm=A0 % 2
+CQ =A0-1
+CM =A0+1
+EP =AP+1
+EA =AP-1
+BO =AP-Fm
+Cb =BO+1
+if gb_agent_status(1,2)
+else
+A[CQ][BO]=A[CQ][BO] | 4
+A[CQ][Cb]=A[CQ][Cb] | 4
+A[A0 ][EP]=A[A0 ][EP] | 4
+A[CM][Cb]=A[CM][Cb] | 4
+A[CM][BO]=A[CM][BO] | 4
+A[A0 ][EA]=A[A0 ][EA] | 4
+endif
+E7=A0/K
+EQ=AP/K
+J[E7][EQ]=J[E7][EQ]+100
+A[A0 ][AP ]=A[A0][AP]| 1
+F5=C4 [3]
+AZ=F5[B()]
+A2=F5[1]
+HF=A2 % 2
+CC =A2-1
+CT =A2+1
+Es =AZ+1
+E_ =AZ-1
+BJ =AZ-HF
+C1 =BJ+1
+if gb_agent_status(1,3)
+else
+A[CC][BJ]=A[CC][BJ] | 4
+A[CC][C1]=A[CC][C1] | 4
+A[A2 ][Es]=A[A2 ][Es] | 4
+A[CT][C1]=A[CT][C1] | 4
+A[CT][BJ]=A[CT][BJ] | 4
+A[A2 ][E_]=A[A2 ][E_] | 4
+endif
+En=A2/K
+Ev=AZ/K
+J[En][Ev]=J[En][Ev]+100
+A[A2 ][AZ ]=A[A2][AZ]| 1
+CU=DU[2]
+EJ=CU [0]
+p=EJ[B()]
+b=EJ[1]
+Fu=b % 2
+A9 =b-1
+A7 =b+1
+Ax =p+1
+As =p-1
+Ao =p-Fu
+BP =Ao+1
+Ac =b-2
+At =b+2
+CO =Ao-1
+Cc =BP+1
+if gb_agent_status(2,0)
+else
+A[Ac][As]=A[Ac][As]| 8
+A[Ac][p ]=A[Ac][p ]| 8
+A[Ac][Ax]=A[Ac][Ax]| 8
+A[At][As]=A[At][As]| 8
+A[At][p ]=A[At][p ]| 8
+A[At][Ax]=A[At][Ax]| 8
+A[A9][CO]=A[A9][CO]| 8
+A[A9][Cc]=A[A9][Cc]| 8
+A[A7][CO]=A[A7][CO]| 8
+A[A7][Cc]=A[A7][Cc]| 8
+A[b][p-2]=A[b][p-2]| 8
+A[b][p+2]=A[b][p+2]| 8
+endif
+A[A9][Ao]=A[A9][Ao] | 6
+A[A9][BP]=A[A9][BP] | 6
+A[b ][Ax]=A[b ][Ax] | 6
+A[A7][BP]=A[A7][BP] | 6
+A[A7][Ao]=A[A7][Ao] | 6
+A[b ][As]=A[b ][As] | 6
+EH=b/K
+Ep=p/K
+J[EH][Ep]=J[EH][Ep]+100
+A[b ][p ]=A[b][p]| 1
+Ek=CU [1]
+AR=Ek[B()]
+y=Ek[1]
+HD=y % 2
+C9 =y-1
+CS =y+1
+F4 =AR+1
+Eo =AR-1
+BT =AR-HD
+CH =BT+1
+if gb_agent_status(2,1)
+else
+A[C9][BT]=A[C9][BT] | 4
+A[C9][CH]=A[C9][CH] | 4
+A[y ][F4]=A[y ][F4] | 4
+A[CS][CH]=A[CS][CH] | 4
+A[CS][BT]=A[CS][BT] | 4
+A[y ][Eo]=A[y ][Eo] | 4
+endif
+Ex=y/K
+E8=AR/K
+J[Ex][E8]=J[Ex][E8]+100
+A[y ][AR ]=A[y][AR]| 1
+F0=CU [2]
+AO=F0[B()]
+z=F0[1]
+HU=z % 2
+CN =z-1
+CR =z+1
+EB =AO+1
+F1 =AO-1
+BU =AO-HU
+CB =BU+1
+if gb_agent_status(2,2)
+else
+A[CN][BU]=A[CN][BU] | 4
+A[CN][CB]=A[CN][CB] | 4
+A[z ][EB]=A[z ][EB] | 4
+A[CR][CB]=A[CR][CB] | 4
+A[CR][BU]=A[CR][BU] | 4
+A[z ][F1]=A[z ][F1] | 4
+endif
+EV=z/K
+EF=AO/K
+J[EV][EF]=J[EV][EF]+100
+A[z ][AO ]=A[z][AO]| 1
+EX=CU [3]
+AQ=EX[B()]
+_=EX[1]
+HM=_ % 2
+CP =_-1
+C2 =_+1
+Ey =AQ+1
+F2 =AQ-1
+BX =AQ-HM
+CW =BX+1
+if gb_agent_status(2,3)
+else
+A[CP][BX]=A[CP][BX] | 4
+A[CP][CW]=A[CP][CW] | 4
+A[_ ][Ey]=A[_ ][Ey] | 4
+A[C2][CW]=A[C2][CW] | 4
+A[C2][BX]=A[C2][BX] | 4
+A[_ ][F2]=A[_ ][F2] | 4
+endif
+F3=_/K
+Ej=AQ/K
+J[F3][Ej]=J[F3][Ej]+100
+A[_ ][AQ ]=A[_][AQ]| 1
+C7=DU[3]
+EK=C7 [0]
+r=EK[B()]
+c=EK[1]
+Fx=c % 2
+AB =c-1
+AA =c+1
+B5 =r+1
+Aj =r-1
+B2 =r-Fx
+BH =B2+1
+Ar =c-2
+Ap =c+2
+C5 =B2-1
+CY =BH+1
+if gb_agent_status(3,0)
+else
+A[Ar][Aj]=A[Ar][Aj]| 8
+A[Ar][r ]=A[Ar][r ]| 8
+A[Ar][B5]=A[Ar][B5]| 8
+A[Ap][Aj]=A[Ap][Aj]| 8
+A[Ap][r ]=A[Ap][r ]| 8
+A[Ap][B5]=A[Ap][B5]| 8
+A[AB][C5]=A[AB][C5]| 8
+A[AB][CY]=A[AB][CY]| 8
+A[AA][C5]=A[AA][C5]| 8
+A[AA][CY]=A[AA][CY]| 8
+A[c][r-2]=A[c][r-2]| 8
+A[c][r+2]=A[c][r+2]| 8
+endif
+A[AB][B2]=A[AB][B2] | 6
+A[AB][BH]=A[AB][BH] | 6
+A[c ][B5]=A[c ][B5] | 6
+A[AA][BH]=A[AA][BH] | 6
+A[AA][B2]=A[AA][B2] | 6
+A[c ][Aj]=A[c ][Aj] | 6
+E9=c/K
+Ea=r/K
+J[E9][Ea]=J[E9][Ea]+100
+A[c ][r ]=A[c][r]| 1
+Er=C7 [1]
+AT=Er[B()]
+A1=Er[1]
+HB=A1 % 2
+Cd =A1-1
+CF =A1+1
+Em =AT+1
+Ec =AT-1
+BS =AT-HB
+C6 =BS+1
+if gb_agent_status(3,1)
+else
+A[Cd][BS]=A[Cd][BS] | 4
+A[Cd][C6]=A[Cd][C6] | 4
+A[A1 ][Em]=A[A1 ][Em] | 4
+A[CF][C6]=A[CF][C6] | 4
+A[CF][BS]=A[CF][BS] | 4
+A[A1 ][Ec]=A[A1 ][Ec] | 4
+endif
+El=A1/K
+Ew=AT/K
+J[El][Ew]=J[El][Ew]+100
+A[A1 ][AT ]=A[A1][AT]| 1
+Ef=C7 [2]
+AY=Ef[B()]
+w=Ef[1]
+HN=w % 2
+CJ =w-1
+CE =w+1
+EC =AY+1
+E6 =AY-1
+BN =AY-HN
+CZ =BN+1
+if gb_agent_status(3,2)
+else
+A[CJ][BN]=A[CJ][BN] | 4
+A[CJ][CZ]=A[CJ][CZ] | 4
+A[w ][EC]=A[w ][EC] | 4
+A[CE][CZ]=A[CE][CZ] | 4
+A[CE][BN]=A[CE][BN] | 4
+A[w ][E6]=A[w ][E6] | 4
+endif
+EM=w/K
+ET=AY/K
+J[EM][ET]=J[EM][ET]+100
+A[w ][AY ]=A[w][AY]| 1
+ED=C7 [3]
+AV=ED[B()]
+A3=ED[1]
+Fl=A3 % 2
+CD =A3-1
+CX =A3+1
+Eq =AV+1
+Ez =AV-1
+BL =AV-Fl
+CK =BL+1
+if gb_agent_status(3,3)
+else
+A[CD][BL]=A[CD][BL] | 4
+A[CD][CK]=A[CD][CK] | 4
+A[A3 ][Eq]=A[A3 ][Eq] | 4
+A[CX][CK]=A[CX][CK] | 4
+A[CX][BL]=A[CX][BL] | 4
+A[A3 ][Ez]=A[A3 ][Ez] | 4
+endif
+EO=A3/K
+Eh=AV/K
+J[EO][Eh]=J[EO][Eh]+100
+A[A3 ][AV ]=A[A3][AV]| 1
+endfunc
+func PY()
+C4=DU[0]
+EU=C4 [0]
+q=EU[B()]
+d=EU[1]
+Fq=d % 2
+A6 =d-1
+AC =d+1
+Aq =q+1
+A_ =q-1
+Aw =q-Fq
+BV =Aw+1
+BA =d-2
+BB =d+2
+CL =Aw-1
+C8 =BV+1
+if gb_agent_status(0,0)
+else
+A[BA][A_]=A[BA][A_]| 8
+A[BA][q ]=A[BA][q ]| 8
+A[BA][Aq]=A[BA][Aq]| 8
+A[BB][A_]=A[BB][A_]| 8
+A[BB][q ]=A[BB][q ]| 8
+A[BB][Aq]=A[BB][Aq]| 8
+A[A6][CL]=A[A6][CL]| 8
+A[A6][C8]=A[A6][C8]| 8
+A[AC][CL]=A[AC][CL]| 8
+A[AC][C8]=A[AC][C8]| 8
+A[d][q-2]=A[d][q-2]| 8
+A[d][q+2]=A[d][q+2]| 8
+endif
+A[A6][Aw]=A[A6][Aw] | 6
+A[A6][BV]=A[A6][BV] | 6
+A[d ][Aq]=A[d ][Aq] | 6
+A[AC][BV]=A[AC][BV] | 6
+A[AC][Aw]=A[AC][Aw] | 6
+A[d ][A_]=A[d ][A_] | 6
+EN=d/K
+ES=q/K
+J[EN][ES]=J[EN][ES]+100
+A[d ][q ]=A[d][q]| 1
+Et=C4 [1]
+AW=Et[B()]
+A4=Et[1]
+HW=A4 % 2
+CV =A4-1
+Ca =A4+1
+EL =AW+1
+EW =AW-1
+BK =AW-HW
+CA =BK+1
+if gb_agent_status(0,1)
+else
+A[CV][BK]=A[CV][BK] | 4
+A[CV][CA]=A[CV][CA] | 4
+A[A4 ][EL]=A[A4 ][EL] | 4
+A[Ca][CA]=A[Ca][CA] | 4
+A[Ca][BK]=A[Ca][BK] | 4
+A[A4 ][EW]=A[A4 ][EW] | 4
+endif
+Eb=A4/K
+Eu=AW/K
+J[Eb][Eu]=J[Eb][Eu]+100
+A[A4 ][AW ]=A[A4][AW]| 1
+EY=C4 [2]
+AP=EY[B()]
+A0=EY[1]
+Fm=A0 % 2
+CQ =A0-1
+CM =A0+1
+EP =AP+1
+EA =AP-1
+BO =AP-Fm
+Cb =BO+1
+if gb_agent_status(0,2)
+else
+A[CQ][BO]=A[CQ][BO] | 4
+A[CQ][Cb]=A[CQ][Cb] | 4
+A[A0 ][EP]=A[A0 ][EP] | 4
+A[CM][Cb]=A[CM][Cb] | 4
+A[CM][BO]=A[CM][BO] | 4
+A[A0 ][EA]=A[A0 ][EA] | 4
+endif
+E7=A0/K
+EQ=AP/K
+J[E7][EQ]=J[E7][EQ]+100
+A[A0 ][AP ]=A[A0][AP]| 1
+F5=C4 [3]
+AZ=F5[B()]
+A2=F5[1]
+HF=A2 % 2
+CC =A2-1
+CT =A2+1
+Es =AZ+1
+E_ =AZ-1
+BJ =AZ-HF
+C1 =BJ+1
+if gb_agent_status(0,3)
+else
+A[CC][BJ]=A[CC][BJ] | 4
+A[CC][C1]=A[CC][C1] | 4
+A[A2 ][Es]=A[A2 ][Es] | 4
+A[CT][C1]=A[CT][C1] | 4
+A[CT][BJ]=A[CT][BJ] | 4
+A[A2 ][E_]=A[A2 ][E_] | 4
+endif
+En=A2/K
+Ev=AZ/K
+J[En][Ev]=J[En][Ev]+100
+A[A2 ][AZ ]=A[A2][AZ]| 1
+CU=DU[2]
+EJ=CU [0]
+p=EJ[B()]
+b=EJ[1]
+Fu=b % 2
+A9 =b-1
+A7 =b+1
+Ax =p+1
+As =p-1
+Ao =p-Fu
+BP =Ao+1
+Ac =b-2
+At =b+2
+CO =Ao-1
+Cc =BP+1
+if gb_agent_status(2,0)
+else
+A[Ac][As]=A[Ac][As]| 8
+A[Ac][p ]=A[Ac][p ]| 8
+A[Ac][Ax]=A[Ac][Ax]| 8
+A[At][As]=A[At][As]| 8
+A[At][p ]=A[At][p ]| 8
+A[At][Ax]=A[At][Ax]| 8
+A[A9][CO]=A[A9][CO]| 8
+A[A9][Cc]=A[A9][Cc]| 8
+A[A7][CO]=A[A7][CO]| 8
+A[A7][Cc]=A[A7][Cc]| 8
+A[b][p-2]=A[b][p-2]| 8
+A[b][p+2]=A[b][p+2]| 8
+endif
+A[A9][Ao]=A[A9][Ao] | 6
+A[A9][BP]=A[A9][BP] | 6
+A[b ][Ax]=A[b ][Ax] | 6
+A[A7][BP]=A[A7][BP] | 6
+A[A7][Ao]=A[A7][Ao] | 6
+A[b ][As]=A[b ][As] | 6
+EH=b/K
+Ep=p/K
+J[EH][Ep]=J[EH][Ep]+100
+A[b ][p ]=A[b][p]| 1
+Ek=CU [1]
+AR=Ek[B()]
+y=Ek[1]
+HD=y % 2
+C9 =y-1
+CS =y+1
+F4 =AR+1
+Eo =AR-1
+BT =AR-HD
+CH =BT+1
+if gb_agent_status(2,1)
+else
+A[C9][BT]=A[C9][BT] | 4
+A[C9][CH]=A[C9][CH] | 4
+A[y ][F4]=A[y ][F4] | 4
+A[CS][CH]=A[CS][CH] | 4
+A[CS][BT]=A[CS][BT] | 4
+A[y ][Eo]=A[y ][Eo] | 4
+endif
+Ex=y/K
+E8=AR/K
+J[Ex][E8]=J[Ex][E8]+100
+A[y ][AR ]=A[y][AR]| 1
+F0=CU [2]
+AO=F0[B()]
+z=F0[1]
+HU=z % 2
+CN =z-1
+CR =z+1
+EB =AO+1
+F1 =AO-1
+BU =AO-HU
+CB =BU+1
+if gb_agent_status(2,2)
+else
+A[CN][BU]=A[CN][BU] | 4
+A[CN][CB]=A[CN][CB] | 4
+A[z ][EB]=A[z ][EB] | 4
+A[CR][CB]=A[CR][CB] | 4
+A[CR][BU]=A[CR][BU] | 4
+A[z ][F1]=A[z ][F1] | 4
+endif
+EV=z/K
+EF=AO/K
+J[EV][EF]=J[EV][EF]+100
+A[z ][AO ]=A[z][AO]| 1
+EX=CU [3]
+AQ=EX[B()]
+_=EX[1]
+HM=_ % 2
+CP =_-1
+C2 =_+1
+Ey =AQ+1
+F2 =AQ-1
+BX =AQ-HM
+CW =BX+1
+if gb_agent_status(2,3)
+else
+A[CP][BX]=A[CP][BX] | 4
+A[CP][CW]=A[CP][CW] | 4
+A[_ ][Ey]=A[_ ][Ey] | 4
+A[C2][CW]=A[C2][CW] | 4
+A[C2][BX]=A[C2][BX] | 4
+A[_ ][F2]=A[_ ][F2] | 4
+endif
+F3=_/K
+Ej=AQ/K
+J[F3][Ej]=J[F3][Ej]+100
+A[_ ][AQ ]=A[_][AQ]| 1
+C7=DU[3]
+EK=C7 [0]
+r=EK[B()]
+c=EK[1]
+Fx=c % 2
+AB =c-1
+AA =c+1
+B5 =r+1
+Aj =r-1
+B2 =r-Fx
+BH =B2+1
+Ar =c-2
+Ap =c+2
+C5 =B2-1
+CY =BH+1
+if gb_agent_status(3,0)
+else
+A[Ar][Aj]=A[Ar][Aj]| 8
+A[Ar][r ]=A[Ar][r ]| 8
+A[Ar][B5]=A[Ar][B5]| 8
+A[Ap][Aj]=A[Ap][Aj]| 8
+A[Ap][r ]=A[Ap][r ]| 8
+A[Ap][B5]=A[Ap][B5]| 8
+A[AB][C5]=A[AB][C5]| 8
+A[AB][CY]=A[AB][CY]| 8
+A[AA][C5]=A[AA][C5]| 8
+A[AA][CY]=A[AA][CY]| 8
+A[c][r-2]=A[c][r-2]| 8
+A[c][r+2]=A[c][r+2]| 8
+endif
+A[AB][B2]=A[AB][B2] | 6
+A[AB][BH]=A[AB][BH] | 6
+A[c ][B5]=A[c ][B5] | 6
+A[AA][BH]=A[AA][BH] | 6
+A[AA][B2]=A[AA][B2] | 6
+A[c ][Aj]=A[c ][Aj] | 6
+E9=c/K
+Ea=r/K
+J[E9][Ea]=J[E9][Ea]+100
+A[c ][r ]=A[c][r]| 1
+Er=C7 [1]
+AT=Er[B()]
+A1=Er[1]
+HB=A1 % 2
+Cd =A1-1
+CF =A1+1
+Em =AT+1
+Ec =AT-1
+BS =AT-HB
+C6 =BS+1
+if gb_agent_status(3,1)
+else
+A[Cd][BS]=A[Cd][BS] | 4
+A[Cd][C6]=A[Cd][C6] | 4
+A[A1 ][Em]=A[A1 ][Em] | 4
+A[CF][C6]=A[CF][C6] | 4
+A[CF][BS]=A[CF][BS] | 4
+A[A1 ][Ec]=A[A1 ][Ec] | 4
+endif
+El=A1/K
+Ew=AT/K
+J[El][Ew]=J[El][Ew]+100
+A[A1 ][AT ]=A[A1][AT]| 1
+Ef=C7 [2]
+AY=Ef[B()]
+w=Ef[1]
+HN=w % 2
+CJ =w-1
+CE =w+1
+EC =AY+1
+E6 =AY-1
+BN =AY-HN
+CZ =BN+1
+if gb_agent_status(3,2)
+else
+A[CJ][BN]=A[CJ][BN] | 4
+A[CJ][CZ]=A[CJ][CZ] | 4
+A[w ][EC]=A[w ][EC] | 4
+A[CE][CZ]=A[CE][CZ] | 4
+A[CE][BN]=A[CE][BN] | 4
+A[w ][E6]=A[w ][E6] | 4
+endif
+EM=w/K
+ET=AY/K
+J[EM][ET]=J[EM][ET]+100
+A[w ][AY ]=A[w][AY]| 1
+ED=C7 [3]
+AV=ED[B()]
+A3=ED[1]
+Fl=A3 % 2
+CD =A3-1
+CX =A3+1
+Eq =AV+1
+Ez =AV-1
+BL =AV-Fl
+CK =BL+1
+if gb_agent_status(3,3)
+else
+A[CD][BL]=A[CD][BL] | 4
+A[CD][CK]=A[CD][CK] | 4
+A[A3 ][Eq]=A[A3 ][Eq] | 4
+A[CX][CK]=A[CX][CK] | 4
+A[CX][BL]=A[CX][BL] | 4
+A[A3 ][Ez]=A[A3 ][Ez] | 4
+endif
+EO=A3/K
+Eh=AV/K
+J[EO][Eh]=J[EO][Eh]+100
+A[A3 ][AV ]=A[A3][AV]| 1
+endfunc
+func Pk()
+C4=DU[0]
+EU=C4 [0]
+q=EU[B()]
+d=EU[1]
+Fq=d % 2
+A6 =d-1
+AC =d+1
+Aq =q+1
+A_ =q-1
+Aw =q-Fq
+BV =Aw+1
+BA =d-2
+BB =d+2
+CL =Aw-1
+C8 =BV+1
+if gb_agent_status(0,0)
+else
+A[BA][A_]=A[BA][A_]| 8
+A[BA][q ]=A[BA][q ]| 8
+A[BA][Aq]=A[BA][Aq]| 8
+A[BB][A_]=A[BB][A_]| 8
+A[BB][q ]=A[BB][q ]| 8
+A[BB][Aq]=A[BB][Aq]| 8
+A[A6][CL]=A[A6][CL]| 8
+A[A6][C8]=A[A6][C8]| 8
+A[AC][CL]=A[AC][CL]| 8
+A[AC][C8]=A[AC][C8]| 8
+A[d][q-2]=A[d][q-2]| 8
+A[d][q+2]=A[d][q+2]| 8
+endif
+A[A6][Aw]=A[A6][Aw] | 6
+A[A6][BV]=A[A6][BV] | 6
+A[d ][Aq]=A[d ][Aq] | 6
+A[AC][BV]=A[AC][BV] | 6
+A[AC][Aw]=A[AC][Aw] | 6
+A[d ][A_]=A[d ][A_] | 6
+EN=d/K
+ES=q/K
+J[EN][ES]=J[EN][ES]+100
+A[d ][q ]=A[d][q]| 1
+Et=C4 [1]
+AW=Et[B()]
+A4=Et[1]
+HW=A4 % 2
+CV =A4-1
+Ca =A4+1
+EL =AW+1
+EW =AW-1
+BK =AW-HW
+CA =BK+1
+if gb_agent_status(0,1)
+else
+A[CV][BK]=A[CV][BK] | 4
+A[CV][CA]=A[CV][CA] | 4
+A[A4 ][EL]=A[A4 ][EL] | 4
+A[Ca][CA]=A[Ca][CA] | 4
+A[Ca][BK]=A[Ca][BK] | 4
+A[A4 ][EW]=A[A4 ][EW] | 4
+endif
+Eb=A4/K
+Eu=AW/K
+J[Eb][Eu]=J[Eb][Eu]+100
+A[A4 ][AW ]=A[A4][AW]| 1
+EY=C4 [2]
+AP=EY[B()]
+A0=EY[1]
+Fm=A0 % 2
+CQ =A0-1
+CM =A0+1
+EP =AP+1
+EA =AP-1
+BO =AP-Fm
+Cb =BO+1
+if gb_agent_status(0,2)
+else
+A[CQ][BO]=A[CQ][BO] | 4
+A[CQ][Cb]=A[CQ][Cb] | 4
+A[A0 ][EP]=A[A0 ][EP] | 4
+A[CM][Cb]=A[CM][Cb] | 4
+A[CM][BO]=A[CM][BO] | 4
+A[A0 ][EA]=A[A0 ][EA] | 4
+endif
+E7=A0/K
+EQ=AP/K
+J[E7][EQ]=J[E7][EQ]+100
+A[A0 ][AP ]=A[A0][AP]| 1
+F5=C4 [3]
+AZ=F5[B()]
+A2=F5[1]
+HF=A2 % 2
+CC =A2-1
+CT =A2+1
+Es =AZ+1
+E_ =AZ-1
+BJ =AZ-HF
+C1 =BJ+1
+if gb_agent_status(0,3)
+else
+A[CC][BJ]=A[CC][BJ] | 4
+A[CC][C1]=A[CC][C1] | 4
+A[A2 ][Es]=A[A2 ][Es] | 4
+A[CT][C1]=A[CT][C1] | 4
+A[CT][BJ]=A[CT][BJ] | 4
+A[A2 ][E_]=A[A2 ][E_] | 4
+endif
+En=A2/K
+Ev=AZ/K
+J[En][Ev]=J[En][Ev]+100
+A[A2 ][AZ ]=A[A2][AZ]| 1
+CU=DU[1]
+EJ=CU [0]
+p=EJ[B()]
+b=EJ[1]
+Fu=b % 2
+A9 =b-1
+A7 =b+1
+Ax =p+1
+As =p-1
+Ao =p-Fu
+BP =Ao+1
+Ac =b-2
+At =b+2
+CO =Ao-1
+Cc =BP+1
+if gb_agent_status(1,0)
+else
+A[Ac][As]=A[Ac][As]| 8
+A[Ac][p ]=A[Ac][p ]| 8
+A[Ac][Ax]=A[Ac][Ax]| 8
+A[At][As]=A[At][As]| 8
+A[At][p ]=A[At][p ]| 8
+A[At][Ax]=A[At][Ax]| 8
+A[A9][CO]=A[A9][CO]| 8
+A[A9][Cc]=A[A9][Cc]| 8
+A[A7][CO]=A[A7][CO]| 8
+A[A7][Cc]=A[A7][Cc]| 8
+A[b][p-2]=A[b][p-2]| 8
+A[b][p+2]=A[b][p+2]| 8
+endif
+A[A9][Ao]=A[A9][Ao] | 6
+A[A9][BP]=A[A9][BP] | 6
+A[b ][Ax]=A[b ][Ax] | 6
+A[A7][BP]=A[A7][BP] | 6
+A[A7][Ao]=A[A7][Ao] | 6
+A[b ][As]=A[b ][As] | 6
+EH=b/K
+Ep=p/K
+J[EH][Ep]=J[EH][Ep]+100
+A[b ][p ]=A[b][p]| 1
+Ek=CU [1]
+AR=Ek[B()]
+y=Ek[1]
+HD=y % 2
+C9 =y-1
+CS =y+1
+F4 =AR+1
+Eo =AR-1
+BT =AR-HD
+CH =BT+1
+if gb_agent_status(1,1)
+else
+A[C9][BT]=A[C9][BT] | 4
+A[C9][CH]=A[C9][CH] | 4
+A[y ][F4]=A[y ][F4] | 4
+A[CS][CH]=A[CS][CH] | 4
+A[CS][BT]=A[CS][BT] | 4
+A[y ][Eo]=A[y ][Eo] | 4
+endif
+Ex=y/K
+E8=AR/K
+J[Ex][E8]=J[Ex][E8]+100
+A[y ][AR ]=A[y][AR]| 1
+F0=CU [2]
+AO=F0[B()]
+z=F0[1]
+HU=z % 2
+CN =z-1
+CR =z+1
+EB =AO+1
+F1 =AO-1
+BU =AO-HU
+CB =BU+1
+if gb_agent_status(1,2)
+else
+A[CN][BU]=A[CN][BU] | 4
+A[CN][CB]=A[CN][CB] | 4
+A[z ][EB]=A[z ][EB] | 4
+A[CR][CB]=A[CR][CB] | 4
+A[CR][BU]=A[CR][BU] | 4
+A[z ][F1]=A[z ][F1] | 4
+endif
+EV=z/K
+EF=AO/K
+J[EV][EF]=J[EV][EF]+100
+A[z ][AO ]=A[z][AO]| 1
+EX=CU [3]
+AQ=EX[B()]
+_=EX[1]
+HM=_ % 2
+CP =_-1
+C2 =_+1
+Ey =AQ+1
+F2 =AQ-1
+BX =AQ-HM
+CW =BX+1
+if gb_agent_status(1,3)
+else
+A[CP][BX]=A[CP][BX] | 4
+A[CP][CW]=A[CP][CW] | 4
+A[_ ][Ey]=A[_ ][Ey] | 4
+A[C2][CW]=A[C2][CW] | 4
+A[C2][BX]=A[C2][BX] | 4
+A[_ ][F2]=A[_ ][F2] | 4
+endif
+F3=_/K
+Ej=AQ/K
+J[F3][Ej]=J[F3][Ej]+100
+A[_ ][AQ ]=A[_][AQ]| 1
+C7=DU[3]
+EK=C7 [0]
+r=EK[B()]
+c=EK[1]
+Fx=c % 2
+AB =c-1
+AA =c+1
+B5 =r+1
+Aj =r-1
+B2 =r-Fx
+BH =B2+1
+Ar =c-2
+Ap =c+2
+C5 =B2-1
+CY =BH+1
+if gb_agent_status(3,0)
+else
+A[Ar][Aj]=A[Ar][Aj]| 8
+A[Ar][r ]=A[Ar][r ]| 8
+A[Ar][B5]=A[Ar][B5]| 8
+A[Ap][Aj]=A[Ap][Aj]| 8
+A[Ap][r ]=A[Ap][r ]| 8
+A[Ap][B5]=A[Ap][B5]| 8
+A[AB][C5]=A[AB][C5]| 8
+A[AB][CY]=A[AB][CY]| 8
+A[AA][C5]=A[AA][C5]| 8
+A[AA][CY]=A[AA][CY]| 8
+A[c][r-2]=A[c][r-2]| 8
+A[c][r+2]=A[c][r+2]| 8
+endif
+A[AB][B2]=A[AB][B2] | 6
+A[AB][BH]=A[AB][BH] | 6
+A[c ][B5]=A[c ][B5] | 6
+A[AA][BH]=A[AA][BH] | 6
+A[AA][B2]=A[AA][B2] | 6
+A[c ][Aj]=A[c ][Aj] | 6
+E9=c/K
+Ea=r/K
+J[E9][Ea]=J[E9][Ea]+100
+A[c ][r ]=A[c][r]| 1
+Er=C7 [1]
+AT=Er[B()]
+A1=Er[1]
+HB=A1 % 2
+Cd =A1-1
+CF =A1+1
+Em =AT+1
+Ec =AT-1
+BS =AT-HB
+C6 =BS+1
+if gb_agent_status(3,1)
+else
+A[Cd][BS]=A[Cd][BS] | 4
+A[Cd][C6]=A[Cd][C6] | 4
+A[A1 ][Em]=A[A1 ][Em] | 4
+A[CF][C6]=A[CF][C6] | 4
+A[CF][BS]=A[CF][BS] | 4
+A[A1 ][Ec]=A[A1 ][Ec] | 4
+endif
+El=A1/K
+Ew=AT/K
+J[El][Ew]=J[El][Ew]+100
+A[A1 ][AT ]=A[A1][AT]| 1
+Ef=C7 [2]
+AY=Ef[B()]
+w=Ef[1]
+HN=w % 2
+CJ =w-1
+CE =w+1
+EC =AY+1
+E6 =AY-1
+BN =AY-HN
+CZ =BN+1
+if gb_agent_status(3,2)
+else
+A[CJ][BN]=A[CJ][BN] | 4
+A[CJ][CZ]=A[CJ][CZ] | 4
+A[w ][EC]=A[w ][EC] | 4
+A[CE][CZ]=A[CE][CZ] | 4
+A[CE][BN]=A[CE][BN] | 4
+A[w ][E6]=A[w ][E6] | 4
+endif
+EM=w/K
+ET=AY/K
+J[EM][ET]=J[EM][ET]+100
+A[w ][AY ]=A[w][AY]| 1
+ED=C7 [3]
+AV=ED[B()]
+A3=ED[1]
+Fl=A3 % 2
+CD =A3-1
+CX =A3+1
+Eq =AV+1
+Ez =AV-1
+BL =AV-Fl
+CK =BL+1
+if gb_agent_status(3,3)
+else
+A[CD][BL]=A[CD][BL] | 4
+A[CD][CK]=A[CD][CK] | 4
+A[A3 ][Eq]=A[A3 ][Eq] | 4
+A[CX][CK]=A[CX][CK] | 4
+A[CX][BL]=A[CX][BL] | 4
+A[A3 ][Ez]=A[A3 ][Ez] | 4
+endif
+EO=A3/K
+Eh=AV/K
+J[EO][Eh]=J[EO][Eh]+100
+A[A3 ][AV ]=A[A3][AV]| 1
+endfunc
+func Sd()
+C4=DU[0]
+EU=C4 [0]
+q=EU[B()]
+d=EU[1]
+Fq=d % 2
+A6 =d-1
+AC =d+1
+Aq =q+1
+A_ =q-1
+Aw =q-Fq
+BV =Aw+1
+BA =d-2
+BB =d+2
+CL =Aw-1
+C8 =BV+1
+if gb_agent_status(0,0)
+else
+A[BA][A_]=A[BA][A_]| 8
+A[BA][q ]=A[BA][q ]| 8
+A[BA][Aq]=A[BA][Aq]| 8
+A[BB][A_]=A[BB][A_]| 8
+A[BB][q ]=A[BB][q ]| 8
+A[BB][Aq]=A[BB][Aq]| 8
+A[A6][CL]=A[A6][CL]| 8
+A[A6][C8]=A[A6][C8]| 8
+A[AC][CL]=A[AC][CL]| 8
+A[AC][C8]=A[AC][C8]| 8
+A[d][q-2]=A[d][q-2]| 8
+A[d][q+2]=A[d][q+2]| 8
+endif
+A[A6][Aw]=A[A6][Aw] | 6
+A[A6][BV]=A[A6][BV] | 6
+A[d ][Aq]=A[d ][Aq] | 6
+A[AC][BV]=A[AC][BV] | 6
+A[AC][Aw]=A[AC][Aw] | 6
+A[d ][A_]=A[d ][A_] | 6
+EN=d/K
+ES=q/K
+J[EN][ES]=J[EN][ES]+100
+A[d ][q ]=A[d][q]| 1
+Et=C4 [1]
+AW=Et[B()]
+A4=Et[1]
+HW=A4 % 2
+CV =A4-1
+Ca =A4+1
+EL =AW+1
+EW =AW-1
+BK =AW-HW
+CA =BK+1
+if gb_agent_status(0,1)
+else
+A[CV][BK]=A[CV][BK] | 4
+A[CV][CA]=A[CV][CA] | 4
+A[A4 ][EL]=A[A4 ][EL] | 4
+A[Ca][CA]=A[Ca][CA] | 4
+A[Ca][BK]=A[Ca][BK] | 4
+A[A4 ][EW]=A[A4 ][EW] | 4
+endif
+Eb=A4/K
+Eu=AW/K
+J[Eb][Eu]=J[Eb][Eu]+100
+A[A4 ][AW ]=A[A4][AW]| 1
+EY=C4 [2]
+AP=EY[B()]
+A0=EY[1]
+Fm=A0 % 2
+CQ =A0-1
+CM =A0+1
+EP =AP+1
+EA =AP-1
+BO =AP-Fm
+Cb =BO+1
+if gb_agent_status(0,2)
+else
+A[CQ][BO]=A[CQ][BO] | 4
+A[CQ][Cb]=A[CQ][Cb] | 4
+A[A0 ][EP]=A[A0 ][EP] | 4
+A[CM][Cb]=A[CM][Cb] | 4
+A[CM][BO]=A[CM][BO] | 4
+A[A0 ][EA]=A[A0 ][EA] | 4
+endif
+E7=A0/K
+EQ=AP/K
+J[E7][EQ]=J[E7][EQ]+100
+A[A0 ][AP ]=A[A0][AP]| 1
+F5=C4 [3]
+AZ=F5[B()]
+A2=F5[1]
+HF=A2 % 2
+CC =A2-1
+CT =A2+1
+Es =AZ+1
+E_ =AZ-1
+BJ =AZ-HF
+C1 =BJ+1
+if gb_agent_status(0,3)
+else
+A[CC][BJ]=A[CC][BJ] | 4
+A[CC][C1]=A[CC][C1] | 4
+A[A2 ][Es]=A[A2 ][Es] | 4
+A[CT][C1]=A[CT][C1] | 4
+A[CT][BJ]=A[CT][BJ] | 4
+A[A2 ][E_]=A[A2 ][E_] | 4
+endif
+En=A2/K
+Ev=AZ/K
+J[En][Ev]=J[En][Ev]+100
+A[A2 ][AZ ]=A[A2][AZ]| 1
+CU=DU[1]
+EJ=CU [0]
+p=EJ[B()]
+b=EJ[1]
+Fu=b % 2
+A9 =b-1
+A7 =b+1
+Ax =p+1
+As =p-1
+Ao =p-Fu
+BP =Ao+1
+Ac =b-2
+At =b+2
+CO =Ao-1
+Cc =BP+1
+if gb_agent_status(1,0)
+else
+A[Ac][As]=A[Ac][As]| 8
+A[Ac][p ]=A[Ac][p ]| 8
+A[Ac][Ax]=A[Ac][Ax]| 8
+A[At][As]=A[At][As]| 8
+A[At][p ]=A[At][p ]| 8
+A[At][Ax]=A[At][Ax]| 8
+A[A9][CO]=A[A9][CO]| 8
+A[A9][Cc]=A[A9][Cc]| 8
+A[A7][CO]=A[A7][CO]| 8
+A[A7][Cc]=A[A7][Cc]| 8
+A[b][p-2]=A[b][p-2]| 8
+A[b][p+2]=A[b][p+2]| 8
+endif
+A[A9][Ao]=A[A9][Ao] | 6
+A[A9][BP]=A[A9][BP] | 6
+A[b ][Ax]=A[b ][Ax] | 6
+A[A7][BP]=A[A7][BP] | 6
+A[A7][Ao]=A[A7][Ao] | 6
+A[b ][As]=A[b ][As] | 6
+EH=b/K
+Ep=p/K
+J[EH][Ep]=J[EH][Ep]+100
+A[b ][p ]=A[b][p]| 1
+Ek=CU [1]
+AR=Ek[B()]
+y=Ek[1]
+HD=y % 2
+C9 =y-1
+CS =y+1
+F4 =AR+1
+Eo =AR-1
+BT =AR-HD
+CH =BT+1
+if gb_agent_status(1,1)
+else
+A[C9][BT]=A[C9][BT] | 4
+A[C9][CH]=A[C9][CH] | 4
+A[y ][F4]=A[y ][F4] | 4
+A[CS][CH]=A[CS][CH] | 4
+A[CS][BT]=A[CS][BT] | 4
+A[y ][Eo]=A[y ][Eo] | 4
+endif
+Ex=y/K
+E8=AR/K
+J[Ex][E8]=J[Ex][E8]+100
+A[y ][AR ]=A[y][AR]| 1
+F0=CU [2]
+AO=F0[B()]
+z=F0[1]
+HU=z % 2
+CN =z-1
+CR =z+1
+EB =AO+1
+F1 =AO-1
+BU =AO-HU
+CB =BU+1
+if gb_agent_status(1,2)
+else
+A[CN][BU]=A[CN][BU] | 4
+A[CN][CB]=A[CN][CB] | 4
+A[z ][EB]=A[z ][EB] | 4
+A[CR][CB]=A[CR][CB] | 4
+A[CR][BU]=A[CR][BU] | 4
+A[z ][F1]=A[z ][F1] | 4
+endif
+EV=z/K
+EF=AO/K
+J[EV][EF]=J[EV][EF]+100
+A[z ][AO ]=A[z][AO]| 1
+EX=CU [3]
+AQ=EX[B()]
+_=EX[1]
+HM=_ % 2
+CP =_-1
+C2 =_+1
+Ey =AQ+1
+F2 =AQ-1
+BX =AQ-HM
+CW =BX+1
+if gb_agent_status(1,3)
+else
+A[CP][BX]=A[CP][BX] | 4
+A[CP][CW]=A[CP][CW] | 4
+A[_ ][Ey]=A[_ ][Ey] | 4
+A[C2][CW]=A[C2][CW] | 4
+A[C2][BX]=A[C2][BX] | 4
+A[_ ][F2]=A[_ ][F2] | 4
+endif
+F3=_/K
+Ej=AQ/K
+J[F3][Ej]=J[F3][Ej]+100
+A[_ ][AQ ]=A[_][AQ]| 1
+C7=DU[2]
+EK=C7 [0]
+r=EK[B()]
+c=EK[1]
+Fx=c % 2
+AB =c-1
+AA =c+1
+B5 =r+1
+Aj =r-1
+B2 =r-Fx
+BH =B2+1
+Ar =c-2
+Ap =c+2
+C5 =B2-1
+CY =BH+1
+if gb_agent_status(2,0)
+else
+A[Ar][Aj]=A[Ar][Aj]| 8
+A[Ar][r ]=A[Ar][r ]| 8
+A[Ar][B5]=A[Ar][B5]| 8
+A[Ap][Aj]=A[Ap][Aj]| 8
+A[Ap][r ]=A[Ap][r ]| 8
+A[Ap][B5]=A[Ap][B5]| 8
+A[AB][C5]=A[AB][C5]| 8
+A[AB][CY]=A[AB][CY]| 8
+A[AA][C5]=A[AA][C5]| 8
+A[AA][CY]=A[AA][CY]| 8
+A[c][r-2]=A[c][r-2]| 8
+A[c][r+2]=A[c][r+2]| 8
+endif
+A[AB][B2]=A[AB][B2] | 6
+A[AB][BH]=A[AB][BH] | 6
+A[c ][B5]=A[c ][B5] | 6
+A[AA][BH]=A[AA][BH] | 6
+A[AA][B2]=A[AA][B2] | 6
+A[c ][Aj]=A[c ][Aj] | 6
+E9=c/K
+Ea=r/K
+J[E9][Ea]=J[E9][Ea]+100
+A[c ][r ]=A[c][r]| 1
+Er=C7 [1]
+AT=Er[B()]
+A1=Er[1]
+HB=A1 % 2
+Cd =A1-1
+CF =A1+1
+Em =AT+1
+Ec =AT-1
+BS =AT-HB
+C6 =BS+1
+if gb_agent_status(2,1)
+else
+A[Cd][BS]=A[Cd][BS] | 4
+A[Cd][C6]=A[Cd][C6] | 4
+A[A1 ][Em]=A[A1 ][Em] | 4
+A[CF][C6]=A[CF][C6] | 4
+A[CF][BS]=A[CF][BS] | 4
+A[A1 ][Ec]=A[A1 ][Ec] | 4
+endif
+El=A1/K
+Ew=AT/K
+J[El][Ew]=J[El][Ew]+100
+A[A1 ][AT ]=A[A1][AT]| 1
+Ef=C7 [2]
+AY=Ef[B()]
+w=Ef[1]
+HN=w % 2
+CJ =w-1
+CE =w+1
+EC =AY+1
+E6 =AY-1
+BN =AY-HN
+CZ =BN+1
+if gb_agent_status(2,2)
+else
+A[CJ][BN]=A[CJ][BN] | 4
+A[CJ][CZ]=A[CJ][CZ] | 4
+A[w ][EC]=A[w ][EC] | 4
+A[CE][CZ]=A[CE][CZ] | 4
+A[CE][BN]=A[CE][BN] | 4
+A[w ][E6]=A[w ][E6] | 4
+endif
+EM=w/K
+ET=AY/K
+J[EM][ET]=J[EM][ET]+100
+A[w ][AY ]=A[w][AY]| 1
+ED=C7 [3]
+AV=ED[B()]
+A3=ED[1]
+Fl=A3 % 2
+CD =A3-1
+CX =A3+1
+Eq =AV+1
+Ez =AV-1
+BL =AV-Fl
+CK =BL+1
+if gb_agent_status(2,3)
+else
+A[CD][BL]=A[CD][BL] | 4
+A[CD][CK]=A[CD][CK] | 4
+A[A3 ][Eq]=A[A3 ][Eq] | 4
+A[CX][CK]=A[CX][CK] | 4
+A[CX][BL]=A[CX][BL] | 4
+A[A3 ][Ez]=A[A3 ][Ez] | 4
+endif
+EO=A3/K
+Eh=AV/K
+J[EO][Eh]=J[EO][Eh]+100
+A[A3 ][AV ]=A[A3][AV]| 1
+endfunc
+func Mm()
+Hv=AW-A5
+Ko=A4-x
+if Hv<B()
+FA=-Hv
+else
+FA=Hv
+endif
+if Ko<B()
+By=-Ko
+else
+By=Ko
+endif
+endfunc
+func Mk()
+DK=By
+Dm=Hv
+BY=Ko
+Cr=1
+endfunc
+func NO()
+Mm()
+if By/2<FA
+if By%2
+if Hv > B()
+By=1+By/2+FA+05
+else
+By=By/2+FA
+endif
+else
+By=By/2+FA
+endif
+endif
+endfunc
+func SH()
+Mm()
+if By/2<FA
+if By%2
+if Hv < B()
+By=1+By/2+FA
+else
+By=By/2+FA
+endif
+else
+By=By/2+FA
+endif
+endif
+endfunc
+func NM()
+J8=AP-A5
+KZ=A0-x
+if J8<B()
+FS=-J8
+else
+FS=J8
+endif
+if KZ<B()
+B_=-KZ
+else
+B_=KZ
+endif
+endfunc
+func MK()
+DK=B_
+Dm=J8
+BY=KZ
+Cr=2
+endfunc
+func Ru()
+NM()
+if B_/2<FS
+if B_%2
+if J8 > B()
+B_=1+B_/2+FS+05
+else
+B_=B_/2+FS
+endif
+else
+B_=B_/2+FS
+endif
+endif
+endfunc
+func So()
+NM()
+if B_/2<FS
+if B_%2
+if J8 < B()
+B_=1+B_/2+FS
+else
+B_=B_/2+FS
+endif
+else
+B_=B_/2+FS
+endif
+endif
+endfunc
+func MU()
+He=AZ-A5
+LH=A2-x
+if He<B()
+FH=-He
+else
+FH=He
+endif
+if LH<B()
+Bt=-LH
+else
+Bt=LH
+endif
+endfunc
+func N1()
+DK=Bt
+Dm=He
+BY=LH
+Cr=3
+endfunc
+func Pl()
+MU()
+if Bt/2<FH
+if Bt%2
+if He > B()
+Bt=1+Bt/2+FH+05
+else
+Bt=Bt/2+FH
+endif
+else
+Bt=Bt/2+FH
+endif
+endif
+endfunc
+func Pp()
+MU()
+if Bt/2<FH
+if Bt%2
+if He < B()
+Bt=1+Bt/2+FH
+else
+Bt=Bt/2+FH
+endif
+else
+Bt=Bt/2+FH
+endif
+endif
+endfunc
+func Mv()
+Hn=AR-A5
+Jk=y-x
+if Hn<B()
+FR=-Hn
+else
+FR=Hn
+endif
+if Jk<B()
+Co=-Jk
+else
+Co=Jk
+endif
+endfunc
+func Vk()
+DK=Co
+Dm=Hn
+BY=Jk
+Cr=1
+endfunc
+func Un()
+Mv()
+if Co/2<FR
+if Co%2
+if Hn > B()
+Co=1+Co/2+FR+15
+else
+Co=Co/2+FR
+endif
+else
+Co=Co/2+FR
+endif
+endif
+endfunc
+func Vd()
+Mv()
+if Co/2<FR
+if Co%2
+if Hn < B()
+Co=1+Co/2+FR
+else
+Co=Co/2+FR
+endif
+else
+Co=Co/2+FR
+endif
+endif
+endfunc
+func MQ()
+J2=AO-A5
+Kq=z-x
+if J2<B()
+F9=-J2
+else
+F9=J2
+endif
+if Kq<B()
+Cu=-Kq
+else
+Cu=Kq
+endif
+endfunc
+func Ue()
+DK=Cu
+Dm=J2
+BY=Kq
+Cr=2
+endfunc
+func Vf()
+MQ()
+if Cu/2<F9
+if Cu%2
+if J2 > B()
+Cu=1+Cu/2+F9+15
+else
+Cu=Cu/2+F9
+endif
+else
+Cu=Cu/2+F9
+endif
+endif
+endfunc
+func Ur()
+MQ()
+if Cu/2<F9
+if Cu%2
+if J2 < B()
+Cu=1+Cu/2+F9
+else
+Cu=Cu/2+F9
+endif
+else
+Cu=Cu/2+F9
+endif
+endif
+endfunc
+func Md()
+Hk=AQ-A5
+Jy=_-x
+if Hk<B()
+FJ=-Hk
+else
+FJ=Hk
+endif
+if Jy<B()
+Ch=-Jy
+else
+Ch=Jy
+endif
+endfunc
+func Vp()
+DK=Ch
+Dm=Hk
+BY=Jy
+Cr=3
+endfunc
+func UV()
+Md()
+if Ch/2<FJ
+if Ch%2
+if Hk > B()
+Ch=1+Ch/2+FJ+15
+else
+Ch=Ch/2+FJ
+endif
+else
+Ch=Ch/2+FJ
+endif
+endif
+endfunc
+func VV()
+Md()
+if Ch/2<FJ
+if Ch%2
+if Hk < B()
+Ch=1+Ch/2+FJ
+else
+Ch=Ch/2+FJ
+endif
+else
+Ch=Ch/2+FJ
+endif
+endif
+endfunc
+func Mx()
+JA=AT-A5
+Ku=A1-x
+if JA<B()
+FO=-JA
+else
+FO=JA
+endif
+if Ku<B()
+Cn=-Ku
+else
+Cn=Ku
+endif
+endfunc
+func WQ()
+DK=Cn
+Dm=JA
+BY=Ku
+Cr=1
+endfunc
+func Vb()
+Mx()
+if Cn/2<FO
+if Cn%2
+if JA > B()
+Cn=1+Cn/2+FO+25
+else
+Cn=Cn/2+FO
+endif
+else
+Cn=Cn/2+FO
+endif
+endif
+endfunc
+func Vs()
+Mx()
+if Cn/2<FO
+if Cn%2
+if JA < B()
+Cn=1+Cn/2+FO
+else
+Cn=Cn/2+FO
+endif
+else
+Cn=Cn/2+FO
+endif
+endif
+endfunc
+func NL()
+Hm=AY-A5
+Kb=w-x
+if Hm<B()
+FB=-Hm
+else
+FB=Hm
+endif
+if Kb<B()
+Ce=-Kb
+else
+Ce=Kb
+endif
+endfunc
+func Ux()
+DK=Ce
+Dm=Hm
+BY=Kb
+Cr=2
+endfunc
+func Um()
+NL()
+if Ce/2<FB
+if Ce%2
+if Hm > B()
+Ce=1+Ce/2+FB+25
+else
+Ce=Ce/2+FB
+endif
+else
+Ce=Ce/2+FB
+endif
+endif
+endfunc
+func U_()
+NL()
+if Ce/2<FB
+if Ce%2
+if Hm < B()
+Ce=1+Ce/2+FB
+else
+Ce=Ce/2+FB
+endif
+else
+Ce=Ce/2+FB
+endif
+endif
+endfunc
+func MR()
+JK=AV-A5
+Jj=A3-x
+if JK<B()
+FT=-JK
+else
+FT=JK
+endif
+if Jj<B()
+Cs=-Jj
+else
+Cs=Jj
+endif
+endfunc
+func W9()
+DK=Cs
+Dm=JK
+BY=Jj
+Cr=3
+endfunc
+func VL()
+MR()
+if Cs/2<FT
+if Cs%2
+if JK > B()
+Cs=1+Cs/2+FT+25
+else
+Cs=Cs/2+FT
+endif
+else
+Cs=Cs/2+FT
+endif
+endif
+endfunc
+func W7()
+MR()
+if Cs/2<FT
+if Cs%2
+if JK < B()
+Cs=1+Cs/2+FT
+else
+Cs=Cs/2+FT
+endif
+else
+Cs=Cs/2+FT
+endif
+endif
+endfunc
+func M5()
+DK=9999
+SH()
+if DK>By
+Mk()
+C3=0
+endif
+So()
+if DK>B_
+MK()
+C3=0
+endif
+Pp()
+if DK>Bt
+N1()
+C3=0
+endif
+E[503]=A5+Dm
+E[504]=x+BY
+E[501] =C3
+E[502] =Cr
+E[500]=1
+if gb_team_id()<=C3
+Dk=C3+1
+else
+Dk=C3
+endif
+JN=gb_agent_status(Dk,Cr)
+endfunc
+func Q9()
+Ld=E[500]
+if Ld
+C3 =E[501]
+if gb_team_id()<=Dk
+Dk=C3+1
+else
+Dk=C3
+endif
+Cr =E[502]
+JV=DU[Dk][Cr]
+H5=JV[B()]
+HT=JV[1]
+Lm=H5-E[503]
+LZ=HT-E[504]
+if M_()
+M5()
+else
+JN=gb_agent_status(Dk,Cr)
+Dm=H5-A5
+BY=HT-x
+E[503]=H5
+E[504]=HT
+endif
+else
+M5()
+endif
+M0()
+endfunc
+func NN()
+DK=9999
+NO()
+if DK>By
+Mk()
+C3=0
+endif
+Ru()
+if DK>B_
+MK()
+C3=0
+endif
+Pl()
+if DK>Bt
+N1()
+C3=0
+endif
+E[503]=A5+Dm
+E[504]=x+BY
+E[501] =C3
+E[502] =Cr
+E[500]=1
+if gb_team_id()<=C3
+Dk=C3+1
+else
+Dk=C3
+endif
+JN=gb_agent_status(Dk,Cr)
+endfunc
+func O3()
+Ld=E[500]
+if Ld
+C3 =E[501]
+if gb_team_id()<=Dk
+Dk=C3+1
+else
+Dk=C3
+endif
+Cr =E[502]
+JV=DU[Dk][Cr]
+H5=JV[B()]
+HT=JV[1]
+Lm=H5-E[503]
+LZ=HT-E[504]
+if M_()
+NN()
+else
+JN=gb_agent_status(Dk,Cr)
+Dm=H5-A5
+BY=HT-x
+E[503]=H5
+E[504]=HT
+endif
+else
+NN()
+endif
+M0()
+endfunc
+func M_()
+if Ds<DE
+return 1
+elif DE<Ay
+return 1
+elif Bs<D9
+return 1
+elif D9<Cz
+return 1
+elif Lm<D
+return 1
+elif Lm>1
+return 1
+elif LZ<D
+return 1
+elif LZ>1
+return 1
+endif
+return B()
+endfunc
+func NX()
+if gb_agent_status(gb_team_id(),B())
+C[B()]=D
+else
+U6()
+if Hu
+O3()
+else
+Q9()
+endif
+if x==1
+T=B()
+S=B()
+elif Kh==1
+L=B()
+H=B()
+endif
+if A5==1
+F=B()
+if Hu
+H=B()
+T=B()
+endif
+elif Mq==1
+U=B()
+if Hu
+S=B()
+L=B()
+endif
+endif
+PD()
+Tu()
+endif
+endfunc
+func VB(Pa)
+if Pa<B()
+return -Qj
+else
+return Qj
+endif
+endfunc
+func Ny()
+if B8>=4
+if B8>=5
+return Q6()
+else
+return UD()
+endif
+elif B8>=2
+if B8>=3
+return QJ()
+else
+return NW()
+endif
+elif B8
+return RC()
+else
+return Os()
+endif
+endfunc
+func Mj()
+LS=RP-F7-1
+Kc=Dp-H0
+LR=H0+ER
+LE =LS*(LS+1)
+NF=LS*(LS-1)
+LB =ER*Dp
+M3=(ER-1)*Dp
+KW =LR*(LR+1)
+Mf=LR*(LR-1)
+LN =(F7+1)*F7
+N9=(F7-1)*F7
+Jd =ER*Dp
+MS=(ER-1)*Dp
+K6 =(Kc-1)*Kc
+Mo=(Kc-1)*(Kc-2)
+endfunc
+func PD()
+if B8>=4
+if B8>=5
+O8()
+TF()
+else
+Qp()
+Ov()
+endif
+elif B8>=2
+if B8>=3
+Rq()
+U1()
+else
+O9()
+Q5()
+endif
+elif B8
+PQ()
+Q4()
+else
+Oq()
+RN()
+endif
+endfunc
+func Mc()
+if BY>B()
+if Ed>B()
+B8=B()
+elif Ed
+if F6>B()
+B8=1
+elif F6
+B8=2
+else
+PZ()
+endif
+else
+Th()
+endif
+elif BY
+if Ed<B()
+B8=3
+elif Ed
+if F6<B()
+B8=4
+elif F6
+B8=5
+else
+OW()
+endif
+else
+SK()
+endif
+elif Ed>B()
+RT()
+else
+PP()
+endif
+endfunc
+func Vu()
+endfunc
+func QY()
+Dm=JO-A5
+BY=ER-x
+Lu()
+Mj()
+Mc()
+endfunc
+func Sw()
+endfunc
+func Tn()
+Lu()
+Mj()
+Mc()
+if Ny()
+Sw()
+return QY()
+endif
+endfunc
+func M0()
+Tn()
+endfunc
+func Lu()
+F8=A5+Dm
+HL=x+BY
+Nv=HL/2
+Rx=(HL+1)/2
+PJ=HL%2
+PO=FF-HL
+NQ=F8+Nv
+Tk=F8-Rx
+F6=NQ-F7
+Ed=Tk-H0
+if PJ
+Lp=AD-F8
+if JN
+JL=1
+JW=1
+JP=1
+JY=1
+JT=1
+JZ=1
+else
+if F8
+if Lp
+else
+JW=1
+JP=1
+JY=1
+endif
+else
+JT=1
+JZ=1
+JL=1
+endif
+endif
+else
+Lp=EZ-F8
+if JN
+JL=1
+JW=1
+JP=1
+JY=1
+JT=1
+JZ=1
+else
+if F8
+if Lp
+else
+JP=1
+endif
+else
+JZ=1
+endif
+if HL
+if PO
+else
+JY=1
+JT=1
+endif
+else
+JL=1
+JW=1
+endif
+endif
+endif
+endfunc
+func Os()
+if F8<JO
+return 1
+endif
+return B()
+endfunc
+func Q6()
+if F8<JO
+return 1
+endif
+return B()
+endfunc
+func QJ()
+if F8>=JO
+return 1
+endif
+return B()
+endfunc
+func NW()
+if F8>=JO
+return 1
+endif
+return B()
+endfunc
+func RC()
+if HL<ER
+return 1
+endif
+return B()
+endfunc
+func UD()
+if HL>=ER
+return 1
+endif
+return B()
+endfunc
+func Th()
+if LE<=LB
+B8=0
+else
+B8=1
+endif
+endfunc
+func Oq()
+AN=BY
+AL=Ed
+A8=F6
+endfunc
+func RN()
+if A8==AN
+F=B()
+T=B()
+S=B()
+U=B()
+if M3<LE
+L=L*2
+else
+L=B()
+endif
+elif A8==AL
+L=B()
+H=B()
+F=B()
+T=B()
+if Mo<LE
+U=U*2
+else
+U=B()
+endif
+elif A8==2
+if JW
+T=B()
+S=B()
+U=B()
+H=B()
+F=B()
+elif JT
+T=B()
+S=B()
+L=B()
+H=B()
+F=B()
+else
+T=B()
+S=B()
+U=B()
+L=B()
+H=B()
+F=B()
+endif
+else
+T=B()
+S=B()
+H=B()
+F=B()
+if AL==AN
+elif AL<AN
+if AN<A8-1
+L=L*2
+else
+U=B()
+endif
+elif AL<A8-1
+U=U*2
+else
+L=B()
+endif
+endif
+endfunc 
+func PZ()
+if LB<=KW
+B8=1
+else
+B8=2
+endif
+endfunc
+func PQ()
+AN=-Ed
+AL=F6
+A8=BY
+endfunc
+func Q4()
+if A8==AN
+T=B()
+S=B()
+U=B()
+L=B()
+if Mf<LB
+H=H*2
+else
+H=B()
+endif
+elif A8==AL
+H=B()
+F=B()
+T=B()
+S=B()
+if NF<LB
+L=L*2
+else
+L=B()
+endif
+elif A8==2
+if JP
+T=B()
+S=B()
+U=B()
+L=B()
+F=B()
+elif JZ
+T=B()
+S=B()
+U=B()
+H=B()
+F=B()
+else
+T=B()
+S=B()
+U=B()
+L=B()
+H=B()
+F=B()
+endif
+else
+S=B()
+U=B()
+F=B()
+T=B()
+if AL==AN
+elif AL<AN
+if AN<A8-1
+H=H*2
+else
+L=B()
+endif
+elif AL<A8-1
+L=L*2
+else
+H=B()
+endif
+endif
+endfunc 
+func PP()
+if KW<=LN
+B8=2
+else
+B8=3
+endif
+endfunc
+func O9()
+AN=-F6
+AL=BY
+A8=-Ed
+endfunc
+func Q5()
+if A8==AN
+S=B()
+U=B()
+L=B()
+H=B()
+if N9<KW
+F=F*2
+else
+F=B()
+endif
+elif A8==AL
+F=B()
+T=B()
+S=B()
+U=B()
+if M3<KW
+H=H*2
+else
+H=B()
+endif
+elif A8==2
+if JY
+T=B()
+S=B()
+U=B()
+L=B()
+H=B()
+elif JL
+T=B()
+S=B()
+U=B()
+L=B()
+F=B()
+else
+T=B()
+S=B()
+U=B()
+L=B()
+H=B()
+F=B()
+endif
+else
+U=B()
+L=B()
+T=B()
+S=B()
+if AL==AN
+elif AL<AN
+if AN<A8-1
+F=F*2
+else
+H=B()
+endif
+elif AL<A8-1
+H=H*2
+else
+F=B()
+endif
+endif
+endfunc 
+func SK()
+if LN<=Jd
+B8=3
+else
+B8=4
+endif
+endfunc
+func Rq()
+AN=-BY
+AL=-Ed
+A8=-F6
+endfunc
+func U1()
+if A8==AN
+U=B()
+L=B()
+H=B()
+F=B()
+if MS<LN
+T=T*2
+else
+T=B()
+endif
+elif A8==AL
+T=B()
+S=B()
+U=B()
+L=B()
+if Mf<LN
+F=F*2
+else
+F=B()
+endif
+elif A8==2
+if JT
+S=B()
+U=B()
+L=B()
+H=B()
+F=B()
+elif JW
+T=B()
+S=B()
+U=B()
+L=B()
+H=B()
+else
+T=B()
+S=B()
+U=B()
+L=B()
+H=B()
+F=B()
+endif
+else
+L=B()
+H=B()
+S=B()
+U=B()
+if AL==AN
+elif AL<AN
+if AN<A8-1
+T=T*2
+else
+F=B()
+endif
+elif AL<A8-1
+F=F*2
+else
+T=B()
+endif
+endif
+endfunc 
+func OW()
+if Jd<=K6
+B8=4
+else
+B8=5
+endif
+endfunc
+func Qp()
+AN=Ed
+AL=-F6
+A8=-BY
+endfunc
+func Ov()
+if A8==AN
+L=B()
+H=B()
+F=B()
+T=B()
+if Mo<Jd
+S=S*2
+else
+S=B()
+endif
+elif A8==AL
+S=B()
+U=B()
+L=B()
+H=B()
+if N9<Jd
+T=T*2
+else
+T=B()
+endif
+elif A8==2
+if JZ
+T=B()
+U=B()
+L=B()
+H=B()
+F=B()
+elif JP
+S=B()
+U=B()
+L=B()
+H=B()
+F=B()
+else
+T=B()
+S=B()
+U=B()
+L=B()
+H=B()
+F=B()
+endif
+else
+H=B()
+F=B()
+U=B()
+L=B()
+if AL==AN
+elif AL<AN
+if AN<A8-1
+S=S*2
+else
+T=B()
+endif
+elif AL<A8-1
+T=T*2
+else
+S=B()
+endif
+endif
+endfunc 
+func RT()
+if K6<=LE
+B8=5
+else
+B8=0
+endif
+endfunc
+func O8()
+AN=F6
+AL=-BY
+A8=Ed
+endfunc
+func TF()
+if A8==AN
+H=B()
+F=B()
+T=B()
+S=B()
+if NF<K6
+U=U*2
+else
+U=B()
+endif
+elif A8==AL
+U=B()
+L=B()
+H=B()
+F=B()
+if MS<K6
+S=S*2
+else
+S=B()
+endif
+elif A8==2
+if JL
+T=B()
+S=B()
+L=B()
+H=B()
+F=B()
+elif JY
+T=B()
+U=B()
+L=B()
+H=B()
+F=B()
+else
+T=B()
+S=B()
+U=B()
+L=B()
+H=B()
+F=B()
+endif
+else
+F=B()
+T=B()
+L=B()
+H=B()
+if AL==AN
+elif AL<AN
+if AN<A8-1
+U=U*2
+else
+S=B()
+endif
+elif AL<A8-1
+S=S*2
+else
+U=B()
+endif
+endif
+endfunc 
+func Tw()
+if JU
+Tf=B()
+else
+Tf=E[600]
+endif
+P_()
+endfunc
+func Sb()
+QN()
+UN()
+endfunc
+func MB()
+Tw()
+Sb()
+endfunc
+func UR() 
+return 1 
+endfunc 
+func WD() 
+endfunc 
+func P_() 
+endfunc 
+func QN() 
+if Fh<=FE+2 
+if Fh==FE 
+j=B() 
+if BQ 
+R=B() 
+endif 
+else 
+j=j/3 
+R=R/3 
+endif 
+f=f*3/2 
+Y=Y*3/2 
+elif Fh>=FP-2 
+if Fh==FP 
+Y=B() 
+if Lc 
+f=B() 
+endif 
+else 
+f=f/3 
+Y=Y/3 
+endif 
+j=j*3/2 
+R=R*3/2 
+endif 
+if Fe<=FU+2 
+if Fe==FU 
+V=B() 
+if BQ 
+R=B() 
+endif 
+else 
+V=V/3 
+R=R/3 
+endif 
+f=f*3/2 
+n=n*3/2 
+elif Fe>=FV-2 
+if Fe==FV 
+n=B() 
+if Lc 
+f=B() 
+endif 
+else 
+f=f/3 
+n=n/3 
+endif 
+V=V*3/2 
+R=R*3/2 
+endif 
+Rd() 
+PL() 
+Ob() 
+RW() 
+Tq() 
+Qc() 
+endfunc 
+func Rd() 
+if Mn 
+j=j*4/3 
+elif Bo==gb_team_id() 
+j=j/3 
+endif 
+OD() 
+endfunc 
+func Ma() 
+if E[D1] & 2 
+else 
+j=B() 
+endif 
+endfunc 
+func U8() 
+if D5 
+elif DZ 
+else 
+Ma() 
+endif 
+endfunc 
+func Vz() 
+if D5<AD 
+elif DZ 
+else 
+Ma() 
+endif 
+endfunc 
+func PL() 
+if Lz 
+n=n*4/3 
+elif Bf==gb_team_id() 
+n=n/3 
+endif 
+RM() 
+endfunc 
+func M1() 
+if E[FZ] & 2 
+else 
+n=B() 
+endif 
+endfunc 
+func W3() 
+if DD 
+elif DZ 
+else 
+M1() 
+endif 
+endfunc 
+func QB() 
+if DD<AD 
+elif DZ 
+else 
+M1() 
+endif 
+endfunc 
+func Ob() 
+if Rz 
+f=f*4/3 
+elif DP==gb_team_id() 
+f=f/3 
+endif 
+SO() 
+endfunc 
+func MO() 
+if E[H4] & 2 
+else 
+f=B() 
+endif 
+endfunc 
+func Vt() 
+if Dn 
+elif DZ 
+MO() 
+else 
+endif 
+endfunc 
+func T5() 
+if Dn<AD 
+elif DZ 
+MO() 
+else 
+endif 
+endfunc 
+func RW() 
+if M6 
+Y=Y*4/3 
+elif Bm==gb_team_id() 
+Y=Y/3 
+endif 
+Nz() 
+endfunc 
+func M2() 
+if E[Bw] & 2 
+else 
+Y=B() 
+endif 
+endfunc 
+func Vh() 
+if E4 
+elif DZ 
+else 
+M2() 
+endif 
+endfunc 
+func Q7() 
+if E4<AD 
+elif DZ 
+else 
+M2() 
+endif 
+endfunc 
+func Tq() 
+if N8 
+V=V*4/3 
+elif Bd==gb_team_id() 
+V=V/3 
+endif 
+Rb() 
+endfunc 
+func M9() 
+if E[DJ] & 2 
+else 
+V=B() 
+endif 
+endfunc 
+func Nn() 
+if D0 
+elif DZ 
+else 
+M9() 
+endif 
+endfunc 
+func Uc() 
+if D0<AD 
+elif DZ 
+else 
+M9() 
+endif 
+endfunc 
+func Qc() 
+if Rm 
+R=R*4/3 
+elif DN==gb_team_id() 
+R=R/3 
+endif 
+RU() 
+endfunc 
+func Lv() 
+if E[Be] & 2 
+else 
+R=B() 
+endif 
+endfunc 
+func Nr() 
+if AS 
+elif DZ 
+Lv() 
+else 
+endif 
+endfunc 
+func V3() 
+if AS<AD 
+elif DZ 
+Lv() 
+else 
+endif 
+endfunc 
+func OD() 
+U8() 
+endfunc 
+func RM() 
+QB() 
+endfunc 
+func SO() 
+T5() 
+endfunc 
+func Nz() 
+Q7() 
+endfunc 
+func Rb() 
+Nn() 
+endfunc 
+func RU() 
+Nr() 
+endfunc 
+func UN() 
+if AH 
+if KP 
+KF=E[630] 
+else 
+KF=1 
+endif 
+else 
+KF=0 
+endif 
+E[630]=KF 
+if u>=6 
+if KF 
+j=j*3 
+n=n*3 
+f=f*3 
+else 
+Y=Y*3 
+V=V*3 
+R=R*3 
+endif 
+endif 
+endfunc 
+func O7()
+if JM
+QC=B()
+else
+QC=E[700]
+endif
+RY()
+endfunc
+func Tt()
+Sv()
+Rn()
+endfunc
+func Mz()
+O7()
+Tt()
+endfunc
+func WJ() 
+return 1 
+endfunc 
+func V9() 
+endfunc 
+func RY() 
+endfunc 
+func Sv() 
+if Fc<=FE+2 
+if Fc==FE 
+l=B() 
+if BM 
+Q=B() 
+endif 
+else 
+l=l/3 
+Q=Q/3 
+endif 
+e=e*3/2 
+a=a*3/2 
+elif Fc>=FP-2 
+if Fc==FP 
+a=B() 
+if Lj 
+e=B() 
+endif 
+else 
+e=e/3 
+a=a/3 
+endif 
+l=l*3/2 
+Q=Q*3/2 
+endif 
+if Ff<=FU+2 
+if Ff==FU 
+X=B() 
+if BM 
+Q=B() 
+endif 
+else 
+X=X/3 
+Q=Q/3 
+endif 
+e=e*3/2 
+m=m*3/2 
+elif Ff>=FV-2 
+if Ff==FV 
+m=B() 
+if Lj 
+e=B() 
+endif 
+else 
+e=e/3 
+m=m/3 
+endif 
+X=X*3/2 
+Q=Q*3/2 
+endif 
+Oj() 
+Rj() 
+Pb() 
+T4() 
+PN() 
+Sj() 
+endfunc 
+func Oj() 
+if ML 
+l=l*4/3 
+elif Bn==gb_team_id() 
+l=l/3 
+endif 
+N_() 
+endfunc 
+func MD() 
+if E[DH] & 2 
+else 
+l=B() 
+endif 
+endfunc 
+func Tz() 
+if DA 
+elif Df 
+else 
+MD() 
+endif 
+endfunc 
+func VQ() 
+if DA<AD 
+elif Df 
+else 
+MD() 
+endif 
+endfunc 
+func Rj() 
+if My 
+m=m*4/3 
+elif Bb==gb_team_id() 
+m=m/3 
+endif 
+Nh() 
+endfunc 
+func N3() 
+if E[FW] & 2 
+else 
+m=B() 
+endif 
+endfunc 
+func W4() 
+if D2 
+elif Df 
+else 
+N3() 
+endif 
+endfunc 
+func RB() 
+if D2<AD 
+elif Df 
+else 
+N3() 
+endif 
+endfunc 
+func Pb() 
+if Oa 
+e=e*4/3 
+elif DR==gb_team_id() 
+e=e/3 
+endif 
+QA() 
+endfunc 
+func N4() 
+if E[H6] & 2 
+else 
+e=B() 
+endif 
+endfunc 
+func Vn() 
+if Do 
+elif Df 
+N4() 
+else 
+endif 
+endfunc 
+func Ow() 
+if Do<AD 
+elif Df 
+N4() 
+else 
+endif 
+endfunc 
+func T4() 
+if Mh 
+a=a*4/3 
+elif Bk==gb_team_id() 
+a=a/3 
+endif 
+OP() 
+endfunc 
+func MT() 
+if E[Bx] & 2 
+else 
+a=B() 
+endif 
+endfunc 
+func Va() 
+if D_ 
+elif Df 
+else 
+MT() 
+endif 
+endfunc 
+func Nx() 
+if D_<AD 
+elif Df 
+else 
+MT() 
+endif 
+endfunc 
+func PN() 
+if MW 
+X=X*4/3 
+elif Ba==gb_team_id() 
+X=X/3 
+endif 
+NT() 
+endfunc 
+func Ly() 
+if E[DM] & 2 
+else 
+X=B() 
+endif 
+endfunc 
+func OY() 
+if DF 
+elif Df 
+else 
+Ly() 
+endif 
+endfunc 
+func WK() 
+if DF<AD 
+elif Df 
+else 
+Ly() 
+endif 
+endfunc 
+func Sj() 
+if Q3 
+Q=Q*4/3 
+elif DO==gb_team_id() 
+Q=Q/3 
+endif 
+Sz() 
+endfunc 
+func N7() 
+if E[Bl] & 2 
+else 
+Q=B() 
+endif 
+endfunc 
+func SR() 
+if AU 
+elif Df 
+N7() 
+else 
+endif 
+endfunc 
+func VZ() 
+if AU<AD 
+elif Df 
+N7() 
+else 
+endif 
+endfunc 
+func N_() 
+Tz() 
+endfunc 
+func Nh() 
+RB() 
+endfunc 
+func QA() 
+Ow() 
+endfunc 
+func OP() 
+Nx() 
+endfunc 
+func NT() 
+OY() 
+endfunc 
+func Sz() 
+SR() 
+endfunc 
+func Rn() 
+if AF 
+if Ju 
+Je=E[730] 
+else 
+Je=1 
+endif 
+else 
+Je=0 
+endif 
+E[730]=Je 
+if s>=6 
+if Je 
+l=l*3 
+m=m*3 
+e=e*3 
+else 
+a=a*3 
+X=X*3 
+Q=Q*3 
+endif 
+endif 
+endfunc 
+func Pe()
+if Ja
+TY=B()
+else
+TY=E[800]
+endif
+Ty()
+endfunc
+func UJ()
+SA()
+QQ()
+endfunc
+func Mt()
+Pe()
+UJ()
+endfunc
+func VY() 
+return 1 
+endfunc 
+func WH() 
+endfunc 
+func Ty() 
+endfunc 
+func SA() 
+if Fj<=FE+2 
+if Fj==FE 
+o=B() 
+if BW 
+P=B() 
+endif 
+else 
+o=o/3 
+P=P/3 
+endif 
+h=h*3/2 
+Z=Z*3/2 
+elif Fj>=FP-2 
+if Fj==FP 
+Z=B() 
+if Ln 
+h=B() 
+endif 
+else 
+h=h/3 
+Z=Z/3 
+endif 
+o=o*3/2 
+P=P*3/2 
+endif 
+if Fb<=FU+2 
+if Fb==FU 
+W=B() 
+if BW 
+P=B() 
+endif 
+else 
+W=W/3 
+P=P/3 
+endif 
+h=h*3/2 
+k=k*3/2 
+elif Fb>=FV-2 
+if Fb==FV 
+k=B() 
+if Ln 
+h=B() 
+endif 
+else 
+h=h/3 
+k=k/3 
+endif 
+W=W*3/2 
+P=P*3/2 
+endif 
+R8() 
+T7() 
+TD() 
+P5() 
+NZ() 
+Qq() 
+endfunc 
+func R8() 
+if ME 
+o=o*4/3 
+elif Bp==gb_team_id() 
+o=o/3 
+endif 
+RV() 
+endfunc 
+func Mp() 
+if E[D3] & 2 
+else 
+o=B() 
+endif 
+endfunc 
+func PW() 
+if D7 
+elif DV 
+else 
+Mp() 
+endif 
+endfunc 
+func VK() 
+if D7<AD 
+elif DV 
+else 
+Mp() 
+endif 
+endfunc 
+func T7() 
+if M7 
+k=k*4/3 
+elif Bc==gb_team_id() 
+k=k/3 
+endif 
+QL() 
+endfunc 
+func MY() 
+if E[FX] & 2 
+else 
+k=B() 
+endif 
+endfunc 
+func Vv() 
+if D4 
+elif DV 
+else 
+MY() 
+endif 
+endfunc 
+func Nq() 
+if D4<AD 
+elif DV 
+else 
+MY() 
+endif 
+endfunc 
+func TD() 
+if SF 
+h=h*4/3 
+elif DQ==gb_team_id() 
+h=h/3 
+endif 
+R4() 
+endfunc 
+func M4() 
+if E[Ft] & 2 
+else 
+h=B() 
+endif 
+endfunc 
+func V1() 
+if Dq 
+elif DV 
+M4() 
+else 
+endif 
+endfunc 
+func UK() 
+if Dq<AD 
+elif DV 
+M4() 
+else 
+endif 
+endfunc 
+func P5() 
+if MN 
+Z=Z*4/3 
+elif BZ==gb_team_id() 
+Z=Z/3 
+endif 
+TP() 
+endfunc 
+func MX() 
+if E[Bu] & 2 
+else 
+Z=B() 
+endif 
+endfunc 
+func Uu() 
+if Dz 
+elif DV 
+else 
+MX() 
+endif 
+endfunc 
+func SY() 
+if Dz<AD 
+elif DV 
+else 
+MX() 
+endif 
+endfunc 
+func NZ() 
+if NE 
+W=W*4/3 
+elif Bj==gb_team_id() 
+W=W/3 
+endif 
+Qv() 
+endfunc 
+func Mb() 
+if E[DL] & 2 
+else 
+W=B() 
+endif 
+endfunc 
+func OS() 
+if D6 
+elif DV 
+else 
+Mb() 
+endif 
+endfunc 
+func Uy() 
+if D6<AD 
+elif DV 
+else 
+Mb() 
+endif 
+endfunc 
+func Qq() 
+if TJ 
+P=P*4/3 
+elif DS==gb_team_id() 
+P=P/3 
+endif 
+Q2() 
+endfunc 
+func N2() 
+if E[Bh] & 2 
+else 
+P=B() 
+endif 
+endfunc 
+func R5() 
+if AX 
+elif DV 
+N2() 
+else 
+endif 
+endfunc 
+func VT() 
+if AX<AD 
+elif DV 
+N2() 
+else 
+endif 
+endfunc 
+func RV() 
+PW() 
+endfunc 
+func QL() 
+Nq() 
+endfunc 
+func R4() 
+UK() 
+endfunc 
+func TP() 
+SY() 
+endfunc 
+func Qv() 
+OS() 
+endfunc 
+func Q2() 
+R5() 
+endfunc 
+func QQ() 
+if AE 
+if L8 
+L1=E[830] 
+else 
+L1=1 
+endif 
+else 
+L1=0 
+endif 
+E[830]=L1 
+if t>=6 
+if L1 
+o=o*3 
+k=k*3 
+h=h*3 
+else 
+Z=Z*3 
+W=W*3 
+P=P*3 
+endif 
+endif 
+endfunc 
+func Me() 
+JF=LT[JS][1] 
+E[JF]=E[JF]|2 
+if L2>JF 
+L2=JF 
+elif Le<JF 
+Le=JF 
+endif 
+endfunc 
+func QO() 
+KD =E[901 ] 
+LQ =E[902 ] 
+KU =E[903 ] 
+Jw =E[904 ] 
+J_ =E[905 ] 
+Ks =E[906 ] 
+Jf =E[907 ] 
+KY =E[908 ] 
+Lx=E[909] 
+Mw=E[910] 
+MA=E[911] 
+NA=E[912] 
+FE=E[913 ] 
+FP=E[914 ] 
+FU=E[915 ] 
+FV=E[916 ] 
+endfunc 
+func QD() 
+KD=LJ 
+LQ=EZ+((Le+1)/2) 
+KU=Lt+ER 
+Jw=L2/2 
+J_=Lt 
+Ks=EZ-(L2/2) 
+Jf=LJ-ER 
+KY=-(Le+1)/2 
+if KD<=Jw 
+Lx=1 
+FE=KD 
+else 
+FE=Jw 
+endif 
+if J_>=Ks 
+Mw=1 
+FV=J_ 
+else 
+FV=Ks 
+endif 
+if KU>=LQ 
+MA=1 
+FP=KU 
+else 
+FP=LQ 
+endif 
+if Jf<=KY 
+NA=1 
+FU=Jf 
+else 
+FU=KY 
+endif 
+E[901 ]=KD 
+E[902 ]=LQ 
+E[903 ]=KU 
+E[904 ]=Jw 
+E[905 ]=J_ 
+E[906 ]=Ks 
+E[907 ]=Jf 
+E[908 ]=KY 
+E[909]=Lx 
+E[910]=Mw 
+E[911]=MA 
+E[912]=NA 
+E[913]=FE 
+E[914]=FP 
+E[915]=FU 
+E[916]=FV 
+endfunc 
+func UA() 
+LT=gb_gate_positions() 
+JS=$LT 
+LJ=9999 
+L2=9999 
+while JS 
+JS=JS-1 
+Fd=LT[JS][B()] 
+if Fd 
+if Fd<AD 
+E[Fd]=E[Fd]|1 
+if LJ>Fd 
+LJ=Fd 
+elif Lt<Fd 
+Lt=Fd 
+endif 
+else 
+Me() 
+endif 
+else 
+Me() 
+endif 
+endwhile 
+QD() 
+endfunc 
+func UH(O,N) 
+JH=O 
+Hq=N 
+Bv=gb_hexel_owner(O,N) 
+if Bv>=B() 
+if Bv==gb_team_id() 
+T=1921 
+else 
+T=1920 
+endif 
+elif Bv==D 
+T=1920 
+else 
+T=B() 
+endif 
+Jb=A[N][O] 
+if (EE & 1) 
+DB=B() 
+elif (EE & 2 ) 
+DB=DB/2 
+endif 
+Pt=1 
+Bq=Bv 
+S=T 
+JR=Jb 
+T1=1 
+endfunc 
+func V7(O,N) 
+J7=O 
+Ht=N 
+Bq=gb_hexel_owner(O,N) 
+if Bq>=B() 
+if Bq==gb_team_id() 
+S=1921 
+else 
+S=1920 
+endif 
+elif Bq==D 
+S=1920 
+else 
+S=B() 
+endif 
+JR=A[N][O] 
+if (EE & 1) 
+DB=B() 
+elif (EE & 2 ) 
+DB=DB/2 
+endif 
+T1=1 
+Bv=Bq 
+T=S 
+Jb=JR 
+Pt=1 
+endfunc 
+func Sl(O,N) 
+KV=O 
+Jm=N 
+De=gb_hexel_owner(O,N) 
+if De>=B() 
+if De==gb_team_id() 
+U=1921 
+else 
+U=1920 
+endif 
+elif De==D 
+U=1920 
+else 
+U=B() 
+endif 
+Lq=A[N][O] 
+if (EE & 1) 
+DB=B() 
+elif (EE & 2 ) 
+DB=DB/2 
+endif 
+Vo=1 
+endfunc 
+func Om(O,N) 
+FC=O 
+FK=N 
+Br=gb_hexel_owner(O,N) 
+if Br>=B() 
+if Br==gb_team_id() 
+L=1921 
+else 
+L=1920 
+endif 
+elif Br==D 
+L=1920 
+else 
+L=B() 
+endif 
+JX=A[N][O] 
+if (EE & 1) 
+DB=B() 
+elif (EE & 2 ) 
+DB=DB/2 
+endif 
+TL=1 
+Bz=Br 
+H=L 
+JQ=JX 
+OE=1 
+endfunc 
+func Uq(O,N) 
+E3=O 
+Dr=N 
+Bz=gb_hexel_owner(O,N) 
+if Bz>=B() 
+if Bz==gb_team_id() 
+H=1921 
+else 
+H=1920 
+endif 
+elif Bz==D 
+H=1920 
+else 
+H=B() 
+endif 
+JQ=A[N][O] 
+if (EE & 1) 
+DB=B() 
+elif (EE & 2 ) 
+DB=DB/2 
+endif 
+OE=1 
+Br=Bz 
+L=H 
+JX=JQ 
+TL=1 
+endfunc 
+func Rf(O,N) 
+Cx=O 
+Ct=N 
+DY=gb_hexel_owner(O,N) 
+if DY>=B() 
+if DY==gb_team_id() 
+F=1921 
+else 
+F=1920 
+endif 
+elif DY==D 
+F=1920 
+else 
+F=B() 
+endif 
+Lk=A[N][O] 
+if (EE & 1) 
+DB=B() 
+elif (EE & 2 ) 
+DB=DB/2 
+endif 
+VW=1 
+endfunc 
+func T_() 
+if K5 
+JH=Dh
+Hq=Cz
+Bv=M
+T =B()
+v=v+1
+Ab=Ab+1
+Av=Av+1
+B0=B0+1
+J7=DW
+Ht=Fa
+Bq=M
+S =B()
+v=v+1
+Av=Av+1
+BF=BF+1
+Ab=Ab+1
+elif E[A5]&1 
+UH(A5,FF) 
+else 
+JH=Dh
+Hq=Cz
+Bv=M
+T =B()
+v=v+1
+Ab=Ab+1
+Av=Av+1
+B0=B0+1
+J7=DW
+Ht=Fa
+Bq=M
+S =B()
+v=v+1
+Av=Av+1
+BF=BF+1
+Ab=Ab+1
+endif 
+endfunc 
+func O2() 
+if K5 
+FC=Ee
+FK=Bs
+Br=M
+L =B()
+v=v+1
+Az=Az+1
+BD=BD+1
+BF=BF+1
+E3=DT
+Dr=Dl
+Bz=M
+H =B()
+v=v+1
+BD=BD+1
+B0=B0+1
+Az=Az+1
+elif E[A5]&1 
+Om(A5,0) 
+else 
+FC=Ee
+FK=Bs
+Br=M
+L =B()
+v=v+1
+Az=Az+1
+BD=BD+1
+BF=BF+1
+E3=DT
+Dr=Dl
+Bz=M
+H =B()
+v=v+1
+BD=BD+1
+B0=B0+1
+Az=Az+1
+endif 
+endfunc 
+func NP() 
+if K5 
+Cx=Ay
+Ct=C0
+DY=M
+F =B()
+v=v+1
+B0=B0+1
+Ab=Ab+1
+BD=BD+1
+elif E[x]&2 
+Rf(LU,x) 
+else 
+Cx=Ay
+Ct=C0
+DY=M
+F =B()
+v=v+1
+B0=B0+1
+Ab=Ab+1
+BD=BD+1
+endif 
+endfunc 
+func S3() 
+if K5 
+KV=Ds
+Jm=J5
+De=M
+U =B()
+v=v+1
+BF=BF+1
+Az=Az+1
+Av=Av+1
+elif E[x]&2 
+Sl(B(),x) 
+else 
+KV=Ds
+Jm=J5
+De=M
+U =B()
+v=v+1
+BF=BF+1
+Az=Az+1
+Av=Av+1
+endif 
+endfunc 
+func TB(O,N) 
+Hd=O 
+Hb=N 
+Bo=gb_hexel_owner(O,N) 
+if Bo>=B() 
+if Bo==gb_team_id() 
+j=1400 
+else 
+j=2048 
+endif 
+elif Bo==D 
+j=1920 
+else 
+j=B() 
+endif 
+J9=A[N][O] 
+if (DC & 3) 
+AM=B() 
+elif (DC & 4 ) 
+AM=AM*4/5 
+elif (DC & 8 ) 
+AM=AM*2/3 
+endif 
+Lz=1 
+Bf=Bo 
+n=j 
+J4=J9 
+Mn=1 
+endfunc 
+func Uz(O,N) 
+Hz=O 
+Hp=N 
+Bf=gb_hexel_owner(O,N) 
+if Bf>=B() 
+if Bf==gb_team_id() 
+n=1400 
+else 
+n=2048 
+endif 
+elif Bf==D 
+n=1920 
+else 
+n=B() 
+endif 
+J4=A[N][O] 
+if (DC & 3) 
+AM=B() 
+elif (DC & 4 ) 
+AM=AM*4/5 
+elif (DC & 8 ) 
+AM=AM*2/3 
+endif 
+Mn=1 
+Bo=Bf 
+j=n 
+J9=J4 
+Lz=1 
+endfunc 
+func UM(O,N) 
+LD=O 
+Jc=N 
+DP=gb_hexel_owner(O,N) 
+if DP>=B() 
+if DP==gb_team_id() 
+f=1400 
+else 
+f=2048 
+endif 
+elif DP==D 
+f=1920 
+else 
+f=B() 
+endif 
+K1=A[N][O] 
+if (DC & 3) 
+AM=B() 
+elif (DC & 4 ) 
+AM=AM*4/5 
+elif (DC & 8 ) 
+AM=AM*2/3 
+endif 
+Rz=1 
+endfunc 
+func Nt(O,N) 
+FM=O 
+FN=N 
+Bm=gb_hexel_owner(O,N) 
+if Bm>=B() 
+if Bm==gb_team_id() 
+Y=1400 
+else 
+Y=2048 
+endif 
+elif Bm==D 
+Y=1920 
+else 
+Y=B() 
+endif 
+Hj=A[N][O] 
+if (DC & 3) 
+AM=B() 
+elif (DC & 4 ) 
+AM=AM*4/5 
+elif (DC & 8 ) 
+AM=AM*2/3 
+endif 
+N8=1 
+Bd=Bm 
+V=Y 
+Hs=Hj 
+M6=1 
+endfunc 
+func Us(O,N) 
+E0=O 
+Dy=N 
+Bd=gb_hexel_owner(O,N) 
+if Bd>=B() 
+if Bd==gb_team_id() 
+V=1400 
+else 
+V=2048 
+endif 
+elif Bd==D 
+V=1920 
+else 
+V=B() 
+endif 
+Hs=A[N][O] 
+if (DC & 3) 
+AM=B() 
+elif (DC & 4 ) 
+AM=AM*4/5 
+elif (DC & 8 ) 
+AM=AM*2/3 
+endif 
+M6=1 
+Bm=Bd 
+Y=V 
+Hj=Hs 
+N8=1 
+endfunc 
+func Rt(O,N) 
+Cq=O 
+Cv=N 
+DN=gb_hexel_owner(O,N) 
+if DN>=B() 
+if DN==gb_team_id() 
+R=1400 
+else 
+R=2048 
+endif 
+elif DN==D 
+R=1920 
+else 
+R=B() 
+endif 
+KH=A[N][O] 
+if (DC & 3) 
+AM=B() 
+elif (DC & 4 ) 
+AM=AM*4/5 
+elif (DC & 8 ) 
+AM=AM*2/3 
+endif 
+Rm=1 
+endfunc 
+func P1() 
+if JU 
+Hd=D5
+Hb=D1
+Bo=M
+j =B()
+u=u+1
+B4=B4+1
+Ak=Ak+1
+BC=BC+1
+Hz=DD
+Hp=FZ
+Bf=M
+n =B()
+u=u+1
+Ak=Ak+1
+Am=Am+1
+B4=B4+1
+elif E[BQ]&1 
+TB(BQ,FF) 
+else 
+Hd=D5
+Hb=D1
+Bo=M
+j =B()
+u=u+1
+B4=B4+1
+Ak=Ak+1
+BC=BC+1
+Hz=DD
+Hp=FZ
+Bf=M
+n =B()
+u=u+1
+Ak=Ak+1
+Am=Am+1
+B4=B4+1
+endif 
+endfunc 
+func Ro() 
+if JU 
+FM=E4
+FN=Bw
+Bm=M
+Y =B()
+u=u+1
+B7=B7+1
+Af=Af+1
+Am=Am+1
+E0=D0
+Dy=DJ
+Bd=M
+V =B()
+u=u+1
+Af=Af+1
+BC=BC+1
+B7=B7+1
+elif E[BQ]&1 
+Nt(BQ,0) 
+else 
+FM=E4
+FN=Bw
+Bm=M
+Y =B()
+u=u+1
+B7=B7+1
+Af=Af+1
+Am=Am+1
+E0=D0
+Dy=DJ
+Bd=M
+V =B()
+u=u+1
+Af=Af+1
+BC=BC+1
+B7=B7+1
+endif 
+endfunc 
+func Pu() 
+if JU 
+Cq=AS
+Cv=Be
+DN=M
+R =B()
+u=u+1
+BC=BC+1
+B4=B4+1
+Af=Af+1
+elif E[AH]&2 
+Rt(Lh,AH) 
+else 
+Cq=AS
+Cv=Be
+DN=M
+R =B()
+u=u+1
+BC=BC+1
+B4=B4+1
+Af=Af+1
+endif 
+endfunc 
+func O1() 
+if JU 
+LD=Dn
+Jc=H4
+DP=M
+f =B()
+u=u+1
+Am=Am+1
+B7=B7+1
+Ak=Ak+1
+elif E[AH]&2 
+UM(B(),AH) 
+else 
+LD=Dn
+Jc=H4
+DP=M
+f =B()
+u=u+1
+Am=Am+1
+B7=B7+1
+Ak=Ak+1
+endif 
+endfunc 
+func Pw(O,N) 
+Hc=O 
+J1=N 
+Bn=gb_hexel_owner(O,N) 
+if Bn>=B() 
+if Bn==gb_team_id() 
+l=1400 
+else 
+l=2048 
+endif 
+elif Bn==D 
+l=1920 
+else 
+l=B() 
+endif 
+Hy=A[N][O] 
+if (D8 & 3) 
+AK=B() 
+elif (D8 & 4 ) 
+AK=AK*4/5 
+elif (D8 & 8 ) 
+AK=AK*2/3 
+endif 
+My=1 
+Bb=Bn 
+m=l 
+Ha=Hy 
+ML=1 
+endfunc 
+func UT(O,N) 
+Hf=O 
+JC=N 
+Bb=gb_hexel_owner(O,N) 
+if Bb>=B() 
+if Bb==gb_team_id() 
+m=1400 
+else 
+m=2048 
+endif 
+elif Bb==D 
+m=1920 
+else 
+m=B() 
+endif 
+Ha=A[N][O] 
+if (D8 & 3) 
+AK=B() 
+elif (D8 & 4 ) 
+AK=AK*4/5 
+elif (D8 & 8 ) 
+AK=AK*2/3 
+endif 
+ML=1 
+Bn=Bb 
+l=m 
+Hy=Ha 
+My=1 
+endfunc 
+func Qa(O,N) 
+K7=O 
+Jx=N 
+DR=gb_hexel_owner(O,N) 
+if DR>=B() 
+if DR==gb_team_id() 
+e=1400 
+else 
+e=2048 
+endif 
+elif DR==D 
+e=1920 
+else 
+e=B() 
+endif 
+Ky=A[N][O] 
+if (D8 & 3) 
+AK=B() 
+elif (D8 & 4 ) 
+AK=AK*4/5 
+elif (D8 & 8 ) 
+AK=AK*2/3 
+endif 
+Oa=1 
+endfunc 
+func Rh(O,N) 
+FY=O 
+FD=N 
+Bk=gb_hexel_owner(O,N) 
+if Bk>=B() 
+if Bk==gb_team_id() 
+a=1400 
+else 
+a=2048 
+endif 
+elif Bk==D 
+a=1920 
+else 
+a=B() 
+endif 
+Ho=A[N][O] 
+if (D8 & 3) 
+AK=B() 
+elif (D8 & 4 ) 
+AK=AK*4/5 
+elif (D8 & 8 ) 
+AK=AK*2/3 
+endif 
+MW=1 
+Ba=Bk 
+X=a 
+JD=Ho 
+Mh=1 
+endfunc 
+func US(O,N) 
+Du=O 
+Dt=N 
+Ba=gb_hexel_owner(O,N) 
+if Ba>=B() 
+if Ba==gb_team_id() 
+X=1400 
+else 
+X=2048 
+endif 
+elif Ba==D 
+X=1920 
+else 
+X=B() 
+endif 
+JD=A[N][O] 
+if (D8 & 3) 
+AK=B() 
+elif (D8 & 4 ) 
+AK=AK*4/5 
+elif (D8 & 8 ) 
+AK=AK*2/3 
+endif 
+Mh=1 
+Bk=Ba 
+a=X 
+Ho=JD 
+MW=1 
+endfunc 
+func Sp(O,N) 
+Cm=O 
+Cy=N 
+DO=gb_hexel_owner(O,N) 
+if DO>=B() 
+if DO==gb_team_id() 
+Q=1400 
+else 
+Q=2048 
+endif 
+elif DO==D 
+Q=1920 
+else 
+Q=B() 
+endif 
+Kd=A[N][O] 
+if (D8 & 3) 
+AK=B() 
+elif (D8 & 4 ) 
+AK=AK*4/5 
+elif (D8 & 8 ) 
+AK=AK*2/3 
+endif 
+Q3=1 
+endfunc 
+func T2() 
+if JM 
+Hc=DA
+J1=DH
+Bn=M
+l =B()
+s=s+1
+Ad=Ad+1
+An=An+1
+Aa=Aa+1
+Hf=D2
+JC=FW
+Bb=M
+m =B()
+s=s+1
+An=An+1
+Ae=Ae+1
+Ad=Ad+1
+elif E[BM]&1 
+Pw(BM,FF) 
+else 
+Hc=DA
+J1=DH
+Bn=M
+l =B()
+s=s+1
+Ad=Ad+1
+An=An+1
+Aa=Aa+1
+Hf=D2
+JC=FW
+Bb=M
+m =B()
+s=s+1
+An=An+1
+Ae=Ae+1
+Ad=Ad+1
+endif 
+endfunc 
+func OC() 
+if JM 
+FY=D_
+FD=Bx
+Bk=M
+a =B()
+s=s+1
+Au=Au+1
+B1=B1+1
+Ae=Ae+1
+Du=DF
+Dt=DM
+Ba=M
+X =B()
+s=s+1
+B1=B1+1
+Aa=Aa+1
+Au=Au+1
+elif E[BM]&1 
+Rh(BM,0) 
+else 
+FY=D_
+FD=Bx
+Bk=M
+a =B()
+s=s+1
+Au=Au+1
+B1=B1+1
+Ae=Ae+1
+Du=DF
+Dt=DM
+Ba=M
+X =B()
+s=s+1
+B1=B1+1
+Aa=Aa+1
+Au=Au+1
+endif 
+endfunc 
+func TV() 
+if JM 
+Cm=AU
+Cy=Bl
+DO=M
+Q =B()
+s=s+1
+Aa=Aa+1
+Ad=Ad+1
+B1=B1+1
+elif E[AF]&2 
+Sp(Lf,AF) 
+else 
+Cm=AU
+Cy=Bl
+DO=M
+Q =B()
+s=s+1
+Aa=Aa+1
+Ad=Ad+1
+B1=B1+1
+endif 
+endfunc 
+func Qk() 
+if JM 
+K7=Do
+Jx=H6
+DR=M
+e =B()
+s=s+1
+Ae=Ae+1
+Au=Au+1
+An=An+1
+elif E[AF]&2 
+Qa(B(),AF) 
+else 
+K7=Do
+Jx=H6
+DR=M
+e =B()
+s=s+1
+Ae=Ae+1
+Au=Au+1
+An=An+1
+endif 
+endfunc 
+func On(O,N) 
+Hh=O 
+J3=N 
+Bp=gb_hexel_owner(O,N) 
+if Bp>=B() 
+if Bp==gb_team_id() 
+o=1400 
+else 
+o=2048 
+endif 
+elif Bp==D 
+o=1920 
+else 
+o=B() 
+endif 
+Hr=A[N][O] 
+if (C_ & 3) 
+AJ=B() 
+elif (C_ & 4 ) 
+AJ=AJ*4/5 
+elif (C_ & 8 ) 
+AJ=AJ*2/3 
+endif 
+M7=1 
+Bc=Bp 
+k=o 
+JJ=Hr 
+ME=1 
+endfunc 
+func VE(O,N) 
+Hl=O 
+H_=N 
+Bc=gb_hexel_owner(O,N) 
+if Bc>=B() 
+if Bc==gb_team_id() 
+k=1400 
+else 
+k=2048 
+endif 
+elif Bc==D 
+k=1920 
+else 
+k=B() 
+endif 
+JJ=A[N][O] 
+if (C_ & 3) 
+AJ=B() 
+elif (C_ & 4 ) 
+AJ=AJ*4/5 
+elif (C_ & 8 ) 
+AJ=AJ*2/3 
+endif 
+ME=1 
+Bp=Bc 
+o=k 
+Hr=JJ 
+M7=1 
+endfunc 
+func TZ(O,N) 
+KS=O 
+LA=N 
+DQ=gb_hexel_owner(O,N) 
+if DQ>=B() 
+if DQ==gb_team_id() 
+h=1400 
+else 
+h=2048 
+endif 
+elif DQ==D 
+h=1920 
+else 
+h=B() 
+endif 
+KN=A[N][O] 
+if (C_ & 3) 
+AJ=B() 
+elif (C_ & 4 ) 
+AJ=AJ*4/5 
+elif (C_ & 8 ) 
+AJ=AJ*2/3 
+endif 
+SF=1 
+endfunc 
+func Px(O,N) 
+FL=O 
+FQ=N 
+BZ=gb_hexel_owner(O,N) 
+if BZ>=B() 
+if BZ==gb_team_id() 
+Z=1400 
+else 
+Z=2048 
+endif 
+elif BZ==D 
+Z=1920 
+else 
+Z=B() 
+endif 
+JB=A[N][O] 
+if (C_ & 3) 
+AJ=B() 
+elif (C_ & 4 ) 
+AJ=AJ*4/5 
+elif (C_ & 8 ) 
+AJ=AJ*2/3 
+endif 
+NE=1 
+Bj=BZ 
+W=Z 
+J6=JB 
+MN=1 
+endfunc 
+func WM(O,N) 
+Dw=O 
+Dv=N 
+Bj=gb_hexel_owner(O,N) 
+if Bj>=B() 
+if Bj==gb_team_id() 
+W=1400 
+else 
+W=2048 
+endif 
+elif Bj==D 
+W=1920 
+else 
+W=B() 
+endif 
+J6=A[N][O] 
+if (C_ & 3) 
+AJ=B() 
+elif (C_ & 4 ) 
+AJ=AJ*4/5 
+elif (C_ & 8 ) 
+AJ=AJ*2/3 
+endif 
+MN=1 
+BZ=Bj 
+Z=W 
+JB=J6 
+NE=1 
+endfunc 
+func SP(O,N) 
+Cp=O 
+Cl=N 
+DS=gb_hexel_owner(O,N) 
+if DS>=B() 
+if DS==gb_team_id() 
+P=1400 
+else 
+P=2048 
+endif 
+elif DS==D 
+P=1920 
+else 
+P=B() 
+endif 
+Jv=A[N][O] 
+if (C_ & 3) 
+AJ=B() 
+elif (C_ & 4 ) 
+AJ=AJ*4/5 
+elif (C_ & 8 ) 
+AJ=AJ*2/3 
+endif 
+TJ=1 
+endfunc 
+func OM() 
+if Ja 
+Hh=D7
+J3=D3
+Bp=M
+o =B()
+t=t+1
+Ah=Ah+1
+B6=B6+1
+BE=BE+1
+Hl=D4
+H_=FX
+Bc=M
+k =B()
+t=t+1
+B6=B6+1
+B3=B3+1
+Ah=Ah+1
+elif E[BW]&1 
+On(BW,FF) 
+else 
+Hh=D7
+J3=D3
+Bp=M
+o =B()
+t=t+1
+Ah=Ah+1
+B6=B6+1
+BE=BE+1
+Hl=D4
+H_=FX
+Bc=M
+k =B()
+t=t+1
+B6=B6+1
+B3=B3+1
+Ah=Ah+1
+endif 
+endfunc 
+func Qz() 
+if Ja 
+FL=Dz
+FQ=Bu
+BZ=M
+Z =B()
+t=t+1
+B9=B9+1
+Al=Al+1
+B3=B3+1
+Dw=D6
+Dv=DL
+Bj=M
+W =B()
+t=t+1
+Al=Al+1
+BE=BE+1
+B9=B9+1
+elif E[BW]&1 
+Px(BW,0) 
+else 
+FL=Dz
+FQ=Bu
+BZ=M
+Z =B()
+t=t+1
+B9=B9+1
+Al=Al+1
+B3=B3+1
+Dw=D6
+Dv=DL
+Bj=M
+W =B()
+t=t+1
+Al=Al+1
+BE=BE+1
+B9=B9+1
+endif 
+endfunc 
+func QK() 
+if Ja 
+Cp=AX
+Cl=Bh
+DS=M
+P =B()
+t=t+1
+BE=BE+1
+Ah=Ah+1
+Al=Al+1
+elif E[AE]&2 
+SP(LY,AE) 
+else 
+Cp=AX
+Cl=Bh
+DS=M
+P =B()
+t=t+1
+BE=BE+1
+Ah=Ah+1
+Al=Al+1
+endif 
+endfunc 
+func UL() 
+if Ja 
+KS=Dq
+LA=Ft
+DQ=M
+h =B()
+t=t+1
+B3=B3+1
+B9=B9+1
+B6=B6+1
+elif E[AE]&2 
+TZ(B(),AE) 
+else 
+KS=Dq
+LA=Ft
+DQ=M
+h =B()
+t=t+1
+B3=B3+1
+B9=B9+1
+B6=B6+1
+endif 
+endfunc 
+func OZ() 
+if Ds<DE 
+return 1 
+elif DE<Ay 
+return 1 
+elif Bs<D9 
+return 1 
+elif D9<Cz 
+return 1 
+endif 
+return B() 
+endfunc 
+func R1() 
+if Dn<Dd 
+return 1 
+elif Dd<AS 
+return 1 
+elif Bw<DX 
+return 1 
+elif DX<D1 
+return 1 
+endif 
+return B() 
+endfunc 
+func NY() 
+if Do<Da 
+return 1 
+elif Da<AU 
+return 1 
+elif Bx<Db 
+return 1 
+elif Db<DH 
+return 1 
+endif 
+return B() 
+endfunc 
+func UB() 
+if Dq<Dj 
+return 1 
+elif Dj<AX 
+return 1 
+elif Bu<Dc 
+return 1 
+elif Dc<D3 
+return 1 
+endif 
+return B() 
+endfunc 
+func S1()
+endfunc
+func E5()
+endfunc
+func QM()
+endfunc
+func Dx()
+endfunc
+func Se()
+endfunc
+func E2()
+endfunc
+func R2()
+endfunc
+func E1()
+endfunc
+func WN()
+S1()
+QM()
+Se()
+R2()
+endfunc
+func Sr()
+endfunc
+TN()
+C[B()]=D
+C[1]=D
+C[2]=D
+C[3]=D
+PC()
+if gb_agent_status(gb_team_id(),3)
+o=B()
+k=B()
+h=B()
+Z=B()
+W=B()
+P=B()
+E[1013]=1
+elif E[1013]
+E[1013]=B()
+o=o*gb_random_value(100)
+k=k*gb_random_value(100)
+h=h*gb_random_value(100)
+Z=Z*gb_random_value(100)
+W=W*gb_random_value(100)
+P=P*gb_random_value(100)
+Mt()
+else
+Mt()
+endif
+NU()
+SM()
+if gb_agent_status(gb_team_id(),2)
+l=B()
+m=B()
+e=B()
+a=B()
+X=B()
+Q=B()
+E[1012]=1
+elif E[1012]
+E[1012]=B()
+l=l*gb_random_value(100)
+m=m*gb_random_value(100)
+e=e*gb_random_value(100)
+a=a*gb_random_value(100)
+X=X*gb_random_value(100)
+Q=Q*gb_random_value(100)
+Mz()
+else
+Mz()
+endif
+TU()
+P6()
+if gb_agent_status(gb_team_id(),1)
+j=B()
+n=B()
+f=B()
+Y=B()
+V=B()
+R=B()
+E[1011]=1
+elif E[1011]
+E[1011]=B()
+j=j*gb_random_value(100)
+n=n*gb_random_value(100)
+f=f*gb_random_value(100)
+Y=Y*gb_random_value(100)
+V=V*gb_random_value(100)
+R=R*gb_random_value(100)
+MB()
+else
+MB()
+endif
+U9()
+NX()
+Sr()
+gb_move(C)
+

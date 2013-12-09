@@ -1,0 +1,143 @@
+#$ nChain=5
+#$ ag=1
+#$ while @{ag}<=3
+	#$ is0=@{ag}; is0*=100;
+  #$ isInnerSize=@{is0}; isInnerSize+=1
+func cm@{ag}_chMin()
+	return cm@{ag}_chMin_
+endfunc
+func cm@{ag}_chMin_clear()
+	cm@{ag}_chMin_=zero()
+endfunc
+func cm@{ag}_chMin_update()
+	cm@{ag}_chMin_clear()
+	#$ chain=1
+  #$ while @{chain}<=@{nChain}
+		if cm@{ag}_array@{chain}_size()
+			cm@{ag}_chMin_=@{chain}
+			return cm@{ag}_chMin()
+		endif
+		#$ chain+=1
+	#$ endwhile
+endfunc
+func cm@{ag}_load()
+	inud_y1=y@{ag}
+	inud_x1=x@{ag}
+	cm@{ag}_chMin_clear()
+################################################################
+	#$ chain=1
+  #$ while @{chain}<=@{nChain}
+		cm@{ag}_array@{chain}_setGuard()
+		cm@{ag}_array@{chain}_clear()
+		#$ chain+=1
+	#$ endwhile
+################################################################
+	#spiralMove@{ag}_innerSize=s[@{isInnerSize}]
+	#$ chain=1
+  #$ while @{chain}<=@{nChain}
+		#$ isSzT=@{chain}; isSzT*=13; isSzT+=@{is0}
+		cmp@{ag}_array@{chain}_size_=s[@{isSzT}]
+    print '  --  cm@{ag}_storage chain=@{chain} size=',s[@{isSzT}],' index(@{isSzT})'
+		if cmp@{ag}_array@{chain}_size_
+			cm@{ag}_chMin_=cm@{ag}_initMinChain@{chain}()
+			if cm@{ag}_chMin()
+        #$ if @{chain}==1
+          if cm@{ag}_chMin()<zero()
+            return zero()
+          endif
+        #$ endif
+				return cm@{ag}_chMin()
+			endif
+		endif
+		#$ chain+=1
+	#$ endwhile
+endfunc
+  #$ chain=1
+  #$ while @{chain}<=@{nChain}
+  	#$ chM1=@{chain}; chM1-=1
+func cm@{ag}_initMinChain@{chain}()
+	#$ isSzT=@{chain}; isSzT*=13; isSzT+=@{is0}
+	#$ isY0=@{isSzT}; isY0+=1; isX0=@{isSzT}; isX0+=2
+	inud_y2=s[@{isY0}]
+	inud_x2=s[@{isX0}]
+  cm_distT_=inu_distance_yuv()
+	if cm_distT()<=1
+		if cm_distT()
+			return cm@{ag}_initMinChain@{chain}to@{chain}()
+		else
+			#$ if @{chain}>1
+			return cm@{ag}_initMinChain@{chain}to@{chM1}()
+      #$ else
+        return m1
+			#$ endif
+		endif
+	endif
+endfunc
+
+		#$ chTo=@{chM1}
+		#$ while @{chTo}<=@{chain}
+			#$ if @{chTo}>0
+func cm@{ag}_initMinChain@{chain}to@{chTo}()
+	print '    --  initMinChain@{chain}to@{chTo} distT=',cm_distT()
+	#$ isSzT=@{chain}; isSzT*=13; isSzT+=@{is0}
+	#$ isY0=@{isSzT}; isY0+=1; isX0=@{isSzT}; isX0+=2
+	#$ ich=1;jch=0
+	#$ if @{chTo}==@{chain}
+    if ownedMapMe[inud_y2][inud_x2]
+      return m1
+    endif
+		cm@{ag}_y@{chTo}[0]=inud_y2
+		cm@{ag}_x@{chTo}[0]=inud_x2
+		print '    --  [0](',inud_x2,',',inud_y2,') index(@{isX0},@{isY0})'
+		#$ jch=1
+	#$ endif
+	#$ while @{jch}<@{chTo}
+		#$ isYT=@{ich}; isYT*=2; isYT+=@{isY0}
+		#$ isXT=@{ich}; isXT*=2; isXT+=@{isX0}
+		cm@{ag}_y@{chTo}[@{jch}]=s[@{isYT}]
+		cm@{ag}_x@{chTo}[@{jch}]=s[@{isXT}]
+		print '    --  [@jch](',s[@{isXT}],',',s[@{isYT}],') index(@{isXT},@{isYT})'
+		#$ ich+=1; jch+=1
+	#$ endwhile
+	#$ isYI=@{chain}; isYI*=2; isYI+=@{isY0}
+	#$ isXI=@{chain}; isXI*=2; isXI+=@{isX0}
+	cm@{ag}_array@{chTo}_lst_=@{chTo}
+  cm@{ag}_xI@{chTo}=s[@{isXI}]
+  cm@{ag}_yI@{chTo}=s[@{isYI}]
+  print '      --  [I](',s[@{isXI}],',',s[@{isYI}],') index(@{isXI},@{isYI})'
+  return @{chTo}
+endfunc
+      #$ endif
+			#$ chTo+=1
+    #$ endwhile
+		#$ chain+=1
+  #$ endwhile
+func cm@{ag}_store()
+	#s[@{isInnerSize}]=cm@{ag}_innerSize
+	#$ chain=1
+  #$ while @{chain}<=@{nChain}
+		#$ isSzT=@{chain}; isSzT*=13; isSzT+=@{is0}
+    #$ isY0=@{isSzT}; isY0+=1; isX0=@{isSzT}; isX0+=2
+		s[@{isSzT}]=cm@{ag}_array@{chain}_size()
+    print '    --  cm@{ag}_store chain=@{chain} size=',s[@{isSzT}],' index=@{isSzT}'
+		if cm@{ag}_array@{chain}_size()
+			#$ ich=0
+			#$ while @{ich}<@{chain}
+				#$ isYT=@{ich}; isYT*=2; isYT+=@{isY0}
+				#$ isXT=@{ich}; isXT*=2; isXT+=@{isX0}
+				s[@{isYT}]=cm@{ag}_y@{chain}[@{ich}]
+				s[@{isXT}]=cm@{ag}_x@{chain}[@{ich}]
+				print '      --  [@{ich}](',s[@{isXT}],',',s[@{isYT}],') index(@{isXT},@{isYT})'
+				#$ ich+=1
+			#$ endwhile
+			#$ isYI=@{chain}; isYI*=2; isYI+=@{isY0}
+			#$ isXI=@{chain}; isXI*=2; isXI+=@{isX0}
+			s[@{isYI}]=cm@{ag}_yI@{chain}
+			s[@{isXI}]=cm@{ag}_xI@{chain}
+      print '      --  [I](',s[@{isXI}],',',s[@{isYI}],') index(@{isXI},@{isYI})'
+		endif
+		#$ chain+=1
+	#$ endwhile
+endfunc
+	#$ ag+=1
+#$ endwhile

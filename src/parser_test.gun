@@ -1,0 +1,22 @@
+#$ i=1; j=3; k=; l=4; i*=@l;
+#$ i+=11; i/=2; i%=@l; i-=1
+#$ if @i == 3
+#$   while @j ==3
+#$   'parser_test2.gun i=@j'
+#$   endwhile
+#$ else
+#$   if @j==3
+#$     l+=-2; l/=-1; l*=3
+#$     while @l== -6
+#$       'parser_test2.gun i=@i'
+#$       l+=1
+#$     endwhile
+#$   endif
+#$   while @j>0
+#$     'parser_test2.gun i=@j'
+#$     j-=2
+#$   endwhile
+#$ endif
+func up@i()
+  move[@{ i }]=@j
+endfunc

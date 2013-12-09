@@ -1,0 +1,3 @@
+ownedMapMe[@{y}][@{x}]=2|ownedMapMe[@{y}][@{x}]
+print '    --  searchInner_init (',@{x},',',@{y},') map=',ownedMapMe[@{y}][@{x}]
+

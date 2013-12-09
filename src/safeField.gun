@@ -1,0 +1,122 @@
+# cost is around 7642
+func safeField_init()
+	ui=uGateMin
+	while ui
+		ui=ui-1
+		safeField_u_sub()
+	endwhile
+	vi=xnM2
+	while vi>vGateMax
+		safeField_v_sub()
+		vi=vi-1
+	endwhile
+	xi=xn+3
+	while xi
+		xi=xi-1
+		safeField_tb_sub()
+	endwhile
+	safeField_tb_subm1()
+	safeField_tb_subm2()
+	safeField_tb_subm3()
+	yi=yn
+	while yi
+		yi=yi-1
+		safeField_lr_sub()
+	endwhile
+	yi=ynP1
+	while yi
+		yi=yi-2
+		safeField_r_sub()
+	endwhile
+	yi=yn
+	while yi>zero()
+		yi=yi-2
+		safeField_border_lr_sub()
+	endwhile
+	safeField_horizontal_gate()
+	#safeField_output()
+endfunc
+##################################################################
+func safeField_horizontal_gate()
+	if isBorderGateVertical0
+	else
+		safeField_map[zero()][uGateMin]=1
+		safeField_map[zero()][vGateMax]=1
+		safeField_map[ynM1][uGateMin]=1
+		safeField_map[ynM1][vGateMax]=1
+	endif
+endfunc
+func safeField_u_sub()
+	yi=ui*2+2
+	while yi
+		yi=yi-2
+		xi=ui-yi/2
+		safeField_map[yi][xi]=1
+		safeField_map[yi+1][xi]=1
+		safeField_map[ynM2-yi][xnM1-xi]=1
+		safeField_map[ynM1-yi][xnM2-xi]=1
+	endwhile
+endfunc
+func safeField_v_sub()
+	yi=(xnM1-vi)*2
+	while yi
+		yi=yi-2
+		xi=vi+yi/2
+		safeField_map[yi][xi]=1
+		safeField_map[yi+1][xi+1]=1
+		safeField_map[ynM2-yi][xnM2-xi]=1
+		safeField_map[ynM1-yi][xnM2-xi]=1
+	endwhile
+endfunc
+
+func safeField_border_lr_sub()
+	if s[yi]&2
+	else
+		safeField_map[yi][zero()]=1
+		safeField_map[yi][xnM1]=1
+	endif
+endfunc
+func safeField_r_sub()
+	safeField_map[yi][xnM1]=2
+endfunc
+func safeField_lr_sub()
+	safeField_map[yi][m1]=2
+	safeField_map[yi][m2]=2
+	safeField_map[yi][m3]=2
+	safeField_map[yi][xn]=2
+	safeField_map[yi][xnP1]=2
+	safeField_map[yi][xnP2]=2
+endfunc
+func safeField_tb_sub()
+	safeField_map[m1][xi]=2
+	safeField_map[m2][xi]=2
+	safeField_map[m3][xi]=2
+	safeField_map[yn][xi]=2
+	safeField_map[ynP1][xi]=2
+	safeField_map[ynP2][xi]=2
+endfunc
+#$ ix=1
+#$ while @{ix}<=3
+func safeField_tb_subm@{ix}()
+	safeField_map[m1][m@{ix}]=2
+	safeField_map[m2][m@{ix}]=2
+	safeField_map[m3][m@{ix}]=2
+	safeField_map[yn][m@{ix}]=2
+	safeField_map[ynP1][m@{ix}]=2
+	safeField_map[ynP2][m@{ix}]=2
+endfunc
+	#$ ix+=1
+#$ endwhile
+##############################################################3
+func safeField_output()
+	yi=ynP2
+	print 'safeField_output xGateMin=',xGateMin,' xGateMax=',xGateMax,' yGateMin=',yGateMin,' yGateMax=',yGateMax
+	while yi>=m3
+		xi=xn+2
+		while xi>=m3
+			print 'turn=',turn,' safeField_output yi=',yi,' xi=',xi,' map=',safeField_map[yi][xi]
+			xi=xi-1
+		endwhile
+		yi=yi-1
+	endwhile
+endfunc

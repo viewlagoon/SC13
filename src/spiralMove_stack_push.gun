@@ -1,0 +1,4 @@
+## require ag valy valx
+spiralMove@{ag}_stack_y[spiralMove@{ag}_stack_lst]=@{valy}
+spiralMove@{ag}_stack_x[spiralMove@{ag}_stack_lst]=@{valx}
+spiralMove@{ag}_stack_lst=spiralMove@{ag}_stack_lst+1

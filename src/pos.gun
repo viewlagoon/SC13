@@ -1,0 +1,80 @@
+#required ag : agent ID
+p@{ag}=pWe[@{ag}]
+x@{ag}=p@{ag}[zero()]
+y@{ag}=p@{ag}[1]
+x@{ag}Next=x@{ag}
+y@{ag}Next=y@{ag}
+#$ 'pos_impl.gun prefix= base=@{ag}'
+#$ dir=0
+#$ while @dir<6
+  x@{ag}@{dir}Gate=x@{ag}@{dir}
+  y@{ag}@{dir}Gate=y@{ag}@{dir}
+  #$ 'pos_impl.gun prefix= base=@{ag}@{dir}'
+  #$ d2=0
+  #$ while @d2<6
+    #$ 'pos_impl.gun prefix= base=@{ag}@{dir}@{d2}'
+    #$ d2+=1
+  #$ endwhile
+  #$ dir+=1
+#$ endwhile
+y@{ag}Div2=y@{ag}/2
+y@{ag}M1Div2=(y@{ag}-1)/2
+y@{ag}P1Div2=(y@{ag}+1)/2
+#x@{ag}M2=x@{ag}-2
+#x@{ag}P2=x@{ag}+2
+#y@{ag}M2=y@{ag}-2
+#y@{ag}P2=y@{ag}+2
+#x@{ag}1P1=x@{ag}1+1
+#x@{ag}0M1=x@{ag}0-1
+#$ xPre=1000; xPre+=@ag
+#$ yPre=1004; yPre+=@ag
+x@{ag}Pre=s[@xPre]
+s[@xPre]=x@ag
+y@{ag}Pre=s[@yPre]
+s[@yPre]=y@ag
+map[y@ag][x@ag]=map[y@ag][x@ag] | 1
+#iZone@ag=y@ag/(ynDiv3+1)
+#iZone@{ag}2=iZone@ag
+#iZone@{ag}5=iZone@ag
+#iZone@{ag}0=iZone@ag-1
+#iZone@{ag}1=iZone@{ag}0
+#iZone@{ag}3=iZone@ag+1
+#iZone@{ag}4=iZone@{ag}3
+jZone@ag=x@ag/(xnDiv3+1)
+#$ if @ag>0
+  zone[iZone@ag][jZone@ag]=zone[iZone@ag][jZone@ag]+1
+#$ endif
+u@{ag}=x@{ag}+y@{ag}Div2
+v@{ag}=x@{ag}-y@{ag}P1Div2
+u@{ag}0=u@{ag}-1
+u@{ag}5=u@{ag}0
+u@{ag}1=u@{ag}
+u@{ag}4=u@{ag}
+u@{ag}2=u@{ag}+1
+u@{ag}3=u@{ag}2
+v@{ag}4=v@{ag}-1
+v@{ag}5=v@{ag}4
+v@{ag}0=v@{ag}
+v@{ag}3=v@{ag}
+v@{ag}1=v@{ag}+1
+v@{ag}2=v@{ag}1
+isWarped@{ag}=checkWarp@ag()
+if isWarped
+  dir@{ag}Pre=m1
+elif turn
+  #$ dir=0
+  #$ while @dir<6
+  if x@{ag}@dir==x@{ag}Pre
+    if y@{ag}@dir==y@{ag}Pre
+      dir@{ag}Pre=@dir
+    endif
+  endif
+  #$ dir+=1
+  #$ endwhile
+  hex@{ag}Pre=gb_hexel_owner(x@{ag}Pre,y@{ag}Pre)
+  if hex@{ag}Pre!=gb_team_id()
+    isInSiege@{ag}=1
+  endif
+else
+  dir@{ag}Pre=m1
+endif

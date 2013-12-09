@@ -1,0 +1,71 @@
+func zero()
+endfunc
+func math_max(a_,b_)
+	if a_>=b_
+		return a_
+	endif
+	return b_
+endfunc
+func math_min(a_,b_)
+	if a_<=b_
+		return a_
+	endif
+	return b_
+endfunc
+func init()
+  s=gb_storage()
+  turn=s[1019]
+  s[1019]=turn+1
+  wh=gb_field_size()
+  xn=wh[zero()]
+  yn=wh[1]
+  m1=-1
+  m2=-2
+	m3=-3
+  map=gb_team_id()
+  xnDiv2=xn/2
+  xnDiv3=(xn/3)+1
+  xnDiv4=xn/4
+  ynDiv2=yn/2
+  ynDiv3=(yn/3)+1
+  ynDiv4=yn/4
+  ynM1=yn-1
+  ynM2=yn-2
+	ynP1=yn+1
+	ynP2=yn+2
+  xnM1=xn-1
+  xnM2=xn-2
+  xnP1=xn+1
+  xnP2=xn+2
+  un  =xnM1+ynDiv2
+  vn  =xnM1
+  uMed=xnDiv2+ynDiv4
+  vMed=xnDiv2-(ynDiv2+1)/2
+  pAll=gb_agent_positions()
+  pWe =pAll[gb_team_id()]
+#$ ag=0;
+#$ while @ag < 4
+#$   'pos.gun        ag=@ag'
+#$   ag+=1
+#$ endwhile
+	posMutual_init()
+  if turn
+    gateDef_load()
+  else
+    gateDef_init()
+  endif
+	safeField_init()
+  if gb_team_id()>=2
+    if gb_team_id()>=3
+      otherPos3()
+    else
+      otherPos2()
+    endif
+  elif gb_team_id()
+    otherPos1()
+  else
+    otherPos0()
+  endif
+	ownedMap_entryPoint()
+endfunc
+

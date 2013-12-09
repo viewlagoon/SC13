@@ -1,0 +1,31 @@
+## require ag dir c1r5
+#$ c5r25=@{c1r5}; c5r25*=5
+#$ dCT=@{dir}; dCT+=@{c1r5}; dCT%=6
+turnToSiege@{dir}_=spiralMove@{ag}_rotate@{c1r5}_center@{dCT}_turnToSiege
+if hp@{ag}@{dir}
+  if evaluate@{dir}_<spiralMove@{ag}_evaluate
+    spiralMove@{ag}_evaluate=evaluate@{dir}_
+    spiralMove@{ag}_outerDir=@{dir}
+    spiralMove@{ag}_c1r5=@{c1r5}
+    spiralMove@{ag}_yOuter=y@{ag}@{dir}
+    spiralMove@{ag}_xOuter=x@{ag}@{dir}
+    #spiralMove@{ag}_yInner=y@{ag}@{dCenter}
+    #spiralMove@{ag}_xInner=x@{ag}@{dCenter}
+    spiralMove@{ag}_turnToSiege=spiralMove@{ag}_rotate@{c1r5}_center@{dCT}_turnToSiege
+    if spiralMove@{ag}_rotate@{c1r5}_center@{dCT}_innerSize
+      spiralMove@{ag}_innerSize=spiralMove@{ag}_rotate@{c1r5}_center@{dCT}_innerSize
+    elif spiralMove@{ag}_turnToSiege==1
+      spiralMove@{ag}_innerSize=1
+    else
+      spiralMove@{ag}_innerSize=0
+    endif
+    spiralMove@{ag}_yInner=spiralMove@{ag}_rotate@{c1r5}_center@{dCT}_yInner
+    spiralMove@{ag}_xInner=spiralMove@{ag}_rotate@{c1r5}_center@{dCT}_xInner
+    print 'spiralMove@{ag}_init evaluate_impl updated dir=@{dir} c1r5=@{c1r5}'
+  else
+    print 'spiralMove@{ag}_init evaluate_impl evMin=',spiralMove@{ag}_evaluate,' ev@{dir}=',evaluate@{dir}_
+  endif
+else
+  print 'spiralMove@{ag}_init evaluate_impl hp@{ag}@{dir}==0'
+endif
+

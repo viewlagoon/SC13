@@ -1,0 +1,18 @@
+#--begin parser_test2.gun i=2
+func stop2()
+  move[2]=-1
+endfunc
+#--end   parser_test2.gun i=2
+#--begin parser_test2.gun i=3
+func stop3()
+  move[3]=-1
+endfunc
+#--end   parser_test2.gun i=3
+#--begin parser_test2.gun i=1
+func stop1()
+  move[1]=-1
+endfunc
+#--end   parser_test2.gun i=1
+func up2()
+  move[2]=-1
+endfunc

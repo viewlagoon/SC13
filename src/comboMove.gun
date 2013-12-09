@@ -1,0 +1,341 @@
+#$ nChain=5;
+#$ m0=1;m1=3;m2=7;m3=15;m4=31;m5=63
+#$ b0=1;b1=2;b2=4;b3=8 ;b4=16;b5=32
+#$ ag=1
+#$ while @{ag}<4
+func comboMove@{ag}_update()
+	cm@{ag}_load()
+	cm@{ag}_initInner()
+  cm@{ag}_init()
+  cm@{ag}_expand()
+	cm@{ag}_store()
+endfunc
+func cm@{ag}_expand()
+	if cm@{ag}_array1_size()
+		chN_=1
+	elif cm@{ag}_array2_size()
+		chN_=2
+	elif cm@{ag}_array3_size()
+		chN_=3
+	elif cm@{ag}_array4_size()
+		chN_=4
+	elif cm@{ag}_array5_size()
+		chN_=5
+	else
+		chN_=zero()
+	endif
+	while chN_
+		if chN_>=3
+			if chN_>=5
+				chN_=cm@{ag}_expand5()
+			elif chN_>=4
+				chN_=cm@{ag}_expand4()
+			else
+				chN_=cm@{ag}_expand3()
+			endif
+		elif chN_>=2
+			chN_=cm@{ag}_expand2()
+		else
+			chN_=cm@{ag}_expand1()
+		endif
+	endwhile
+endfunc
+  #$ chain=1
+  #$ while @{chain}<=@{nChain}
+    #$ chP1=@{chain}; chP1+=1
+    #$ chP2=@{chain}; chP2+=2
+    #$ chM1=@{chain}; chM1-=1
+
+func cm@{ag}_expand@{chain}_update()
+  cm@{ag}_array@{chain}_clear()
+	cm@{ag}_xI@{chain}=cm_xT()
+	cm@{ag}_yI@{chain}=cm_yT()
+  j=0
+  #print '  --    [I](',cm_xT(),',',cm_yT(),') : cm@{ag}_expand@{chain}_update '
+  while j<cm1_array0_size()
+		cm_xU_=cm1_x0[j]
+		cm_yU_=cm1_y0[j]
+    #$ 'comboMove_pushFromFunc.gun ag=@{ag} chain=@{chain} x=cm_xU y=cm_yU'
+		#print '    --  [',j,'](',cm_xU(),',',cm_yU(),') size=',cm@{ag}_array@{chain}_size()
+		cm_m[cm_yU()][cm_xU()]=cm_m[cm_yU()][cm_xU()]|@{b@{chain}}
+    j=j+1
+  endwhile
+endfunc
+func cm@{ag}_expand@{chain}()
+	cm@{ag}_countBreath@{chain}()
+	print '  --  cm@{ag}_expand@{chain}() begin bMin=',cm_bMin@{chain}
+  if cm_bMin@{chain}>=4
+  elif cm_bMin@{chain}>=2
+    if cm_bMin@{chain}>=3
+      #$ if @{chP2}<=@{nChain}
+      return cm@{ag}_expand@{chain}to@{chP2}()
+      #$ endif
+    else
+      #$ if @{chP1}<=@{nChain}
+      return cm@{ag}_expand@{chain}to@{chP1}()
+      #$ endif
+    endif
+  elif cm_bMin@{chain}
+    return cm@{ag}_expand@{chain}to@{chain}()
+  else
+    #$ if @{chM1}>=1
+    return cm@{ag}_expand@{chain}to@{chM1}()
+    #$ endif
+  endif
+endfunc
+      #$ chNext=1
+      #$ while @{chNext}<=@{nChain}
+        #$ if @{chM1}<=@{chNext}
+					#$ chDiff=1; chDiff+=@{chNext}; chDiff-=@{chain}
+func cm@{ag}_expand@{chain}to@{chNext}()
+	cm_iT_clear()
+	while cm_iT()<cm@{ag}_array@{chain}_size()
+		if cm_b@{chain}[cm_iT()]==@{chDiff}
+			res_=cm@{ag}_expand@{chain}to@{chNext}_afterDecidedInner()
+			if res_
+				return res_
+			endif
+		endif
+		cm_iT_add()
+	endwhile
+endfunc
+func cm@{ag}_expand@{chain}to@{chNext}_afterDecidedInner()
+  cm_distT_set@{chNext}()
+  cm@{ag}_expand@{chain}_pushFront()
+  cm_xT_=cm@{ag}_x@{chain}[cm_iT()]
+  cm_yT_=cm@{ag}_y@{chain}[cm_iT()]
+  cm_xP_=cm@{ag}_x@{chain}[cm_iTM1()]
+  cm_yP_=cm@{ag}_y@{chain}[cm_iTM1()]
+  cm_oppsDistanceT_clear()
+	print '  --  expand@{chain}to@{chNext}_afterDecidedInner i=',cm_iT(),' T(',cm_xT_,',',cm_yT_,') P(',cm_xP_,',',cm_yP_,')'
+  if cm_iTP1()==cm@{ag}_array@{chain}_size()
+    cm_isLastChain_set()
+  else
+    cm_isLastChain_reset()
+    cm_xN_=cm@{ag}_x@{chain}[cm_iTP1()]
+    cm_yN_=cm@{ag}_y@{chain}[cm_iTP1()]
+  endif
+  if cm_expand@{chain}_dispatchDir()
+    cm@{ag}_expand@{chain}_pushLast()
+    cm@{ag}_expand@{chNext}_update()
+    if cm@{ag}_oppsDistanceInner<cm_oppsDistanceT()
+      cm@{ag}_oppsDistanceInner=cm_oppsDistanceT()
+    endif
+    return @{chNext}
+  else
+    print '  --  expand@{chain}to@{chNext}_afterDecidedInner failed'
+  endif
+endfunc
+        #$ endif
+        #$ chNext+=1
+      #$ endwhile
+func cm@{ag}_expand@{chain}_pushFront()
+  cm1_array0_clear()
+  j=0
+  while j<cm_iT()
+    print '    --  [',cm1_array0_size(),'](',cm@{ag}_x@{chain}[j],',',cm@{ag}_y@{chain}[j],') : pushFront (j<iT=',cm_iT(),')'
+    #$ 'comboMove_pushFromArray.gun ag=1 chain=0 x=cm@{ag}_x@{chain} y=cm@{ag}_y@{chain} i=j'
+    j=j+1
+  endwhile
+endfunc
+func cm@{ag}_expand@{chain}_pushLast()
+  j=cm_iTP1()
+  while j<cm@{ag}_array@{chain}_size()
+    print '    --  [',cm1_array0_size(),'](',cm@{ag}_x@{chain}[j],',',cm@{ag}_y@{chain}[j],') : pushLast chain=@{chain} (iTP1=',cm_iTP1(),'<=j<',cm@{ag}_array@{chain}_size(),')'
+    #$ 'comboMove_pushFromArray.gun ag=1 chain=0 x=cm@{ag}_x@{chain} y=cm@{ag}_y@{chain} i=j'
+    j=j+1
+  endwhile
+endfunc
+func cm@{ag}_countBreath@{chain}()
+  cm_iT_=cm@{ag}_array@{chain}_size()
+  cm_bMin@{chain}=7
+  while cm_iT()
+    cm_iT_sub()
+    cm_xT_=cm@{ag}_x@{chain}[cm_iT()]
+    cm_yT_=cm@{ag}_y@{chain}[cm_iT()]
+    cm_setNeighborT()
+    cm_cntT_clear()
+    if cm@{ag}_oppsDistance@{chain}<oppsDistance_map[cm_yT()][cm_xT()]
+      cm@{ag}_oppsDistance@{chain}=oppsDistance_map[cm_yT()][cm_xT()]
+    endif
+    #$ d0=0
+    #$ while @{d0}<6
+			if ownedMapMe[cm_yT@{d0}()][cm_xT@{d0}()]
+				cm_breath@{d0}_=@{b0}
+				cm_m[cm_yT@{d0}()][cm_xT@{d0}()]=@{b0}
+			else
+				cm_breath@{d0}_=cm_m[cm_yT@{d0}()][cm_xT@{d0}()]&@{m@{chain}}
+			endif
+      #$ d0+=1
+    #$ endwhile
+    cm_bT_=cm_checkNeighborShape()
+    if cm_bT()<cm_bMin@{chain}
+      if cm_bT()
+        cm_bMin@{chain}=cm_bT()
+      elif cm_iTP1()==cm@{ag}_array@{chain}_size()
+        cm_bMin@{chain}=cm_bT()
+      else
+        cm_bMin@{chain}=7
+        print '  --  countBreath@{chain} i=',cm_iT(),' (',cm_xT(),',',cm_yT(),') b=',cm_bT(),' (',cm_breath0(),',',cm_breath1(),',',cm_breath2(),',',cm_breath3(),',',cm_breath4(),',',cm_breath5(),') inner inner found'
+        return zero()
+      endif
+    endif
+    cm_b@{chain}[cm_iT()]=cm_bT()
+		print '  --  countBreath@{chain} i=',cm_iT(),' (',cm_xT(),',',cm_yT(),') b=',cm_bT(),' (',cm_breath0(),',',cm_breath1(),',',cm_breath2(),',',cm_breath3(),',',cm_breath4(),',',cm_breath5(),')'
+  endwhile
+endfunc
+    #$ chain+=1
+  #$ endwhile
+  #$ ag+=1
+#$ endwhile
+###########################################################
+## ag is removed
+###########################################################
+#$ chain=1
+#$ while @{chain}<=@{nChain}
+func cm_expand@{chain}_dispatchDir()
+  cm_setNeighborT()
+  if cm_yT0()==cm_yP_
+    if cm_xT0()==cm_xP_
+      return cm_expand@{chain}_dir0()
+    endif
+    return cm_expand@{chain}_dir1()
+  elif cm_yT()==cm_yP_
+    if cm_xT5()==cm_xP_
+      return cm_expand@{chain}_dir5()
+    endif
+    return cm_expand@{chain}_dir2()
+  elif cm_xT4()==cm_xP_
+    return cm_expand@{chain}_dir4()
+  endif
+  return cm_expand@{chain}_dir3()
+endfunc
+  #$ d0=0
+  #$ while @{d0}<6
+    #$ d1=@{d0}; d1+=1; d1%=6
+    #$ d2=@{d0}; d2+=2; d2%=6
+    #$ d3=@{d0}; d3+=3; d3%=6
+    #$ d4=@{d0}; d4+=4; d4%=6
+    #$ d5=@{d0}; d5+=5; d5%=6
+func cm_expand@{chain}_dir@{d0}_degeneracy()
+  #$ dT=@{d0}; dT+=1; dT%=6; di=1
+  #$ while @{di}<6
+    cm_distU_=oppsDistance_map[cm_yT@{dT}()][cm_xT@{dT}()]
+    if cm_distU()>=cm_distT()
+      print '  xx  expand@{chain}_dir@{d0}_degeneracy di=@{di} dT=@{dT} (',cm_xT@{dT}(),',',cm_yT@{dT}(),') cm_distT=',cm_distT(),' oppsDistance_map=',cm_distU()
+      return zero()
+    elif cm_distU()>=cm_oppsDistanceT()
+      print '  --  expand@{chain}_dir@{d0}_degeneracy update oppsDistanceInner di=@{di} dT=@{dT} (',cm_xT@{dT}(),',',cm_yT@{dT}(),') cm_distT=',cm_distT(),' oppsDistance_map=',cm_distU()
+      cm@{ag}_oppsDistanceT_=cm_distU()
+    endif
+    if safeField_map[cm_yT@{dT}()][cm_xT@{dT}()]
+      print '  xx  expand@{chain}_dir@{d0}_degeneracy di=@{di} dT=@{dT} (',cm_xT@{dT}(),',',cm_yT@{dT}(),') cm_distT=',cm_distT(),' safeField_map=',safeField_map[cm_yT@{dT}()][cm_xT@{dT}()]
+      return zero()
+    #$ if @{di}>1
+    ####TEMP####
+    elif cm_m[cm_yT@{dT}()][cm_xT@{dT}()]
+    else
+      print '  xx  expand@{chain}_dir@{d0}_degeneracy di=@{di} dT=@{dT} (',cm_xT@{dT}(),',',cm_yT@{dT}(),') cm_distT=',cm_distT(),' not already in territory'
+      return zero()
+    #$ endif
+    endif
+    #$ dT+=1; dT%=6; di+=1
+  #$ endwhile
+  print '  --  expand@{chain}_dir@{d0}_degeneracy succeeded'
+  return 1
+endfunc
+func cm_expand@{chain}_dir@{d0}()
+  print '  --  cm_expand@{chain}_dir@{d0}() begin distT=',cm_distT()
+  #cm_m[cm_yT@{d1}()][cm_xT@{d1}()]&@{m@{chain}}
+  #print '    --  cm_m[d1=@{d1}](',cm_xT@{d1}(),',',cm_yT@{d1}(),')=',cm_m[cm_yT@{d1}()][cm_xT@{d1}()]
+  ####TEMP####
+  if cm_m[cm_yT@{d1}()][cm_xT@{d1}()]
+    #print '    --  cm_m[d5=@{d5}](',cm_xT@{d5}(),',',cm_yT@{d5}(),')=',cm_m[cm_yT@{d5}()][cm_xT@{d5}()]
+    ####TEMP####
+    if cm_m[cm_yT@{d5}()][cm_xT@{d5}()]
+      if cm_isLastChain()
+        return cm_expand@{chain}_dir@{d0}_degeneracy()
+      endif
+      print '  xx  ERROR at cm_expand@{chain}_dir@{d0} 11 T(',cm_xT(),',',cm_yT(),') P(',cm_xP_,',',cm_yP_,')'
+    else
+      return cm_expand@{chain}_dir@{d0}_rot5()
+    endif
+  ####TEMP####
+  elif cm_m[cm_yT@{d5}()][cm_xT@{d5}()]
+    return cm_expand@{chain}_dir@{d0}_rot1()
+  else
+		print '  xx  ERROR at cm_expand@{chain}_dir@{d0} 00 T(',cm_xT(),',',cm_yT(),') P(',cm_xP_,',',cm_yP_,')'
+  endif
+endfunc
+    #$ c1r5=1
+    #$ while @{c1r5}<6
+func cm_expand@{chain}_dir@{d0}_rot@{c1r5}()
+  cm_rot_isNextArrived_=cm_isLastChain()
+  #$ dT=@{d0}; dT+=@{c1r5}; dT%=6; di=1
+  #$ while @{di}<6
+    if safeField_map[cm_yT@{dT}()][cm_xT@{dT}()]
+      print '  xx  expand@{chain}_dir@{d0}_rot@{c1r5} di=@{di} dT=@{dT} (',cm_xT@{dT}(),',',cm_yT@{dT}(),') cm_distT=',cm_distT(),' safeField_map=',safeField_map[cm_yT@{dT}()][cm_xT@{dT}()]
+      return zero()
+    endif
+    cm_distU_=oppsDistance_map[cm_yT@{dT}()][cm_xT@{dT}()]
+    print '    --  di[@{di}] (',cm_xT@{dT}(),',',cm_yT@{dT}(),') distU=',cm_distU(),' opdInner=',cm@{ag}_oppsDistanceInner
+    if cm_distU()>=cm_distT()
+      print '  xx  expand@{chain}_dir@{d0}_rot@{c1r5} di=@{di} dT=@{dT} (',cm_xT@{dT}(),',',cm_yT@{dT}(),') cm_distT=',cm_distT(),' oppsDistance_map=',cm_distU()
+      return zero()
+    elif cm_distU()>cm_oppsDistanceT()
+      print '  --  expand@{chain}_dir@{d0}_rot@{c1r5} update oppsDistanceInner di=@{di} dT=@{dT} (',cm_xT@{dT}(),',',cm_yT@{dT}(),') cm_distT=',cm_distT(),' oppsDistance_map=',cm_distU()
+      cm_oppsDistanceT_=cm_distU()
+    endif
+    ####TEMP####
+    if cm_m[cm_yT@{dT}()][cm_xT@{dT}()]
+      if cm_rot_isNextArrived_
+      elif cm_yN_==cm_yT@{dT}()
+        if cm_xN_==cm_xT@{dT}()
+          cm_rot_isNextArrived_=1
+        else
+          print '  xx  expand@{chain}_dir@{d0}_rot@{c1r5} di=@{di} dT=@{dT} (',cm_xT@{dT}(),',',cm_yT@{dT}(),') cm_distT=',cm_distT(),' cm_m>0 but isNextArrived_==0 invalid shape'
+          return zero()
+        endif
+      else
+        print '  xx  expand@{chain}_dir@{d0}_rot@{c1r5} di=@{di} dT=@{dT} (',cm_xT@{dT}(),',',cm_yT@{dT}(),') cm_distT=',cm_distT(),' cm_m>0 but isNextArrived_==0 invalid shape'
+        return zero()
+      endif
+    elif ownedMapMe[cm_yT@{dT}()][cm_xT@{dT}()]
+      if cm_rot_isNextArrived_
+      else
+        print '  xx  expand@{chain}_dir@{d0}_rot@{c1r5} di=@{di} dT=@{dT} (',cm_xT@{dT}(),',',cm_yT@{dT}(),') cm_distT=',cm_distT(),' ownedMapMe>0 but isNextArrived_==0 invalid shape'
+        return zero()
+      endif
+    elif cm_rot_isNextArrived_*(1-cm_isLastChain())
+      print '  xx  expand@{chain}_dir@{d0}_rot@{c1r5} di=@{di} dT=@{dT} (',cm_xT@{dT}(),',',cm_yT@{dT}(),') cm_distT=',cm_distT(),' ownedMapMe==0 but isNextArrived_==1 invalid shape'
+      return zero()
+    else
+      print '    --  [',cm1_array0_size(),'](',cm_xT@{dT}(),',',cm_yT@{dT}(),') : expand@{chain}_dir@{d0}_rot@{c1r5}'
+      #$ 'comboMove_pushFromFunc.gun ag=1 chain=0 x=cm_xT@{dT} y=cm_yT@{dT}'
+      #print '  --  expand@{chain}_dir@{d0}_rot@{c1r5} di=@{di} dT=@{dT} (',cm_xT@{dT}(),',',cm_yT@{dT}(),') cm_distT=',cm_distT(),' pushed size=',cm1_array0_size()
+    endif
+    #$ dT+=@{c1r5}; dT%=6; di+=1
+  #$ endwhile
+  return 1
+endfunc
+      #$ c1r5+=4
+    #$ endwhile
+    #$ d0+=1
+  #$ endwhile
+  #$ chain+=1
+#$ endwhile
+func cm_isLastChain_set()
+  cm_isLastChain_=1
+endfunc
+func cm_isLastChain_reset()
+  cm_isLastChain_=zero()
+endfunc
+func cm_isLastChain()
+  return cm_isLastChain_
+endfunc
+func cm_oppsDistanceT()
+  return cm_oppsDistanceT_
+endfunc
+func cm_oppsDistanceT_clear()
+  cm_oppsDistanceT_=zero()
+endfunc

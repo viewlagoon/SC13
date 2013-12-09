@@ -1,0 +1,35 @@
+#$ ag=0
+#$ di=0; dj=1; dk=2; dl=3; dm=4; dn=5
+#$ m0=1; m1=2; m2=4; m3=8
+#$ while @ag<4
+func moveMaxHexPref@{ag}_@di@dj@dk@dl@dm@dn()
+  print 'turn=',turn,' moveMaxPref@{ag} 0(',x0,',',y0,')>(',x0Next,',',y0Next,') 1(',x1,',',y1,')>(',x1Next,',',y1Next,') 2(',x2,',',y2,')>(',x2Next,',',y2Next,') 3(',x3,',',y3,')>(',x3Next,',',y3Next,')'
+  #$ if @{ag}>=1
+  if checkMateMove@{ag}_executed()
+    print 'turn=',turn,' moveMaxPref@{ag} locked(checkMateMove) 0(',x0,',',y0,')>(',x0Next,',',y0Next,') 1(',x1,',',y1,')>(',x1Next,',',y1Next,') 2(',x2,',',y2,')>(',x2Next,',',y2Next,') 3(',x3,',',y3,')>(',x3Next,',',y3Next,')'
+  else
+  #$ endif
+    #$ dir=0
+    #$ while @{dir}<6
+      hp@{ag}@{dir}_backup=hp@{ag}@{dir}
+      if mmhp_map[y@{ag}@{dir}Gate][x@{ag}@{dir}Gate] & @{m@{ag}}
+        hp@{ag}@{dir}=zero()
+        print '  !!  contention_found dir=@{dir}(',x@{ag}@{dir}Gate,',',y@{ag}@{dir}Gate,')'
+      else
+        #print '  --  contention_not_found dir=@{dir}(',x@{ag}@{dir}Gate,',',y@{ag}@{dir}Gate,')'
+      endif
+      #$ dir+=1
+    #$ endwhile
+  #$   'moveMaxHexPref_impl6.gun ag=@ag di=@di dj=@dj dk=@dk dl=@dl dm=@dm dn=@dn'
+    #$ dir=0
+    #$ while @{dir}<6
+      hp@{ag}@{dir}=hp@{ag}@{dir}_backup
+      #$ dir+=1
+    #$ endwhile
+    gb_move(move)
+  #$ if @{ag}>=1
+  endif
+  #$ endif
+endfunc
+#$   ag+=1
+#$ endwhile

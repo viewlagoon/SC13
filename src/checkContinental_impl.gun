@@ -1,0 +1,91 @@
+#$ nopd=5
+#$ dir=0
+#$ while @dir<6
+  #$ if @{hvT}==0
+		#$ if @dir==1
+			#$ xdT=0; ydT=0
+		#$ endif
+		#$ if @dir==4
+			#$ xdT=1; ydT=0
+		#$ endif
+		#$ if @dir==5
+			#$ xdT=2; ydT=
+		#$ endif
+		#$ if @dir==3
+			#$ xdT=1; ydT=3
+		#$ endif
+		#$ if @dir==2
+			#$ xdT=0; ydT=3
+		#$ endif
+		#$ if @dir==0
+			#$ xdT=5; ydT=
+		#$ endif
+  #$ else
+		#$ if @dir==0
+			#$ xdT=0; ydT=0
+		#$ endif
+		#$ if @dir==1
+			#$ xdT=1; ydT=0
+		#$ endif
+		#$ if @dir==2
+			#$ xdT=2; ydT=
+		#$ endif
+		#$ if @dir==5
+			#$ xdT=1; ydT=3
+		#$ endif
+		#$ if @dir==4
+			#$ xdT=0; ydT=3
+		#$ endif
+		#$ if @dir==3
+			#$ xdT=5; ydT=
+		#$ endif
+	#$ endif
+	if chkCont_visited@{hvT}[chkCont_yT@{ydT}][chkCont_xT@{xdT}]
+	else
+		chkCont_visited@{hvT}[chkCont_yT@{ydT}][chkCont_xT@{xdT}]=1
+    #$ if @{hvT}==0
+      #$ endline=chkCont_xT@{xdT}
+    #$ else
+      #$ endline=chkCont_yT@{ydT}
+    #$ endif
+		if ownedMap@{tid}[chkCont_yT@{ydT}][chkCont_xT@{xdT}]
+      if @{endline}
+        #$ 'checkContinental_stack_push.gun hv=@{hvT} opd=@{opd} valy=chkCont_yT@{ydT} valx=chkCont_xT@{xdT}'
+      else
+        #print '  --  tid=@{tid} continental_found (',chkCont_xT@{xdT},',',chkCont_yT@{ydT},')'
+        checkContinental@{tid}_distNearest=oppsDistance_dist@{opd}
+        return checkContinental@{tid}_distNearest
+      endif
+    elif oppsDistance_single1@{tid}[chkCont_yT@{ydT}][chkCont_xT@{xdT}]
+      #$ if @{opd}<@{nopd}
+        #$ tmpOpd=@{opd}
+        #$ if @{opd}==0
+          #$ tmpOpd=1
+        #$ endif
+        chkCont_yU=chkCont_yT@{ydT}
+        chkCont_xU=chkCont_xT@{xdT}
+        chkCont_distU=oppsDistance_single1@{tid}[chkCont_yU][chkCont_xU]
+        if @{endline}
+        elif chkCont_distU>=oppsDistance_dist@{opd}
+          checkContinental@{tid}_distNearest=chkCont_distU
+          #print '  --  tid=@{tid} continental_candidate_found (',chkCont_xT@{xdT},',',chkCont_yT@{ydT},') opd=@{opd}(',oppsDistance_dist@{opd},') distU=',chkCont_distU
+          return checkContinental@{tid}_distNearest
+        elif chkCont_distU>checkContinental@{tid}_distNearest
+          #print '  --  tid=@{tid} continental_candidate_updated (',chkCont_xT@{xdT},',',chkCont_yT@{ydT},') opd=@{opd}(',oppsDistance_dist@{opd},') distU=',chkCont_distU
+          checkContinental@{tid}_distNearest=chkCont_distU
+        endif
+        checkContinental_around@{hvT}@{tmpOpd}()
+      #$ else
+        if @{endline}
+        else
+          checkContinental@{tid}_distNearest=chkCont_distU
+          #print '  --  tid=@{tid} continental_candidate_found (',chkCont_xT@{xdT},',',chkCont_yT@{ydT},') opd=@{opd}(',oppsDistance_dist@{opd},') distU=',chkCont_distU
+          return checkContinental@{tid}_distNearest
+        endif
+        #$ 'checkContinental_stack_push.gun hv=@{hvT} opd=@{nopd} valy=chkCont_yT@{ydT} valx=chkCont_xT@{xdT}'
+      #$ endif
+		endif
+	endif
+	#$ dir+=1
+#$ endwhile
+

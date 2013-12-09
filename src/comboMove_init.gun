@@ -1,0 +1,126 @@
+#$ ag=1
+#$ while @{ag}<=3
+func cm@{ag}_init()
+  if spiralMove@{ag}_alreadyInit
+    return 1
+  endif
+  print '  -- cm@{ag}_init -> spiralMove@{ag}_init'
+  spiralMove@{ag}_innerSize=zero()
+  spiralMove@{ag}_alreadyInit=1
+  spiralMove@{ag}_evaluate=m2
+  if spiralMove_globalSafeLevel<=2
+    multiplier_=5
+  else
+    multiplier_=1
+  endif
+#$ dF=0
+#$ while @{dF}<6
+  #$ c1r5=1
+  #$ while @{c1r5}<6
+  print '  !! ownedMapMe[y@{ag}1][x@{ag}1]=',ownedMapMe[y@{ag}1][x@{ag}1]
+  spiralMove@{ag}_rotate@{c1r5}_move@{dF}()
+  if spiralMove@{ag}_rotate@{c1r5}_move@{dF}_turnToSiege
+    if spiralMove@{ag}_rotate@{c1r5}_move@{dF}_turnToSiege==1
+      if oppsDistance_dist1<=oppsDistance_map[spiralMove@{ag}_rotate@{c1r5}_move@{dF}_yNeighbor][spiralMove@{ag}_rotate@{c1r5}_move@{dF}_xNeighbor]
+        print '  vv  move@{dF}_rot@{c1r5} path1'
+        ev@{c1r5}@{dF}=spiralMove@{ag}_rotate@{c1r5}_move@{dF}_innerSize
+      else
+        print '  vv  move@{dF}_rot@{c1r5} path2'
+        ev@{c1r5}@{dF}=1+spiralMove@{ag}_rotate@{c1r5}_move@{dF}_innerSize
+      endif
+    elif cm@{ag}_chMin()==1
+      print '  vv  move@{dF}_rot@{c1r5} path3'
+      ev@{c1r5}@{dF}=zero()
+    elif oppsDistance_dist2<=oppsDistance_map[spiralMove@{ag}_rotate@{c1r5}_move@{dF}_yNeighbor][spiralMove@{ag}_rotate@{c1r5}_move@{dF}_xNeighbor]
+      print '  vv  move@{dF}_rot@{c1r5} path4'
+      ev@{c1r5}@{dF}=spiralMove@{ag}_rotate@{c1r5}_move@{dF}_innerSize/2
+    elif oppsDistance_dist2<=oppsDistance_map[spiralMove@{ag}_rotate@{c1r5}_move@{dF}_yRemote][spiralMove@{ag}_rotate@{c1r5}_move@{dF}_xRemote]
+      print '  vv  move@{dF}_rot@{c1r5} path5'
+      ev@{c1r5}@{dF}=spiralMove@{ag}_rotate@{c1r5}_move@{dF}_innerSize/2
+    else
+      print '  vv  move@{dF}_rot@{c1r5} path6'
+      ev@{c1r5}@{dF}=spiralMove@{ag}_rotate@{c1r5}_move@{dF}_innerSize
+    endif
+    print '  -- ev@{c1r5}@{dF}=',ev@{c1r5}@{dF},' turnToSiege=',spiralMove@{ag}_rotate@{c1r5}_move@{dF}_turnToSiege
+    if ev@{c1r5}@{dF}>spiralMove@{ag}_evaluate
+      spiralMove@{ag}_evaluate=ev@{c1r5}@{dF}
+      spiralMove@{ag}_numBreath=spiralMove@{ag}_rotate@{c1r5}_move@{dF}_turnToSiege
+      spiralMove@{ag}_innerSizeEv=spiralMove@{ag}_rotate@{c1r5}_move@{dF}_innerSize
+      spiralMove@{ag}_xInner=spiralMove@{ag}_rotate@{c1r5}_move@{dF}_xInner
+      spiralMove@{ag}_yInner=spiralMove@{ag}_rotate@{c1r5}_move@{dF}_yInner
+      spiralMove@{ag}_xNeighbor=spiralMove@{ag}_rotate@{c1r5}_move@{dF}_xNeighbor
+      spiralMove@{ag}_yNeighbor=spiralMove@{ag}_rotate@{c1r5}_move@{dF}_yNeighbor
+      spiralMove@{ag}_xRemote=spiralMove@{ag}_rotate@{c1r5}_move@{dF}_xRemote
+      spiralMove@{ag}_yRemote=spiralMove@{ag}_rotate@{c1r5}_move@{dF}_yRemote
+      spiralMove@{ag}_dirNeighbor=@{dF}
+      spiralMove@{ag}_c1r5=@{c1r5}
+      #spiralMove@{ag}_shortestOppsDist=spiralMove@{ag}_rotate@{c1r5}_move@{dF}_shortestOppsDist
+    endif
+  else
+    print '  vv  move@{dF}_rot@{c1r5} path7 (not found)'
+  endif
+    #$ c1r5+=4
+  #$ endwhile
+  #$ dF+=1
+#$ endwhile
+  if spiralMove@{ag}_evaluate<zero()
+    return 1
+  endif
+  print '  --  maxEv rotate',spiralMove@{ag}_c1r5,' dF',spiralMove@{ag}_dirNeighbor,' ev=',spiralMove@{ag}_evaluate
+  print '  --  maxEv remote(',spiralMove@{ag}_xRemote,',',spiralMove@{ag}_yRemote,')'
+  print '  --  cm@{ag}_chMin_=',cm@{ag}_chMin(),' cm@{ag}_innerSize=',cm@{ag}_innerSize,' spm@{ag}_innerSize=',spiralMove@{ag}_innerSizeEv
+  if cm@{ag}_innerSize
+    if cm@{ag}_innerSize<spiralMove@{ag}_innerSizeEv
+      if spiralMove@{ag}_numBreath==1
+        print '  uu  path0'
+        cm@{ag}_initFromSpiralMove1()
+      else
+        if cm@{ag}_innerSize+1<spiralMove@{ag}_innerSizeEv
+          print '  uu  path1'
+          cm@{ag}_initFromSpiralMove2()
+        else
+          print '  uu  path2'
+        endif
+      endif
+    else
+      print '  uu  path3'
+    endif
+  elif spiralMove@{ag}_numBreath==1
+    print '  uu  path4'
+    cm@{ag}_initFromSpiralMove1()
+  else
+    print '  uu  path5'
+    cm@{ag}_initFromSpiralMove2()
+  endif
+endfunc
+func cm@{ag}_initFromSpiralMove1()
+  cm@{ag}_chMin_=1
+  cm@{ag}_x1[0]=spiralMove@{ag}_xNeighbor
+  cm@{ag}_y1[0]=spiralMove@{ag}_yNeighbor
+  cm@{ag}_xI1=spiralMove@{ag}_xInner
+  cm@{ag}_yI1=spiralMove@{ag}_yInner
+  cm@{ag}_array1_lst_=1
+  cm@{ag}_array2_clear()
+  cm@{ag}_array3_clear()
+  cm@{ag}_array4_clear()
+  cm@{ag}_array5_clear()
+  cm@{ag}_initInner()
+endfunc
+func cm@{ag}_initFromSpiralMove2()
+  cm@{ag}_chMin_=2
+  cm@{ag}_x2[0]=spiralMove@{ag}_xNeighbor
+  cm@{ag}_y2[0]=spiralMove@{ag}_yNeighbor
+  cm@{ag}_x2[1]=spiralMove@{ag}_xRemote
+  cm@{ag}_y2[1]=spiralMove@{ag}_yRemote
+  cm@{ag}_xI2=spiralMove@{ag}_xInner
+  cm@{ag}_yI2=spiralMove@{ag}_yInner
+  cm@{ag}_array2_lst_=2
+  cm@{ag}_array1_clear()
+  cm@{ag}_array3_clear()
+  cm@{ag}_array4_clear()
+  cm@{ag}_array5_clear()
+  cm@{ag}_initInner()
+endfunc
+
+	#$ ag+=1
+#$ endwhile

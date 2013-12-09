@@ -1,0 +1,9 @@
+func output@ag()
+  print 'turn=',turn,' ag@ag: x=',x@{ag},' xR=',x@{ag}Rev,' y=',y@{ag},' yR=',y@{ag}Rev,' mv=',move[@ag]
+  print '  [',x@{ag}0,',',y@{ag}0,':',hp@{ag}0,',',map[y@{ag}0][x@{ag}0],'][',  x@{ag}1,',',y@{ag}0,':',hp@{ag}1,',',map[y@{ag}0][x@{ag}1],']'
+  print   '[',x@{ag}5,',',y@{ag} ,':',hp@{ag}5,',',map[y@{ag} ][x@{ag}5],']    [',x@{ag}2,',',y@{ag} ,':',hp@{ag}2,',',map[y@{ag} ][x@{ag}2],']'
+  print '  [',x@{ag}0,',',y@{ag}3,':',hp@{ag}4,',',map[y@{ag}3][x@{ag}0],'][',  x@{ag}1,',',y@{ag}3,':',hp@{ag}3,',',map[y@{ag}3][x@{ag}1],']'
+endfunc
+func output@{ag}_simple()
+  print 'turn=',turn,' ag@ag(',x@{ag},',',y@{ag},')[',hp@{ag}0,',',hp@{ag}1,',',hp@{ag}2,',',hp@{ag}3,',',hp@{ag}4,',',hp@{ag}5,'] sur[',hpd@{ag}_surrounded(),']'
+endfunc
