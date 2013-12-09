@@ -1,0 +1,4 @@
+au BufRead,BufNewFile *.gb      se filetype=gunbai
+au BufRead,BufNewFile *.gun     se filetype=gunbai
+au BufRead,BufNewFile *.ogun    se filetype=gunbai
+
