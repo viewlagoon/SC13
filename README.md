@@ -1,6 +1,6 @@
 SC'13
 ====
-These source code is written by modified Gunbai Script.
+These source codes are written by modified Gunbai Script.
 
 src/             : sources (strategy:r)
 
