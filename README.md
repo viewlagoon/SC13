@@ -1,7 +1,6 @@
 SC'13
 ====
-Author: Sho Aita (viewlagoon)
-
+These source code is written by modified Gunbai Script.
 
 src/             : sources (strategy:r)
 
